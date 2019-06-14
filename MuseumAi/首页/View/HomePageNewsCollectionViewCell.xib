@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomePageNewsCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="173" height="177"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="173" height="177"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SY7-ku-Hdj">
+                        <rect key="frame" x="5" y="5" width="163" height="167"/>
+                        <color key="backgroundColor" red="0.9457889199256897" green="0.91350710391998291" blue="0.9214056134223938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="融信澜月" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuL-cT-Cll">
+                        <rect key="frame" x="0.0" y="16" width="173" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.22351279854774475" green="0.2236180305480957" blue="0.21941366791725159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="省府新盘26日首开" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei3-KA-ajZ">
+                        <rect key="frame" x="0.0" y="38" width="173" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.65498042106628418" green="0.65129327774047852" blue="0.63451164960861206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="图层 29" translatesAutoresizingMaskIntoConstraints="NO" id="8u7-0A-hsH">
+                        <rect key="frame" x="5" y="91" width="163" height="81"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="SuL-cT-Cll" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="20l-7Z-3WD"/>
+                <constraint firstAttribute="bottom" secondItem="SY7-ku-Hdj" secondAttribute="bottom" constant="5" id="5Th-q5-9ao"/>
+                <constraint firstAttribute="trailing" secondItem="8u7-0A-hsH" secondAttribute="trailing" constant="5" id="E1q-iN-peh"/>
+                <constraint firstItem="Ei3-KA-ajZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ETz-Qj-xH3"/>
+                <constraint firstItem="Ei3-KA-ajZ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Hah-cO-4Fm"/>
+                <constraint firstItem="8u7-0A-hsH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="I67-LA-VJR"/>
+                <constraint firstItem="8u7-0A-hsH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ei3-KA-ajZ" secondAttribute="bottom" constant="12" id="Sk4-1G-dQd"/>
+                <constraint firstAttribute="bottom" secondItem="8u7-0A-hsH" secondAttribute="bottom" constant="5" id="Tef-10-bda"/>
+                <constraint firstItem="SuL-cT-Cll" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="VYM-Me-8Er"/>
+                <constraint firstAttribute="trailing" secondItem="SuL-cT-Cll" secondAttribute="trailing" id="bv1-2y-fYd"/>
+                <constraint firstItem="SY7-ku-Hdj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="i4t-Bq-wtK"/>
+                <constraint firstAttribute="trailing" secondItem="SY7-ku-Hdj" secondAttribute="trailing" constant="5" id="mOr-93-GQc"/>
+                <constraint firstItem="SuL-cT-Cll" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="otV-yg-Pyu"/>
+                <constraint firstItem="SY7-ku-Hdj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="q6t-9f-42A"/>
+                <constraint firstAttribute="trailing" secondItem="Ei3-KA-ajZ" secondAttribute="trailing" id="r08-Wt-X81"/>
+                <constraint firstItem="Ei3-KA-ajZ" firstAttribute="top" secondItem="SuL-cT-Cll" secondAttribute="bottom" constant="5" id="rBK-3s-ozg"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="173" height="177"/>
+            <connections>
+                <outlet property="backGround" destination="SY7-ku-Hdj" id="Jab-0f-Avc"/>
+                <outlet property="contentImage" destination="8u7-0A-hsH" id="Phq-LT-qgc"/>
+                <outlet property="contentLabel" destination="Ei3-KA-ajZ" id="kFQ-QX-PxJ"/>
+                <outlet property="titleLabel" destination="SuL-cT-Cll" id="leQ-bg-3Vb"/>
+            </connections>
+            <point key="canvasLocation" x="-236" y="174.96251874062969"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="图层 29" width="153.5" height="81.5"/>
+    </resources>
+</document>

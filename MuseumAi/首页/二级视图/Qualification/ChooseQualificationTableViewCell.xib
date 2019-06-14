@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="KGk-i7-Jjw" customClass="ChooseQualificationTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="398" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="398" height="119.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgZ-cq-nHZ">
+                        <rect key="frame" x="17" y="10" width="360" height="99.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qualification_qualification1" translatesAutoresizingMaskIntoConstraints="NO" id="BCP-dB-SRO">
+                                <rect key="frame" x="14" y="18.5" width="63" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="3sV-88-et7"/>
+                                    <constraint firstAttribute="width" constant="63" id="QqO-bB-7ue"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加申购人信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccx-bg-x6h">
+                                <rect key="frame" x="90" y="26" width="121.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.18757635349999999" green="0.2029127479" blue="0.25685864689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="完善个人婚姻和户口状况" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzi-aZ-MuB">
+                                <rect key="frame" x="90" y="57" width="210" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.45058667660000001" green="0.4581159353" blue="0.49959141019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juX-t4-loV">
+                                <rect key="frame" x="315" y="8" width="33" height="83.5"/>
+                                <state key="normal" image="qualification_choose"/>
+                                <state key="selected" image="qualification_chooseed"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ccx-bg-x6h" firstAttribute="leading" secondItem="BCP-dB-SRO" secondAttribute="trailing" constant="13" id="6mK-Yp-Lxd"/>
+                            <constraint firstItem="ccx-bg-x6h" firstAttribute="top" secondItem="dgZ-cq-nHZ" secondAttribute="top" constant="26" id="Nm1-Jh-ssi"/>
+                            <constraint firstAttribute="trailing" secondItem="Lzi-aZ-MuB" secondAttribute="trailing" constant="60" id="a9A-iy-rsS"/>
+                            <constraint firstItem="juX-t4-loV" firstAttribute="top" secondItem="dgZ-cq-nHZ" secondAttribute="top" constant="8" id="bgs-6K-vcy"/>
+                            <constraint firstAttribute="trailing" secondItem="juX-t4-loV" secondAttribute="trailing" constant="12" id="dBS-rK-cAJ"/>
+                            <constraint firstItem="BCP-dB-SRO" firstAttribute="centerY" secondItem="dgZ-cq-nHZ" secondAttribute="centerY" id="gaP-bE-c0U"/>
+                            <constraint firstAttribute="bottom" secondItem="juX-t4-loV" secondAttribute="bottom" constant="8" id="mOq-Xj-wPi"/>
+                            <constraint firstItem="Lzi-aZ-MuB" firstAttribute="leading" secondItem="ccx-bg-x6h" secondAttribute="leading" id="oLP-tm-sWq"/>
+                            <constraint firstItem="BCP-dB-SRO" firstAttribute="leading" secondItem="dgZ-cq-nHZ" secondAttribute="leading" constant="14" id="r3e-s2-XWd"/>
+                            <constraint firstItem="Lzi-aZ-MuB" firstAttribute="top" secondItem="ccx-bg-x6h" secondAttribute="bottom" constant="10" id="t99-8s-EZa"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="dgZ-cq-nHZ" secondAttribute="trailing" constant="21" id="5Aj-yi-3ZT"/>
+                    <constraint firstItem="dgZ-cq-nHZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="9a7-iv-JhS"/>
+                    <constraint firstItem="dgZ-cq-nHZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="NdA-Pl-MUD"/>
+                    <constraint firstAttribute="bottom" secondItem="dgZ-cq-nHZ" secondAttribute="bottom" constant="10" id="kGm-kP-bgz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="backGround" destination="dgZ-cq-nHZ" id="QWU-T3-x7s"/>
+                <outlet property="chooseButton" destination="juX-t4-loV" id="UFS-0i-r9H"/>
+                <outlet property="contentLabel" destination="Lzi-aZ-MuB" id="FtV-Sk-iCh"/>
+                <outlet property="headerImageView" destination="BCP-dB-SRO" id="V8r-uz-mhV"/>
+                <outlet property="titleLabel" destination="ccx-bg-x6h" id="XXg-be-bMD"/>
+            </connections>
+            <point key="canvasLocation" x="91.200000000000003" y="151.12443778110946"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="qualification_choose" width="33" height="33"/>
+        <image name="qualification_chooseed" width="33" height="33"/>
+        <image name="qualification_qualification1" width="63" height="63"/>
+    </resources>
+</document>

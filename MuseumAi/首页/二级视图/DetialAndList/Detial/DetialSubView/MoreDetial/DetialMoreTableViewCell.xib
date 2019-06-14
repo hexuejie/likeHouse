@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="KGk-i7-Jjw" customClass="DetialMoreTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="404" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="404" height="64.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预售许可证：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giN-FY-e4h">
+                        <rect key="frame" x="12" y="11" width="86" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="86" id="VWd-ut-Dhv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.57249671220779419" green="0.57265877723693848" blue="0.56839489936828613" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 长沙市岳麓区养护大道罗谷塘路口东南角路口东南角口东南角         " lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDx-K9-7OA">
+                        <rect key="frame" x="98" y="11" width="280" height="43.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.26663362979888916" green="0.26668566465377808" blue="0.26663035154342651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xDx-K9-7OA" firstAttribute="top" secondItem="giN-FY-e4h" secondAttribute="top" id="3zJ-o2-N18"/>
+                    <constraint firstAttribute="bottom" secondItem="xDx-K9-7OA" secondAttribute="bottom" constant="10" id="Qua-uE-bfU"/>
+                    <constraint firstAttribute="trailing" secondItem="xDx-K9-7OA" secondAttribute="trailing" constant="26" id="fgh-bz-R4n"/>
+                    <constraint firstItem="giN-FY-e4h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="iVl-LU-mJA"/>
+                    <constraint firstItem="xDx-K9-7OA" firstAttribute="leading" secondItem="giN-FY-e4h" secondAttribute="trailing" id="l0q-rC-Xas"/>
+                    <constraint firstItem="giN-FY-e4h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="ord-7b-EP0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="contentLabel" destination="xDx-K9-7OA" id="lNz-nH-Ddp"/>
+                <outlet property="titleLabel" destination="giN-FY-e4h" id="wfE-6f-jQv"/>
+            </connections>
+            <point key="canvasLocation" x="-522" y="98"/>
+        </tableViewCell>
+    </objects>
+</document>

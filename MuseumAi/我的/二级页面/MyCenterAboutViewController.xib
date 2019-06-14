@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCenterAboutViewController">
+            <connections>
+                <outlet property="TitleAndVersion" destination="FD6-Zg-Lpu" id="2xT-34-tOp"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="180" translatesAutoresizingMaskIntoConstraints="NO" id="tKU-LS-a16">
+                    <rect key="frame" x="157.5" y="104" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Gga-Hx-y6w"/>
+                        <constraint firstAttribute="width" constant="60" id="dm3-29-ddh"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="悦居星城：V4.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FD6-Zg-Lpu">
+                    <rect key="frame" x="116" y="189" width="143" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.75331836938858032" green="0.57057398557662964" blue="0.36551237106323242" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpC-n5-3x9">
+                    <rect key="frame" x="14" y="251.5" width="347" height="97"/>
+                    <attributedString key="attributedText">
+                        <fragment content="         悦居星城APP由长沙市住房和城乡建设委员会主导开发，旨在为购房者提供实名认证、购房资格审查、线上认筹及相关服务。悦居星城的资格审查结果只是根据用户录入的信息得出一个预审结果，不能代表最后的网签购房资格审查结果。">
+                            <attributes>
+                                <color key="NSColor" red="0.26663362979888916" green="0.26668566465377808" blue="0.26663035154342651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="技术支持：长沙兆吉信息科技有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3b-Ee-YUL">
+                    <rect key="frame" x="92" y="640.5" width="191.5" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.64306563138961792" green="0.64317852258682251" blue="0.64305847883224487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBO-Zi-ccw">
+                    <rect key="frame" x="11" y="230.5" width="353" height="1"/>
+                    <color key="backgroundColor" red="0.94108635187149048" green="0.94130808115005493" blue="0.93698090314865112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Lxc-8T-gjo"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长沙市住建委信息中心拥有软件最终解释权" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8L-tK-vhJ">
+                    <rect key="frame" x="80.5" y="620" width="214" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.64306563139999995" green="0.64317852259999997" blue="0.6430584788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="W3b-Ee-YUL" firstAttribute="top" secondItem="o8L-tK-vhJ" secondAttribute="bottom" constant="7" id="0vj-EW-nTW"/>
+                <constraint firstAttribute="trailing" secondItem="BBO-Zi-ccw" secondAttribute="trailing" constant="11" id="10K-gs-VVc"/>
+                <constraint firstItem="BBO-Zi-ccw" firstAttribute="top" secondItem="FD6-Zg-Lpu" secondAttribute="bottom" constant="20" id="8F3-X6-sL7"/>
+                <constraint firstItem="jpC-n5-3x9" firstAttribute="top" secondItem="BBO-Zi-ccw" secondAttribute="bottom" constant="20" id="9su-n0-T45"/>
+                <constraint firstItem="FD6-Zg-Lpu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BFD-Ce-Ph7"/>
+                <constraint firstItem="tKU-LS-a16" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="G0F-tS-K5O"/>
+                <constraint firstAttribute="trailing" secondItem="jpC-n5-3x9" secondAttribute="trailing" constant="14" id="Oju-Yu-f5q"/>
+                <constraint firstItem="W3b-Ee-YUL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Uxu-iT-6j6"/>
+                <constraint firstItem="o8L-tK-vhJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WTr-DY-27B"/>
+                <constraint firstItem="BBO-Zi-ccw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="YRX-X9-Pbc"/>
+                <constraint firstItem="FD6-Zg-Lpu" firstAttribute="top" secondItem="tKU-LS-a16" secondAttribute="bottom" constant="25" id="g6v-v8-iKm"/>
+                <constraint firstItem="BBO-Zi-ccw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="11" id="gHl-j8-gdV"/>
+                <constraint firstItem="jpC-n5-3x9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="hVj-80-0RE"/>
+                <constraint firstItem="tKU-LS-a16" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="40" id="u2P-fB-06x"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="W3b-Ee-YUL" secondAttribute="bottom" constant="13" id="vdt-dt-54g"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="180" width="180" height="180"/>
+    </resources>
+</document>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AddMateShipHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="276"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXA-au-LCS">
+                    <rect key="frame" x="0.0" y="0.0" width="335" height="116"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="real_star" translatesAutoresizingMaskIntoConstraints="NO" id="DYX-G7-96k">
+                            <rect key="frame" x="34" y="38" width="42" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="0Em-4b-GAF"/>
+                                <constraint firstAttribute="width" constant="42" id="JUQ-hv-Rhq"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWn-oc-SUx">
+                            <rect key="frame" x="99" y="37" width="196" height="42"/>
+                            <attributedString key="attributedText">
+                                <fragment content="现役军人、港澳台及外籍人士请点击此处进行实名认证">
+                                    <attributes>
+                                        <color key="NSColor" red="0.77254772186279297" green="0.61416131258010864" blue="0.3841475248336792" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="16" name=".PingFangSC-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFJ-V0-dAD">
+                            <rect key="frame" x="29" y="28" width="266" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="A4x-m4-Aep"/>
+                            </constraints>
+                            <connections>
+                                <action selector="otherRealClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="2PS-LB-PLk"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.098465941846370697" green="0.082678548991680145" blue="0.057426027953624725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="DYX-G7-96k" firstAttribute="centerY" secondItem="fXA-au-LCS" secondAttribute="centerY" id="3Wh-F4-a6W"/>
+                        <constraint firstItem="NFJ-V0-dAD" firstAttribute="leading" secondItem="fXA-au-LCS" secondAttribute="leading" constant="29" id="40l-Ct-M8k"/>
+                        <constraint firstItem="rWn-oc-SUx" firstAttribute="centerY" secondItem="fXA-au-LCS" secondAttribute="centerY" id="IaD-Qa-xBZ"/>
+                        <constraint firstAttribute="trailing" secondItem="rWn-oc-SUx" secondAttribute="trailing" constant="40" id="XxI-Vu-CyZ"/>
+                        <constraint firstItem="DYX-G7-96k" firstAttribute="leading" secondItem="fXA-au-LCS" secondAttribute="leading" constant="34" id="ZAE-ks-1fN"/>
+                        <constraint firstItem="NFJ-V0-dAD" firstAttribute="centerY" secondItem="fXA-au-LCS" secondAttribute="centerY" id="h3Y-rU-LoN"/>
+                        <constraint firstAttribute="height" constant="116" id="iMi-7G-x0x"/>
+                        <constraint firstAttribute="trailing" secondItem="NFJ-V0-dAD" secondAttribute="trailing" constant="40" id="nyJ-o2-x0t"/>
+                        <constraint firstItem="rWn-oc-SUx" firstAttribute="leading" secondItem="DYX-G7-96k" secondAttribute="trailing" constant="23" id="tmG-yK-AE6"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2m-6k-SiH">
+                    <rect key="frame" x="0.0" y="116" width="335" height="140"/>
+                    <subviews>
+                        <button opaque="NO" tag="998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3J2-Xe-Pa6">
+                            <rect key="frame" x="12" y="22" width="164" height="103"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <inset key="titleEdgeInsets" minX="-40" minY="45" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="-22" maxX="-130" maxY="0.0"/>
+                            <state key="normal" title="点击扫描配偶身份证正面" image="real_carme2">
+                                <color key="titleColor" red="0.42360782619999998" green="0.41976410149999999" blue="0.41133743519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QdJ-Lq-oWK">
+                            <rect key="frame" x="12" y="22" width="164" height="103"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="164" id="Kug-L0-8vT"/>
+                                <constraint firstAttribute="height" constant="103" id="Xwo-e5-BmF"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" tag="998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXm-IO-dRG">
+                            <rect key="frame" x="159" y="22" width="164" height="103"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <inset key="titleEdgeInsets" minX="-40" minY="45" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="-22" maxX="-130" maxY="0.0"/>
+                            <state key="normal" title="点击扫描配偶身份证正面" image="real_carme2">
+                                <color key="titleColor" red="0.42360782619999998" green="0.41976410149999999" blue="0.41133743519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9EB-my-DpX">
+                            <rect key="frame" x="159" y="22" width="164" height="103"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="9EB-my-DpX" firstAttribute="width" secondItem="QdJ-Lq-oWK" secondAttribute="width" id="0hS-ei-ULT"/>
+                        <constraint firstAttribute="trailing" secondItem="9EB-my-DpX" secondAttribute="trailing" constant="12" id="Efh-Ub-hh3"/>
+                        <constraint firstItem="3J2-Xe-Pa6" firstAttribute="bottom" secondItem="QdJ-Lq-oWK" secondAttribute="bottom" id="Ihe-Jr-iok"/>
+                        <constraint firstItem="9EB-my-DpX" firstAttribute="height" secondItem="QdJ-Lq-oWK" secondAttribute="height" id="Mkt-ck-MTR"/>
+                        <constraint firstItem="3J2-Xe-Pa6" firstAttribute="leading" secondItem="QdJ-Lq-oWK" secondAttribute="leading" id="OmD-my-u6u"/>
+                        <constraint firstItem="9EB-my-DpX" firstAttribute="centerY" secondItem="QdJ-Lq-oWK" secondAttribute="centerY" id="Pqf-aI-HMj"/>
+                        <constraint firstItem="QdJ-Lq-oWK" firstAttribute="top" secondItem="o2m-6k-SiH" secondAttribute="top" constant="22" id="W4Q-CV-9HY"/>
+                        <constraint firstItem="RXm-IO-dRG" firstAttribute="top" secondItem="9EB-my-DpX" secondAttribute="top" id="WqP-MO-lYv"/>
+                        <constraint firstItem="RXm-IO-dRG" firstAttribute="trailing" secondItem="9EB-my-DpX" secondAttribute="trailing" id="eTE-Mx-uVY"/>
+                        <constraint firstItem="3J2-Xe-Pa6" firstAttribute="top" secondItem="QdJ-Lq-oWK" secondAttribute="top" id="hs7-aX-mXc"/>
+                        <constraint firstAttribute="height" constant="140" id="nS9-ng-dRo"/>
+                        <constraint firstItem="RXm-IO-dRG" firstAttribute="bottom" secondItem="9EB-my-DpX" secondAttribute="bottom" id="oYi-FT-tKd"/>
+                        <constraint firstItem="QdJ-Lq-oWK" firstAttribute="leading" secondItem="o2m-6k-SiH" secondAttribute="leading" constant="12" id="qaq-ie-aZW"/>
+                        <constraint firstItem="3J2-Xe-Pa6" firstAttribute="trailing" secondItem="QdJ-Lq-oWK" secondAttribute="trailing" id="rGa-MS-3UU"/>
+                        <constraint firstItem="RXm-IO-dRG" firstAttribute="leading" secondItem="9EB-my-DpX" secondAttribute="leading" id="wUo-OD-4dk"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="o2m-6k-SiH" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="E80-Ei-oTx"/>
+                <constraint firstItem="o2m-6k-SiH" firstAttribute="top" secondItem="fXA-au-LCS" secondAttribute="bottom" id="NoS-oj-gyb"/>
+                <constraint firstItem="o2m-6k-SiH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QUZ-wY-kz5"/>
+                <constraint firstItem="fXA-au-LCS" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="faG-MH-Kat"/>
+                <constraint firstItem="fXA-au-LCS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="uta-5c-Ghe"/>
+                <constraint firstItem="fXA-au-LCS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="zxg-kJ-rUb"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="addButtonOne" destination="3J2-Xe-Pa6" id="eIP-iE-8eB"/>
+                <outlet property="addButtonTwo" destination="RXm-IO-dRG" id="m9Z-IF-885"/>
+                <outlet property="addImageViewOne" destination="QdJ-Lq-oWK" id="QKa-AI-Soq"/>
+                <outlet property="addImageViewTwo" destination="9EB-my-DpX" id="q3w-ng-cye"/>
+                <outlet property="imageWidth" destination="Kug-L0-8vT" id="Gbq-zv-bxb"/>
+            </connections>
+            <point key="canvasLocation" x="-633" y="113"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="real_carme2" width="40" height="40"/>
+        <image name="real_star" width="42.5" height="40.5"/>
+    </resources>
+</document>

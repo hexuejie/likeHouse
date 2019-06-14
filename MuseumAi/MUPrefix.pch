@@ -1,0 +1,126 @@
+//
+//  MUPrefix.pch
+//  MuseumAi
+//
+//  Created by Kingo on 2018/9/18.
+//  Copyright © 2018年 Weizh. All rights reserved.
+//
+
+#ifdef __OBJC__
+
+#ifndef MUPrefix_h
+#define MUPrefix_h
+
+#define MUSimulatorTest
+
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>   //引入base相关所有的头文件
+#import <BaiduMapAPI_Map/BMKMapComponent.h>     //引入地图功能所有的头文件
+#import <BaiduMapAPI_Search/BMKSearchComponent.h>//引入检索功能所有的头文件
+#import <BaiduMapAPI_Map/BMKMapView.h>      //只引入所需的单个头文件
+
+#define BaiduMapKey @"SnFNNZTU7NzoLWBtXSS1mRTBU6ThevrS"
+//#define EasyARKey @"P0ik7Rf5kL9xJ8Pn8WRY6CAZP28HtUyhgXSrV40zjHDWYLnojt4Fu5qkwgSQjcffZQE9RcCsK5jzFfSCMHmPTjgqT88CeRr1gmsnVZXQgDgsK9g8Ssreft1chDllvjfjKVcjDZfMpHAtMQewI1YifHEKuwP39Thv6nfpggiutXjmwtuRGrqHZbzmoOIJNwJcfAhJP13V"
+
+#define WEIXINKEY @"wx70db9758743dace6"
+#define WEISCRETKEY @"5ade978f982d298f1081af4122478937"
+
+#define QQAppID @"1107870841"
+#define QQAppKey @"cS0ss6XEr5jqcvUo"
+
+#import <UIKit/UIKit.h>
+
+#import "MBProgressHUD.h"
+#import "Masonry.h"
+#import "WSDatePickerView.h"
+#import "MULayoutHandler.h"
+#import "UIView+KGOUtil.h"
+#import "MUCustomUtils.h"
+#import "UIImageView+WebCache.h"
+#import "MUUserModel.h"
+#import "NetWork.h"
+#import "ProUtils.h"
+#import "SVProgressHelper.h"
+#import "RealFinishTipView1.h"
+
+#define kEnterBackgroundNotification @"kEnterBackgroundNotification"
+#define kEnterForegroundNotification @"kEnterForegroundNotification"
+
+#define SCREEN_BOUNDS [UIScreen mainScreen].bounds
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define CustomScreenFit SCREEN_WIDTH/375.0
+#define SafeAreaTopHeight ([[UIApplication sharedApplication] statusBarFrame].size.height+44)
+#define SafeAreaBottomHeight (SafeAreaTopHeight == 88.0 ? 34 : 0)
+
+//RGB的颜色转换
+#define kUIColorFromRGB(rgbValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+// 带透明度的颜色转换
+#define kUIColorFromARGB(argbValue) [UIColor \
+colorWithRed:((float)((argbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((argbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(argbValue & 0xFF))/255.0 \
+alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
+
+
+
+// 程序主调色
+#define kMainColor kUIColorFromRGB(0xFF4E4E)
+
+#define kLineColorDE kUIColorFromRGB(0xDEDEDE)
+#define kPlaceHolderImage [UIImage imageNamed:@"加载占位"]
+
+#define kARFoundTargetNotification @"kARFoundTargetNotification"
+#define kARPlayCompleteNotification @"kARPlayCompleteNotification"
+#define kARLoseTargetNotification @"kARLoseTargetNotification"
+#define kWechatAuthorOKNotification @"kWechatAuthorOKNotification"
+
+
+
+
+#define kSysFont(float) [UIFont systemFontOfSize:float]
+
+#define kTestColor kUIColorFromRGB(0x0F4E4E)
+
+#define MJThemeColor kUIColorFromRGB(0xC0905D)
+
+
+//URL    http://app.cszjw.net:11001/api/family/zjw/user/cover
+//#if 0 //测试环境开关
+//#define BaseUrl @"http://app.cszjw.net:11001"    //扒取数据
+//#define H5BaseUrl @"http://192.168.0.199:94"
+//#else
+#define BaseUrl @"http://10.3.61.154:8000"        //内部数据
+#define H5BaseUrl @"https://appweb.bnbn99.com"
+//#endif
+
+#define BaseImageUrl @"http://app.cszjw.net:11000/img?path="
+
+#define DetailUrlString(string) [NSString stringWithFormat:@"%@%@",BaseUrl,string]
+
+#define UserSchoolInfo @"UserSchoolInfo"
+
+#define cookiesSchoolInfo @"cookies"
+
+#endif /* MUPrefix_h */
+
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ResultQualityHeader">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申请人信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XON-NF-19b">
+                    <rect key="frame" x="13" y="11" width="94.5" height="22.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18.5"/>
+                    <color key="textColor" red="0.77716308830000003" green="0.57846772670000002" blue="0.36010015010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="result_3" translatesAutoresizingMaskIntoConstraints="NO" id="aKG-ED-jeR">
+                    <rect key="frame" x="250" y="0.0" width="85" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="85" id="0As-pK-sIn"/>
+                        <constraint firstAttribute="height" constant="39" id="2zF-y0-MlR"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="aKG-ED-jeR" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-12" id="VL7-VF-qcA"/>
+                <constraint firstItem="XON-NF-19b" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ZNj-Fw-DyE"/>
+                <constraint firstItem="aKG-ED-jeR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hYy-4k-zdG"/>
+                <constraint firstItem="XON-NF-19b" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="13" id="qGS-z6-1Nn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="headerImageView" destination="aKG-ED-jeR" id="fXA-xZ-yXr"/>
+                <outlet property="headerLabel" destination="XON-NF-19b" id="Yjs-Pq-cgr"/>
+            </connections>
+            <point key="canvasLocation" x="-53.600000000000001" y="205.99700149925039"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="result_3" width="85" height="41"/>
+    </resources>
+</document>
