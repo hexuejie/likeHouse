@@ -66,10 +66,14 @@
 }
 
 - (void)dataInit{
-    self.titles = @[@"实名认证",@"全部楼盘",   @"购房资格",@"精准找房",
-                    @"信息查询",@"楼盘认筹",   @"购房百科",@"楼市要闻"];
-    self.icons = @[@"homePage_item1",@"homePage_item2",   @"homePage_item3",@"homePage_item4",
-                   @"homePage_item5",@"homePage_item6",   @"homePage_item7",@"homePage_item8",];
+//    self.titles = @[@"实名认证",@"全部楼盘",   @"购房资格",@"精准找房",
+//                    @"信息查询",@"楼盘认筹",   @"购房百科",@"楼市要闻"];
+    self.titles = @[ @"购房资格",@"楼盘认筹",@"我的购房",
+                    @"信息查询",   @"全部楼盘",@"楼市要闻"];
+    self.icons = @[@"homePage_item3",@"homePage_item6",   @"homePage_item7",
+                   @"homePage_item5",@"homePage_item2",@"homePage_item8", ];
+//    self.icons = @[@"homePage_item1",@"homePage_item2",   @"homePage_item3",@"homePage_item4",
+//                   @"homePage_item5",@"homePage_item6",   @"homePage_item7",@"homePage_item8",];
 }
 
 - (void)viewInit {
@@ -148,7 +152,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-         return CGSizeMake((SCREEN_WIDTH-12)/4, 77*CustomScreenFit);
+         return CGSizeMake((SCREEN_WIDTH-12)/3, 77*CustomScreenFit);
     }else if (indexPath.section == 1) {
          return CGSizeMake((SCREEN_WIDTH-14)/2, 150*CustomScreenFit);
     }else if (indexPath.section == 2) {
