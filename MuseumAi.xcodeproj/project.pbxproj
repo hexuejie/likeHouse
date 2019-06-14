@@ -202,6 +202,9 @@
 		A1EFACE122B38913007593EB /* MessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACE022B38913007593EB /* MessageListViewController.m */; };
 		A1EFACE522B3898B007593EB /* SysMesssageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACE322B3898B007593EB /* SysMesssageTableViewCell.m */; };
 		A1EFACE622B3898B007593EB /* SysMesssageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EFACE422B3898B007593EB /* SysMesssageTableViewCell.xib */; };
+		A1EFACEC22B39455007593EB /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACEB22B39455007593EB /* BannerModel.m */; };
+		A1EFACEF22B395A6007593EB /* HouseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACEE22B395A6007593EB /* HouseModel.m */; };
+		A1EFACF222B395B9007593EB /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACF122B395B9007593EB /* NewsModel.m */; };
 		A1FF19C922AF82FC00C09386 /* RecogtionHousesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FF19C722AF82FC00C09386 /* RecogtionHousesCollectionViewCell.m */; };
 		A1FF19CA22AF82FC00C09386 /* RecogtionHousesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FF19C822AF82FC00C09386 /* RecogtionHousesCollectionViewCell.xib */; };
 		A1FF19CF22AFA91800C09386 /* HouseDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FF19CD22AFA91800C09386 /* HouseDetialViewController.m */; };
@@ -732,6 +735,12 @@
 		A1EFACE222B3898B007593EB /* SysMesssageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SysMesssageTableViewCell.h; sourceTree = "<group>"; };
 		A1EFACE322B3898B007593EB /* SysMesssageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SysMesssageTableViewCell.m; sourceTree = "<group>"; };
 		A1EFACE422B3898B007593EB /* SysMesssageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SysMesssageTableViewCell.xib; sourceTree = "<group>"; };
+		A1EFACEA22B39455007593EB /* BannerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerModel.h; sourceTree = "<group>"; };
+		A1EFACEB22B39455007593EB /* BannerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
+		A1EFACED22B395A6007593EB /* HouseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseModel.h; sourceTree = "<group>"; };
+		A1EFACEE22B395A6007593EB /* HouseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseModel.m; sourceTree = "<group>"; };
+		A1EFACF022B395B9007593EB /* NewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
+		A1EFACF122B395B9007593EB /* NewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		A1FF19C622AF82FC00C09386 /* RecogtionHousesCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecogtionHousesCollectionViewCell.h; sourceTree = "<group>"; };
 		A1FF19C722AF82FC00C09386 /* RecogtionHousesCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecogtionHousesCollectionViewCell.m; sourceTree = "<group>"; };
 		A1FF19C822AF82FC00C09386 /* RecogtionHousesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecogtionHousesCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1196,8 +1205,6 @@
 		A1094DB02297D34000A278A1 /* ProjectConfig */ = {
 			isa = PBXGroup;
 			children = (
-				A1094DC72297DE4400A278A1 /* LoginSession.h */,
-				A1094DC62297DE4400A278A1 /* LoginSession.m */,
 				A1094DC32297D64E00A278A1 /* NSObject+null.h */,
 				A1094DC42297D64E00A278A1 /* NSObject+null.m */,
 				A1094DB12297D34000A278A1 /* NetWork.m */,
@@ -1697,6 +1704,14 @@
 			path = resource;
 			sourceTree = "<group>";
 		};
+		A1EFACE922B39350007593EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			path = ../../../Desktop/Model;
+			sourceTree = "<group>";
+		};
 		A1FF19CB22AFA82700C09386 /* Detial */ = {
 			isa = PBXGroup;
 			children = (
@@ -2137,6 +2152,7 @@
 				DCBD356C2150833B00763961 /* 专题 */,
 				DCBD356D2150834700763961 /* 信息 */,
 				DCBD356E2150834F00763961 /* 我的 */,
+				DCBD357F215084C200763961 /* Model */,
 				DCBD35552150829900763961 /* AppDelegate.h */,
 				DCBD35562150829900763961 /* AppDelegate.mm */,
 				A1EFAC8C22B2271E007593EB /* Utility.h */,
@@ -2186,9 +2202,9 @@
 		DCBD356E2150834F00763961 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				A1EFACE922B39350007593EB /* Model */,
 				DC55BE14215A44FA009654EC /* 二级页面 */,
 				DCBD3580215084C200763961 /* Controller */,
-				DCBD357F215084C200763961 /* Model */,
 				DCBD3581215084C200763961 /* View */,
 			);
 			path = "我的";
@@ -2313,6 +2329,14 @@
 		DCBD357F215084C200763961 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A1094DC72297DE4400A278A1 /* LoginSession.h */,
+				A1094DC62297DE4400A278A1 /* LoginSession.m */,
+				A1EFACEA22B39455007593EB /* BannerModel.h */,
+				A1EFACEB22B39455007593EB /* BannerModel.m */,
+				A1EFACED22B395A6007593EB /* HouseModel.h */,
+				A1EFACEE22B395A6007593EB /* HouseModel.m */,
+				A1EFACF022B395B9007593EB /* NewsModel.h */,
+				A1EFACF122B395B9007593EB /* NewsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2808,10 +2832,12 @@
 				A1EFAC7222B22524007593EB /* MXSegmentedPagerController.m in Sources */,
 				A1FF19D322AFAC1A00C09386 /* UIButton+EdgeInsets.m in Sources */,
 				7EE6887C2158761600DE4A60 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
+				A1EFACEF22B395A6007593EB /* HouseModel.m in Sources */,
 				A1609437229E537F00FBC19B /* UIAlertView+Blocks.m in Sources */,
 				A1BFB4FD22A7C3FD008B629B /* AddMateShipFooterView.m in Sources */,
 				A1FF1A0822B1E24800C09386 /* BuildingListTableViewCell.m in Sources */,
 				DC55BE0E215A016B009654EC /* MUForgetPwdViewController.m in Sources */,
+				A1EFACEC22B39455007593EB /* BannerModel.m in Sources */,
 				A1EFAC9422B228AD007593EB /* LXDeviceVersion.m in Sources */,
 				A1609419229E378B00FBC19B /* IndexBannerView.m in Sources */,
 				DCBD35F321509D7000763961 /* MASCompositeConstraint.m in Sources */,
@@ -2995,6 +3021,7 @@
 				DC0AF53A2152198E00B41476 /* SDWebImageFrame.m in Sources */,
 				A1C0993322AF44EC00AAE38E /* ResultImageTableViewCell.m in Sources */,
 				DCBD364B21509DAF00763961 /* YYTextLayout.m in Sources */,
+				A1EFACF222B395B9007593EB /* NewsModel.m in Sources */,
 				DCB860BD215B388A001C58EF /* YMSAlbumCell.m in Sources */,
 				A1EFACE122B38913007593EB /* MessageListViewController.m in Sources */,
 				A19AD8F022A0D10F004713A2 /* RealChooseForeignViewController.m in Sources */,
@@ -3212,6 +3239,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -3270,6 +3298,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;

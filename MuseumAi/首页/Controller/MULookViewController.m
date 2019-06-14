@@ -283,7 +283,7 @@
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
-///api/login/zjw/user/logout
+
 - (void)reloadData {
     __weak typeof(self) weakSelf = self;
 
@@ -296,14 +296,11 @@
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             [weakSelf.contentCollectionView reloadData];
-        
         }else{
            [weakSelf alertWithMsg:kFailedTips handler:nil];
         }
         [weakSelf.contentCollectionView.mj_header endRefreshing];
         [weakSelf.contentCollectionView.mj_footer endRefreshing];
-        //            [weakSelf.contentCollectionView.mj_header endRefreshing];
-        //            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
     }];
 }
 
@@ -311,7 +308,6 @@
 #pragma mark - Click
 - (void)searchClick{
     SearchHouseListViewController *vc = [SearchHouseListViewController new];
-//    vc.title = @"关于实名认证";
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -323,7 +319,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-#pragma mark - 轮播图
+#pragma mark - 导航栏
 
 - (void)customNav{
     

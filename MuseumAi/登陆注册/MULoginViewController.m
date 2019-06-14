@@ -159,6 +159,9 @@
             NSLog(@"response  %@",response);
             if ([response[@"code"] integerValue] == 200) {
                 [weakSelf startCount];
+                if (response[@"data"] != nil && [response[@"data"] isKindOfClass:[NSString class]]) {//假数据
+                    self.codeTextField.text = response[@"data"];
+                }
             }else{
                 self.getCodeButton.userInteractionEnabled = YES;
 //                [weakSelf alertWithMsg:response[@"error"] handler:nil];
