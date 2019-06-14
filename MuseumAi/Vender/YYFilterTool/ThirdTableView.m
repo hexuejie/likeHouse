@@ -32,7 +32,8 @@
         self.selectBtn.hidden = NO;
         
         _bottomLine = [UIView new];
-        _bottomLine.backgroundColor = BrightBlueColor;
+        _bottomLine.backgroundColor = BgGreyColor;
+        [self.contentView addSubview:_bottomLine];
         [_bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(0);
             make.left.mas_equalTo(0);
@@ -103,6 +104,8 @@
         self.delegate = self;
         self.dataSource = self;
         self.tableFooterView = [UIView new];
+        self.separatorColor = [UIColor clearColor];
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self registerClass:[ThirdConditionListCell class] forCellReuseIdentifier:@"ThirdConditionListCell"];
     }
     return self;

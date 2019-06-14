@@ -13,7 +13,8 @@
 
 #import "MULookViewController.h"
 #import "MyCenterViewController.h"
-
+#import "HousesListViewController.h"
+#import "MUSpecialViewController.h"
 
 typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
 
@@ -109,10 +110,12 @@ typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
     MULookViewController *lookVC = [MULookViewController new];
     UINavigationController *lookNav = [[UINavigationController alloc]initWithRootViewController:lookVC];
     // 关注
-    UIViewController *scanVC = [MURootViewController new];
+    HousesListViewController *scanVC = [HousesListViewController new];
+    scanVC.title = @"我的关注";
     UINavigationController *scanNav = [[UINavigationController alloc]initWithRootViewController:scanVC];
     // 消息
-    UIViewController *shopVC = [MURootViewController new];
+    MUSpecialViewController *shopVC = [MUSpecialViewController new];
+    shopVC.title = @"消息中心";
     UINavigationController *shopNav = [[UINavigationController alloc]initWithRootViewController:shopVC];
     // 我的
     MyCenterViewController *mineVC = [MyCenterViewController new];

@@ -34,7 +34,8 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         _bottomLine = [UIView new];
-        _bottomLine.backgroundColor = BrightBlueColor;
+        _bottomLine.backgroundColor = BgGreyColor;
+         [self.contentView addSubview:_bottomLine];
         [_bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(0);
             make.left.mas_equalTo(0);
@@ -109,6 +110,7 @@
         self.backgroundColor = BgGreyColor;
         self.tableFooterView = [UIView new];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.separatorColor = [UIColor clearColor];
         [self registerClass:[FirstAndSecondConditionListCell class] forCellReuseIdentifier:@"FirstAndSecondConditionListCell"];
     }
     return self;

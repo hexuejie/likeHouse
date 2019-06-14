@@ -41,7 +41,7 @@ typedef NS_ENUM(NSUInteger, YYBaseFilterType) {
 
 #define RedColor                UIColorFromRGB16(0xcc0000)
 
-#define BrightBlueColor         UIColorFromRGB16(0xF2F2F2)
+#define BrightBlueColor         UIColorFromRGB16(0xC0905D)
 
 #define BgGreyColor             UIColorFromRGB16(0xF2F2F2)
 

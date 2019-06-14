@@ -129,6 +129,7 @@ typedef NS_ENUM(NSUInteger, TableViewType) {
     
     _filterView = [UIView new];
     [kWindow addSubview:_filterView];
+    _filterView.backgroundColor = [UIColor whiteColor];
     
     //顶部已经筛选的条件
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
@@ -775,16 +776,17 @@ typedef NS_ENUM(NSUInteger, TableViewType) {
         //计算filterView的高度
         CGFloat popViewHeight = topColletionHeight+tableViewHeight+confirmBtnHeight;
         
-        self.filterView.frame = CGRectMake(0, self.startY, kWindowW, popViewHeight);
+        self.filterView.frame = CGRectMake(0, self.startY, kWindowW, popViewHeight+7);
         self.topConditionCollectionView.frame = CGRectMake(0, 0, kWindowW, topColletionHeight);
-        self.lineView.frame = CGRectMake(0, TopAndBottomHeight, kWindowW, 1);
+        self.lineView.frame = CGRectMake(0, 0, kWindowW, 1);
         self.firstLevelTableView.frame = CGRectMake(0, topColletionHeight, firstTableWidth+1, tableViewHeight);
         self.columnView.frame = CGRectMake(firstTableWidth, topColletionHeight, columnViewWidth, tableViewHeight);
         self.secondLevelTableView.frame = CGRectMake(firstTableWidth, topColletionHeight, secondTableWidth, tableViewHeight);
         self.thirdTableView.frame = CGRectMake(firstTableWidth+secondTableWidth, topColletionHeight, thirdTableWidth, tableViewHeight);
-        self.confirmBtn.frame = CGRectMake(28, topColletionHeight+tableViewHeight, kWindowW-56, 40);
+        self.confirmBtn.frame = CGRectMake(28, topColletionHeight+tableViewHeight +6, kWindowW-56, 40);
         self.confirmBtn.titleLabel.alpha = 1.0;
         self.shadowBgButton.alpha = 0.4;
+        self.lineView.layer.zPosition = 99;
     }
 }
 

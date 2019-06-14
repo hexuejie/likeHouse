@@ -58,6 +58,8 @@ typedef NS_ENUM(NSInteger, LXMarginType) {
  */
 - (void)setImagePositionWithType:(LXImagePositionType)type spacing:(CGFloat)spacing;
 
+- (void)setImagePositionWithType:(LXImagePositionType)type spacing:(CGFloat)spacing maxWidth:(CGFloat)maxWidth;
+
 /**
  *  按钮只设置了title or image，该方法可以改变它们的位置
  *

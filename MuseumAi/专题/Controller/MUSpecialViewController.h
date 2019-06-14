@@ -6,11 +6,11 @@
 //  Copyright © 2019 Weizh. All rights reserved.
 //
 
-#import "MURootViewController.h"
+#import "ESSegmentBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MUSpecialViewController : MURootViewController
+@interface MUSpecialViewController : ESSegmentBaseViewController
 
 @end
 

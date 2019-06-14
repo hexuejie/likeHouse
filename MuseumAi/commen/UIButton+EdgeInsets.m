@@ -25,10 +25,16 @@ sizeWithAttributes:@{NSFontAttributeName:font}] : CGSizeZero;
 }
 
 
-- (void)setImagePositionWithType:(LXImagePositionType)type spacing:(CGFloat)spacing {
+- (void)setImagePositionWithType:(LXImagePositionType)type spacing:(CGFloat)spacing{
+    [self setImagePositionWithType:type spacing:spacing maxWidth:MAXFLOAT];
+}
+
+- (void)setImagePositionWithType:(LXImagePositionType)type spacing:(CGFloat)spacing maxWidth:(CGFloat)maxWidth{
     CGSize imageSize = [self imageForState:UIControlStateNormal].size;
     CGSize titleSize = [UIButton sizeWithTitle:[self titleForState:UIControlStateNormal] font:self.titleLabel.font];
-
+    if (titleSize.width>maxWidth) {
+        titleSize.width = maxWidth;
+    }
     switch (type) {
         case LXImagePositionTypeLeft: {
             self.titleEdgeInsets = UIEdgeInsetsMake(0, spacing, 0, 0);

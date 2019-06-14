@@ -50,10 +50,12 @@
 }
 
 - (void)viewInit {
-    [self.chooseAreaButton setImagePositionWithType:LXImagePositionTypeRight spacing:6];
-    [self.choosePriceButton setImagePositionWithType:LXImagePositionTypeRight spacing:6];
-    [self.ChooseStyleButton setImagePositionWithType:LXImagePositionTypeRight spacing:6];
-
+    [self.chooseAreaButton setImagePositionWithType:LXImagePositionTypeRight spacing:5];
+    [self.choosePriceButton setImagePositionWithType:LXImagePositionTypeRight spacing:5];
+    [self.ChooseStyleButton setImagePositionWithType:LXImagePositionTypeRight spacing:5];
+    self.chooseAreaButton.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.choosePriceButton.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.ChooseStyleButton.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     layout.minimumLineSpacing = 0;
@@ -199,19 +201,28 @@
 - (IBAction)chooseHeaderClick:(UIButton *)sender {
 
     sender.selected = YES;
-    self.filterTool.firstLevelElements = @[@"智能排序",@"离我最近能排序能排序",@"好评优啊啊先",@"人气最高能排序"];
-    self.filterTool.multiSelectionEnable = self.multiSelectionEnable;
-    self.filterTool.topConditionEnable = self.topAndIndexCountEnable;
-    self.filterTool.indexCountShowEnable = self.topAndIndexCountEnable;
-    if (self.customImageEnable) {
-        if (self.multiSelectionEnable) {
-            self.filterTool.selectedBtnHighlightedName = @"1";
-            self.filterTool.selectedBtnNormalName = @"2";
-        }  else {
-            self.filterTool.selectedBtnHighlightedName = @"3";
-            self.filterTool.selectedBtnNormalName = @"0";
-        }
+    self.filterTool.firstLevelElements = @[@"智能",@"智能排序",@"智能",@"智能排序",@"离我最近能排序能排序",@"好评优啊啊先",@"人气最高能排序"];
+    self.filterTool.multiSelectionEnable = YES;
+    switch (sender.tag) {
+        case 0:{
+            self.filterTool.multiSelectionEnable = NO;
+        }break;
+            
+        default:
+            break;
     }
+    
+//    self.filterTool.topConditionEnable = self.topAndIndexCountEnable;
+//    self.filterTool.indexCountShowEnable = self.topAndIndexCountEnable;
+//    if (self.customImageEnable) {
+//        if (self.multiSelectionEnable) {
+//            self.filterTool.selectedBtnHighlightedName = @"1";
+//            self.filterTool.selectedBtnNormalName = @"2";
+//        }  else {
+//            self.filterTool.selectedBtnHighlightedName = @"3";
+//            self.filterTool.selectedBtnNormalName = @"0";
+//        }
+//    }
     
     self.filterTool.currentConditions = [self.sortFilters mutableCopy];
     
@@ -230,10 +241,11 @@
             }
         }
         NSLog(@"%@",filterString);
+        [SVProgressHelper dismissWithMsg:filterString];
+        
         [sender setTitle:filterString forState:UIControlStateNormal];
         [sender setTitle:filterString forState:UIControlStateSelected];
-        [sender setImagePositionWithType:LXImagePositionTypeRight spacing:6];
-        [SVProgressHelper dismissWithMsg:filterString];
+        [sender setImagePositionWithType:LXImagePositionTypeRight spacing:5 maxWidth:(sender.bounds.size.width-25)];
     };
     
     [self.filterTool popFilterViewWithStartY:(46 +[Utility segmentTopMinHeight]) startAnimateComplete:nil closeAnimateComplete:^{
@@ -242,14 +254,7 @@
     }];
     
     
-    //    switch (sender.tag) {
-//        case 0:{
-//
-//            }break;
-//
-//        default:
-//            break;
-//    }
+    
 }
 
 - (YYFilterTool *)filterTool {
