@@ -31,7 +31,7 @@
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认筹结束" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVV-Kj-GK3">
                                 <rect key="frame" x="0.0" y="0.0" width="56" height="18"/>
-                                <color key="backgroundColor" red="0.66567647457122803" green="0.55093741416931152" blue="0.38149702548980713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.75338226556777954" green="0.56658035516738892" blue="0.365711510181427" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="O1m-XP-wXR"/>
                                     <constraint firstAttribute="height" constant="18" id="cbB-Dd-53B"/>
