@@ -85,7 +85,7 @@
     JYEqualCellSpaceFlowLayout * layout = [[JYEqualCellSpaceFlowLayout alloc]initWithType:AlignWithCenter betweenOfCell:0];
     layout.minimumLineSpacing = 0.01;
     layout.minimumInteritemSpacing = 0.01;
-    self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-52-0) collectionViewLayout:layout];
+    self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-52-[Utility safeAreaBottomPlus]) collectionViewLayout:layout];
     self.contentCollectionView.delegate = self;
     self.contentCollectionView.dataSource = self;
     self.contentCollectionView.showsVerticalScrollIndicator = NO;
@@ -94,10 +94,11 @@
     [self.view addSubview:self.contentCollectionView];
   
     CGFloat headerHight = 520;
+
     self.contentCollectionView.scrollIndicatorInsets = UIEdgeInsetsMake(headerHight, 0, 0, 0);
     self.contentCollectionView.contentInset = UIEdgeInsetsMake(headerHight, 0, 0, 0);
     self.headerView = [[NSBundle mainBundle] loadNibNamed:@"HouseDetialHeaderView" owner:self options:nil].firstObject;
-    self.headerView.frame = CGRectMake(0, -headerHight-20, SCREEN_WIDTH, headerHight);
+    self.headerView.frame = CGRectMake(0, -headerHight-[Utility safeAreaTopStatus], SCREEN_WIDTH, headerHight);
 //    _headerView.backgroundColor = [UIColor cyanColor];
     [self.contentCollectionView addSubview:self.headerView];
     self.headerView.model = @{};
@@ -303,18 +304,18 @@
 }
 
 - (void)customNavInit{
-    self.customNav = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
+    self.customNav = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, [Utility segmentTopMinHeight])];
     self.customNav.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.customNav];
     
-    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-50, 20, 100, 44)];
+    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-50, [Utility safeAreaTopStatus], 100, 44)];
     self.titleLabel.text = @"";
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.textColor = kUIColorFromRGB(0x444444);
     self.titleLabel.font = kSysFont(18);
     [self.customNav addSubview:self.titleLabel];
     
-    self.backButton = [[UIButton alloc]initWithFrame:CGRectMake(5, 20, 44, 44)];
+    self.backButton = [[UIButton alloc]initWithFrame:CGRectMake(5, [Utility safeAreaTopStatus], 44, 44)];
     [self.backButton setImage:[UIImage imageNamed:@"closeButton"] forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(callBackClick) forControlEvents:UIControlEventTouchUpInside];
     [self.customNav addSubview:self.backButton];

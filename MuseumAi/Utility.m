@@ -604,6 +604,12 @@ static Utility* _instance = nil;
     return 0;
 }
 
++(CGFloat) safeAreaTopStatus{
+    if ([Env shareEnv].deviceSize == Screen5Dot8inch){
+        return 44;
+    }
+    return 20;
+}
 
 
 +(long long)getCurrentDateTimeTOMilliSeconds

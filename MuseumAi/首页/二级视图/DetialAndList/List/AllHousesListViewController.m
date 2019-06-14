@@ -7,22 +7,35 @@
 //
 
 #import "AllHousesListViewController.h"
+#import "UIButton+EdgeInsets.h"
 #import "MUMapHandler.h"
 #import "MJRefresh.h"
 #import "JYEqualCellSpaceFlowLayout.h"
 #import "HomePageHousesCollectionViewCell.h"
 #import "HouseDetialViewController.h"
 #import "SearchHouseListViewController.h"
+#import "YYFilterTool.h"
 
 @interface AllHousesListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate>
 
 @property (nonatomic,strong) UICollectionView *contentCollectionView;
 @property (nonatomic,strong) UITextField *searchBar;
 
-
 /** 当前page */
 @property (nonatomic , assign) NSInteger page;
+
 @property (nonatomic , strong) NSArray *houses;
+
+@property (weak, nonatomic) IBOutlet UIButton *chooseAreaButton;
+@property (weak, nonatomic) IBOutlet UIButton *choosePriceButton;
+@property (weak, nonatomic) IBOutlet UIButton *ChooseStyleButton;
+@property (nonatomic, strong) YYFilterTool *filterTool;//永远返回一个单例对象
+
+@property (nonatomic, assign) BOOL multiSelectionEnable;
+@property (nonatomic, assign) BOOL topAndIndexCountEnable;
+@property (nonatomic, assign) BOOL customImageEnable;
+
+@property (nonatomic, strong) NSArray *sortFilters;
 @end
 
 @implementation AllHousesListViewController
@@ -37,11 +50,15 @@
 }
 
 - (void)viewInit {
+    [self.chooseAreaButton setImagePositionWithType:LXImagePositionTypeRight spacing:6];
+    [self.choosePriceButton setImagePositionWithType:LXImagePositionTypeRight spacing:6];
+    [self.ChooseStyleButton setImagePositionWithType:LXImagePositionTypeRight spacing:6];
+
     
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
-    self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(5, 0, SCREEN_WIDTH-10, SCREEN_HEIGHT) collectionViewLayout:layout];
+    self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(5, 46 +[Utility segmentTopMinHeight], SCREEN_WIDTH-10, SCREEN_HEIGHT-46 -[Utility segmentTopMinHeight]) collectionViewLayout:layout];
     self.contentCollectionView.delegate = self;
     self.contentCollectionView.dataSource = self;
     self.contentCollectionView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
@@ -177,4 +194,70 @@
 - (void)callBackClick{
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
+
+- (IBAction)chooseHeaderClick:(UIButton *)sender {
+
+    sender.selected = YES;
+    self.filterTool.firstLevelElements = @[@"智能排序",@"离我最近能排序能排序",@"好评优啊啊先",@"人气最高能排序"];
+    self.filterTool.multiSelectionEnable = self.multiSelectionEnable;
+    self.filterTool.topConditionEnable = self.topAndIndexCountEnable;
+    self.filterTool.indexCountShowEnable = self.topAndIndexCountEnable;
+    if (self.customImageEnable) {
+        if (self.multiSelectionEnable) {
+            self.filterTool.selectedBtnHighlightedName = @"1";
+            self.filterTool.selectedBtnNormalName = @"2";
+        }  else {
+            self.filterTool.selectedBtnHighlightedName = @"3";
+            self.filterTool.selectedBtnNormalName = @"0";
+        }
+    }
+    
+    self.filterTool.currentConditions = [self.sortFilters mutableCopy];
+    
+    __weak typeof(self) weakSelf = self;
+    NSMutableString *filterString = [NSMutableString new];
+    self.filterTool.filterComplete = ^(NSArray *filters) {
+        sender.selected = NO;
+        weakSelf.sortFilters = filters;
+        for (FilterSelectIndexModel *model in filters) {
+            FilterSelectIndexModel *innermostModel = [YYFilterTool getInnermostIndexModelWith:model];
+            NSInteger index = [filters indexOfObject:model];
+            if (index == filters.count-1) {
+                [filterString appendFormat:@"%@",innermostModel.filterName];
+            } else {
+                [filterString appendFormat:@"%@,",innermostModel.filterName];
+            }
+        }
+        NSLog(@"%@",filterString);
+        [sender setTitle:filterString forState:UIControlStateNormal];
+        [sender setTitle:filterString forState:UIControlStateSelected];
+        [sender setImagePositionWithType:LXImagePositionTypeRight spacing:6];
+        [SVProgressHelper dismissWithMsg:filterString];
+    };
+    
+    [self.filterTool popFilterViewWithStartY:(46 +[Utility segmentTopMinHeight]) startAnimateComplete:nil closeAnimateComplete:^{
+        NSLog(@"关闭回调");
+        sender.selected = NO;
+    }];
+    
+    
+    //    switch (sender.tag) {
+//        case 0:{
+//
+//            }break;
+//
+//        default:
+//            break;
+//    }
+}
+
+- (YYFilterTool *)filterTool {
+    if (!_filterTool) {
+        _filterTool = [YYFilterTool shareInstance];
+    }
+    return _filterTool;
+}
+
+
 @end

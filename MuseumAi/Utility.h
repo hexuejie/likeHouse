@@ -67,6 +67,7 @@ typedef enum LXPlachImageType : NSUInteger {
 +(CGFloat) segmentTopMinHeight;
 +(CGFloat) safeAreaBottomPlus;
 +(CGFloat) hiddenTopStatusBarPlus;
++(CGFloat) safeAreaTopStatus;
 
 +(long long)getCurrentDateTimeTOMilliSeconds;
 //+(NSString *)copyrightString:(long long)time;

@@ -103,4 +103,17 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)addNoneDataTipView{
+    UIView *tipView1 = [[NSBundle mainBundle] loadNibNamed:@"NoneDataTipView" owner:self options:nil].firstObject;
+    tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    tipView1.tag = 9595;
+    [self.view addSubview:tipView1];
+}
+
+- (void)removeNoneDataTipView{
+    UIView *tipView1 = [self.view viewWithTag:9595];
+    if (tipView1) {
+        [tipView1 removeFromSuperview];
+    }
+}
 @end

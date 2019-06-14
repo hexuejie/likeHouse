@@ -41,6 +41,7 @@
 #import "ProUtils.h"
 #import "SVProgressHelper.h"
 #import "RealFinishTipView1.h"
+#import "Utility.h"
 
 #define kEnterBackgroundNotification @"kEnterBackgroundNotification"
 #define kEnterForegroundNotification @"kEnterForegroundNotification"

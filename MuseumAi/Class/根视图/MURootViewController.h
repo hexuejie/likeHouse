@@ -19,4 +19,7 @@
 - (void)testButtonClick;
 
 - (void)reloadData;
+
+- (void)addNoneDataTipView;
+- (void)removeNoneDataTipView;
 @end
