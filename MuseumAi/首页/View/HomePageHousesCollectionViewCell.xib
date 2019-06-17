@@ -26,7 +26,7 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BK2-4B-UOW">
                         <rect key="frame" x="6" y="6" width="198" height="269"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="图层 29" translatesAutoresizingMaskIntoConstraints="NO" id="IeJ-NJ-xKX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="圆角矩形 4 拷贝" translatesAutoresizingMaskIntoConstraints="NO" id="IeJ-NJ-xKX">
                                 <rect key="frame" x="0.0" y="0.0" width="198" height="181"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认筹结束" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVV-Kj-GK3">
@@ -128,6 +128,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="图层 29" width="153.5" height="81.5"/>
+        <image name="圆角矩形 4 拷贝" width="168" height="122"/>
     </resources>
 </document>

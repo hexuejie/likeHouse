@@ -65,55 +65,8 @@
     [self customNav];
 }
 
-- (void)dataInit{
-//    self.titles = @[@"实名认证",@"全部楼盘",   @"购房资格",@"精准找房",
-//                    @"信息查询",@"楼盘认筹",   @"购房百科",@"楼市要闻"];
-    self.titles = @[ @"购房资格",@"楼盘认筹",@"我的购房",
-                    @"信息查询",   @"全部楼盘",@"楼市要闻"];
-    self.icons = @[@"homePage_item3",@"homePage_item6",   @"homePage_item7",
-                   @"homePage_item5",@"homePage_item2",@"homePage_item8", ];
-//    self.icons = @[@"homePage_item1",@"homePage_item2",   @"homePage_item3",@"homePage_item4",
-//                   @"homePage_item5",@"homePage_item6",   @"homePage_item7",@"homePage_item8",];
-}
 
-- (void)viewInit {
-    
-    JYEqualCellSpaceFlowLayout * layout = [[JYEqualCellSpaceFlowLayout alloc]initWithType:AlignWithCenter betweenOfCell:0];
-    layout.minimumLineSpacing = 0.01;
-    layout.minimumInteritemSpacing = 0.01;
-    self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:layout];
-    self.contentCollectionView.delegate = self;
-    self.contentCollectionView.dataSource = self;
-    self.contentCollectionView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.contentCollectionView];
-    [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageIconCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageIconCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageIconCollectionViewCell"];
-    [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageNewsCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageNewsCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageNewsCollectionViewCell"];
-    [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageHousesCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageHousesCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell"];
-   
-    
-    
-    [self.contentCollectionView registerClass:[HomePageBannerCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomePageBannerCollectionReusableView"];
-    [self.contentCollectionView registerClass:[HomePageHeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomePageHeaderCollectionReusableView"];
-    
-    [self.contentCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionReusableView"];
-    [self.contentCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView"];
-    [self.contentCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView1"];
-    
-    __weak typeof (self) weakSelf = self;
-    self.contentCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        weakSelf.page = 1;
-        [weakSelf.contentCollectionView.mj_footer resetNoMoreData];
-        [weakSelf reloadData];
-    }];
-//    self.contentCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-//        weakSelf.page++;
-//        [weakSelf reloadData];
-//    }];
-}
-
-
-
-#pragma mark -
+#pragma mark - delegate
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 3;
 }
@@ -140,7 +93,7 @@
         return cell;
     }else if (indexPath.section == 2) {
         HomePageHousesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell" forIndexPath:indexPath];
-        
+        cell.coverImageView.image = [UIImage imageNamed:@"圆角矩形 4 拷贝-1"];
         return cell;
     }
 
@@ -152,7 +105,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-         return CGSizeMake((SCREEN_WIDTH-12)/3, 77*CustomScreenFit);
+         return CGSizeMake((SCREEN_WIDTH-12)/3, 50*CustomScreenFit+22);
     }else if (indexPath.section == 1) {
          return CGSizeMake((SCREEN_WIDTH-14)/2, 150*CustomScreenFit);
     }else if (indexPath.section == 2) {
@@ -169,8 +122,8 @@
             HomePageBannerCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomePageBannerCollectionReusableView" forIndexPath:indexPath];
             
             AdModel *model = [AdModel new];
-            model.linkUrl = @"https://blog.csdn.net/qq_33856343/article/details/52101488";
-            model.img = @"http://aliyunzixunbucket.oss-cn-beijing.aliyuncs.com/jpg/3835dc59023482b408db0819434b804b.jpg?x-oss-process=image/resize,p_100/auto-orient,1/quality,q_90/format,jpg/watermark,image_eXVuY2VzaGk=,t_100";
+            model.linkUrl = @"https://github.com/hexuejie/likeHouse";
+            model.img = @"http://app.cszjw.net:11000/img?path=/2018/11/29/154347341355531433612346213325856780.jpg";
             headerView.imageArray = @[model,model,model];
             return headerView;
         }if (indexPath.section ==2) {
@@ -214,79 +167,8 @@
     return CGSizeMake(SCREEN_WIDTH, 10);
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {//8个坨坨
-        switch (indexPath.row) {
-            case 0:{
-                [self authenticationAction];
-                
-                }break;
-            case 1:{
-//                RealFirstTipViewController *vc = [RealFirstTipViewController new];
-//                vc.hidesBottomBarWhenPushed = YES;
-//                [self.navigationController pushViewController:vc animated:YES];
-                
-            }break;
-            case 2:{
-                
-                if (0) {
-                    _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
-                    _tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-                    [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
-                    _tipView1.sureType = -1;
-                    
-                    [_tipView1.sureButton addTarget:self action:@selector(authenticationAction) forControlEvents:UIControlEventTouchUpInside];
-                }else{
-                    RealFirstTipViewController *vc = [RealFirstTipViewController new];
-                    vc.title = @"购房资格审查说明";
-                    vc.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
-                
-                
-            }break;
-            case 3:{
-                
-            }break;
-            case 4:{
-                
-                
-            }break;
-            case 5:{
-                RecognitionListViewController *vc = [RecognitionListViewController new];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }break;
-            case 6:{
-                
-                
-            }break;
-            case 7:{
-                
-                
-            }break;
-            default:
-                break;
-        }
-        return;
-    }else if (indexPath.section == 1) {
-//        articles
-    }else if (indexPath.section == 2) {
-//        houses
-    }
-    
-    [self testButtonClick];
-}
 
-- (void)authenticationAction{
-    if (_tipView1) {
-        [_tipView1 customHidden];
-    }
-    RealFirstTipViewController *vc = [RealFirstTipViewController new];
-    vc.title = @"关于实名认证";
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-}
+
 
 - (void)reloadData {
     __weak typeof(self) weakSelf = self;
@@ -310,6 +192,74 @@
 
 
 #pragma mark - Click
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {//8个坨坨
+        switch (indexPath.row) {
+            case 0:{
+//                [self authenticationAction];
+                if (0) {
+                    _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
+                    _tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+                    [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
+                    _tipView1.sureType = -1;
+                    
+                    [_tipView1.sureButton addTarget:self action:@selector(authenticationAction) forControlEvents:UIControlEventTouchUpInside];
+                }else{
+                    RealFirstTipViewController *vc = [RealFirstTipViewController new];
+                    vc.title = @"购房资格审查说明";
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+            }break;
+            case 1:{
+                RecognitionListViewController *vc = [RecognitionListViewController new];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                
+            }break;
+            case 2:{//我的购房
+//                RecognitionListViewController *vc = [RecognitionListViewController new];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+               
+            }break;
+            case 3:{
+                
+            }break;
+            case 4:{
+                [self moreButtonClick];
+                
+            }break;
+            case 5:{//楼市要闻
+                RecognitionListViewController *vc = [RecognitionListViewController new];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }break;
+            
+            default:
+                break;
+        }
+        return;
+    }else if (indexPath.section == 1) {
+        //        articles
+    }else if (indexPath.section == 2) {
+        //        houses
+    }
+    
+    [self testButtonClick];
+}
+#pragma mark 已做
+- (void)authenticationAction{
+    if (_tipView1) {
+        [_tipView1 customHidden];
+    }
+    RealFirstTipViewController *vc = [RealFirstTipViewController new];
+    vc.title = @"关于实名认证";
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 - (void)searchClick{
     SearchHouseListViewController *vc = [SearchHouseListViewController new];
     vc.hidesBottomBarWhenPushed = YES;
@@ -324,9 +274,7 @@
 }
 
 #pragma mark - 导航栏
-
 - (void)customNav{
-    
     
     UIImageView *left = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"homePage_navLeft"]];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:left];
@@ -360,6 +308,52 @@
     }
 }
 
+
+- (void)dataInit{
+    //    self.titles = @[@"实名认证",@"全部楼盘",   @"购房资格",@"精准找房",
+    //                    @"信息查询",@"楼盘认筹",   @"购房百科",@"楼市要闻"];
+    self.titles = @[ @"购房资格",@"楼盘认筹",@"我的购房",
+                     @"信息查询",   @"全部楼盘",@"楼市要闻"];
+    self.icons = @[@"homePage_item3",@"homePage_item6",   @"homePage_item7",
+                   @"homePage_item5",@"homePage_item2",@"homePage_item8", ];
+    //    self.icons = @[@"homePage_item1",@"homePage_item2",   @"homePage_item3",@"homePage_item4",
+    //                   @"homePage_item5",@"homePage_item6",   @"homePage_item7",@"homePage_item8",];
+}
+
+- (void)viewInit {
+    
+    JYEqualCellSpaceFlowLayout * layout = [[JYEqualCellSpaceFlowLayout alloc]initWithType:AlignWithCenter betweenOfCell:0];
+    layout.minimumLineSpacing = 0.01;
+    layout.minimumInteritemSpacing = 0.01;
+    self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:layout];
+    self.contentCollectionView.delegate = self;
+    self.contentCollectionView.dataSource = self;
+    self.contentCollectionView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.contentCollectionView];
+    [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageIconCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageIconCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageIconCollectionViewCell"];
+    [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageNewsCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageNewsCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageNewsCollectionViewCell"];
+    [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageHousesCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageHousesCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell"];
+    
+    
+    
+    [self.contentCollectionView registerClass:[HomePageBannerCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomePageBannerCollectionReusableView"];
+    [self.contentCollectionView registerClass:[HomePageHeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomePageHeaderCollectionReusableView"];
+    
+    [self.contentCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionReusableView"];
+    [self.contentCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView"];
+    [self.contentCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView1"];
+    
+    __weak typeof (self) weakSelf = self;
+    self.contentCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        weakSelf.page = 1;
+        [weakSelf.contentCollectionView.mj_footer resetNoMoreData];
+        [weakSelf reloadData];
+    }];
+    //    self.contentCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+    //        weakSelf.page++;
+    //        [weakSelf reloadData];
+    //    }];
+}
 
 - (void)dealloc
 {

@@ -11,7 +11,7 @@
 #import "AddMateShipFooterView.h"
 #import "AddMateShipTableViewCell.h"
 #import "PureCamera.h"
-//#import "JYBDIDCardVC.h"
+#import "JYBDIDCardVC.h"
 #import "ChooseQualificationTypeViewController.h"
 
 @interface ChooseAddMateshipViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -80,50 +80,50 @@
 
 - (void)changeIdClick {
     
-//    __weak __typeof__(self) weakSelf = self;
-//
-//    JYBDIDCardVC *AVCaptureVC = [[JYBDIDCardVC alloc] init];
-//    AVCaptureVC.isBehinded = NO;
-//    AVCaptureVC.finish = ^(JYBDCardIDInfo *info, UIImage *image)
-//    {
-//        NSArray *tempArray = @[@{@"title":@"姓名",@"content":info.name},
-//                               @{@"title":@"性别",@"content":info.gender},
-//                               @{@"title":@"民族",@"content":info.nation},
-//                               @{@"title":@"出生",@"content":[info.num substringWithRange:NSMakeRange(6, 8)]},
-//                               @{@"title":@"住址",@"content":info.address},
-//                               @{@"title":@"身份证号码",@"content":info.num}];
-//        [weakSelf.firstArray addObjectsFromArray:tempArray];
-//        weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
-//                       @[@{@"title":@"家庭户口类型",@"content":@""},
-//                         @{@"title":@"户籍所在地",@"content":@""},
-//                         @{@"title":@"手机号码",@"content":@""}]
-//                       ];
-//        weakSelf.header.addImageViewOne.image = image;
-//        [weakSelf.tableView reloadData];
-//    };
-//    [self presentViewController:AVCaptureVC animated:YES completion:nil];
+    __weak __typeof__(self) weakSelf = self;
+
+    JYBDIDCardVC *AVCaptureVC = [[JYBDIDCardVC alloc] init];
+    AVCaptureVC.isBehinded = NO;
+    AVCaptureVC.finish = ^(JYBDCardIDInfo *info, UIImage *image)
+    {
+        NSArray *tempArray = @[@{@"title":@"姓名",@"content":info.name},
+                               @{@"title":@"性别",@"content":info.gender},
+                               @{@"title":@"民族",@"content":info.nation},
+                               @{@"title":@"出生",@"content":[info.num substringWithRange:NSMakeRange(6, 8)]},
+                               @{@"title":@"住址",@"content":info.address},
+                               @{@"title":@"身份证号码",@"content":info.num}];
+        [weakSelf.firstArray addObjectsFromArray:tempArray];
+        weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
+                       @[@{@"title":@"家庭户口类型",@"content":@""},
+                         @{@"title":@"户籍所在地",@"content":@""},
+                         @{@"title":@"手机号码",@"content":@""}]
+                       ];
+        weakSelf.header.addImageViewOne.image = image;
+        [weakSelf.tableView reloadData];
+    };
+    [self presentViewController:AVCaptureVC animated:YES completion:nil];
     
 }
 - (void)changeBhindClick {
-//    __weak __typeof__(self) weakSelf = self;
-//
-//    JYBDIDCardVC *AVCaptureVC = [[JYBDIDCardVC alloc] init];
-//    AVCaptureVC.isBehinded = YES;
-//    AVCaptureVC.finish = ^(JYBDCardIDInfo *info, UIImage *image)
-//    {
-//        NSArray *tempArray = @[@{@"title":@"签证机关",@"content":info.issue},
-//                               @{@"title":@"有效期限",@"content":info.valid},
-//                               ];
-//        [weakSelf.firstArray addObjectsFromArray:tempArray];
-//        weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
-//                               @[@{@"title":@"家庭户口类型",@"content":@""},
-//                                 @{@"title":@"户籍所在地",@"content":@""},
-//                                 @{@"title":@"手机号码",@"content":@""}]
-//                               ];
-//        weakSelf.header.addImageViewTwo.image = image;
-//        [weakSelf.tableView reloadData];
-//    };
-//    [self presentViewController:AVCaptureVC animated:YES completion:nil];
+    __weak __typeof__(self) weakSelf = self;
+
+    JYBDIDCardVC *AVCaptureVC = [[JYBDIDCardVC alloc] init];
+    AVCaptureVC.isBehinded = YES;
+    AVCaptureVC.finish = ^(JYBDCardIDInfo *info, UIImage *image)
+    {
+        NSArray *tempArray = @[@{@"title":@"签证机关",@"content":info.issue},
+                               @{@"title":@"有效期限",@"content":info.valid},
+                               ];
+        [weakSelf.firstArray addObjectsFromArray:tempArray];
+        weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
+                               @[@{@"title":@"家庭户口类型",@"content":@""},
+                                 @{@"title":@"户籍所在地",@"content":@""},
+                                 @{@"title":@"手机号码",@"content":@""}]
+                               ];
+        weakSelf.header.addImageViewTwo.image = image;
+        [weakSelf.tableView reloadData];
+    };
+    [self presentViewController:AVCaptureVC animated:YES completion:nil];
 }
 
 - (void)openCamera:(UIButton *)button

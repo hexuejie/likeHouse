@@ -10,7 +10,7 @@
 #import "RealFinishTipView1.h"
 #import "ChooseOtherRealViewController.h"
 #import "PureCamera.h"
-//#import "JYBDIDCardVC.h"
+#import "JYBDIDCardVC.h"
 
 #define ChangeIDViewHeight (176+23)
 #define IDViewHeightFirst 500
@@ -140,42 +140,42 @@
 
 - (IBAction)changeIdClick:(id)sender {
 
-//    __weak __typeof__(self) weakSelf = self;
-//
-//    JYBDIDCardVC *AVCaptureVC = [[JYBDIDCardVC alloc] init];
-//    AVCaptureVC.isBehinded = NO;
-//    AVCaptureVC.finish = ^(JYBDCardIDInfo *info, UIImage *image)
-//    {
-//        weakSelf.chooseFonted =  YES;
-//        [weakSelf updateCustomView];
-//        self.frontImage.image = image;
-//
-//        self.nameTextField.text = info.name;
-//        self.sexTextField.text = info.gender;
-//        self.typeTextField.text = info.nation;
-//        self.addressTextField.text = info.address;
-//        self.numberIdTextField.text = info.num;
-//        self.brithdayTExtField.text = [info.num substringWithRange:NSMakeRange(6, 8)];
-//
-//    };
-//    [self presentViewController:AVCaptureVC animated:YES completion:nil];
+    __weak __typeof__(self) weakSelf = self;
+
+    JYBDIDCardVC *AVCaptureVC = [[JYBDIDCardVC alloc] init];
+    AVCaptureVC.isBehinded = NO;
+    AVCaptureVC.finish = ^(JYBDCardIDInfo *info, UIImage *image)
+    {
+        weakSelf.chooseFonted =  YES;
+        [weakSelf updateCustomView];
+        self.frontImage.image = image;
+
+        self.nameTextField.text = info.name;
+        self.sexTextField.text = info.gender;
+        self.typeTextField.text = info.nation;
+        self.addressTextField.text = info.address;
+        self.numberIdTextField.text = info.num;
+        self.brithdayTExtField.text = [info.num substringWithRange:NSMakeRange(6, 8)];
+
+    };
+    [self presentViewController:AVCaptureVC animated:YES completion:nil];
     
 }
 - (IBAction)changeBhindClick:(id)sender {
-//    __weak __typeof__(self) weakSelf = self;
-//
-//    JYBDIDCardVC *AVCaptureVC = [[JYBDIDCardVC alloc] init];
-//    AVCaptureVC.isBehinded = YES;
-//    AVCaptureVC.finish = ^(JYBDCardIDInfo *info, UIImage *image)
-//    {
-//        weakSelf.chooseBehinded =  YES;
-//        [weakSelf updateCustomView];
-//        self.behindImage.image = image;
-//
-//        self.organizationTextField.text = info.issue;
-//        self.timeTextField.text = info.valid;
-//    };
-//    [self presentViewController:AVCaptureVC animated:YES completion:nil];
+    __weak __typeof__(self) weakSelf = self;
+
+    JYBDIDCardVC *AVCaptureVC = [[JYBDIDCardVC alloc] init];
+    AVCaptureVC.isBehinded = YES;
+    AVCaptureVC.finish = ^(JYBDCardIDInfo *info, UIImage *image)
+    {
+        weakSelf.chooseBehinded =  YES;
+        [weakSelf updateCustomView];
+        self.behindImage.image = image;
+
+        self.organizationTextField.text = info.issue;
+        self.timeTextField.text = info.valid;
+    };
+    [self presentViewController:AVCaptureVC animated:YES completion:nil];
 }
 
 

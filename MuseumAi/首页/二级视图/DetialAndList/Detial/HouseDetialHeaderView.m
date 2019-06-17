@@ -32,8 +32,8 @@
     
     
     AdModel *model0 = [AdModel new];
-    model0.linkUrl = @"https://blog.csdn.net/qq_33856343/article/details/52101488";
-    model0.img = @"http://aliyunzixunbucket.oss-cn-beijing.aliyuncs.com/jpg/3835dc59023482b408db0819434b804b.jpg?x-oss-process=image/resize,p_100/auto-orient,1/quality,q_90/format,jpg/watermark,image_eXVuY2VzaGk=,t_100";
+    model0.linkUrl = @"https://github.com/hexuejie/likeHouse";
+    model0.img = @"http://app.cszjw.net:11000/img?path=/2019/05/21/155839850061246820227271300382580249.jpg";
     _bannerScrollView.imageArray = @[model0,model0,model0];
     
     

@@ -16,6 +16,7 @@
 #import "RealFirstTipViewController.h"
 #import "MyCenterAboutViewController.h"
 #import "MyCenterSettingViewController.h"
+#import "RealFirstTipViewController.h"
 
 @interface MyCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -27,6 +28,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (weak, nonatomic) IBOutlet UIView *realBoard;
 @property (weak, nonatomic) IBOutlet UILabel *realLabel;
 @property (weak, nonatomic) IBOutlet UILabel *identityCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *qualityStatueLabel;
@@ -52,6 +54,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.realBoard.layer.cornerRadius = 2.0;
+    self.realBoard.layer.masksToBounds = YES;
+    self.realBoard.layer.borderWidth = 1.0;
+    self.realBoard.layer.borderColor = kUIColorFromRGB(0xEECCA7).CGColor;
     self.headerItemWidth.constant = 168*CustomScreenFit;
     self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
     _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"},
@@ -309,4 +316,13 @@
     }
     //    }
 }
+
+- (IBAction)realClick:(id)sender {
+    RealFirstTipViewController *vc = [RealFirstTipViewController new];
+    vc.title = @"关于实名认证";
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 @end

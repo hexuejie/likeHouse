@@ -10,6 +10,7 @@
 //#import "ProUtils.h"
 #import "CloudWebController.h"
 #import "DetialPictureSegmentViewController.h"
+#import "HouseDetialViewController.h"
 
 @interface IndexBannerView ()<UIScrollViewDelegate>
 
@@ -187,13 +188,18 @@
         return;
     }
     
+    HouseDetialViewController *vc = [HouseDetialViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [[ProUtils getCurrentVC].navigationController pushViewController:vc animated:YES];
     
-    AdModel *admodel = self.imageArray[index];
-//    [ProUtils clickModelWithJumpType:admodel.jumpType relateId:admodel.relateId h5Url:admodel.linkUrl];
     
-    CloudWebController *controller = [[CloudWebController alloc] init];
-    controller.requestURL = admodel.linkUrl;
-    [[ProUtils getCurrentVC].navigationController pushViewController:controller animated:YES];
+//    AdModel *admodel = self.imageArray[index];
+////    [ProUtils clickModelWithJumpType:admodel.jumpType relateId:admodel.relateId h5Url:admodel.linkUrl];
+//    CloudWebController *controller = [[CloudWebController alloc] init];
+//    controller.requestURL = admodel.linkUrl;
+//    [[ProUtils getCurrentVC].navigationController pushViewController:controller animated:YES];
+    
+    
 //
 //    
 //    AdModel *info ;
