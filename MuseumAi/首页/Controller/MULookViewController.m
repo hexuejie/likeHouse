@@ -19,6 +19,7 @@
 #import "RecognitionListViewController.h"
 #import "SearchHouseListViewController.h"
 #import "AllHousesListViewController.h"
+#import "InformationLookoutViewController.h"
 
 @interface MULookViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -167,9 +168,6 @@
     return CGSizeMake(SCREEN_WIDTH, 10);
 }
 
-
-
-
 - (void)reloadData {
     __weak typeof(self) weakSelf = self;
 
@@ -197,19 +195,19 @@
         switch (indexPath.row) {
             case 0:{
 //                [self authenticationAction];
-                if (0) {
-                    _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
-                    _tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-                    [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
-                    _tipView1.sureType = -1;
-                    
-                    [_tipView1.sureButton addTarget:self action:@selector(authenticationAction) forControlEvents:UIControlEventTouchUpInside];
-                }else{
+//                if (0) {
+//                    _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
+//                    _tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+//                    [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
+//                    _tipView1.sureType = -1;
+//
+//                    [_tipView1.sureButton addTarget:self action:@selector(authenticationAction) forControlEvents:UIControlEventTouchUpInside];
+//                }else{
                     RealFirstTipViewController *vc = [RealFirstTipViewController new];
                     vc.title = @"购房资格审查说明";
                     vc.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:vc animated:YES];
-                }
+//                }
             }break;
             case 1:{
                 RecognitionListViewController *vc = [RecognitionListViewController new];
@@ -225,6 +223,9 @@
             }break;
             case 3:{
                 
+                InformationLookoutViewController *vc = [InformationLookoutViewController new];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
             }break;
             case 4:{
                 [self moreButtonClick];
@@ -270,6 +271,7 @@
     AllHousesListViewController *vc = [AllHousesListViewController new];
     vc.title = @"全部楼盘";
     vc.hidesBottomBarWhenPushed = YES;
+    vc.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

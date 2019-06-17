@@ -43,6 +43,7 @@
         _segmentedPager = [MXSegmentedPager new];
         _segmentedPager.delegate    = self;
         _segmentedPager.dataSource  = self;
+        self.view.backgroundColor = [UIColor whiteColor];
     }
     return _segmentedPager;
 }

@@ -67,7 +67,7 @@
                 <outlet property="contentLabel" destination="Ei3-KA-ajZ" id="kFQ-QX-PxJ"/>
                 <outlet property="titleLabel" destination="SuL-cT-Cll" id="leQ-bg-3Vb"/>
             </connections>
-            <point key="canvasLocation" x="-236" y="174.96251874062969"/>
+            <point key="canvasLocation" x="-76" y="173"/>
         </collectionViewCell>
     </objects>
     <resources>

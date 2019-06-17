@@ -124,6 +124,10 @@ typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
     UITabBarController *tabBar = [[UITabBarController alloc]init];
     tabBar.viewControllers = @[lookNav, scanNav, shopNav, mineNav];
     
+    for (UINavigationController *tempNav in tabBar.viewControllers) {
+        [tempNav.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:kUIColorFromRGB(0x444444)}];
+    }
+    
     //未选中字体颜色
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:kUIColorFromRGB(0x644933),NSFontAttributeName:[UIFont systemFontOfSize:13.0f]} forState:UIControlStateNormal];
     //选中字体颜色
@@ -147,7 +151,7 @@ typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
     
     tabBar.selectedIndex = 0;
     self.window.rootViewController = tabBar;
-    [self.window makeKeyAndVisible];    
+    [self.window makeKeyAndVisible];
 }
 
 //- (void)BaiduMapInit {
