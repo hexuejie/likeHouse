@@ -20,10 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
-    self.segmentedPager.parallaxHeader.mode = MXParallaxHeaderModeTop;
-    self.headViewMaxHeight = [Utility segmentTopMinHeight];
-    self.headViewMinHeight = [Utility segmentTopMinHeight];
+//    self.headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
+//    self.segmentedPager.parallaxHeader.mode = MXParallaxHeaderModeTop;
+//    self.headViewMaxHeight = [Utility segmentTopMinHeight];
+//    self.headViewMinHeight = [Utility segmentTopMinHeight];
     
     self.title = @"楼盘相册";
     

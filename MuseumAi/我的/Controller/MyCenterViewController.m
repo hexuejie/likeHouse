@@ -55,10 +55,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.realBoard.layer.cornerRadius = 2.0;
-    self.realBoard.layer.masksToBounds = YES;
-    self.realBoard.layer.borderWidth = 1.0;
-    self.realBoard.layer.borderColor = kUIColorFromRGB(0xEECCA7).CGColor;
+//    self.realBoard.layer.cornerRadius = 2.0;
+//    self.realBoard.layer.masksToBounds = YES;
+//    self.realBoard.layer.borderWidth = 1.0;
+//    self.realBoard.layer.borderColor = kUIColorFromRGB(0xEECCA7).CGColor;
     self.headerItemWidth.constant = 168*CustomScreenFit;
     self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
     _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"},

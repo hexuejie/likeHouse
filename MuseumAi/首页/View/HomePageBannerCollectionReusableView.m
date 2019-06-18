@@ -16,7 +16,7 @@
     if (self) {
         
         
-        _bannerScrollView = [[IndexBannerView alloc] initWithFrame:CGRectMake(0, 3, SCREEN_WIDTH, frame.size.height-15)];
+        _bannerScrollView = [[IndexBannerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, frame.size.height-15)];
         _bannerScrollView.customdelegate = self;
        [self addSubview: _bannerScrollView];
     }

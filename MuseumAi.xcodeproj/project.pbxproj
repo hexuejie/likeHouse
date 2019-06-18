@@ -113,6 +113,11 @@
 		A16A985622AE4EA100078BEE /* MyCenterAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16A985422AE4EA100078BEE /* MyCenterAboutViewController.xib */; };
 		A16A985A22AE4F3700078BEE /* MyCenterSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16A985822AE4F3700078BEE /* MyCenterSettingViewController.m */; };
 		A16A985B22AE4F3700078BEE /* MyCenterSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16A985922AE4F3700078BEE /* MyCenterSettingViewController.xib */; };
+		A16BB41022B765C500C2E7F5 /* NewsSegmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BB40F22B765C500C2E7F5 /* NewsSegmentViewController.m */; };
+		A16BB41322B7685500C2E7F5 /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BB41222B7685500C2E7F5 /* NewsListViewController.m */; };
+		A16BB41722B768DD00C2E7F5 /* NewsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BB41522B768DD00C2E7F5 /* NewsCollectionViewCell.m */; };
+		A16BB41822B768DD00C2E7F5 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16BB41622B768DD00C2E7F5 /* NewsCollectionViewCell.xib */; };
+		A16BB41C22B7715900C2E7F5 /* MyHouseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BB41B22B7715900C2E7F5 /* MyHouseListViewController.m */; };
 		A1817F64229E8704003B2FBF /* ChooseOtherRealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1817F62229E8704003B2FBF /* ChooseOtherRealViewController.m */; };
 		A1817F65229E8704003B2FBF /* ChooseOtherRealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1817F63229E8704003B2FBF /* ChooseOtherRealViewController.xib */; };
 		A1817F68229FA715003B2FBF /* RealFinishTipView1.m in Sources */ = {isa = PBXBuildFile; fileRef = A1817F67229FA715003B2FBF /* RealFinishTipView1.m */; };
@@ -610,6 +615,15 @@
 		A16A985722AE4F3700078BEE /* MyCenterSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterSettingViewController.h; sourceTree = "<group>"; };
 		A16A985822AE4F3700078BEE /* MyCenterSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCenterSettingViewController.m; sourceTree = "<group>"; };
 		A16A985922AE4F3700078BEE /* MyCenterSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCenterSettingViewController.xib; sourceTree = "<group>"; };
+		A16BB40E22B765C500C2E7F5 /* NewsSegmentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsSegmentViewController.h; sourceTree = "<group>"; };
+		A16BB40F22B765C500C2E7F5 /* NewsSegmentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSegmentViewController.m; sourceTree = "<group>"; };
+		A16BB41122B7685500C2E7F5 /* NewsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsListViewController.h; sourceTree = "<group>"; };
+		A16BB41222B7685500C2E7F5 /* NewsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListViewController.m; sourceTree = "<group>"; };
+		A16BB41422B768DD00C2E7F5 /* NewsCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsCollectionViewCell.h; sourceTree = "<group>"; };
+		A16BB41522B768DD00C2E7F5 /* NewsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsCollectionViewCell.m; sourceTree = "<group>"; };
+		A16BB41622B768DD00C2E7F5 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
+		A16BB41A22B7715900C2E7F5 /* MyHouseListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHouseListViewController.h; sourceTree = "<group>"; };
+		A16BB41B22B7715900C2E7F5 /* MyHouseListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseListViewController.m; sourceTree = "<group>"; };
 		A1817F61229E8704003B2FBF /* ChooseOtherRealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseOtherRealViewController.h; sourceTree = "<group>"; };
 		A1817F62229E8704003B2FBF /* ChooseOtherRealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseOtherRealViewController.m; sourceTree = "<group>"; };
 		A1817F63229E8704003B2FBF /* ChooseOtherRealViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseOtherRealViewController.xib; sourceTree = "<group>"; };
@@ -1488,6 +1502,15 @@
 			path = Thired;
 			sourceTree = "<group>";
 		};
+		A16BB41922B7711800C2E7F5 /* MyHouse */ = {
+			isa = PBXGroup;
+			children = (
+				A16BB41A22B7715900C2E7F5 /* MyHouseListViewController.h */,
+				A16BB41B22B7715900C2E7F5 /* MyHouseListViewController.m */,
+			);
+			path = MyHouse;
+			sourceTree = "<group>";
+		};
 		A1817F5F229E7D72003B2FBF /* Real */ = {
 			isa = PBXGroup;
 			children = (
@@ -1790,6 +1813,13 @@
 				A1EFACF422B3A7D1007593EB /* InformationLookoutViewController.h */,
 				A1EFACF522B3A7D1007593EB /* InformationLookoutViewController.m */,
 				A1EFACF622B3A7D1007593EB /* InformationLookoutViewController.xib */,
+				A16BB40E22B765C500C2E7F5 /* NewsSegmentViewController.h */,
+				A16BB40F22B765C500C2E7F5 /* NewsSegmentViewController.m */,
+				A16BB41122B7685500C2E7F5 /* NewsListViewController.h */,
+				A16BB41222B7685500C2E7F5 /* NewsListViewController.m */,
+				A16BB41422B768DD00C2E7F5 /* NewsCollectionViewCell.h */,
+				A16BB41522B768DD00C2E7F5 /* NewsCollectionViewCell.m */,
+				A16BB41622B768DD00C2E7F5 /* NewsCollectionViewCell.xib */,
 			);
 			name = Other;
 			path = ../../../../Desktop/Other;
@@ -2866,6 +2896,7 @@
 		DCE84C572153B21F006CB1B3 /* 二级视图 */ = {
 			isa = PBXGroup;
 			children = (
+				A16BB41922B7711800C2E7F5 /* MyHouse */,
 				A1EFACF322B3A266007593EB /* Other */,
 				A1C0BCA022AF81D000AAE38E /* DetialAndList */,
 				A19AD8F222A10F3D004713A2 /* View */,
@@ -3027,6 +3058,7 @@
 				A1BFB4FF22A7C409008B629B /* AddMateShipFooterView.xib in Resources */,
 				A1EFAD4122B3A8E0007593EB /* flashlightscan@3x.png in Resources */,
 				A1EFACDE22B34E5C007593EB /* small_remove@2x.png in Resources */,
+				A16BB41822B768DD00C2E7F5 /* NewsCollectionViewCell.xib in Resources */,
 				A1EFACD422B34E5C007593EB /* select_square_bright@2x.png in Resources */,
 				A1EFAD4222B3A8E0007593EB /* flashlightscan@2x.png in Resources */,
 				A1C0993022AF41A900AAE38E /* ResultQualityHeader.xib in Resources */,
@@ -3059,6 +3091,7 @@
 				DCBD35C321509D4600763961 /* AFNetworkReachabilityManager.m in Sources */,
 				DCBD35D421509D5700763961 /* FMDatabase.m in Sources */,
 				A1FF19FB22B1214A00C09386 /* HouseStyleViewController.m in Sources */,
+				A16BB41C22B7715900C2E7F5 /* MyHouseListViewController.m in Sources */,
 				DCBD365621509DAF00763961 /* UIPasteboard+YYText.m in Sources */,
 				A1FF19EB22B0FE0500C09386 /* DetialMoreTableViewCell.m in Sources */,
 				A1EFACCD22B34E5C007593EB /* FilterSelectIndexModel.m in Sources */,
@@ -3079,6 +3112,7 @@
 				A1EFACCE22B34E5C007593EB /* TopConditionCell.m in Sources */,
 				DC0AF52E2152198E00B41476 /* NSButton+WebCache.m in Sources */,
 				A1094DEF229BD48500A278A1 /* HomePageHousesCollectionViewCell.m in Sources */,
+				A16BB41022B765C500C2E7F5 /* NewsSegmentViewController.m in Sources */,
 				A1EFACC922B34E5C007593EB /* FirstAndSecondConditionModel.m in Sources */,
 				A16093F9229E250700FBC19B /* RealFirstChooseViewController.m in Sources */,
 				A160945D229E54FE00FBC19B /* KYPopupTransitionAnimators.swift in Sources */,
@@ -3178,6 +3212,7 @@
 				DC7991E82151ED5F00368A56 /* MJRefreshAutoFooter.m in Sources */,
 				DC55BDFF2159D794009654EC /* MUUserModel.m in Sources */,
 				A1C0BCA322AF824400AAE38E /* RecognitionListViewController.m in Sources */,
+				A16BB41722B768DD00C2E7F5 /* NewsCollectionViewCell.m in Sources */,
 				A1609427229E378B00FBC19B /* CloudWebController.m in Sources */,
 				A1EFAC8322B2257E007593EB /* MXParallaxHeader.m in Sources */,
 				A16A983122AA71A600078BEE /* AppendThreeViewController.m in Sources */,
@@ -3348,6 +3383,7 @@
 				A1EFAC7A22B22553007593EB /* MXPagerView.m in Sources */,
 				A1609423229E378B00FBC19B /* SVProgressHUD.m in Sources */,
 				A1EFACD222B34E5C007593EB /* FirstAndSecondTableView.m in Sources */,
+				A16BB41322B7685500C2E7F5 /* NewsListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -276,7 +276,9 @@
                            ,@"zjhm":self.numberIdTextField.text
                            ,@"yxq":self.timeTextField.text
                            ,@"qfjg":self.organizationTextField.text,
-                           @"sfzzm":self.frontImageStr,@"sfzfm":self.behindImageStr
+                           
+                           @"sfzzm":self.frontImageStr,//http://app.cszjw.net:11000/img?path=/2019/04/05/155446198745056156623334787220109147.jpg
+                           @"sfzfm":self.behindImageStr
                            };
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newverify") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];

@@ -66,7 +66,7 @@
     layout.minimumLineSpacing = 10;
     layout.minimumInteritemSpacing = 10;
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:layout];
+    self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT -[Utility segmentTopMinHeight]-42) collectionViewLayout:layout];
     self.contentCollectionView.delegate = self;
     self.contentCollectionView.dataSource = self;
     self.contentCollectionView.showsVerticalScrollIndicator = NO;

@@ -20,6 +20,8 @@
 #import "SearchHouseListViewController.h"
 #import "AllHousesListViewController.h"
 #import "InformationLookoutViewController.h"
+#import "NewsSegmentViewController.h"
+#import "MyHouseListViewController.h"
 
 @interface MULookViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -173,7 +175,7 @@
 
 //    @{@"page":@"1",@"rows":@"3",@"token":[LoginSession sharedInstance].token};
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"3"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-        
+        //banner
         if (success) {
             NSDictionary *dic = response[@"data"];
             [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"linkUrl"];
@@ -216,9 +218,9 @@
                 
             }break;
             case 2:{//我的购房
-//                RecognitionListViewController *vc = [RecognitionListViewController new];
-//                vc.hidesBottomBarWhenPushed = YES;
-//                [self.navigationController pushViewController:vc animated:YES];
+                MyHouseListViewController *vc = [MyHouseListViewController new];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
                
             }break;
             case 3:{
@@ -232,7 +234,7 @@
                 
             }break;
             case 5:{//楼市要闻
-                RecognitionListViewController *vc = [RecognitionListViewController new];
+                NewsSegmentViewController *vc = [NewsSegmentViewController new];
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }break;

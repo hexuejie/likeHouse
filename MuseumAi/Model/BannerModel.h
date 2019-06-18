@@ -17,10 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *img;
 
 //@property (nonatomic,copy)NSString *linkUrl;
-@property (nonatomic,copy)NSString *sfxs;
-@property (nonatomic,copy)NSString *px;
-@property (nonatomic,copy)NSString *xmmc;
-@property (nonatomic,copy)NSString *xmbh;
+@property (nonatomic,copy)NSString *sfxs;//是否显示
+@property (nonatomic,copy)NSString *xmmc;//项目名称
+@property (nonatomic,copy)NSString *px;//排序
+@property (nonatomic,copy)NSString *lpbh;
 
 
 ////专题

@@ -36,7 +36,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="图层 29" translatesAutoresizingMaskIntoConstraints="NO" id="8u7-0A-hsH">
-                        <rect key="frame" x="5" y="91" width="163" height="81"/>
+                        <rect key="frame" x="10" y="86" width="153" height="81"/>
                     </imageView>
                 </subviews>
             </view>
@@ -44,12 +44,12 @@
             <constraints>
                 <constraint firstItem="SuL-cT-Cll" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="20l-7Z-3WD"/>
                 <constraint firstAttribute="bottom" secondItem="SY7-ku-Hdj" secondAttribute="bottom" constant="5" id="5Th-q5-9ao"/>
-                <constraint firstAttribute="trailing" secondItem="8u7-0A-hsH" secondAttribute="trailing" constant="5" id="E1q-iN-peh"/>
+                <constraint firstAttribute="trailing" secondItem="8u7-0A-hsH" secondAttribute="trailing" constant="10" id="E1q-iN-peh"/>
                 <constraint firstItem="Ei3-KA-ajZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ETz-Qj-xH3"/>
                 <constraint firstItem="Ei3-KA-ajZ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Hah-cO-4Fm"/>
-                <constraint firstItem="8u7-0A-hsH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="I67-LA-VJR"/>
-                <constraint firstItem="8u7-0A-hsH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ei3-KA-ajZ" secondAttribute="bottom" constant="12" id="Sk4-1G-dQd"/>
-                <constraint firstAttribute="bottom" secondItem="8u7-0A-hsH" secondAttribute="bottom" constant="5" id="Tef-10-bda"/>
+                <constraint firstItem="8u7-0A-hsH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="I67-LA-VJR"/>
+                <constraint firstItem="8u7-0A-hsH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ei3-KA-ajZ" secondAttribute="bottom" constant="10" id="Sk4-1G-dQd"/>
+                <constraint firstAttribute="bottom" secondItem="8u7-0A-hsH" secondAttribute="bottom" constant="10" id="Tef-10-bda"/>
                 <constraint firstItem="SuL-cT-Cll" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="VYM-Me-8Er"/>
                 <constraint firstAttribute="trailing" secondItem="SuL-cT-Cll" secondAttribute="trailing" id="bv1-2y-fYd"/>
                 <constraint firstItem="SY7-ku-Hdj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="i4t-Bq-wtK"/>
