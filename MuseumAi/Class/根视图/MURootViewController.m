@@ -33,8 +33,10 @@
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"nav_back"];
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:kUIColorFromRGB(0x444444)}];
-    
-    self.navigationItem.leftBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"back_nor"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(callBackClick)]];
+    _backItem = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [_backItem setImage:[UIImage imageNamed:@"back_nor"] forState:UIControlStateNormal];
+    [_backItem addTarget:self action:@selector(callBackClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:_backItem]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kDidLoginSuccessNotification object:nil];
     

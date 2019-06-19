@@ -20,9 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-        self.segmentedPager.parallaxHeader.mode = MXParallaxHeaderModeTop;
-        self.headViewMaxHeight = [Utility segmentTopMinHeight];
-        self.headViewMinHeight = [Utility segmentTopMinHeight];
+    self.segmentedPager.parallaxHeader.mode = MXParallaxHeaderModeTop;
+    self.headViewMaxHeight = [Utility segmentTopMinHeight];
+    self.headViewMinHeight = [Utility segmentTopMinHeight];
     
     self.title = @"消息中心";
     
@@ -39,6 +39,8 @@
     
     self.subViewControllers = @[infoVC1,infoVC2,infoVC3];
     self.segmentedPager.bottomMarginHeight = 0;
+    
+    self.backItem.hidden = YES;
 }
 
 @end

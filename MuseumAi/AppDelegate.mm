@@ -113,6 +113,7 @@ typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
     HousesListViewController *scanVC = [HousesListViewController new];
     scanVC.title = @"我的关注";
     UINavigationController *scanNav = [[UINavigationController alloc]initWithRootViewController:scanVC];
+    
     // 消息
     MUSpecialViewController *shopVC = [MUSpecialViewController new];
     shopVC.title = @"消息中心";
@@ -124,9 +125,6 @@ typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
     UITabBarController *tabBar = [[UITabBarController alloc]init];
     tabBar.viewControllers = @[lookNav, scanNav, shopNav, mineNav];
     
-    for (UINavigationController *tempNav in tabBar.viewControllers) {
-        [tempNav.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:kUIColorFromRGB(0x444444)}];
-    }
     
     //未选中字体颜色
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:kUIColorFromRGB(0x644933),NSFontAttributeName:[UIFont systemFontOfSize:13.0f]} forState:UIControlStateNormal];

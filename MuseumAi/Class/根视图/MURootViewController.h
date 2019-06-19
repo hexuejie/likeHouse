@@ -14,6 +14,9 @@
 
 @interface MURootViewController : UIViewController
 
+
+@property (nonatomic,strong) UIButton *backItem;
+
 - (void)callBackClick;
 
 - (void)testButtonClick;

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MuHouseDetialHeader">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="164"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合同信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xy3-TN-wfr">
+                    <rect key="frame" x="12" y="126.5" width="73.5" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.75338226556777954" green="0.56658035516738892" blue="0.365711510181427" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22g-Gq-Yne">
+                    <rect key="frame" x="240" y="124.5" width="76" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="7D1-ny-lc6"/>
+                        <constraint firstAttribute="width" constant="76" id="XNW-wa-4hg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="查看合同">
+                        <color key="titleColor" red="0.75338226559999999" green="0.56658035520000005" blue="0.36571151019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSH-5H-RXw">
+                    <rect key="frame" x="12" y="163" width="304" height="1"/>
+                    <color key="backgroundColor" red="0.89794141054153442" green="0.89809560775756836" blue="0.89793163537979126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="lFy-Eo-dj2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OSH-5H-RXw" firstAttribute="top" secondItem="Xy3-TN-wfr" secondAttribute="bottom" constant="15" id="7ZB-qU-Ald"/>
+                <constraint firstItem="OSH-5H-RXw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="8jk-E3-6ct"/>
+                <constraint firstAttribute="trailing" secondItem="22g-Gq-Yne" secondAttribute="trailing" constant="12" id="EhV-6D-hSQ"/>
+                <constraint firstItem="Xy3-TN-wfr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="Gfu-2K-rnC"/>
+                <constraint firstAttribute="trailing" secondItem="OSH-5H-RXw" secondAttribute="trailing" constant="12" id="QHK-hw-3Tx"/>
+                <constraint firstItem="22g-Gq-Yne" firstAttribute="centerY" secondItem="Xy3-TN-wfr" secondAttribute="centerY" id="U0Q-rd-cPv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="OSH-5H-RXw" secondAttribute="bottom" id="bkx-hD-lYI"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="bottomLine" destination="OSH-5H-RXw" id="cZ8-AA-Nhw"/>
+                <outlet property="headerButton" destination="22g-Gq-Yne" id="ECa-3z-M7U"/>
+                <outlet property="headerTitle" destination="Xy3-TN-wfr" id="1OX-ax-Nsl"/>
+                <outlet property="titleBottom" destination="7ZB-qU-Ald" id="a9U-WK-7Jl"/>
+            </connections>
+            <point key="canvasLocation" x="-158.40000000000001" y="335.5322338830585"/>
+        </view>
+    </objects>
+</document>

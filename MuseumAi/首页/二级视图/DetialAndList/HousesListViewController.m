@@ -56,6 +56,10 @@
         weakSelf.page++;
         [weakSelf reloadData];
     }];
+    
+    if ([self.title isEqualToString:@"我的关注"]) {
+        self.backItem.hidden = YES;
+    }
 }
 
 

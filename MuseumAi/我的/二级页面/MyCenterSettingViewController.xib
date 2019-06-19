@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCenterSettingViewController">
             <connections>
+                <outlet property="cacheLabel" destination="jXu-uj-KJ2" id="6EF-Ka-S3c"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,6 +37,12 @@
                                 <action selector="chacheOutClick:" destination="-1" eventType="touchUpInside" id="Um2-sj-qRI"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.15MB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXu-uj-KJ2">
+                            <rect key="frame" x="292" y="14" width="48" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.71768379211425781" green="0.71382778882980347" blue="0.70950883626937866" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -43,7 +50,9 @@
                         <constraint firstItem="oCg-lE-TWN" firstAttribute="leading" secondItem="kDX-Mg-6r7" secondAttribute="leading" constant="15" id="DAI-od-3XH"/>
                         <constraint firstItem="oCg-lE-TWN" firstAttribute="centerY" secondItem="kDX-Mg-6r7" secondAttribute="centerY" id="HYD-Ll-q9D"/>
                         <constraint firstAttribute="trailing" secondItem="72z-L8-SKz" secondAttribute="trailing" constant="15" id="VkM-uM-Vz9"/>
+                        <constraint firstItem="jXu-uj-KJ2" firstAttribute="centerY" secondItem="kDX-Mg-6r7" secondAttribute="centerY" id="WBi-9Z-uEL"/>
                         <constraint firstAttribute="height" constant="45" id="bFx-Jp-r4w"/>
+                        <constraint firstAttribute="trailing" secondItem="jXu-uj-KJ2" secondAttribute="trailing" constant="35" id="e7i-DN-9bE"/>
                         <constraint firstItem="72z-L8-SKz" firstAttribute="top" secondItem="kDX-Mg-6r7" secondAttribute="top" id="grO-Te-KD5"/>
                         <constraint firstAttribute="bottom" secondItem="72z-L8-SKz" secondAttribute="bottom" id="hJv-YJ-v4Q"/>
                     </constraints>
@@ -88,6 +97,7 @@
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="39.200000000000003" y="46.326836581709152"/>
         </view>
     </objects>
     <resources>
