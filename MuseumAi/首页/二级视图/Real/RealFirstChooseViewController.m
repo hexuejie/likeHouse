@@ -269,7 +269,8 @@
 
 - (void)finishUpInfo{
     __weak typeof(self) weakSelf = self;
-    NSDictionary *pram = @{@"zjlx":@"身份证",@"xm":self.nameTextField.text,@"mz":self.typeTextField.text//民族
+    NSDictionary *pram = @{@"verifyType":@"0",
+                           @"zjlx":@"身份证",@"xm":self.nameTextField.text,@"mz":self.typeTextField.text//民族
                            ,@"csrq":self.brithdayTExtField.text//出生日期
                            ,@"zz":self.addressTextField.text
                            ,@"xb":self.sexTextField.text
@@ -286,11 +287,7 @@
             
             [weakSelf sureButtonClick];
         }else{
-            if (response[@"error"]) {
-                [weakSelf alertWithMsg:response[@"error"] handler:nil];
-            }else{
-                [weakSelf alertWithMsg:kFailedTips handler:nil];
-            }
+             [weakSelf alertWithMsg:kFailedTips handler:nil];
         }
     }];
 }

@@ -22,6 +22,8 @@
 #import "InformationLookoutViewController.h"
 #import "NewsSegmentViewController.h"
 #import "MyHouseListViewController.h"
+#import "BannerModel.h"
+#import "HouseModel.h"
 
 @interface MULookViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -31,11 +33,9 @@
 /** 当前page */
 @property (nonatomic , assign) NSInteger page;
 
-@property (nonatomic , strong) NSArray *articles;
-@property (nonatomic , strong) NSArray *houses;
-
-
-
+@property (nonatomic , strong) NSMutableArray *banners;
+@property (nonatomic , strong) NSMutableArray *midArray;
+@property (nonatomic , strong) NSMutableArray *houses;
 
 /** 8 */
 @property (nonatomic , strong) NSArray *icons;
@@ -55,14 +55,11 @@
     [LoginSession sharedInstance].pageType = 0;
 }
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
- 
-   
+
+    
     [self dataInit];
     [self viewInit];
     [self customNav];
@@ -78,11 +75,9 @@
     if (section == 0) {
         return self.titles.count;
     }else if (section == 1) {
-        return 4;//第二模块
-    }else if (section == 1) {
-        return 6;//第3模块  楼盘信息
+        return 0;//self.midArray.count;//第二模块
     }
-    return  8;
+    return  self.houses.count;;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,10 +88,12 @@
         return cell;
     }else if (indexPath.section == 1) {
         HomePageNewsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageNewsCollectionViewCell" forIndexPath:indexPath];
+        cell.model = self.midArray[indexPath.row];
         return cell;
     }else if (indexPath.section == 2) {
         HomePageHousesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell" forIndexPath:indexPath];
-        cell.coverImageView.image = [UIImage imageNamed:@"圆角矩形 4 拷贝-1"];
+//        cell.coverImageView.image = [UIImage imageNamed:@"圆角矩形 4 拷贝-1"];
+        cell.model = self.houses[indexPath.row];
         return cell;
     }
 
@@ -123,13 +120,10 @@
     if ([kind isEqualToString:UICollectionElementKindSectionHeader] ) {
         if (indexPath.section ==0) {
             HomePageBannerCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomePageBannerCollectionReusableView" forIndexPath:indexPath];
-            
-            AdModel *model = [AdModel new];
-            model.linkUrl = @"https://github.com/hexuejie/likeHouse";
-            model.img = @"http://app.cszjw.net:11000/img?path=/2018/11/29/154347341355531433612346213325856780.jpg";
-            headerView.imageArray = @[model,model,model];
+
+            headerView.imageArray = self.banners;
             return headerView;
-        }if (indexPath.section ==2) {
+        }if (indexPath.section ==2 && self.houses.count) {
             HomePageHeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomePageHeaderCollectionReusableView" forIndexPath:indexPath];
             return headerView;
         }
@@ -158,7 +152,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section ==0) {
         return CGSizeMake(SCREEN_WIDTH, (143+15));
-    }if (section ==2) {
+    }if (section ==2 && self.houses.count) {
         return CGSizeMake(SCREEN_WIDTH, 51);
     }
     return CGSizeMake(SCREEN_WIDTH, 0.01);
@@ -172,15 +166,25 @@
 
 - (void)reloadData {
     __weak typeof(self) weakSelf = self;
-
-//    @{@"page":@"1",@"rows":@"3",@"token":[LoginSession sharedInstance].token};
+    self.banners = [NSMutableArray new];
+    self.midArray = [NSMutableArray new];
+    self.houses = [NSMutableArray new];
+    
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"3"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner
         if (success) {
             NSDictionary *dic = response[@"data"];
-            [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"linkUrl"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            
+            for (NSDictionary *tempdic in [dic objectForKey:@"banner"]) {
+                [self.banners addObject:[BannerModel mj_objectWithKeyValues:tempdic]];
+            }
+            for (NSDictionary *tempdic in [dic objectForKey:@"zt"]) {
+                [self.midArray addObject:[NewsModel mj_objectWithKeyValues:tempdic]];
+            }
+            for (NSDictionary *tempdic in [dic objectForKey:@"recommend"]) {
+                [self.midArray addObject:[HouseModel mj_objectWithKeyValues:tempdic]];
+            }
+//            self.midArray = [NSMutableArray new];//dt
+//            self.houses = [NSMutableArray new];//zt
             [weakSelf.contentCollectionView reloadData];
         }else{
            [weakSelf alertWithMsg:kFailedTips handler:nil];

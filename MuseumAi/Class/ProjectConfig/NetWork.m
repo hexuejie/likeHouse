@@ -183,8 +183,8 @@
         
         // 2 token错误 3 token 过期 401 未授权
         if (resultCode == 0) {
-             [[LoginSession sharedInstance] destroyInstance];
             if (isTologin) {
+//                [[LoginSession sharedInstance] destroyInstance];
                  [self toLogin];
             }
             return ;
@@ -194,7 +194,7 @@
             return ;
         } else {
             callBack(responseDict,NO);
-            [SVProgressHelper dismissWithMsg:responseDict[@"error"]];
+            [SVProgressHelper dismissWithMsg:[NSString stringWithFormat:@"%@",responseDict[@"error"]]];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -206,8 +206,8 @@
                 // 错误码
                 NSInteger code = [response[@"code"] integerValue];
                 if( code == 401) {
-                    [[LoginSession sharedInstance] destroyInstance];
                     if (isTologin) {
+//                        [[LoginSession sharedInstance] destroyInstance];
                         [self toLogin];
                     }
                 } else {
@@ -245,8 +245,8 @@
 //        DLog(@"%@",responseDict);
         // 2 token错误 3 token 过期 401 未授权
         if (resultCode == 3 || resultCode == 401) {
-            [[LoginSession sharedInstance] destroyInstance];
             if (isTologin) {
+//            [[LoginSession sharedInstance] destroyInstance];
                 [self toLogin];
             }
             return ;
@@ -270,7 +270,7 @@
                 // 错误码
                 NSInteger code = [response[@"code"] integerValue];
                 if( code == 401) {
-                     [[LoginSession sharedInstance] destroyInstance];
+//                     [[LoginSession sharedInstance] destroyInstance];
                     if (isTologin) {
                         [self toLogin];
                     }
@@ -350,4 +350,75 @@
         [[ProUtils getCurrentVC] presentViewController:loginController animated:YES completion:nil];
     });
 }
+
+
++ (void)uploadMoreFileHttpRequestURL:(NSString *)url  RequestPram:(id)pram arrayImg:(NSArray *)arrayImg arrayAudio:(NSArray *)arrayAudio RequestSuccess:(void(^)(id respoes))success RequestFaile:(void(^)(NSError *erro))faile UploadProgress:(void(^)(NSProgress * uploadProgress))progress{
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    [manager POST:url parameters:pram constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        ///用时间设置文件名
+        
+        NSDate *date = [NSDate date];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
+        [formatter setDateFormat:@"yyyyMMddhhmmss"];
+        
+        NSString *dateNow = [formatter stringFromDate:date];
+        
+        
+        
+        NSString *imgFileId = @"handsomekkImg";
+        
+        //  NSString *avdioFileId = @"ebookAvdio";
+        
+        ///图片文件data追加
+        
+        for (int i = 0; i < arrayImg.count; i++) {
+            
+//            ///文件名：这是多个文件名不一样，多以我就用i实现
+//
+//            NSString *fileName = [NSString stringWithFormat:@"%@%@%d.png",imgFileId,dateNow,i];
+//
+//            ///图片支持类型jpg/png/jpeg
+//
+//            [formData appendPartWithFileData:arrayImg[i] name:[NSString stringWithFormat:@"%@%d",imgFileId,i] fileName:fileName mimeType:@"jpg/png/jpeg"];
+            
+            NSData *data = UIImageJPEGRepresentation(arrayImg[i], 0.8);
+            [formData appendPartWithFileData:data name:@"file" fileName:@".jpg" mimeType:@"image/jpg/png/jpeg"];
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        ///进度回调
+        
+//        progress(uploadProgress);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        ///上传功能回调
+        NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        if (success) {
+            
+            success(responseDict[@"data"]);
+            
+        }else{
+             [SVProgressHelper dismissWithMsg:[NSString stringWithFormat:@"%@",responseDict[@"error"]]];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        ///失败回调
+        [SVProgressHelper dismissWithMsg:@"上传图片出错"];
+        faile(error);
+        
+    }];
+    
+}
+
 @end

@@ -703,6 +703,14 @@ static Utility* _instance = nil;
     return transform;
 }
 
-
++ (BOOL)is_empty:(id)objct{
+    if (objct == nil) {
+        return YES;
+    }
+    if ([objct isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    return NO;
+}
 
 @end

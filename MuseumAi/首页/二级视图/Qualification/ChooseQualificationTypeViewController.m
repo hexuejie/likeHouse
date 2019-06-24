@@ -19,6 +19,13 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray *dataArray;
+@property (strong, nonatomic) NSDictionary *dataDic;
+
+@property (assign, nonatomic) BOOL grxx;
+@property (assign, nonatomic) BOOL poxx;
+@property (assign, nonatomic) BOOL znxx;
+@property (assign, nonatomic) BOOL bcxx;
+
 @end
 
 @implementation ChooseQualificationTypeViewController
@@ -53,7 +60,12 @@
     cell.titleLabel.text = tempDic[@"title"];
     cell.contentLabel.text = tempDic[@"content"];
     cell.chooseButton.tag = indexPath.row+100;
-
+    cell.chooseButton.selected = NO;
+    if (indexPath.row == 0 && self.grxx) cell.chooseButton.selected = YES;
+    if (indexPath.row == 1 && self.poxx) cell.chooseButton.selected = YES;
+    if (indexPath.row == 2 && self.znxx) cell.chooseButton.selected = YES;
+    if (indexPath.row == 3 && self.bcxx) cell.chooseButton.selected = YES;
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -105,4 +117,32 @@
 
     
 }
+
+- (void)reloadData {
+    __weak typeof(self) weakSelf = self;
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/step") para:@{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        //banner
+        if (success) {
+           weakSelf.dataDic = response[@"data"];
+            if (![Utility is_empty:weakSelf.dataDic[@"grxx"]]) {
+                weakSelf.grxx = [weakSelf.dataDic[@"grxx"] boolValue];
+            }
+            if (![Utility is_empty:weakSelf.dataDic[@"poxx"]]) {
+                weakSelf.poxx = [weakSelf.dataDic[@"poxx"] boolValue];
+            }
+            if (![Utility is_empty:weakSelf.dataDic[@"znxx"]]) {
+                weakSelf.znxx = [weakSelf.dataDic[@"znxx"] boolValue];
+            }
+            if (![Utility is_empty:weakSelf.dataDic[@"bcxx"]]) {
+                weakSelf.bcxx = [weakSelf.dataDic[@"bcxx"] boolValue];
+            }
+            
+            [weakSelf.tableView reloadData];
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
+
 @end

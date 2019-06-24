@@ -69,6 +69,8 @@ typedef enum LXPlachImageType : NSUInteger {
 +(CGFloat) hiddenTopStatusBarPlus;
 +(CGFloat) safeAreaTopStatus;
 
++ (BOOL)is_empty:(id)objct;
+
 +(long long)getCurrentDateTimeTOMilliSeconds;
 //+(NSString *)copyrightString:(long long)time;
 + (BOOL)isSameDay:(NSString *)date1 date2:(NSString*)date2;

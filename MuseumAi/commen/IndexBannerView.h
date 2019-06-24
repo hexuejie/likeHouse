@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AdModel.h"
-
+#import "BannerModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @class IndexBannerView;
@@ -20,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IndexBannerView : UIScrollView
 
-@property (nonatomic,strong)NSArray<AdModel*> *imageArray;
+@property (nonatomic,strong)NSArray<BannerModel*> *imageArray;
 
 @property (nonatomic, weak) id<IndexBannerViewDelegate> customdelegate;
 @end

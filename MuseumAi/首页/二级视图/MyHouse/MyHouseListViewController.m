@@ -10,12 +10,13 @@
 #import "MyHouseListTableViewCell.h"
 #import "CloudWebController.h"
 #import "MyHouseDetialViewController.h"
+#import "MyHouseMode.h"
 
 @interface MyHouseListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
 
-@property (strong, nonatomic) NSArray *dataArray;
+@property (strong, nonatomic) NSMutableArray *dataArray;
 
 @end
 
@@ -27,10 +28,7 @@
     
     self.title = @"我的购房";
     self.view.backgroundColor = kUIColorFromRGB(0xffffff);
-    _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"},
-                   @{@"title":@"购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改",@"content":@"myCenter_change"},
-                   @{@"title":@"常见问题",@"content":@"myCenter_question"}
-                   ];
+    _dataArray = [NSMutableArray new];
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds];
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
@@ -55,7 +53,7 @@
     
     MyHouseListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyHouseListTableViewCell" forIndexPath:indexPath];
     
-    
+    cell.model = _dataArray[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -77,4 +75,26 @@
 }
 
 
+#pragma mark - request
+- (void)reloadData {
+    __weak typeof(self) weakSelf = self;
+    self.dataArray = [NSMutableArray new];
+
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/contract/list") para: @{@"page":@"1",@"rows":@"3"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        //banner
+        if (success) {
+   
+            for (NSDictionary *tempdic in response[@"data"]) {
+                [self.dataArray addObject:[MyHouseMode mj_objectWithKeyValues:tempdic]];
+            }
+        
+            [weakSelf.tableView reloadData];
+            if (self.dataArray.count == 0) {
+                [self addNoneDataTipView];
+            }
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
 @end

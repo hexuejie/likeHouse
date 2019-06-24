@@ -159,6 +159,14 @@
                 <outlet property="textField7" destination="dcU-9o-3zY" id="AiO-xe-VpS"/>
                 <outlet property="textField8" destination="lsY-Zy-smv" id="QOA-LN-cI8"/>
                 <outlet property="textFieldView" destination="Yo5-jF-qrb" id="het-Tq-qXP"/>
+                <outlet property="textLabel1" destination="1uS-5O-cIg" id="YAT-KJ-BW9"/>
+                <outlet property="textLabel2" destination="i3Y-Zc-OfP" id="A1h-Nr-mxt"/>
+                <outlet property="textLabel3" destination="xk4-RA-fXc" id="hsw-UV-6QS"/>
+                <outlet property="textLabel4" destination="gg4-WG-XgI" id="NdP-6r-Y6U"/>
+                <outlet property="textLabel5" destination="xwP-BL-bgO" id="4YZ-Ue-Rt0"/>
+                <outlet property="textLabel6" destination="aW0-8q-hgL" id="1Xz-lT-enD"/>
+                <outlet property="textLabel7" destination="5cw-Xe-w3D" id="Nnb-dp-ycn"/>
+                <outlet property="textLabel8" destination="RhZ-08-GmQ" id="u7R-Av-pda"/>
                 <outlet property="tipLabel" destination="0EO-LE-0ee" id="jEp-Gq-P4g"/>
                 <outlet property="titleLabel" destination="YZn-iL-dW1" id="GAA-OA-kK5"/>
                 <outlet property="viewHeight" destination="Mem-RX-VNT" id="rRf-Fr-LNk"/>

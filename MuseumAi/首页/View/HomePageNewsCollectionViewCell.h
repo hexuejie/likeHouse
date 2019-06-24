@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NewsModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomePageNewsCollectionViewCell : UICollectionViewCell
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIView *backGround;
 
-
+@property (strong, nonatomic) NewsModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -15,4 +15,12 @@
     // Initialization code
 }
 
+
+- (void)setModel:(NewsModel *)model{
+    _model = model;
+    
+    self.titleLabel.text = _model.tgbt;
+    self.contentLabel.text = _model.ztmc;
+    [self.contentImage sd_setImageWithURL:[NSURL URLWithString:_model.img] placeholderImage:[UIImage imageNamed:BasePlaceholder]];
+}
 @end

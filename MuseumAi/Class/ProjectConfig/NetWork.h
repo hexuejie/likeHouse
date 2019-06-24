@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)postFormDataWithUrl:(NSString *)urlString para:(id)para isShowHUD:(BOOL)isShowHUD images:(NSArray*)images isIncludeGif:(BOOL)isIncludeGif callBack:(void (^)(id response, BOOL success))callBack;
 
 
-
++ (void)uploadMoreFileHttpRequestURL:(NSString *)url  RequestPram:(id)pram arrayImg:(NSArray *)arrayImg arrayAudio:(NSArray *)arrayAudio RequestSuccess:(void(^)(id respoes))success RequestFaile:(void(^)(NSError *erro))faile UploadProgress:(void(^)(NSProgress * uploadProgress))progress;
 @end
 
 NS_ASSUME_NONNULL_END

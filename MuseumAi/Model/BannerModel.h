@@ -18,20 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 //@property (nonatomic,copy)NSString *linkUrl;
 @property (nonatomic,copy)NSString *sfxs;//是否显示
-@property (nonatomic,copy)NSString *xmmc;//项目名称
 @property (nonatomic,copy)NSString *px;//排序
-@property (nonatomic,copy)NSString *lpbh;
 
+@property (nonatomic,copy)NSString *lpbh;//楼盘编号
+@property (nonatomic,copy)NSString *lpmc;//楼盘编号
 
-////专题
-//@property (nonatomic,copy)NSString *ztmc;//"金地铂悦 韶山南 双地铁",
-//@property (nonatomic,copy)NSString *fbt;
-//
-//@property (nonatomic,copy)NSString *zd;//1
-//@property (nonatomic,copy)NSString *ztnr;
-//@property (nonatomic,copy)NSString *tgbt;
-//@property (nonatomic,copy)NSString *tjsj;//时间
-//@property (nonatomic,copy)NSString *sfsc;//收藏
+@property (nonatomic,copy)NSString *xmmc;//项目名称
+@property (nonatomic,copy)NSString *xmbh;//楼盘编号  //跳转
 //
 //
 ////楼盘

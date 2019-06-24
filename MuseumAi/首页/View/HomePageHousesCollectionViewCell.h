@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HouseModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomePageHousesCollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *ChatTagLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ChatTagLabel;//认筹
 @property (weak, nonatomic) IBOutlet UILabel *tipTagLabel;
 
 
@@ -22,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *backView;
+
+@property (strong, nonatomic) HouseModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *realLabel;
 @property (weak, nonatomic) IBOutlet UILabel *identityCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *qualityStatueLabel;
+@property (weak, nonatomic) IBOutlet UIButton *goIntoReal;
 
 @property (nonatomic , strong) NSTimer *timer;
 @property (nonatomic , assign) NSInteger count;
@@ -55,10 +56,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    self.realBoard.layer.cornerRadius = 2.0;
-//    self.realBoard.layer.masksToBounds = YES;
-//    self.realBoard.layer.borderWidth = 1.0;
-//    self.realBoard.layer.borderColor = kUIColorFromRGB(0xEECCA7).CGColor;
     self.headerItemWidth.constant = 168*CustomScreenFit;
     self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
     _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"},
@@ -73,8 +70,25 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    //    self.tableView.selec = UITableViewCellSelectionStyleNone;
     [self.tableView reloadData];
+    
+    self.phoneLabel.text = [LoginSession sharedInstance].sjhm;
+    self.realLabel.text = @"未实名认证";
+    if (![Utility is_empty:[LoginSession sharedInstance].rzzt]) {
+        if ([[LoginSession sharedInstance].rzzt integerValue] == 2) {
+            [self.goIntoReal setTitle:@">" forState:UIControlStateNormal];
+            self.realLabel.text = @"已实名认证";
+        }else if ([[LoginSession sharedInstance].rzzt integerValue] == 3) {
+            [self.goIntoReal setTitle:@">" forState:UIControlStateNormal];
+            self.realLabel.text = @"实名认证未通过";
+        }else if ([[LoginSession sharedInstance].rzzt integerValue] == 2) {
+            [self.goIntoReal setTitle:@">" forState:UIControlStateNormal];
+            self.realLabel.text = @"实名认证待审核";
+        }
+    }
+
+    self.identityCountLabel.text = @"0";//我的认筹
+    self.qualityStatueLabel.text = @"未提交";//已通过  待审核
 }
 
 #pragma mark - UITableViewDelegate && UITableViewDataSource

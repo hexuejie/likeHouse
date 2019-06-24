@@ -40,7 +40,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kDidLoginSuccessNotification object:nil];
     
-//    [self reloadData];
+    [self reloadData];
 }
 
 - (void)reloadData{}

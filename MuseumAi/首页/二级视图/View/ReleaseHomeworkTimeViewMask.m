@@ -29,7 +29,7 @@
 
 - (void)setCustomPickArray:(NSArray *)customPickArray{
     _customPickArray = customPickArray;
-    
+    _selectedString = [_customPickArray firstObject];
     if (!_customPick) {
         self.customPick = [[UIPickerView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
         [self addSubview:self.customPick];

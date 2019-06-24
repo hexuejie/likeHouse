@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCenterViewController">
             <connections>
+                <outlet property="goIntoReal" destination="MFw-Zb-3dl" id="ajj-rH-Ctb"/>
                 <outlet property="headerImageView" destination="tYo-Xl-LXv" id="RMK-yf-UWU"/>
                 <outlet property="headerItemWidth" destination="Hsz-AK-B0F" id="cpY-Rc-tv2"/>
                 <outlet property="identityCountLabel" destination="bk5-VN-OvM" id="KFo-SC-INp"/>
@@ -161,8 +162,8 @@
                         <constraint firstItem="AaN-o3-MHh" firstAttribute="leading" secondItem="gS0-o3-vBY" secondAttribute="leading" constant="4" id="vKs-fh-cgX"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFw-Zb-3dl">
-                    <rect key="frame" x="290" y="86" width="70" height="32"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFw-Zb-3dl">
+                    <rect key="frame" x="287" y="86" width="70" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="Ays-tF-Klb"/>
                         <constraint firstAttribute="width" constant="70" id="JGk-dT-03o"/>
@@ -187,7 +188,7 @@
                 <constraint firstItem="zoW-xd-Chf" firstAttribute="centerY" secondItem="FqE-A0-EPZ" secondAttribute="centerY" id="Nm6-VS-8Rc"/>
                 <constraint firstItem="gS0-o3-vBY" firstAttribute="top" secondItem="a4s-MX-IOP" secondAttribute="bottom" constant="8" id="W6M-zX-vAe"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="zsa-1o-rt2" secondAttribute="trailing" constant="15" id="XZI-WO-w6g"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="MFw-Zb-3dl" secondAttribute="trailing" constant="15" id="Yg9-oK-APK"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="MFw-Zb-3dl" secondAttribute="trailing" constant="18" id="Yg9-oK-APK"/>
                 <constraint firstAttribute="trailing" secondItem="zoW-xd-Chf" secondAttribute="trailing" constant="15" id="anr-8a-ggz"/>
                 <constraint firstItem="zsa-1o-rt2" firstAttribute="top" secondItem="FqE-A0-EPZ" secondAttribute="bottom" constant="2" id="d7t-TD-WqU"/>
                 <constraint firstItem="zoW-xd-Chf" firstAttribute="width" secondItem="FqE-A0-EPZ" secondAttribute="width" id="h06-BJ-6e3"/>

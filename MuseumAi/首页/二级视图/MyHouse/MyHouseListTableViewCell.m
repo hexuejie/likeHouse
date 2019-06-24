@@ -20,6 +20,16 @@
     _lookOutLabel.layer.borderWidth = 1.0;
 }
 
+- (void)setMode:(MyHouseMode *)model{
+    _model = model;
+    
+    self.titleLabel.text = _model.xmmc;
+    self.addressLabel.text = [NSString stringWithFormat:@"%@%@",_model.dh,_model.sh];
+    self.numberLabel.text = [NSString stringWithFormat:@"合同签订日期：%@",_model.htqdrq];
+}
+
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

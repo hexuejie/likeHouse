@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyHouseMode.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIButton *lookOutLabel;
 
+
+@property (strong, nonatomic) MyHouseMode *model;;
 @end
 
 NS_ASSUME_NONNULL_END

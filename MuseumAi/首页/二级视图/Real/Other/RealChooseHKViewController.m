@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *changeTimes;
 
-
 @property (weak, nonatomic) IBOutlet UITextField *numberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *areaTextField;
 @property (weak, nonatomic) IBOutlet UITextField *sexTextField;
@@ -35,8 +34,11 @@
 
 //图片
 @property (weak, nonatomic) IBOutlet UIImageView *exchangeImageOne;
+@property (strong, nonatomic) NSString *exchangeImageOneStr;
 @property (weak, nonatomic) IBOutlet UIImageView *exchangeImageTwo;
+@property (strong, nonatomic) NSString *exchangeImageTwoStr;
 
+@property (strong, nonatomic) NSString *exchangeImageThreeStr;
 @property (weak, nonatomic) IBOutlet UIImageView *exchangeImageThree;
 @property (weak, nonatomic) IBOutlet UIView *threeBackgroundView;//hidden
 
@@ -265,10 +267,97 @@
     [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
     _tipView1.sureType = 0;
     
+    _tipView1.textField1.text = self.nameTextField.text;
+    _tipView1.textField2.text = self.sexTextField.text;
+    _tipView1.textLabel3.text = @"地区";
+    _tipView1.textField3.text = self.areaTextField.text;
+    _tipView1.textField4.text = self.brithDayTextField.text;
+    
+    _tipView1.textLabel5.text = @"证件号码";
+    _tipView1.textField5.text = self.numberTextField.text;
+    _tipView1.textLabel6.text = @"换证次数";
+    _tipView1.textField6.text = self.changeTimes.text;
+    _tipView1.textLabel7.text = @"有效期限";
+    _tipView1.textField7.text = [NSString stringWithFormat:@"%@-%@",self.beginTimeTextField.text,self.endTimeTextField.text];
+    
+    _tipView1.textLabel8.text = @"";
+    _tipView1.textField8.hidden = YES;
+
     [self startCount];
     _tipView1.sureButton.userInteractionEnabled = NO;
-    [_tipView1.sureButton addTarget:self action:@selector(sureButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [_tipView1.sureButton addTarget:self action:@selector(beginUpLoad) forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void)beginUpLoad{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self updateLoadImage:self.exchangeImageOne.image];
+
+}
+
+
+- (void)updateLoadImage:(UIImage *)upImage{
+    __weak typeof(self) weakSelf = self;
+    //上传图片
+    AFHTTPSessionManager*  manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes= [NSSet setWithObjects:@"text/html",@"image/jpeg",nil];
+    [manager POST:@"http://10.3.61.154:80/app/file/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        NSData *data = UIImageJPEGRepresentation(upImage, 0.8);
+        [formData appendPartWithFileData:data name:@"file" fileName:@".jpg" mimeType:@"image/jpeg"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (upImage == weakSelf.exchangeImageOne.image) {
+            weakSelf.exchangeImageOneStr = responseObject[@"data"][@"src"];
+        }else if (upImage == weakSelf.exchangeImageTwo.image) {
+            weakSelf.exchangeImageTwoStr = responseObject[@"data"][@"src"];
+        }else if (upImage == weakSelf.exchangeImageThree.image) {
+            weakSelf.exchangeImageThreeStr = responseObject[@"data"][@"src"];
+        }
+        if (!weakSelf.exchangeImageOneStr) {
+            [self updateLoadImage:self.exchangeImageOne.image];
+        }else if(!weakSelf.exchangeImageTwoStr) {
+            [self updateLoadImage:self.exchangeImageTwo.image];
+        }
+//        else if(!weakSelf.exchangeImageThreeStr&&[LoginSession sharedInstance].pageType == 1) {
+//            [self updateLoadImage:self.exchangeImageThree.image];
+//        }
+        
+        else{
+            [self finishUpInfo];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [weakSelf alertWithMsg:@"上传图片出错" handler:nil];
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+    }];
+}
+
+- (void)finishUpInfo{
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *pram = @{@"verifyType":@"1",//2外籍
+                           @"zjlx":@"港澳台来往大陆通行证",@"xm":self.nameTextField.text
+                           ,@"csrq":self.brithDayTextField.text//出生日期
+                           ,@"zz":self.areaTextField.text//香港九龙
+                           ,@"xb":self.sexTextField.text//性别
+                           ,@"zjhm":self.numberTextField.text//证件号码
+                           ,@"yxq":[NSString stringWithFormat:@"%@-%@",self.beginTimeTextField.text,self.endTimeTextField.text]//有效期限
+//                           ,@"qfjg":self.organizationTextField.text,//签发机关
+                           ,@"hzcs":self.changeTimes.text,//签发机关
+                           
+                           @"txzzm":self.exchangeImageOneStr,
+                           @"txzfm":self.exchangeImageTwoStr
+                           };
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newverify") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        if (success) {
+            
+            [weakSelf sureButtonClick];
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
+
 
 - (void)sureButtonClick{
     [_tipView1 customHidden];

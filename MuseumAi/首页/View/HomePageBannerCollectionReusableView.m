@@ -24,7 +24,7 @@
 }
 
 
-- (void)setImageArray:(NSArray<AdModel *> *)imageArray{
+- (void)setImageArray:(NSArray<BannerModel *> *)imageArray{
     _imageArray = imageArray;
     _bannerScrollView.imageArray = _imageArray;
 }

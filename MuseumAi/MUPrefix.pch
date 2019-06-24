@@ -42,6 +42,7 @@
 #import "SVProgressHelper.h"
 #import "RealFinishTipView1.h"
 #import "Utility.h"
+#import "MJExtension.h"
 
 #define kEnterBackgroundNotification @"kEnterBackgroundNotification"
 #define kEnterForegroundNotification @"kEnterForegroundNotification"
@@ -99,6 +100,7 @@ alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
 //#endif
 
 #define BaseImageUrl @"http://app.cszjw.net:11000/img?path="
+#define BasePlaceholder @""
 
 #define DetailUrlString(string) [NSString stringWithFormat:@"%@%@",BaseUrl,string]
 

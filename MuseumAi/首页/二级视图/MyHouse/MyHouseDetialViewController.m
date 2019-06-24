@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"我的购房";
+    self.title = @"购房信息";
     self.view.backgroundColor = kUIColorFromRGB(0xffffff);
     _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"},
                    @{@"title":@"购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改",@"content":@"myCenter_change"},

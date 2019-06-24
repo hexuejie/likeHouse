@@ -31,15 +31,14 @@
     
     
     
-    AdModel *model0 = [AdModel new];
-    model0.linkUrl = @"https://github.com/hexuejie/likeHouse";
+    BannerModel *model0 = [BannerModel new];
+//    model0.linkUrl = @"https://github.com/hexuejie/likeHouse";
     model0.img = @"http://app.cszjw.net:11000/img?path=/2019/05/21/155839850061246820227271300382580249.jpg";
     _bannerScrollView.imageArray = @[model0,model0,model0];
     
     
     [self bringSubviewToFront:self.tipBackGround];
     self.tipBackGround.layer.zPosition = 5;
-    
 }
 
 //- (void)scrollerIndexBannerView:(IndexBannerView *)view forIndex:(NSInteger)inde{

@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "IndexBannerView.h"
+#import "BannerModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomePageBannerCollectionReusableView : UICollectionReusableView<IndexBannerViewDelegate>
 
-@property (nonatomic,strong)NSArray<AdModel*> *imageArray;
+@property (nonatomic,strong)NSArray<BannerModel*> *imageArray;
 @property (nonatomic,strong)IndexBannerView *bannerScrollView;
 @end
 

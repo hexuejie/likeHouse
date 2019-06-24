@@ -127,8 +127,12 @@
     
     session.yhzt = dic[@"yhzt"];
     session.rzzt = dic[@"rzzt"];
-
+    session.yhbh = dic[@"yhbh"];
     
+    session.zjhm = dic[@"zjhm"];
+    session.zjlx = dic[@"zjlx"];
+    session.sjhm = dic[@"sjhm"];
+
     [ProUtils removeSession];
     [ProUtils archiveSession:session];
 //    [[DBManager shareManager] updatePhone];
@@ -267,11 +271,5 @@
 //- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
 //    return YES;
 //}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

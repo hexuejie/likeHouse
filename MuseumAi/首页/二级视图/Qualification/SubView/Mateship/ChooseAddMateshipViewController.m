@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSString *imageStr3;
 @property (strong, nonatomic) NSString *imageStr4;
 
+@property (strong, nonatomic) NSDictionary *dataDic;
 @property (strong, nonatomic) NSArray *dataArray;
 @property (strong, nonatomic) NSMutableArray *firstArray;
 
@@ -196,25 +197,94 @@
 
 - (IBAction)nextStepClick:(id)sender {
 
-    if (self.imageStr1.length>0&&
-        self.imageStr2.length>0&&
-        self.imageStr3.length>0&&
-        self.imageStr4.length>0&&
+    if (self.header.addImageViewOne.image&&
+        self.header.addImageViewTwo.image&&
+        self.footer.addImageOne.image&&
+        self.footer.addimageTwo.image&&
         self.dataArray.count>=2
         ) {
-        
-        [SVProgressHelper dismissWithMsg:@"保存成功 刷新数据！"];
-        for (UIViewController *controller in self.navigationController.viewControllers) {
-            if ([controller isKindOfClass:[ChooseQualificationTypeViewController class]]) {
-                ChooseQualificationTypeViewController *A =(ChooseQualificationTypeViewController *)controller;
-                [self.navigationController popToViewController:A animated:YES];
-            }
-        }
-        
+        [self updateLoadImage:nil];
     }else{
         [SVProgressHelper dismissWithMsg:@"请完善配偶信息"];
     }
 }
+
+- (void)updateLoadImage:(UIImage *)upImage{
+    __weak typeof(self) weakSelf = self;
+    NSArray *imageArray = @[self.header.addImageViewOne.image,self.header.addImageViewTwo.image
+                            ,self.footer.addImageOne.image,self.footer.addimageTwo.image
+                            ];
+    [NetWork uploadMoreFileHttpRequestURL:DetailUrlString(@"/upload") RequestPram:nil arrayImg:imageArray arrayAudio:nil RequestSuccess:^(id  _Nonnull respoes) {
+        if (respoes) {
+            [weakSelf updatePersonData];
+        }
+    } RequestFaile:^(NSError * _Nonnull erro) {
+        [weakSelf alertWithMsg:@"上传图片出错" handler:nil];
+    } UploadProgress:nil];
+}
+
+- (void)updatePersonData{
+    if (![LoginSession sharedInstance].yhbh) {
+        [LoginSession sharedInstance].yhbh = @"";
+    }
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *pram = @{
+//,@"csrq"    19941024
+//,@"hjfl"    家庭户口
+//,@"hjszd"    北京市-北京市-东城区
+//,@"hkb"    /2019/06/21/156110321053218976229976010302372140.png
+//,@"jhz"    /2019/06/21/156110321061240120529976010382791476.png
+//,@"lxdh"    15116171468
+//,@"mz"    汉
+//,@"qfjg"    桃源县公安局
+//,@"sfzfm"    /2019/06/21/156110321047293170329976010242479766.png
+//,@"sfzzm"    /2019/06/21/156110321043343136029976010203615300.png
+//,@"token"    eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ5aHp0IjowLCJyenJxIjoiMjAxOC0wOS0wMiIsInpqbHgiOiLouqvku73or4EiLCJyenp0IjoyLCJzamhtIjoiMTUxMTYxNjQ2OTAiLCJ5aHhtIjoi5p2o5piOIiwiempobSI6IjQzMDEyMjE5ODkxMDEwMjE5NyIsImV4cCI6MTU1OTczNTI1NiwieWhiaCI6IkEwMDAxMjAyNjkifQ.5JM30YRJSpCScdGypeaLFK6kYc0jREldxvI96F2lUK0
+//,@"xb"    女
+//,@"xm"    蔡怡君
+//,@"yxq"    20140413-20240413
+//,@"zjhm"    431026199410241639
+//,@"zjlx"    身份证
+//,@"zz"    湖南省桃源县九溪乡墟场
+                           };
+
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savepo/new") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        //banner
+        if (success) {
+            [SVProgressHelper dismissWithMsg:response[@"msg"]];
+            for (UIViewController *controller in self.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[ChooseQualificationTypeViewController class]]) {
+                    ChooseQualificationTypeViewController *A =(ChooseQualificationTypeViewController *)controller;
+                    [self.navigationController popToViewController:A animated:YES];
+                }
+            }
+
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
+
+- (void)reloadData {
+    __weak typeof(self) weakSelf = self;
+
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/allmessage/new") para:@{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        //banner
+        if (success) {
+            weakSelf.dataDic = response[@"data"];
+            NSDictionary *tempgrxx = weakSelf.dataDic[@"poxx"];
+//            if (![Utility is_empty:tempgrxx[@"jtcy"][@"hjszd"]]) {//地址
+//                self.threeTextField.text = tempgrxx[@"jtcy"][@"hjszd"];
+//            }
+//            if (![Utility is_empty:tempgrxx[@"zzxx"][@"hkb"]]) {//图片
+//                [self.addImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseImageUrl,tempgrxx[@"zzxx"][@"hkb"]]]];
+//            }
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
+
 
 - (void)dealloc {
     
