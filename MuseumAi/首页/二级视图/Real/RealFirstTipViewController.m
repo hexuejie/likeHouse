@@ -9,6 +9,7 @@
 #import "RealFirstTipViewController.h"
 #import "RealFirstChooseViewController.h"
 #import "ChooseQualificationTypeViewController.h"
+#import "ChooseOtherRealViewController.h"
 
 @interface RealFirstTipViewController ()
 
@@ -46,8 +47,9 @@
 - (IBAction)finishClick:(id)sender {
     if ([self.title isEqualToString:@"购房资格审查说明"]) {
         [self.navigationController pushViewController:[ChooseQualificationTypeViewController new] animated:YES];//购房资格审核
-    }else{
-        [self.navigationController pushViewController:[RealFirstChooseViewController new] animated:YES];
+    }else{//[RealFirstChooseViewController
+        [self.navigationController pushViewController:[ChooseOtherRealViewController new] animated:YES];
+//        [self.navigationController pushViewController:[RealFirstChooseViewController new] animated:YES];
     }
 }
 

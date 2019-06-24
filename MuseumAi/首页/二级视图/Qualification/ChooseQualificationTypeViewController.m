@@ -13,6 +13,7 @@
 #import "AddChildrenViewController.h"
 #import "AddChildrenListViewController.h"
 #import "AppendChooseViewController.h"
+#import "ChooseOtherRealViewController.h"
 
 @interface ChooseQualificationTypeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -82,7 +83,9 @@
             }break;
         case 1:
         {
-             [self.navigationController pushViewController:[ChooseAddMateshipViewController new] animated:YES];
+            [LoginSession sharedInstance].pageType = 1;
+            [self.navigationController pushViewController:[ChooseOtherRealViewController new] animated:YES];
+//             [self.navigationController pushViewController:[ChooseAddMateshipViewController new] animated:YES];
         }break;
         case 2:
         {

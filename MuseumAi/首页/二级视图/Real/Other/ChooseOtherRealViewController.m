@@ -11,8 +11,12 @@
 #import "RealFinishTipView1.h"
 #import "RealChooseHKViewController.h"
 #import "RealChooseForeignViewController.h"
+#import "RealFirstChooseViewController.h"
+#import "ChooseAddMateshipViewController.h"
+#import "AddChildrenViewController.h"
 
 @interface ChooseOtherRealViewController ()
+@property (weak, nonatomic) IBOutlet UIView *bgView0;
 @property (weak, nonatomic) IBOutlet UIView *bgView1;
 @property (weak, nonatomic) IBOutlet UIView *bgView2;
 @property (weak, nonatomic) IBOutlet UIView *bgView3;
@@ -27,6 +31,7 @@
     
     self.title = @"选择身份";
     
+    [self.bgView0 setCornerRadius:5 withShadow:YES withOpacity:10];
     [self.bgView1 setCornerRadius:5 withShadow:YES withOpacity:10];
     [self.bgView2 setCornerRadius:5 withShadow:YES withOpacity:10];
     [self.bgView3 setCornerRadius:5 withShadow:YES withOpacity:10];
@@ -53,7 +58,18 @@
             [self.navigationController pushViewController:[RealChooseForeignViewController new] animated:YES];
         }
             break;
+        case 9:
+        {
+            if ([LoginSession sharedInstance].pageType == 1) {
+                 [self.navigationController pushViewController:[ChooseAddMateshipViewController new] animated:YES];
+            }else if ([LoginSession sharedInstance].pageType == 2) {
+                [self.navigationController pushViewController:[AddChildrenViewController new] animated:YES];
+            }else{
+                [self.navigationController pushViewController:[RealFirstChooseViewController new] animated:YES];
+            }
             
+        }
+            break;
         default:
             break;
     }

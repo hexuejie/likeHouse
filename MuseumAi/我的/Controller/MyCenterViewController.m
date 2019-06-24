@@ -73,7 +73,11 @@
     [self.tableView reloadData];
     
     self.phoneLabel.text = [LoginSession sharedInstance].sjhm;
+    if (!self.phoneLabel.text.length) {
+        self.phoneLabel.text = [LoginSession sharedInstance].phone;
+    }
     self.realLabel.text = @"未实名认证";
+    
     if (![Utility is_empty:[LoginSession sharedInstance].rzzt]) {
         if ([[LoginSession sharedInstance].rzzt integerValue] == 2) {
             [self.goIntoReal setTitle:@">" forState:UIControlStateNormal];
@@ -81,7 +85,7 @@
         }else if ([[LoginSession sharedInstance].rzzt integerValue] == 3) {
             [self.goIntoReal setTitle:@">" forState:UIControlStateNormal];
             self.realLabel.text = @"实名认证未通过";
-        }else if ([[LoginSession sharedInstance].rzzt integerValue] == 2) {
+        }else if ([[LoginSession sharedInstance].rzzt integerValue] == 1) {
             [self.goIntoReal setTitle:@">" forState:UIControlStateNormal];
             self.realLabel.text = @"实名认证待审核";
         }
@@ -332,6 +336,11 @@
 }
 
 - (IBAction)realClick:(id)sender {
+    if (![Utility is_empty:[LoginSession sharedInstance].rzzt]&&[[LoginSession sharedInstance].rzzt integerValue]>0) {
+        
+        
+        return;
+    }
     RealFirstTipViewController *vc = [RealFirstTipViewController new];
     vc.title = @"关于实名认证";
     vc.hidesBottomBarWhenPushed = YES;

@@ -8,6 +8,7 @@
 
 #import "AddChildrenListViewController.h"
 #import "AddChildrenViewController.h"
+#import "ChooseOtherRealViewController.h"
 @interface AddChildrenListViewController ()
 
 @end
@@ -20,7 +21,9 @@
     self.title = @"添加子女信息";
 }
 - (IBAction)addChildrenClick:(id)sender {
-[self.navigationController pushViewController:[AddChildrenViewController new] animated:YES];
+    [LoginSession sharedInstance].pageType = 2;
+    [self.navigationController pushViewController:[ChooseOtherRealViewController new] animated:YES];
+//[self.navigationController pushViewController:[AddChildrenViewController new] animated:YES];
 }
 
 @end

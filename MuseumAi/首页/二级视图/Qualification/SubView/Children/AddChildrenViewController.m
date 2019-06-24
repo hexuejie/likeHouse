@@ -51,8 +51,8 @@
     self.title = @"添加子女信息";
     
     [self.contentScrolleView addSubview:self.contentView];
-    self.contentScrolleView.contentSize = CGSizeMake(SCREEN_WIDTH, 660);
-    self.contentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 660);
+    self.contentScrolleView.contentSize = CGSizeMake(SCREEN_WIDTH, 660-116);
+    self.contentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 660-116);
     [self.exchangeImage setBorderWithView];
     
     

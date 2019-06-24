@@ -91,12 +91,14 @@
     self.changeView2 = [self copyAView:self.changeView];
     
     CGFloat maign = 23;
-    self.headerTipView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 116);
-    self.changeView.frame = CGRectMake(45, 116+maign, SCREEN_WIDTH-95, 176);
-    self.changeView2.frame = CGRectMake(45, 116+maign*2 +176, SCREEN_WIDTH-95, 176);
+    CGFloat headerHeight = 0;
+    self.headerTipView.hidden = YES;
+//    self.headerTipView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 0);////116
+    self.changeView.frame = CGRectMake(45, headerHeight+maign, SCREEN_WIDTH-95, 176);
+    self.changeView2.frame = CGRectMake(45, headerHeight+maign*2 +176, SCREEN_WIDTH-95, 176);
     
-    self.frontAllView.frame = CGRectMake(0, 116, SCREEN_WIDTH-0, IDViewHeightFirst);
-    self.behindAllView.frame = CGRectMake(0, 116+maign +176, SCREEN_WIDTH-0, IDViewHeightSecond);
+    self.frontAllView.frame = CGRectMake(0, headerHeight, SCREEN_WIDTH-0, IDViewHeightFirst);
+    self.behindAllView.frame = CGRectMake(0, headerHeight+maign +176, SCREEN_WIDTH-0, IDViewHeightSecond);
     
     self.contentScrollew.contentSize = CGSizeMake(SCREEN_WIDTH, 515);
     
@@ -116,15 +118,16 @@
     [self.contentScrollew.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.contentScrollew addSubview:self.headerTipView];
     CGFloat maign = 23;
-    self.changeView2.frame = CGRectMake(45, 116+maign*2 +176, SCREEN_WIDTH-95, 176);
-    self.behindAllView.frame = CGRectMake(0, 116+maign +176, SCREEN_WIDTH-0, IDViewHeightSecond);
+    CGFloat headerHeight = 0;
+    self.changeView2.frame = CGRectMake(45, headerHeight+maign*2 +176, SCREEN_WIDTH-95, 176);
+    self.behindAllView.frame = CGRectMake(0, headerHeight+maign +176, SCREEN_WIDTH-0, IDViewHeightSecond);
     
     CGFloat allHeight = 515;
     if (self.chooseFonted) {
         allHeight = allHeight-ChangeIDViewHeight  +IDViewHeightFirst;
         [self.contentScrollew addSubview:self.frontAllView];
-        self.changeView2.frame = CGRectMake(45, 116+maign +IDViewHeightFirst, SCREEN_WIDTH-95, 176);
-        self.behindAllView.frame = CGRectMake(0, 116+maign +IDViewHeightFirst, SCREEN_WIDTH-0, IDViewHeightSecond);
+        self.changeView2.frame = CGRectMake(45, headerHeight+maign +IDViewHeightFirst, SCREEN_WIDTH-95, 176);
+        self.behindAllView.frame = CGRectMake(0, headerHeight+maign +IDViewHeightFirst, SCREEN_WIDTH-0, IDViewHeightSecond);
     }else{
         [self.contentScrollew addSubview:self.changeView];
     }

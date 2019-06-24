@@ -13,23 +13,24 @@
 #import "PureCamera.h"
 #import "JYBDIDCardVC.h"
 #import "ChooseQualificationTypeViewController.h"
+#import "ReleaseHomeworkTimeViewMask.h"
+#import "MOFSPickerManager.h"
 
-@interface ChooseAddMateshipViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ChooseAddMateshipViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) AddMateShipHeaderView *header;
 @property (strong, nonatomic) AddMateShipFooterView *footer;
 
-@property (strong, nonatomic) NSString *imageStr1;
-@property (strong, nonatomic) NSString *imageStr2;
-@property (strong, nonatomic) NSString *imageStr3;
-@property (strong, nonatomic) NSString *imageStr4;
+@property (strong, nonatomic) NSArray *imageStrArray;
 
 @property (strong, nonatomic) NSDictionary *dataDic;
 @property (strong, nonatomic) NSArray *dataArray;
 @property (strong, nonatomic) NSMutableArray *firstArray;
 
+
+@property (nonatomic , strong) ReleaseHomeworkTimeViewMask *timeViewMask;
 @end
 
 @implementation ChooseAddMateshipViewController
@@ -58,7 +59,7 @@
     
     self.header = [[[NSBundle mainBundle] loadNibNamed:@"AddMateShipHeaderView" owner:nil options:nil] lastObject];
     self.footer = [[[NSBundle mainBundle] loadNibNamed:@"AddMateShipFooterView" owner:nil options:nil] lastObject];
-    self.header.frame = CGRectMake(0, 0, SCREEN_WIDTH, 320-64);
+    self.header.frame = CGRectMake(0, 0, SCREEN_WIDTH, 320-64 -116);
     self.footer.frame = CGRectMake(0, 0, SCREEN_WIDTH, 140);
     self.tableView.tableHeaderView = self.header;
     self.tableView.tableFooterView = self.footer;
@@ -73,6 +74,8 @@
     tableViewGesture.numberOfTapsRequired = 1;
     tableViewGesture.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:tableViewGesture];
+    
+    _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] lastObject];
 }
 
 - (void)commentTableViewTouchInSide{
@@ -90,7 +93,7 @@
         NSArray *tempArray = @[@{@"title":@"姓名",@"content":info.name},
                                @{@"title":@"性别",@"content":info.gender},
                                @{@"title":@"民族",@"content":info.nation},
-                               @{@"title":@"出生",@"content":[info.num substringWithRange:NSMakeRange(6, 8)]},
+                               @{@"title":@"出生日期",@"content":[info.num substringWithRange:NSMakeRange(6, 8)]},
                                @{@"title":@"住址",@"content":info.address},
                                @{@"title":@"身份证号码",@"content":info.num}];
         [weakSelf.firstArray addObjectsFromArray:tempArray];
@@ -170,11 +173,40 @@
     NSDictionary *rowDic = _dataArray[indexPath.section][indexPath.row];
     cell.titleLabel.text = rowDic[@"title"];
     cell.contentTextField.placeholder = [NSString stringWithFormat:@"请输入%@",cell.titleLabel.text];
+    cell.clickButton.hidden = YES;
+    cell.clickButton.tag = indexPath.row;
+    cell.contentTextField.tag = indexPath.section*100+indexPath.row;
+    if ([cell.titleLabel.text isEqualToString:@"家庭户口类型"]||[cell.titleLabel.text isEqualToString:@"户籍所在地"]) {
+        cell.contentTextField.placeholder = [NSString stringWithFormat:@"请选择%@",cell.titleLabel.text];
+        cell.clickButton.hidden = NO;
+        [cell.clickButton addTarget:self action:@selector(clickButtonRow:) forControlEvents:UIControlEventTouchUpInside];
+    }
     cell.contentTextField.text = rowDic[@"content"];
+    cell.contentTextField.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    CGFloat fff = textField.tag/100.0;
+    NSInteger section = floor(fff);
+    NSInteger row = fmod(textField.tag,100);
+    __weak typeof(self) weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (textField.text.length) {
+            NSMutableDictionary *tempDic = [[NSMutableDictionary alloc]initWithDictionary:weakSelf.dataArray[section][row]];
+            [tempDic setObject:textField.text forKey:@"content"];
+            
+            NSMutableArray *tempArr = [[NSMutableArray alloc]initWithArray:weakSelf.dataArray[section] ];
+            [tempArr setObject:tempDic atIndexedSubscript:row];
+            
+            NSMutableArray *tempAllArr = [[NSMutableArray alloc]initWithArray:weakSelf.dataArray];
+            [tempAllArr setObject:tempArr atIndexedSubscript:section];
+            weakSelf.dataArray = tempAllArr;
+        }
 
+    });
+    return YES;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     return 51.0;
 }
@@ -194,9 +226,15 @@
 
 
 #pragma mark - Click
-
 - (IBAction)nextStepClick:(id)sender {
-
+    //验证信息
+    
+    for (NSDictionary *tempDic in [self.dataArray lastObject]) {
+        if ([tempDic[@"content"] length] == 0) {
+            [SVProgressHelper dismissWithMsg:@"请完善配偶信息"];
+            return;
+        }
+    }
     if (self.header.addImageViewOne.image&&
         self.header.addImageViewTwo.image&&
         self.footer.addImageOne.image&&
@@ -214,8 +252,9 @@
     NSArray *imageArray = @[self.header.addImageViewOne.image,self.header.addImageViewTwo.image
                             ,self.footer.addImageOne.image,self.footer.addimageTwo.image
                             ];
-    [NetWork uploadMoreFileHttpRequestURL:DetailUrlString(@"/upload") RequestPram:nil arrayImg:imageArray arrayAudio:nil RequestSuccess:^(id  _Nonnull respoes) {
+    [NetWork uploadMoreFileHttpRequestURL:DetailUrlString(@"/upload") RequestPram:@{} arrayImg:imageArray arrayAudio:@[] RequestSuccess:^(id  _Nonnull respoes) {
         if (respoes) {
+            weakSelf.imageStrArray = [respoes componentsSeparatedByString:@";"];
             [weakSelf updatePersonData];
         }
     } RequestFaile:^(NSError * _Nonnull erro) {
@@ -227,28 +266,56 @@
     if (![LoginSession sharedInstance].yhbh) {
         [LoginSession sharedInstance].yhbh = @"";
     }
+    NSMutableDictionary *pramDic = [NSMutableDictionary new];
+    
+    for (NSDictionary *tempDic in [_dataArray firstObject]) {
+        
+        if ([tempDic[@"title"] isEqualToString:@"出生日期"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"csrq"];
+        }
+        if ([tempDic[@"title"] isEqualToString:@"住址"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"zz"];
+        }
+        if ([tempDic[@"title"] isEqualToString:@"身份证号码"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"zjhm"];
+        }
+        if ([tempDic[@"title"] isEqualToString:@"有效期限"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"yxq"];
+        }
+        if ([tempDic[@"title"] isEqualToString:@"姓名"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"xm"];
+        }
+        if ([tempDic[@"title"] isEqualToString:@"性别"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"xb"];
+        }
+        if ([tempDic[@"title"] isEqualToString:@"民族"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"mz"];
+        }
+        if ([tempDic[@"title"] isEqualToString:@"签发机关"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"qfjg"];
+        }
+    }
+    for (NSDictionary *tempDic in [_dataArray lastObject]) {
+        
+        if ([tempDic[@"title"] isEqualToString:@"家庭户口类型"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"hjfl"];
+        }
+        if ([tempDic[@"title"] isEqualToString:@"户籍所在地"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"hjszd"];
+        }
+        if ([tempDic[@"title"] isEqualToString:@"手机号"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"lxdh"];
+        }
+    }
+    
+    [pramDic setObject:@"身份证" forKey:@"zjlx"];
+    [pramDic setObject:self.imageStrArray[0] forKey:@"sfzzm"];
+    [pramDic setObject:self.imageStrArray[1] forKey:@"sfzfm"];
+    [pramDic setObject:self.imageStrArray[2] forKey:@"hkb"];
+    [pramDic setObject:self.imageStrArray[3] forKey:@"jhz"];
     __weak typeof(self) weakSelf = self;
-    NSDictionary *pram = @{
-//,@"csrq"    19941024
-//,@"hjfl"    家庭户口
-//,@"hjszd"    北京市-北京市-东城区
-//,@"hkb"    /2019/06/21/156110321053218976229976010302372140.png
-//,@"jhz"    /2019/06/21/156110321061240120529976010382791476.png
-//,@"lxdh"    15116171468
-//,@"mz"    汉
-//,@"qfjg"    桃源县公安局
-//,@"sfzfm"    /2019/06/21/156110321047293170329976010242479766.png
-//,@"sfzzm"    /2019/06/21/156110321043343136029976010203615300.png
-//,@"token"    eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ5aHp0IjowLCJyenJxIjoiMjAxOC0wOS0wMiIsInpqbHgiOiLouqvku73or4EiLCJyenp0IjoyLCJzamhtIjoiMTUxMTYxNjQ2OTAiLCJ5aHhtIjoi5p2o5piOIiwiempobSI6IjQzMDEyMjE5ODkxMDEwMjE5NyIsImV4cCI6MTU1OTczNTI1NiwieWhiaCI6IkEwMDAxMjAyNjkifQ.5JM30YRJSpCScdGypeaLFK6kYc0jREldxvI96F2lUK0
-//,@"xb"    女
-//,@"xm"    蔡怡君
-//,@"yxq"    20140413-20240413
-//,@"zjhm"    431026199410241639
-//,@"zjlx"    身份证
-//,@"zz"    湖南省桃源县九溪乡墟场
-                           };
 
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savepo/new") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savepo/new") para:pramDic isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner
         if (success) {
             [SVProgressHelper dismissWithMsg:response[@"msg"]];
@@ -285,6 +352,59 @@
     }];
 }
 
+- (void)clickButtonRow:(UIButton *)button{
+    __weak typeof(self) weakSelf = self;
+    if (button.tag) {
+        NSString *string;
+        for (NSDictionary *tempDic in [_dataArray lastObject]) {
+            
+            if ([tempDic[@"title"] isEqualToString:@"户籍所在地"]) {
+                string = tempDic[@"content"];
+            }
+        }
+        [[MOFSPickerManager shareManger] showMOFSAddressPickerWithDefaultAddress:string title:@"请选择户籍所在地" cancelTitle:@"取消" commitTitle:@"完成" commitBlock:^(NSString * _Nullable address, NSString * _Nullable zipcode) {
+            NSMutableArray *tempArr = [[NSMutableArray alloc]initWithArray:[weakSelf.dataArray lastObject]];
+            
+            weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
+                                   @[tempArr.firstObject,
+                                     @{@"title":@"户籍所在地",@"content":address},
+                                     tempArr.lastObject]
+                                   ];
+            [self.tableView reloadData];
+            NSLog(@"%@", zipcode);
+            
+        } cancelBlock:^{
+            
+        }];
+    }else{
+        _timeViewMask.titleLabel.text = @"请选择家庭户口类型";
+        [self showOtherAlertView:@[@"集体户口",@"家庭户口"]];
+    }
+}
+- (void)showOtherAlertView:(NSArray *)array{
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:_timeViewMask];
+    _timeViewMask.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    _timeViewMask.customPickArray = array;
+    
+    [_timeViewMask.finishButton addTarget:self action:@selector(timefinishClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_timeViewMask.cancleButton addTarget:self action:@selector(timecancleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+- (void)timecancleButtonClick:(UIButton *)button{
+    [_timeViewMask removeFromSuperview];
+}
+- (void)timefinishClick:(UIButton *)button{
+    [_timeViewMask removeFromSuperview];
+    
+    NSMutableArray *tempArr = [[NSMutableArray alloc]initWithArray:[self.dataArray lastObject]];
+    NSDictionary *temp1 = tempArr[1];
+    self.dataArray = @[self.firstArray,//身份证扫出来
+                       @[@{@"title":@"家庭户口类型",@"content":_timeViewMask.selectedString},
+                         temp1,
+                         tempArr.lastObject]
+                       ];
+    [self.tableView reloadData];
+}
 
 - (void)dealloc {
     
@@ -293,7 +413,7 @@
 - (void)keyboardChange:(NSNotification *)note{
     CGRect frame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGFloat keyHeight =  [UIScreen mainScreen].bounds.size.height - frame.origin.y;
-    self.view.frame = CGRectMake(0, -keyHeight, SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.view.frame = CGRectMake(0, -keyHeight/2, SCREEN_WIDTH, SCREEN_HEIGHT);
     [UIView animateWithDuration:0.25 animations:^{
         [self.view layoutIfNeeded];
     }];

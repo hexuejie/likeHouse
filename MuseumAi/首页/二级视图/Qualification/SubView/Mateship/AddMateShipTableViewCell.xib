@@ -79,7 +79,7 @@
                 <outlet property="contentTextField" destination="Mrx-FB-WAz" id="5wF-sq-Ac8"/>
                 <outlet property="titleLabel" destination="Qpc-oQ-kbK" id="G4C-1N-17l"/>
             </connections>
-            <point key="canvasLocation" x="-8" y="201.04947526236884"/>
+            <point key="canvasLocation" x="-45" y="197"/>
         </tableViewCell>
     </objects>
     <resources>
