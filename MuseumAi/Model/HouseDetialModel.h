@@ -6,11 +6,11 @@
 //  Copyright © 2019 Weizh. All rights reserved.
 //
 
-#import "BannerModel.h"
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HouseModel : BannerModel
+@interface HouseDetialModel : NSObject
 //list  楼盘列表 普通
 //1
 @property (nonatomic,copy)NSString *tempId;// 0,

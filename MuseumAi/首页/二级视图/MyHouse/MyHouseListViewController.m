@@ -62,8 +62,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MyHouseDetialViewController *vc = [MyHouseDetialViewController new];
     vc.title = @"购房信息";
+    vc.model = _dataArray[indexPath.row];
+    
     [self.navigationController pushViewController:vc animated:YES];
-}
+}//mj_keyValues
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
         return 10.0;
@@ -80,19 +82,20 @@
     __weak typeof(self) weakSelf = self;
     self.dataArray = [NSMutableArray new];
 
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/contract/list") para: @{@"page":@"1",@"rows":@"3"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/contract/list") para: @{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner
         if (success) {
    
             for (NSDictionary *tempdic in response[@"data"]) {
-                [self.dataArray addObject:[MyHouseMode mj_objectWithKeyValues:tempdic]];
+                [weakSelf.dataArray addObject:[MyHouseMode mj_objectWithKeyValues:tempdic]];
             }
         
             [weakSelf.tableView reloadData];
-            if (self.dataArray.count == 0) {
-                [self addNoneDataTipView];
+            if (weakSelf.dataArray.count == 0) {
+                [weakSelf addNoneDataTipView];
             }
         }else{
+            [weakSelf addNoneDataTipView];
             [weakSelf alertWithMsg:kFailedTips handler:nil];
         }
     }];

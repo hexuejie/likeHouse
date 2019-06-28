@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 //1
 @property (nonatomic,copy) NSString *ywzh;//200212230025",
 @property (nonatomic,copy) NSString *htbh;//20021255605",
-@property (nonatomic,copy) NSString *qydm;//430100",
+@property (nonatomic,copy) NSString *qybh;//430100",
 @property (nonatomic,copy) NSString *qymc;//长沙市",
 @property (nonatomic,copy) NSString *htqdrq;//2002/12/23",
 @property (nonatomic,copy) NSString *htqdsj;//12:50:25",
@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *clh;//96.40-50.50-03-009",
 @property (nonatomic,copy) NSString *dh;//1栋",
 @property (nonatomic,copy) NSString *sh;//605"
+
 
 @end
 

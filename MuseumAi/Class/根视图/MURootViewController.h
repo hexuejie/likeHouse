@@ -19,7 +19,7 @@
 
 - (void)callBackClick;
 
-- (void)testButtonClick;
+//- (void)testButtonClick;
 
 - (void)reloadData;
 

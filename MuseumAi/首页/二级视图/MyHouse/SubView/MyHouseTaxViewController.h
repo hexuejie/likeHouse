@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MyHouseTaxViewController : MURootViewController
 
+@property (nonatomic ,strong) NSDictionary *dataDic;
+
+@property (nonatomic ,strong) NSString *htbh;
 @end
 
 NS_ASSUME_NONNULL_END

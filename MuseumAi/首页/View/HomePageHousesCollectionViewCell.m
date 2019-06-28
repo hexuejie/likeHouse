@@ -20,16 +20,13 @@
 }
 
 
-- (void)setModel:(HouseModel *)model{
+- (void)setModel:(HouseListModel *)model{
     _model = model;
     
     self.titleLabel.text = _model.lpmc;
     self.contentLabel.text = _model.addr;
-    if (_model.jj && ![_model.lpzt isKindOfClass:[NSNull class]]) {
-        self.priceLabel.text = _model.jj;
-    }else{
-        self.priceLabel.text = @"价格待定";
-    }
+    self.priceLabel.text = [NSString stringWithFormat:@"%@",_model.jj] ;
+    
     if (_model.lpzt && ![_model.lpzt isKindOfClass:[NSNull class]]) {
         switch ([_model.lpzt integerValue]) {
             case 1:
@@ -48,12 +45,12 @@
                 break;
         }
     }
-    if (_model.bq && ![_model.bq isKindOfClass:[NSNull class]]) {
-        self.tipTagLabel.text = _model.bq;
+    self.tipTagLabel.text = _model.bq;
+    if (self.tipTagLabel.text.length >0) {
+        self.tipTagLabel.hidden = NO;
     }else{
-        
+        self.tipTagLabel.hidden = YES;
     }
-    [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:_model.img] placeholderImage:[UIImage imageNamed:BasePlaceholder]];
-
+    [self.coverImageView setOtherImageUrl:_model.img];
 }
 @end

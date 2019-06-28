@@ -75,5 +75,10 @@
     }
 }
 
-
+- (void)setDataDic:(NSDictionary *)dataDic{
+    _dataDic = dataDic;
+    if (_dataDic) {
+        
+    }
+}
 @end

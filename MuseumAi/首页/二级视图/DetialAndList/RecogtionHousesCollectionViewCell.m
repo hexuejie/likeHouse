@@ -19,4 +19,22 @@
     [self.contentView bringSubviewToFront:self.viewview];
 }
 
+
+- (void)setModel:(HouseListModel *)model{
+    _model = model;
+    
+    [self.coverImageView setOtherImageUrl:_model.img];
+    self.ChatTagLabel.text = _model.lpzt;
+    self.tipTagLabel.text = _model.bq;
+    self.titleLabel.text = _model.lpmc;
+    self.contentBeginLabel.text = _model.kprq;
+    self.contentEndLabel.text = _model.kpjsrq;
+    self.priceLabel.text = [NSString stringWithFormat:@"%@",_model.jj];
+    
+    if (self.tipTagLabel.text.length >0) {
+        self.tipTagLabel.hidden = NO;
+    }else{
+        self.tipTagLabel.hidden = YES;
+    }
+}
 @end

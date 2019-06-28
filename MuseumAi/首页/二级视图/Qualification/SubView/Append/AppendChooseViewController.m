@@ -25,6 +25,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel2;
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel3;
 
+
+@property (strong, nonatomic) NSDictionary *dataDic;
+
+@property (assign, nonatomic) BOOL grxx;
+@property (assign, nonatomic) BOOL poxx;
+@property (assign, nonatomic) BOOL znxx;
+
 @end
 
 @implementation AppendChooseViewController
@@ -86,5 +93,41 @@
 //    }
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self customReload];
+}
 
+- (void)customReload{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/pdspecial") para:@{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        //banner
+        if (success) {
+            weakSelf.dataDic = response[@"data"];
+            if (![Utility is_empty:weakSelf.dataDic[@"tsrc"]]) {
+                weakSelf.grxx = [weakSelf.dataDic[@"tsrc"] boolValue];
+            }
+            if (![Utility is_empty:weakSelf.dataDic[@"zsjt"]]) {
+                weakSelf.poxx = [weakSelf.dataDic[@"zsjt"] boolValue];
+            }
+            if (![Utility is_empty:weakSelf.dataDic[@"szssb"]]) {
+                weakSelf.znxx = [weakSelf.dataDic[@"szssb"] boolValue];
+            }
+            if (weakSelf.grxx) {
+                weakSelf.tagLabel1.text = @"已添加";
+            }
+            if (weakSelf.poxx) {
+                weakSelf.tagLabel2.text = @"已添加";
+            }
+            if (weakSelf.znxx) {
+                weakSelf.tagLabel3.text = @"已添加";
+            }
+//            [weakSelf.tableView reloadData];
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
 @end

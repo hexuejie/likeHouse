@@ -12,6 +12,7 @@
 #import "JYEqualCellSpaceFlowLayout.h"
 #import "HomePageHousesCollectionViewCell.h"
 #import "HouseDetialViewController.h"
+#import "HouseListModel.h"
 
 @interface HousesListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -68,13 +69,13 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return  7;
+    return  _houses.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     HomePageHousesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell" forIndexPath:indexPath];
-    
+    cell.model = _houses[indexPath.row];
     return cell;
 }
 
@@ -94,26 +95,28 @@
 
 
 - (void)reloadData {
-    __weak typeof(self) weakSelf = self;
+    if ([self.title isEqualToString:@"我的认筹"]) {
+        __weak typeof(self) weakSelf = self;
+        [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/renchouhistory") para: @{@"page":@"1",@"rows":@"999"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+            
+            if (success) {
+                
+                weakSelf.houses = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"data"]];
+                [weakSelf.contentCollectionView reloadData];
+                if (!weakSelf.houses) {
+                    [weakSelf addNoneDataTipView];
+                }
+            }else{
+                [weakSelf addNoneDataTipView];
+                [weakSelf alertWithMsg:kFailedTips handler:nil];
+            }
+            [weakSelf.contentCollectionView.mj_header endRefreshing];
+            [weakSelf.contentCollectionView.mj_footer endRefreshing];
+            //            [weakSelf.contentCollectionView.mj_header endRefreshing];
+            //            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
+        }];
+    }
     
-    //    @{@"page":@"1",@"rows":@"3",@"token":[LoginSession sharedInstance].token};
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"3"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-        
-        if (success) {
-            NSDictionary *dic = response[@"data"];
-            [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"linkUrl"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            
-            [weakSelf.contentCollectionView reloadData];
-            
-        }else{
-            [weakSelf alertWithMsg:kFailedTips handler:nil];
-        }
-        [weakSelf.contentCollectionView.mj_header endRefreshing];
-        [weakSelf.contentCollectionView.mj_footer endRefreshing];
-        //            [weakSelf.contentCollectionView.mj_header endRefreshing];
-        //            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
-    }];
 }
 
 

@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MyHouseCodeViewController : MURootViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *codeLabel;
+
+@property (assign, nonatomic) NSString *codeStr;
+
+@property (strong, nonatomic) NSDictionary *pramDic;
 @end
 
 NS_ASSUME_NONNULL_END

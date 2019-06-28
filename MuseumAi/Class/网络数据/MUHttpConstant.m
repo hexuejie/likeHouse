@@ -18,7 +18,7 @@ NSString * const kWechatBase = @"https://api.weixin.qq.com/sns";
 NSString * const kWechatToken = @"/oauth2/access_token";
 NSString * const kWechatUserInfo = @"/userinfo";
 
-NSString * const kFailedTips = @"服务器忙，请稍后再试";
+NSString * const kFailedTips = @"服务器繁忙";
 
 NSString *const kAppKey = @"zKaw7utGcDyLsaQhD2g3IGzOakzLtfuz";
 

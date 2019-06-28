@@ -77,6 +77,10 @@
 		A15871B022B8FDAD001567F8 /* MyHouseCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15871AE22B8FDAD001567F8 /* MyHouseCodeViewController.xib */; };
 		A15871B622B9C9CD001567F8 /* QiCodePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = A15871B222B9C9CD001567F8 /* QiCodePreviewView.m */; };
 		A15871B722B9C9CD001567F8 /* QiCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A15871B322B9C9CD001567F8 /* QiCodeManager.m */; };
+		A15B3ECC22C46205004BF242 /* ResultContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A15B3ECA22C46205004BF242 /* ResultContentTableViewCell.m */; };
+		A15B3ECD22C46205004BF242 /* ResultContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15B3ECB22C46205004BF242 /* ResultContentTableViewCell.xib */; };
+		A15B3ED122C46214004BF242 /* ResultTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A15B3ECF22C46214004BF242 /* ResultTitleTableViewCell.m */; };
+		A15B3ED222C46214004BF242 /* ResultTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15B3ED022C46214004BF242 /* ResultTitleTableViewCell.xib */; };
 		A16093F4229E1BC100FBC19B /* RealFirstTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16093F2229E1BC100FBC19B /* RealFirstTipViewController.m */; };
 		A16093F5229E1BC100FBC19B /* RealFirstTipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16093F3229E1BC100FBC19B /* RealFirstTipViewController.xib */; };
 		A16093F9229E250700FBC19B /* RealFirstChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16093F7229E250700FBC19B /* RealFirstChooseViewController.m */; };
@@ -152,6 +156,7 @@
 		A16A985A22AE4F3700078BEE /* MyCenterSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16A985822AE4F3700078BEE /* MyCenterSettingViewController.m */; };
 		A16A985B22AE4F3700078BEE /* MyCenterSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16A985922AE4F3700078BEE /* MyCenterSettingViewController.xib */; };
 		A16BB41C22B7715900C2E7F5 /* MyHouseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BB41B22B7715900C2E7F5 /* MyHouseListViewController.m */; };
+		A16D949522C5A3AC001F8483 /* HouseListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D949422C5A3AC001F8483 /* HouseListModel.m */; };
 		A1817F64229E8704003B2FBF /* ChooseOtherRealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1817F62229E8704003B2FBF /* ChooseOtherRealViewController.m */; };
 		A1817F65229E8704003B2FBF /* ChooseOtherRealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1817F63229E8704003B2FBF /* ChooseOtherRealViewController.xib */; };
 		A1817F68229FA715003B2FBF /* RealFinishTipView1.m in Sources */ = {isa = PBXBuildFile; fileRef = A1817F67229FA715003B2FBF /* RealFinishTipView1.m */; };
@@ -185,6 +190,14 @@
 		A1A990A922C05B74000EB09A /* InformationLookoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990A222C05B72000EB09A /* InformationLookoutViewController.m */; };
 		A1A990AA22C05B74000EB09A /* NewsSegmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990A422C05B73000EB09A /* NewsSegmentViewController.m */; };
 		A1A990AB22C05B74000EB09A /* InformationLookoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A990A522C05B73000EB09A /* InformationLookoutViewController.xib */; };
+		A1A990AF22C0AA92000EB09A /* AddChildrenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990AD22C0AA92000EB09A /* AddChildrenTableViewCell.m */; };
+		A1A990B022C0AA92000EB09A /* AddChildrenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A990AE22C0AA92000EB09A /* AddChildrenTableViewCell.xib */; };
+		A1A990B522C0D051000EB09A /* UIImageView+add.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990B422C0D051000EB09A /* UIImageView+add.m */; };
+		A1A990B822C1CE64000EB09A /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990B722C1CE64000EB09A /* PersonModel.m */; };
+		A1A990BC22C1CEBD000EB09A /* jtcyPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990BB22C1CEBD000EB09A /* jtcyPersonModel.m */; };
+		A1A990BF22C1CEEA000EB09A /* zzxxPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990BE22C1CEEA000EB09A /* zzxxPersonModel.m */; };
+		A1A990C322C31BFC000EB09A /* MyHousePaySuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990C122C31BFC000EB09A /* MyHousePaySuccessViewController.m */; };
+		A1A990C422C31BFC000EB09A /* MyHousePaySuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A990C222C31BFC000EB09A /* MyHousePaySuccessViewController.xib */; };
 		A1BFB43E22A506C6008B629B /* XWCountryCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BFB43C22A506C6008B629B /* XWCountryCodeController.m */; };
 		A1BFB44022A5FF23008B629B /* sortedNameCH.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1BFB43F22A5FF23008B629B /* sortedNameCH.plist */; };
 		A1BFB4DF22A7656E008B629B /* ChooseQualificationTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BFB4DD22A7656D008B629B /* ChooseQualificationTypeViewController.m */; };
@@ -248,7 +261,7 @@
 		A1EFACE522B3898B007593EB /* SysMesssageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACE322B3898B007593EB /* SysMesssageTableViewCell.m */; };
 		A1EFACE622B3898B007593EB /* SysMesssageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EFACE422B3898B007593EB /* SysMesssageTableViewCell.xib */; };
 		A1EFACEC22B39455007593EB /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACEB22B39455007593EB /* BannerModel.m */; };
-		A1EFACEF22B395A6007593EB /* HouseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACEE22B395A6007593EB /* HouseModel.m */; };
+		A1EFACEF22B395A6007593EB /* HouseDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACEE22B395A6007593EB /* HouseDetialModel.m */; };
 		A1EFACF222B395B9007593EB /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACF122B395B9007593EB /* NewsModel.m */; };
 		A1EFAD2E22B3A8E0007593EB /* UIImage+IDCardExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACFD22B3A8E0007593EB /* UIImage+IDCardExtend.m */; };
 		A1EFAD2F22B3A8E0007593EB /* UIAlertController+IDCardExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACFE22B3A8E0007593EB /* UIAlertController+IDCardExtend.m */; };
@@ -274,6 +287,7 @@
 		A1EFAD4422B3A8E0007593EB /* flashlightscan.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EFAD2B22B3A8E0007593EB /* flashlightscan.png */; };
 		A1EFAD4522B3A8E0007593EB /* scaningbgimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EFAD2C22B3A8E0007593EB /* scaningbgimage@2x.png */; };
 		A1EFAD4622B3A8E0007593EB /* scaningbgimage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EFAD2D22B3A8E0007593EB /* scaningbgimage@3x.png */; };
+		A1FC0CB022C352F7002B214E /* AddOtherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FC0CAF22C352F7002B214E /* AddOtherModel.m */; };
 		A1FF19C922AF82FC00C09386 /* RecogtionHousesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FF19C722AF82FC00C09386 /* RecogtionHousesCollectionViewCell.m */; };
 		A1FF19CA22AF82FC00C09386 /* RecogtionHousesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FF19C822AF82FC00C09386 /* RecogtionHousesCollectionViewCell.xib */; };
 		A1FF19CF22AFA91800C09386 /* HouseDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FF19CD22AFA91800C09386 /* HouseDetialViewController.m */; };
@@ -612,6 +626,12 @@
 		A15871B322B9C9CD001567F8 /* QiCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCodeManager.m; sourceTree = "<group>"; };
 		A15871B422B9C9CD001567F8 /* QiCodePreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCodePreviewView.h; sourceTree = "<group>"; };
 		A15871B522B9C9CD001567F8 /* QiCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCodeManager.h; sourceTree = "<group>"; };
+		A15B3EC922C46205004BF242 /* ResultContentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultContentTableViewCell.h; sourceTree = "<group>"; };
+		A15B3ECA22C46205004BF242 /* ResultContentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultContentTableViewCell.m; sourceTree = "<group>"; };
+		A15B3ECB22C46205004BF242 /* ResultContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultContentTableViewCell.xib; sourceTree = "<group>"; };
+		A15B3ECE22C46214004BF242 /* ResultTitleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultTitleTableViewCell.h; sourceTree = "<group>"; };
+		A15B3ECF22C46214004BF242 /* ResultTitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultTitleTableViewCell.m; sourceTree = "<group>"; };
+		A15B3ED022C46214004BF242 /* ResultTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTitleTableViewCell.xib; sourceTree = "<group>"; };
 		A16093F1229E1BC100FBC19B /* RealFirstTipViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RealFirstTipViewController.h; sourceTree = "<group>"; };
 		A16093F2229E1BC100FBC19B /* RealFirstTipViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RealFirstTipViewController.m; sourceTree = "<group>"; };
 		A16093F3229E1BC100FBC19B /* RealFirstTipViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RealFirstTipViewController.xib; sourceTree = "<group>"; };
@@ -722,6 +742,8 @@
 		A16A985922AE4F3700078BEE /* MyCenterSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCenterSettingViewController.xib; sourceTree = "<group>"; };
 		A16BB41A22B7715900C2E7F5 /* MyHouseListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHouseListViewController.h; sourceTree = "<group>"; };
 		A16BB41B22B7715900C2E7F5 /* MyHouseListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseListViewController.m; sourceTree = "<group>"; };
+		A16D949322C5A3AC001F8483 /* HouseListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseListModel.h; sourceTree = "<group>"; };
+		A16D949422C5A3AC001F8483 /* HouseListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseListModel.m; sourceTree = "<group>"; };
 		A1817F61229E8704003B2FBF /* ChooseOtherRealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseOtherRealViewController.h; sourceTree = "<group>"; };
 		A1817F62229E8704003B2FBF /* ChooseOtherRealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseOtherRealViewController.m; sourceTree = "<group>"; };
 		A1817F63229E8704003B2FBF /* ChooseOtherRealViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseOtherRealViewController.xib; sourceTree = "<group>"; };
@@ -779,6 +801,20 @@
 		A1A990A322C05B73000EB09A /* NewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListViewController.h; sourceTree = "<group>"; };
 		A1A990A422C05B73000EB09A /* NewsSegmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsSegmentViewController.m; sourceTree = "<group>"; };
 		A1A990A522C05B73000EB09A /* InformationLookoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationLookoutViewController.xib; sourceTree = "<group>"; };
+		A1A990AC22C0AA92000EB09A /* AddChildrenTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddChildrenTableViewCell.h; sourceTree = "<group>"; };
+		A1A990AD22C0AA92000EB09A /* AddChildrenTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddChildrenTableViewCell.m; sourceTree = "<group>"; };
+		A1A990AE22C0AA92000EB09A /* AddChildrenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChildrenTableViewCell.xib; sourceTree = "<group>"; };
+		A1A990B322C0D051000EB09A /* UIImageView+add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+add.h"; sourceTree = "<group>"; };
+		A1A990B422C0D051000EB09A /* UIImageView+add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+add.m"; sourceTree = "<group>"; };
+		A1A990B622C1CE64000EB09A /* PersonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
+		A1A990B722C1CE64000EB09A /* PersonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
+		A1A990BA22C1CEBD000EB09A /* jtcyPersonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jtcyPersonModel.h; sourceTree = "<group>"; };
+		A1A990BB22C1CEBD000EB09A /* jtcyPersonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jtcyPersonModel.m; sourceTree = "<group>"; };
+		A1A990BD22C1CEEA000EB09A /* zzxxPersonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zzxxPersonModel.h; sourceTree = "<group>"; };
+		A1A990BE22C1CEEA000EB09A /* zzxxPersonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zzxxPersonModel.m; sourceTree = "<group>"; };
+		A1A990C022C31BFC000EB09A /* MyHousePaySuccessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHousePaySuccessViewController.h; sourceTree = "<group>"; };
+		A1A990C122C31BFC000EB09A /* MyHousePaySuccessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHousePaySuccessViewController.m; sourceTree = "<group>"; };
+		A1A990C222C31BFC000EB09A /* MyHousePaySuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHousePaySuccessViewController.xib; sourceTree = "<group>"; };
 		A1BFB43B22A4FEAA008B629B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A1BFB43C22A506C6008B629B /* XWCountryCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWCountryCodeController.m; sourceTree = "<group>"; };
 		A1BFB43D22A506C6008B629B /* XWCountryCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWCountryCodeController.h; sourceTree = "<group>"; };
@@ -885,8 +921,8 @@
 		A1EFACE422B3898B007593EB /* SysMesssageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SysMesssageTableViewCell.xib; sourceTree = "<group>"; };
 		A1EFACEA22B39455007593EB /* BannerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerModel.h; sourceTree = "<group>"; };
 		A1EFACEB22B39455007593EB /* BannerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
-		A1EFACED22B395A6007593EB /* HouseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseModel.h; sourceTree = "<group>"; };
-		A1EFACEE22B395A6007593EB /* HouseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseModel.m; sourceTree = "<group>"; };
+		A1EFACED22B395A6007593EB /* HouseDetialModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseDetialModel.h; sourceTree = "<group>"; };
+		A1EFACEE22B395A6007593EB /* HouseDetialModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseDetialModel.m; sourceTree = "<group>"; };
 		A1EFACF022B395B9007593EB /* NewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
 		A1EFACF122B395B9007593EB /* NewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		A1EFACFC22B3A8E0007593EB /* UIAlertController+IDCardExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+IDCardExtend.h"; sourceTree = "<group>"; };
@@ -930,6 +966,8 @@
 		A1EFAD2B22B3A8E0007593EB /* flashlightscan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flashlightscan.png; sourceTree = "<group>"; };
 		A1EFAD2C22B3A8E0007593EB /* scaningbgimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scaningbgimage@2x.png"; sourceTree = "<group>"; };
 		A1EFAD2D22B3A8E0007593EB /* scaningbgimage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scaningbgimage@3x.png"; sourceTree = "<group>"; };
+		A1FC0CAE22C352F7002B214E /* AddOtherModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddOtherModel.h; sourceTree = "<group>"; };
+		A1FC0CAF22C352F7002B214E /* AddOtherModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddOtherModel.m; sourceTree = "<group>"; };
 		A1FF19C622AF82FC00C09386 /* RecogtionHousesCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecogtionHousesCollectionViewCell.h; sourceTree = "<group>"; };
 		A1FF19C722AF82FC00C09386 /* RecogtionHousesCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecogtionHousesCollectionViewCell.m; sourceTree = "<group>"; };
 		A1FF19C822AF82FC00C09386 /* RecogtionHousesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecogtionHousesCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1440,6 +1478,8 @@
 				A1609409229E378B00FBC19B /* MuseumAi-Bridging-Header.h */,
 				A1609408229E378B00FBC19B /* SVProgressHelper.h */,
 				A1609404229E378B00FBC19B /* SVProgressHelper.m */,
+				A1A990B322C0D051000EB09A /* UIImageView+add.h */,
+				A1A990B422C0D051000EB09A /* UIImageView+add.m */,
 			);
 			path = commen;
 			sourceTree = "<group>";
@@ -1511,6 +1551,9 @@
 				A15871AC22B8FDAD001567F8 /* MyHouseCodeViewController.h */,
 				A15871AD22B8FDAD001567F8 /* MyHouseCodeViewController.m */,
 				A15871AE22B8FDAD001567F8 /* MyHouseCodeViewController.xib */,
+				A1A990C022C31BFC000EB09A /* MyHousePaySuccessViewController.h */,
+				A1A990C122C31BFC000EB09A /* MyHousePaySuccessViewController.m */,
+				A1A990C222C31BFC000EB09A /* MyHousePaySuccessViewController.xib */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -1650,6 +1693,9 @@
 				A16A977022A8F11300078BEE /* AddChildrenListViewController.h */,
 				A16A977122A8F11300078BEE /* AddChildrenListViewController.m */,
 				A16A977222A8F11300078BEE /* AddChildrenListViewController.xib */,
+				A1A990AC22C0AA92000EB09A /* AddChildrenTableViewCell.h */,
+				A1A990AD22C0AA92000EB09A /* AddChildrenTableViewCell.m */,
+				A1A990AE22C0AA92000EB09A /* AddChildrenTableViewCell.xib */,
 			);
 			path = Children;
 			sourceTree = "<group>";
@@ -1797,6 +1843,21 @@
 			path = PureCamera;
 			sourceTree = "<group>";
 		};
+		A1A990B922C1CE7B000EB09A /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				A1A990B622C1CE64000EB09A /* PersonModel.h */,
+				A1A990B722C1CE64000EB09A /* PersonModel.m */,
+				A1A990BA22C1CEBD000EB09A /* jtcyPersonModel.h */,
+				A1A990BB22C1CEBD000EB09A /* jtcyPersonModel.m */,
+				A1A990BD22C1CEEA000EB09A /* zzxxPersonModel.h */,
+				A1A990BE22C1CEEA000EB09A /* zzxxPersonModel.m */,
+				A1FC0CAE22C352F7002B214E /* AddOtherModel.h */,
+				A1FC0CAF22C352F7002B214E /* AddOtherModel.m */,
+			);
+			path = Person;
+			sourceTree = "<group>";
+		};
 		A1AE0E4F22239CFC00A146C4 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1873,6 +1934,12 @@
 				A1C0992F22AF41A900AAE38E /* ResultQualityHeader.xib */,
 				A1C0993122AF44EC00AAE38E /* ResultImageTableViewCell.h */,
 				A1C0993222AF44EC00AAE38E /* ResultImageTableViewCell.m */,
+				A15B3EC922C46205004BF242 /* ResultContentTableViewCell.h */,
+				A15B3ECA22C46205004BF242 /* ResultContentTableViewCell.m */,
+				A15B3ECB22C46205004BF242 /* ResultContentTableViewCell.xib */,
+				A15B3ECE22C46214004BF242 /* ResultTitleTableViewCell.h */,
+				A15B3ECF22C46214004BF242 /* ResultTitleTableViewCell.m */,
+				A15B3ED022C46214004BF242 /* ResultTitleTableViewCell.xib */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -2783,16 +2850,19 @@
 		DCBD357F215084C200763961 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A1A990B922C1CE7B000EB09A /* Person */,
 				A1094DC72297DE4400A278A1 /* LoginSession.h */,
 				A1094DC62297DE4400A278A1 /* LoginSession.m */,
 				A1EFACEA22B39455007593EB /* BannerModel.h */,
 				A1EFACEB22B39455007593EB /* BannerModel.m */,
-				A1EFACED22B395A6007593EB /* HouseModel.h */,
-				A1EFACEE22B395A6007593EB /* HouseModel.m */,
 				A1EFACF022B395B9007593EB /* NewsModel.h */,
 				A1EFACF122B395B9007593EB /* NewsModel.m */,
 				A1139D4E22BB879200463FAD /* MyHouseMode.h */,
 				A1139D4F22BB879200463FAD /* MyHouseMode.m */,
+				A1EFACED22B395A6007593EB /* HouseDetialModel.h */,
+				A1EFACEE22B395A6007593EB /* HouseDetialModel.m */,
+				A16D949322C5A3AC001F8483 /* HouseListModel.h */,
+				A16D949422C5A3AC001F8483 /* HouseListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3218,6 +3288,7 @@
 				A1BFB50522A8DFE8008B629B /* AddChildrenViewController.xib in Resources */,
 				A16A985122AE3C8B00078BEE /* ResultQualityViewController.xib in Resources */,
 				A19AD8F622A10F51004713A2 /* ReleaseHomeworkTimeViewMask.xib in Resources */,
+				A15B3ECD22C46205004BF242 /* ResultContentTableViewCell.xib in Resources */,
 				DCB860CB215B388A001C58EF /* YMSPhotoPickerAssets.xcassets in Resources */,
 				A19AD8F122A0D10F004713A2 /* RealChooseForeignViewController.xib in Resources */,
 				A1EFAD3D22B3A8E0007593EB /* scaningline@2x.png in Resources */,
@@ -3236,10 +3307,12 @@
 				A16A982D22AA6E0F00078BEE /* AppendTwoViewController.xib in Resources */,
 				DC55BE05215A012D009654EC /* MULoginViewController.xib in Resources */,
 				DCBD36872150C79A00763961 /* mapapi.bundle in Resources */,
+				A1A990B022C0AA92000EB09A /* AddChildrenTableViewCell.xib in Resources */,
 				A16A984C22AE32C900078BEE /* QuestionListTableViewCell.xib in Resources */,
 				A158717F22B8C97F001567F8 /* MyHouseListTableViewCell.xib in Resources */,
 				A16A977E22A900B800078BEE /* AppendOneTipViewController.xib in Resources */,
 				DC55BE0A215A014D009654EC /* MURegisterViewController.xib in Resources */,
+				A15B3ED222C46214004BF242 /* ResultTitleTableViewCell.xib in Resources */,
 				A1FF19EC22B0FE0500C09386 /* DetialMoreTableViewCell.xib in Resources */,
 				A1EFAD3C22B3A8E0007593EB /* zocr0.lib in Resources */,
 				DCB860BE215B388A001C58EF /* YMSAlbumCell.xib in Resources */,
@@ -3283,6 +3356,7 @@
 				DCB860C0215B388A001C58EF /* YMSAlbumPickerViewController.xib in Resources */,
 				A1BFB4F522A7BABD008B629B /* AddMateShipHeaderView.xib in Resources */,
 				A1BFB44022A5FF23008B629B /* sortedNameCH.plist in Resources */,
+				A1A990C422C31BFC000EB09A /* MyHousePaySuccessViewController.xib in Resources */,
 				DCB860C2215B388A001C58EF /* YMSCameraCell.xib in Resources */,
 				A16A978322A9020600078BEE /* AppendOneListViewController.xib in Resources */,
 				A15871A622B8F36B001567F8 /* MyHouseTaxContentBottomCell.xib in Resources */,
@@ -3335,7 +3409,7 @@
 				A1FF19D322AFAC1A00C09386 /* UIButton+EdgeInsets.m in Sources */,
 				A158717E22B8C97F001567F8 /* MyHouseListTableViewCell.m in Sources */,
 				7EE6887C2158761600DE4A60 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
-				A1EFACEF22B395A6007593EB /* HouseModel.m in Sources */,
+				A1EFACEF22B395A6007593EB /* HouseDetialModel.m in Sources */,
 				A1609437229E537F00FBC19B /* UIAlertView+Blocks.m in Sources */,
 				A1BFB4FD22A7C3FD008B629B /* AddMateShipFooterView.m in Sources */,
 				A1FF1A0822B1E24800C09386 /* BuildingListTableViewCell.m in Sources */,
@@ -3351,6 +3425,7 @@
 				A1094DEF229BD48500A278A1 /* HomePageHousesCollectionViewCell.m in Sources */,
 				A1EFACC922B34E5C007593EB /* FirstAndSecondConditionModel.m in Sources */,
 				A16093F9229E250700FBC19B /* RealFirstChooseViewController.m in Sources */,
+				A1FC0CB022C352F7002B214E /* AddOtherModel.m in Sources */,
 				A160945D229E54FE00FBC19B /* KYPopupTransitionAnimators.swift in Sources */,
 				A1139D4622BB1E6100463FAD /* MJProperty.m in Sources */,
 				DCB860C5215B388A001C58EF /* YMSSinglePhotoViewController.m in Sources */,
@@ -3377,6 +3452,7 @@
 				DCBD35C721509D4600763961 /* AFURLSessionManager.m in Sources */,
 				A1094DC02297D34000A278A1 /* ProUtils.m in Sources */,
 				A1EFAC7922B22553007593EB /* MXPagerViewController.m in Sources */,
+				A1A990B822C1CE64000EB09A /* PersonModel.m in Sources */,
 				A1EFAD3222B3A8E0007593EB /* JYBDScanCardManage.m in Sources */,
 				A1A990A722C05B74000EB09A /* NewsCollectionViewCell.m in Sources */,
 				A1609424229E378B00FBC19B /* SVIndefiniteAnimatedView.m in Sources */,
@@ -3387,6 +3463,7 @@
 				A19AD94B22A4B053004713A2 /* TOCroppedImageAttributes.m in Sources */,
 				A1EFACE522B3898B007593EB /* SysMesssageTableViewCell.m in Sources */,
 				DC55BE09215A014D009654EC /* MURegisterViewController.m in Sources */,
+				A1A990AF22C0AA92000EB09A /* AddChildrenTableViewCell.m in Sources */,
 				A1094DCB229B924C00A278A1 /* MUSpecialViewController.m in Sources */,
 				DC7991F42151ED5F00368A56 /* MJRefreshNormalHeader.m in Sources */,
 				DC7991F82151ED5F00368A56 /* NSBundle+MJRefresh.m in Sources */,
@@ -3458,6 +3535,7 @@
 				DC55BDFF2159D794009654EC /* MUUserModel.m in Sources */,
 				A1C0BCA322AF824400AAE38E /* RecognitionListViewController.m in Sources */,
 				A158719622B8DB71001567F8 /* MyHouseDetialTwoCell.m in Sources */,
+				A15B3ECC22C46205004BF242 /* ResultContentTableViewCell.m in Sources */,
 				A1609427229E378B00FBC19B /* CloudWebController.m in Sources */,
 				A1EFAC8322B2257E007593EB /* MXParallaxHeader.m in Sources */,
 				A16A983122AA71A600078BEE /* AppendThreeViewController.m in Sources */,
@@ -3469,6 +3547,7 @@
 				A1609467229E54FE00FBC19B /* KYPopupUtil.swift in Sources */,
 				A15871A022B8F35B001567F8 /* MyHouseTaxContentCell.m in Sources */,
 				DCBD365821509DAF00763961 /* YYTextAsyncLayer.m in Sources */,
+				A16D949522C5A3AC001F8483 /* HouseListModel.m in Sources */,
 				7EE6887D2158761600DE4A60 /* UIView+SDAutoLayout.m in Sources */,
 				DC7991B42151E35C00368A56 /* NSSet+HYBUnicodeReadable.m in Sources */,
 				A1139D4D22BB1E6100463FAD /* MJFoundation.m in Sources */,
@@ -3569,6 +3648,7 @@
 				A160941E229E378B00FBC19B /* SVProgressHelper.m in Sources */,
 				DCBD365721509DAF00763961 /* UIView+YYText.m in Sources */,
 				A1139D4B22BB1E6100463FAD /* NSString+MJExtension.m in Sources */,
+				A15B3ED122C46214004BF242 /* ResultTitleTableViewCell.m in Sources */,
 				DCBD35572150829900763961 /* AppDelegate.mm in Sources */,
 				DCBD368B2150CD8B00763961 /* MUMapHandler.m in Sources */,
 				A160946C229E54FE00FBC19B /* KYPopupOverlayView.swift in Sources */,
@@ -3599,7 +3679,10 @@
 				A19AD95322A4B053004713A2 /* TOCropToolbar.m in Sources */,
 				A1139D6122BC7D7C00463FAD /* MOFSToolView.m in Sources */,
 				DCBD365C21509DAF00763961 /* YYLabel.m in Sources */,
+				A1A990BC22C1CEBD000EB09A /* jtcyPersonModel.m in Sources */,
 				DC7991ED2151ED5F00368A56 /* MJRefreshAutoGifFooter.m in Sources */,
+				A1A990BF22C1CEEA000EB09A /* zzxxPersonModel.m in Sources */,
+				A1A990B522C0D051000EB09A /* UIImageView+add.m in Sources */,
 				A1EFAC8422B2257E007593EB /* MXScrollViewController.m in Sources */,
 				DCBD365421509DAF00763961 /* NSAttributedString+YYText.m in Sources */,
 				DCBD35FC21509D7000763961 /* ViewController+MASAdditions.m in Sources */,
@@ -3608,6 +3691,7 @@
 				A1609421229E378B00FBC19B /* SVRadialGradientLayer.m in Sources */,
 				A1139D6522BC7D7C00463FAD /* MOFSAddressPickerView.m in Sources */,
 				A1FF1A1422B1E9CD00C09386 /* BuildingDetialMoreHeader.m in Sources */,
+				A1A990C322C31BFC000EB09A /* MyHousePaySuccessViewController.m in Sources */,
 				DC7991EE2151ED5F00368A56 /* MJRefreshAutoNormalFooter.m in Sources */,
 				DCBD35852150850500763961 /* MULookViewController.m in Sources */,
 				A19AD95422A4B053004713A2 /* LLSimpleCamera.m in Sources */,

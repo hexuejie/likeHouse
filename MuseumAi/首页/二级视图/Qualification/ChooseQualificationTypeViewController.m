@@ -14,6 +14,7 @@
 #import "AddChildrenListViewController.h"
 #import "AppendChooseViewController.h"
 #import "ChooseOtherRealViewController.h"
+#import "ResultQualityViewController.h"
 
 @interface ChooseQualificationTypeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -30,6 +31,12 @@
 @end
 
 @implementation ChooseQualificationTypeViewController
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [LoginSession sharedInstance].otherYhbh = @"";
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -84,6 +91,7 @@
         case 1:
         {
             [LoginSession sharedInstance].pageType = 1;
+            
             [self.navigationController pushViewController:[ChooseOtherRealViewController new] animated:YES];
 //             [self.navigationController pushViewController:[ChooseAddMateshipViewController new] animated:YES];
         }break;
@@ -109,19 +117,29 @@
     return [UIView new];
 }
 - (IBAction)nextStepClick:(id)sender {
-    if (0) {
-        
-        [SVProgressHelper dismissWithMsg:@"当前婚姻状况为未婚，不需要添加配偶信息"];
-        return;
-    }else if (1) {
-        [SVProgressHelper dismissWithMsg:@"请完善配偶信息"];
-        return;
-    }
+//    if (0) {
+//        
+//        [SVProgressHelper dismissWithMsg:@"当前婚姻状况为未婚，不需要添加配偶信息"];
+//        return;
+//    }else if (1) {
+//        [SVProgressHelper dismissWithMsg:@"请完善配偶信息"];
+//        return;
+//    }
 
-    
+    ResultQualityViewController *vc = [ResultQualityViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.isReal = NO;
+    vc.isSubmit = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)reloadData {
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self customReload];
+}
+
+- (void)customReload {
     __weak typeof(self) weakSelf = self;
     
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/step") para:@{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {

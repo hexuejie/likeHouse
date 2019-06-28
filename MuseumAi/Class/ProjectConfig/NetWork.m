@@ -149,16 +149,7 @@
         NSString *strstr = @"";
         for (NSDictionary *temptemp in headerCookie) {
             [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:[NSHTTPCookie cookieWithProperties:temptemp]];
-            
-//            if (strstr.length) {
-//                strstr = [NSString stringWithFormat:@";%@=%@", temptemp[@"Name"], temptemp[@"Value"]];
-//            }else{
-//                strstr = [NSString stringWithFormat:@"%@=%@", temptemp[@"Name"], temptemp[@"Value"]];
-//            }
         }
-//        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//        [manager.requestSerializer setValue:strstr forHTTPHeaderField:@"Cookie"];
     }else{
         if (isTologin) {
             [self toLogin];
@@ -222,7 +213,6 @@
     }];
 }
 
-//16.0.0.11:8000/login?username=admin&password=123456&remenberMe=true
 
 - (void)getWithUrl:(NSString *)urlString para:(id)para isShowHUD:(BOOL)isShowHUD isToLogin:(BOOL)isTologin callBack:(void (^)(id response, BOOL success))callBack{
     
@@ -403,7 +393,7 @@
         
         ///上传功能回调
         NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
-        if (success) {
+        if (success&& [responseDict[@"code"] integerValue] == 200) {
             
             success(responseDict[@"data"]);
             

@@ -26,7 +26,7 @@
 - (IBAction)addNextClick:(id)sender {
     
     
-    [self.navigationController pushViewController:[ChooseAppendViewController new] animated:YES];
+    [self.navigationController pushViewController:[AppendOneListViewController new] animated:YES];
 }
 
 @end

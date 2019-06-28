@@ -109,16 +109,9 @@
     NSInteger leftimageindex=(_currentIndex+self.imageArray.count-1)%self.imageArray.count;
     NSInteger rightimageindex=(_currentIndex +1)%self.imageArray.count;
    
-    [self.leftImageV sd_setImageWithURL:[NSURL URLWithString:self.imageArray[leftimageindex].img] placeholderImage:[UIImage imageNamed:BasePlaceholder] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-       
-    }];
-    [self.middleImageV sd_setImageWithURL:[NSURL URLWithString:self.imageArray[_currentIndex].img] placeholderImage:[UIImage imageNamed:BasePlaceholder] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-       
-    }];
-    
-    [self.rightImageV sd_setImageWithURL:[NSURL URLWithString:self.imageArray[rightimageindex].img] placeholderImage:[UIImage imageNamed:BasePlaceholder] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        
-    }];
+    [self.leftImageV setOtherImageUrl:self.imageArray[leftimageindex].img];
+    [self.middleImageV setOtherImageUrl:self.imageArray[_currentIndex].img];
+    [self.rightImageV setOtherImageUrl:self.imageArray[rightimageindex].img];
     
    
 }

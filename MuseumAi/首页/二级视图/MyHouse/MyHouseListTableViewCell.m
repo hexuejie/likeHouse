@@ -20,7 +20,7 @@
     _lookOutLabel.layer.borderWidth = 1.0;
 }
 
-- (void)setMode:(MyHouseMode *)model{
+- (void)setModel:(MyHouseMode *)model{
     _model = model;
     
     self.titleLabel.text = _model.xmmc;

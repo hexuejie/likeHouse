@@ -24,6 +24,9 @@
 @property (nonatomic , strong) ReleaseHomeworkTimeViewMask *timeViewMask;
 @property (nonatomic , assign) NSInteger tagSwitch;
 
+@property (nonatomic , strong)NSArray *imageStrArray;
+@property (nonatomic , strong)NSArray *dataArray;
+@property (nonatomic , strong)NSMutableArray *nameArray;
 @end
 
 @implementation ChooseAppendViewController
@@ -42,15 +45,15 @@
     switch (sender.tag) {
         case 101:
         {
-            _timeViewMask.titleLabel.text = @"请选择家庭户口类型";
-            [self showOtherAlertView:@[@"集体户口",@"家庭户口"]];
+            _timeViewMask.titleLabel.text = @"请选择人才类型";
+            [self showOtherAlertView:@[@"学历人才",@"引进人才",@"高端人才"]];
         }
             break;
             
         case 102:
         {
-            _timeViewMask.titleLabel.text = @"请选择婚姻状况";
-            [self showOtherAlertView:@[@"已婚",@"未婚",@"离异",@"丧偶"]];
+            _timeViewMask.titleLabel.text = @"请选择姓名";
+            [self showOtherAlertView:self.nameArray];
         }
             break;
             
@@ -61,44 +64,16 @@
 
 
 
-- (IBAction)addImageClick:(id)sender {
-    [self openCamera];
-}
-
-- (void)openCamera
-
-{
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        PureCamera *homec = [[PureCamera alloc] init];
-        __weak typeof(self) myself = self;
-        homec.fininshcapture = ^(UIImage *ss) {
-            if (ss) {
-                myself.addImageView.image = ss;
-            }
-        };
-        [myself presentViewController:homec
-                             animated:NO
-                           completion:^{
-                           }];
-    } else {
-        NSLog(@"相机调用失败");
-    }
-}
-
-
-
-
 - (void)timefinishClick:(UIButton *)button{
     [_timeViewMask removeFromSuperview];
     
     switch (_tagSwitch) {
         case 101:{//人才类型
-            _timeViewMask.titleLabel.text = @"请选择人才类型";
-            self.oneTextField.text = _timeViewMask.selectedString;
             
+            self.oneTextField.text = _timeViewMask.selectedString;
         }break;
         case 102:{//工资流水
-            _timeViewMask.titleLabel.text = @"在长沙且连续工资流水数";
+            
             self.twoTextField.text = _timeViewMask.selectedString;
             
         }break;
@@ -140,17 +115,106 @@
         self.addImageView.image
         ) {
         
-        [SVProgressHelper dismissWithMsg:@"保存成功 刷新数据！"];
-        for (UIViewController *controller in self.navigationController.viewControllers) {
-            if ([controller isKindOfClass:[AppendChooseViewController class]]) {
-                AppendChooseViewController *A =(AppendChooseViewController *)controller;
-                [self.navigationController popToViewController:A animated:YES];
-            }
-        }
+        [self updateLoadImage:nil];
         
     }else{
         [SVProgressHelper dismissWithMsg:@"请完善申请人信息!"];
     }
     
+}
+
+
+
+- (void)updateLoadImage:(UIImage *)upImage{
+    __weak typeof(self) weakSelf = self;
+    NSArray *imageArray = @[self.addImageView.image
+                            ];
+    [NetWork uploadMoreFileHttpRequestURL:DetailUrlString(@"/upload") RequestPram:@{} arrayImg:imageArray arrayAudio:@[] RequestSuccess:^(id  _Nonnull respoes) {
+        if (respoes) {
+            weakSelf.imageStrArray = [respoes componentsSeparatedByString:@";"];
+            [weakSelf updatePersonData];
+        }
+    } RequestFaile:^(NSError * _Nonnull erro) {
+        [weakSelf alertWithMsg:@"上传图片出错" handler:nil];
+    } UploadProgress:nil];
+}
+
+- (void)updatePersonData{
+    
+    NSMutableDictionary *pramDic = [NSMutableDictionary new];
+    for (NSDictionary *tempDic in _dataArray) {
+        if ([tempDic[@"xm"] isEqualToString:self.twoTextField.text]) {
+            [pramDic setObject:tempDic[@"yhbh"] forKey:@"yhbh"];
+        }
+    }
+    
+    [pramDic setObject:self.oneTextField.text forKey:@"tsrclx"];
+    [pramDic setObject:self.threeTextField.text forKey:@"zcgzlssc"];
+    
+    [pramDic setObject:@"是" forKey:@"sftsrc"];
+    [pramDic setObject:self.imageStrArray[0] forKey:@"tsrczm"];
+
+    __weak typeof(self) weakSelf = self;
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savetsrc") para:pramDic isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        //banner
+        if (success) {
+            [SVProgressHelper dismissWithMsg:response[@"msg"]];
+            for (UIViewController *controller in self.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[AppendChooseViewController class]]) {
+                    AppendChooseViewController *A =(AppendChooseViewController *)controller;
+                    [self.navigationController popToViewController:A animated:YES];
+                }
+            }
+            
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
+
+- (IBAction)addImageClick:(id)sender {
+    [self openCamera];
+}
+
+- (void)openCamera
+
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        PureCamera *homec = [[PureCamera alloc] init];
+        __weak typeof(self) myself = self;
+        homec.fininshcapture = ^(UIImage *ss) {
+            if (ss) {
+                myself.addImageView.image = ss;
+            }
+        };
+        [myself presentViewController:homec
+                             animated:NO
+                           completion:^{
+                           }];
+    } else {
+        NSLog(@"相机调用失败");
+    }
+}
+
+
+///getname
+- (void)reloadData {
+    __weak typeof(self) weakSelf = self;
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/getname") para:@{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        //banner
+        if (success) {
+            weakSelf.dataArray = response[@"data"];
+            weakSelf.nameArray = [NSMutableArray new];
+            for (NSDictionary *tempDic in weakSelf.dataArray) {
+                if (tempDic[@"xm"]) {
+                    [weakSelf.nameArray addObject:tempDic[@"xm"]];
+                }
+            }
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
 }
 @end

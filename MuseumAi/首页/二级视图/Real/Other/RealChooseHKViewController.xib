@@ -552,7 +552,6 @@
                             </state>
                             <connections>
                                 <action selector="changeTreeClick:" destination="-1" eventType="touchUpInside" id="UBn-fr-Fn1"/>
-                                <action selector="changeTwoClick:" destination="-1" eventType="touchUpInside" id="aHa-SA-XTy"/>
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ocG-BH-Oe1">

@@ -11,6 +11,7 @@
 #import "MJRefresh.h"
 #import "JYEqualCellSpaceFlowLayout.h"
 #import "RecogtionHousesCollectionViewCell.h"
+#import "HouseListModel.h"
 
 @interface RecognitionListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -26,6 +27,8 @@
 /** 当前page */
 @property (nonatomic , assign) NSInteger page;
 @property (nonatomic , strong) NSArray *houses;
+
+@property (nonatomic , strong) HouseListModel *tempModel;
 @end
 
 @implementation RecognitionListViewController
@@ -72,12 +75,13 @@
 #pragma mark -
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return  7;
+    return  _houses.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     RecogtionHousesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RecogtionHousesCollectionViewCell" forIndexPath:indexPath];
+    cell.model = _houses[indexPath.row];
     cell.recogtionButton.tag = indexPath.row;
     [cell.recogtionButton addTarget:self action:@selector(recogtionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
@@ -98,6 +102,7 @@
 }
 
 - (void)recogtionButtonClick:(UIButton *)button{
+    _tempModel = _houses[button.tag];
     //确定认筹/
     _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
     _tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -127,9 +132,7 @@
     [_tipView1.sureButton addTarget:self action:@selector(sureButtonClick) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)sureButtonClick{//提交
-    [SVProgressHelper dismissWithMsg:@"提及提交体检"];
-}
+
 
 - (void)startCount {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(didOneSecReached:) userInfo:nil repeats:YES];
@@ -158,22 +161,35 @@
     }
 }
 
-
+- (void)sureButtonClick{//提交
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/renchou") para: @{@"lpbh":[NSString stringWithFormat:@"%@",_tempModel.lpbh]} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        
+        if (success) {
+            
+            [SVProgressHelper dismissWithMsg:@"提交成功！"];
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
 
 - (void)reloadData {
     __weak typeof(self) weakSelf = self;
     
-    //    @{@"page":@"1",@"rows":@"3",@"token":[LoginSession sharedInstance].token};
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"3"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/renchoulist") para: @{@"page":@"1",@"rows":@"999"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         
         if (success) {
-            NSDictionary *dic = response[@"data"];
-            [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"linkUrl"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
             
+            weakSelf.houses = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"data"]];
             [weakSelf.contentCollectionView reloadData];
-            
+            if (!weakSelf.houses) {
+                [weakSelf addNoneDataTipView];
+            }
         }else{
+            [weakSelf addNoneDataTipView];
             [weakSelf alertWithMsg:kFailedTips handler:nil];
         }
         [weakSelf.contentCollectionView.mj_header endRefreshing];

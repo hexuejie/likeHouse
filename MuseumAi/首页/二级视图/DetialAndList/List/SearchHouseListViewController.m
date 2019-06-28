@@ -227,8 +227,7 @@
 - (void)reloadData {//历史记录
     __weak typeof(self) weakSelf = self;
     
-    //    @{@"page":@"1",@"rows":@"3",@"token":[LoginSession sharedInstance].token};
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"3"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"999"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         
         if (success) {
 //            self.hotArray

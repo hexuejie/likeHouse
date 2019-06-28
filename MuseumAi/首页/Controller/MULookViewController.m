@@ -23,7 +23,8 @@
 #import "NewsSegmentViewController.h"
 #import "MyHouseListViewController.h"
 #import "BannerModel.h"
-#import "HouseModel.h"
+#import "HouseListModel.h"
+#import "ResultQualityViewController.h"
 
 @interface MULookViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -75,7 +76,7 @@
     if (section == 0) {
         return self.titles.count;
     }else if (section == 1) {
-        return 0;//self.midArray.count;//第二模块
+        return self.midArray.count;//self.midArray.count;//第二模块
     }
     return  self.houses.count;;
 }
@@ -170,7 +171,7 @@
     self.midArray = [NSMutableArray new];
     self.houses = [NSMutableArray new];
     
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"3"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"20"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner
         if (success) {
             NSDictionary *dic = response[@"data"];
@@ -181,10 +182,17 @@
                 [self.midArray addObject:[NewsModel mj_objectWithKeyValues:tempdic]];
             }
             for (NSDictionary *tempdic in [dic objectForKey:@"recommend"]) {
-                [self.midArray addObject:[HouseModel mj_objectWithKeyValues:tempdic]];
+                [self.houses addObject:[HouseListModel mj_objectWithKeyValues:tempdic]];
             }
-//            self.midArray = [NSMutableArray new];//dt
-//            self.houses = [NSMutableArray new];//zt
+            if (self.midArray.count%2) {
+                [self.midArray removeLastObject];
+            }
+            if (self.houses.count%2) {
+                [self.houses removeLastObject];
+            }
+            [LoginSession sharedInstance].rzzt = [dic objectForKey:@"newuser"][@"rzzt"];
+            [LoginSession sharedInstance].grrzzt = [dic objectForKey:@"gr"][@"rzzt"];
+            
             [weakSelf.contentCollectionView reloadData];
         }else{
            [weakSelf alertWithMsg:kFailedTips handler:nil];
@@ -200,20 +208,21 @@
     if (indexPath.section == 0) {//8个坨坨
         switch (indexPath.row) {
             case 0:{
-//                [self authenticationAction];
-//                if (0) {
-//                    _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
-//                    _tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-//                    [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
-//                    _tipView1.sureType = -1;
-//
-//                    [_tipView1.sureButton addTarget:self action:@selector(authenticationAction) forControlEvents:UIControlEventTouchUpInside];
+
+//                if (![Utility is_empty:[LoginSession sharedInstance].grrzzt]) {
+//                    if ([[LoginSession sharedInstance].grrzzt integerValue] == 0||[[LoginSession sharedInstance].grrzzt integerValue] == 1) {
+//                        ResultQualityViewController *vc = [ResultQualityViewController new];
+//                        vc.hidesBottomBarWhenPushed = YES;
+//                        vc.isReal = NO;
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    }
 //                }else{
                     RealFirstTipViewController *vc = [RealFirstTipViewController new];
                     vc.title = @"购房资格审查说明";
                     vc.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:vc animated:YES];
 //                }
+                
             }break;
             case 1:{
                 RecognitionListViewController *vc = [RecognitionListViewController new];
@@ -337,6 +346,8 @@
     self.contentCollectionView.delegate = self;
     self.contentCollectionView.dataSource = self;
     self.contentCollectionView.backgroundColor = [UIColor whiteColor];
+    self.contentCollectionView.showsVerticalScrollIndicator = NO;
+    self.contentCollectionView.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:self.contentCollectionView];
     [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageIconCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageIconCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageIconCollectionViewCell"];
     [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageNewsCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageNewsCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageNewsCollectionViewCell"];

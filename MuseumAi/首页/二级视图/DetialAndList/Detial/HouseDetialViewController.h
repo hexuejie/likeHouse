@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HouseDetialViewController : MURootViewController
 
 
-@property (nonatomic ,strong) NSString *strBH;
+@property (nonatomic ,strong) NSDictionary *parm;
 @end
 
 NS_ASSUME_NONNULL_END

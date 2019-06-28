@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ChooseOtherRealViewController : MURootViewController
 
+
+@property (nonatomic,strong) NSDictionary *dataDic;
 @end
 
 NS_ASSUME_NONNULL_END

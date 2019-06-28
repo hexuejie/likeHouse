@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddChildrenListViewController">
             <connections>
+                <outlet property="tableView" destination="a0A-IC-fgo" id="C0v-2B-1fW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,6 +21,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s22-RN-2BV">
+                    <rect key="frame" x="0.0" y="64" width="375" height="48"/>
+                    <color key="backgroundColor" red="0.92932277917861938" green="0.92954272031784058" blue="0.92521762847900391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MzS-n7-5zI">
                     <rect key="frame" x="62" y="263.5" width="251" height="140"/>
                     <subviews>
@@ -52,9 +57,9 @@
                         <constraint firstItem="qpV-sq-bxA" firstAttribute="centerX" secondItem="MzS-n7-5zI" secondAttribute="centerX" id="paE-Cj-NAR"/>
                     </constraints>
                 </view>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请逐项仔细核对一下表信息，保证所填写内容与证件信息相 吻合，否则将影响资格审查结果！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgF-6U-gpX">
-                    <rect key="frame" x="0.0" y="64" width="375" height="48"/>
-                    <color key="backgroundColor" red="0.95284980535507202" green="0.95307344198226929" blue="0.94874447584152222" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请逐项仔细核对一下表信息，保证所填写内容与证件信息相 吻合，否则将影响资格审查结果！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgF-6U-gpX">
+                    <rect key="frame" x="12" y="64" width="351" height="48"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="VG2-Ip-WSv"/>
                     </constraints>
@@ -81,17 +86,29 @@
                         <action selector="addChildrenClick:" destination="-1" eventType="touchUpInside" id="o2b-iF-XA6"/>
                     </connections>
                 </button>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a0A-IC-fgo">
+                    <rect key="frame" x="0.0" y="112" width="375" height="485"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="YgF-6U-gpX" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="12" id="1Jd-ll-pm1"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="ow5-E9-kZQ" secondAttribute="bottom" constant="23" id="5cf-3O-hUG"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="ow5-E9-kZQ" secondAttribute="trailing" constant="15" id="9Cd-Nf-lr9"/>
                 <constraint firstItem="ow5-E9-kZQ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="Bg8-gU-ua1"/>
                 <constraint firstItem="YgF-6U-gpX" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="I5x-bo-Y15"/>
+                <constraint firstItem="a0A-IC-fgo" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="JmV-tT-iRT"/>
                 <constraint firstItem="MzS-n7-5zI" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="62" id="LDb-Li-pEV"/>
-                <constraint firstAttribute="trailing" secondItem="YgF-6U-gpX" secondAttribute="trailing" id="Y6K-Cw-611"/>
+                <constraint firstItem="s22-RN-2BV" firstAttribute="top" secondItem="YgF-6U-gpX" secondAttribute="top" id="UWX-XH-ZRt"/>
+                <constraint firstAttribute="trailing" secondItem="YgF-6U-gpX" secondAttribute="trailing" constant="12" id="Y6K-Cw-611"/>
+                <constraint firstItem="s22-RN-2BV" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="cZB-Wv-rVE"/>
+                <constraint firstItem="ow5-E9-kZQ" firstAttribute="top" secondItem="a0A-IC-fgo" secondAttribute="bottom" constant="3" id="ddA-fz-Jag"/>
                 <constraint firstItem="MzS-n7-5zI" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="dyc-1t-CSO"/>
-                <constraint firstItem="YgF-6U-gpX" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="hUf-V6-zjY"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="s22-RN-2BV" secondAttribute="trailing" id="e34-lr-ce5"/>
+                <constraint firstItem="s22-RN-2BV" firstAttribute="bottom" secondItem="YgF-6U-gpX" secondAttribute="bottom" id="eOz-kp-xk5"/>
+                <constraint firstItem="a0A-IC-fgo" firstAttribute="top" secondItem="YgF-6U-gpX" secondAttribute="bottom" id="w9g-Yi-goU"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="a0A-IC-fgo" secondAttribute="trailing" id="yiE-lP-T6Y"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="MzS-n7-5zI" secondAttribute="trailing" constant="62" id="z4l-hp-SSt"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

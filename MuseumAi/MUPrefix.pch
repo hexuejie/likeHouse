@@ -43,6 +43,7 @@
 #import "RealFinishTipView1.h"
 #import "Utility.h"
 #import "MJExtension.h"
+#import "UIImageView+add.h"
 
 #define kEnterBackgroundNotification @"kEnterBackgroundNotification"
 #define kEnterForegroundNotification @"kEnterForegroundNotification"
@@ -95,11 +96,11 @@ alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
 //#define BaseUrl @"http://app.cszjw.net:11001"    //扒取数据
 //#define H5BaseUrl @"http://192.168.0.199:94"
 //#else
-#define BaseUrl @"http://10.3.61.154:8000"        //内部数据
+#define BaseUrl @"http://192.168.99.234:8000"        //内部数据
 #define H5BaseUrl @"https://appweb.bnbn99.com"
 //#endif
 
-#define BaseImageUrl @"http://app.cszjw.net:11000/img?path="
+#define BaseImageUrl [NSString stringWithFormat:@"%@/img?path=",BaseUrl]
 #define BasePlaceholder @""
 
 #define DetailUrlString(string) [NSString stringWithFormat:@"%@%@",BaseUrl,string]
@@ -111,11 +112,6 @@ alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
 #endif /* MUPrefix_h */
 
 #endif
-
-
-
-
-
 
 
 

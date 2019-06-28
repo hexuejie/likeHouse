@@ -6,8 +6,8 @@
 //  Copyright © 2019 Weizh. All rights reserved.
 //
 
-#import "HouseModel.h"
+#import "HouseDetialModel.h"
 
-@implementation HouseModel
+@implementation HouseDetialModel
 
 @end

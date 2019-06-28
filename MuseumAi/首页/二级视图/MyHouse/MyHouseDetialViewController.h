@@ -7,12 +7,13 @@
 //
 
 #import "MURootViewController.h"
+#import "MyHouseMode.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MyHouseDetialViewController : MURootViewController
 
-@property (strong, nonatomic) NSDictionary *myDic;
+@property (strong, nonatomic) MyHouseMode *model;;
 
 @end
 

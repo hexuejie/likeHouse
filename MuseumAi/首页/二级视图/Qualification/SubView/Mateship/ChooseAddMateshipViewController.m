@@ -263,8 +263,8 @@
 }
 
 - (void)updatePersonData{
-    if (![LoginSession sharedInstance].yhbh) {
-        [LoginSession sharedInstance].yhbh = @"";
+    if (![LoginSession sharedInstance].otherYhbh) {
+        [LoginSession sharedInstance].otherYhbh = @"";//回填
     }
     NSMutableDictionary *pramDic = [NSMutableDictionary new];
     
@@ -309,6 +309,8 @@
     }
     
     [pramDic setObject:@"身份证" forKey:@"zjlx"];
+    
+    [pramDic setObject:[LoginSession sharedInstance].otherYhbh forKey:@"yhbh"];
     [pramDic setObject:self.imageStrArray[0] forKey:@"sfzzm"];
     [pramDic setObject:self.imageStrArray[1] forKey:@"sfzfm"];
     [pramDic setObject:self.imageStrArray[2] forKey:@"hkb"];
@@ -338,14 +340,13 @@
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/allmessage/new") para:@{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner
         if (success) {
+            
             weakSelf.dataDic = response[@"data"];
             NSDictionary *tempgrxx = weakSelf.dataDic[@"poxx"];
-//            if (![Utility is_empty:tempgrxx[@"jtcy"][@"hjszd"]]) {//地址
-//                self.threeTextField.text = tempgrxx[@"jtcy"][@"hjszd"];
-//            }
-//            if (![Utility is_empty:tempgrxx[@"zzxx"][@"hkb"]]) {//图片
-//                [self.addImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseImageUrl,tempgrxx[@"zzxx"][@"hkb"]]]];
-//            }
+            [LoginSession sharedInstance].otherYhbh = tempgrxx[@"jtcy"][@"yhbh"];
+            if ([LoginSession sharedInstance].otherYhbh == nil) {
+                [LoginSession sharedInstance].otherYhbh = @"";
+            }
         }else{
             [weakSelf alertWithMsg:kFailedTips handler:nil];
         }

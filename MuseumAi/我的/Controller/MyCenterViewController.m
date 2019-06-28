@@ -45,6 +45,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [self customReloadData];
+    [self dataRelaod];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -72,11 +74,33 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView reloadData];
     
+   
+}
+
+- (void)customReloadData{
+    __weak typeof(self) weakSelf = self;
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/myshow") para: @{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        //banner
+        if (success) {
+            NSDictionary *dic = response[@"data"];
+            
+            [LoginSession sharedInstance].sjhm = [dic objectForKey:@"zcyh"][@"sjhm"];//
+            [LoginSession sharedInstance].rzzt = [dic objectForKey:@"zcyh"][@"rzzt"];//
+            [LoginSession sharedInstance].grrzzt = [dic objectForKey:@"jtcy"][@"rzzt"];
+            weakSelf.identityCountLabel.text = [NSString stringWithFormat:@"%@",dic[@"renchou"]];//我的认筹
+            [weakSelf dataRelaod];
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
+
+- (void)dataRelaod{
     self.phoneLabel.text = [LoginSession sharedInstance].sjhm;
     if (!self.phoneLabel.text.length) {
         self.phoneLabel.text = [LoginSession sharedInstance].phone;
     }
-    self.realLabel.text = @"未实名认证";
     
     if (![Utility is_empty:[LoginSession sharedInstance].rzzt]) {
         if ([[LoginSession sharedInstance].rzzt integerValue] == 2) {
@@ -88,11 +112,27 @@
         }else if ([[LoginSession sharedInstance].rzzt integerValue] == 1) {
             [self.goIntoReal setTitle:@">" forState:UIControlStateNormal];
             self.realLabel.text = @"实名认证待审核";
+        }else{
+            [self.goIntoReal setTitle:@"去认证   >" forState:UIControlStateNormal];
+            self.realLabel.text = @"未实名认证";
+        }
+    }else{
+        [self.goIntoReal setTitle:@"去认证   >" forState:UIControlStateNormal];
+        self.realLabel.text = @"未实名认证";
+    }
+    
+    self.qualityStatueLabel.text = @"未提交";//已通过  待审核
+    if (![Utility is_empty:[LoginSession sharedInstance].grrzzt]) {
+        if ([[LoginSession sharedInstance].grrzzt integerValue] == 2) {
+            self.qualityStatueLabel.text = @"未通过";//已通过  待审核
+        }else if ([[LoginSession sharedInstance].grrzzt integerValue] == 0) {
+            self.qualityStatueLabel.text = @"待审核";//已通过  待审核
+        }else if ([[LoginSession sharedInstance].grrzzt integerValue] == 1) {
+            self.qualityStatueLabel.text = @"已通过";//已通过  待审核
         }
     }
-
-    self.identityCountLabel.text = @"0";//我的认筹
-    self.qualityStatueLabel.text = @"未提交";//已通过  待审核
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate && UITableViewDataSource
@@ -183,11 +223,37 @@
 }
 - (IBAction)qualityClick:(id)sender {//购房资格
     
-    ResultQualityViewController *vc = [ResultQualityViewController new];
+    if (![Utility is_empty:[LoginSession sharedInstance].grrzzt]) {
+        if ([[LoginSession sharedInstance].grrzzt integerValue] == 0||[[LoginSession sharedInstance].grrzzt integerValue] == 1) {
+            ResultQualityViewController *vc = [ResultQualityViewController new];
+            vc.hidesBottomBarWhenPushed = YES;
+            vc.isReal = NO;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }else{
+        RealFirstTipViewController *vc = [RealFirstTipViewController new];
+        vc.title = @"购房资格审查说明";
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+- (IBAction)realClick:(id)sender {//[[LoginSession sharedInstance].rzzt integerValue]>0
+    if (![Utility is_empty:[LoginSession sharedInstance].rzzt]&&[[LoginSession sharedInstance].rzzt integerValue]>0) {
+        
+        ResultQualityViewController *vc = [ResultQualityViewController new];
+        vc.title = @"实名认证";
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.isReal = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        return;
+    }
+    RealFirstTipViewController *vc = [RealFirstTipViewController new];
+    vc.title = @"关于实名认证";
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
-
 
 - (void)changeShowTipView{
     _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
@@ -268,16 +334,12 @@
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"Cookie"];
     
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/login/zjw/user/logout") para:nil isShowHUD:YES  isToLogin:NO callBack:^(id  _Nonnull response, BOOL success) {
-        
         if (success) {
-
 //            [weakSelf.contentCollectionView reloadData];
-            
         }else{
 //            [weakSelf alertWithMsg:kFailedTips handler:nil];
         }
     }];
-    
     
     MULoginViewController *loginController = [[MULoginViewController alloc] init];
     [[ProUtils getCurrentVC] presentViewController:loginController animated:YES completion:nil];
@@ -335,17 +397,6 @@
     //    }
 }
 
-- (IBAction)realClick:(id)sender {
-    if (![Utility is_empty:[LoginSession sharedInstance].rzzt]&&[[LoginSession sharedInstance].rzzt integerValue]>0) {
-        
-        
-        return;
-    }
-    RealFirstTipViewController *vc = [RealFirstTipViewController new];
-    vc.title = @"关于实名认证";
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 
 @end

@@ -69,7 +69,7 @@
         if ([coment isKindOfClass:[UIImage class]]) {
             item.image = coment;
         }else{
-            [item sd_setImageWithURL:[NSURL URLWithString:coment]];
+            [item setCommenImageUrl:coment];
         }
         item.backgroundColor = kTestColor;
         if (i == 0 ){
@@ -119,7 +119,7 @@
             if ([coment isKindOfClass:[UIImage class]]) {
                 item.image = coment;
             }else{
-                [item sd_setImageWithURL:[NSURL URLWithString:coment]];
+                [item setCommenImageUrl:coment];
             }
             item.backgroundColor = kTestColor;
             

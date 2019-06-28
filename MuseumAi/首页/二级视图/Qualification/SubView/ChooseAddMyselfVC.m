@@ -20,8 +20,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *threeTextField;
 
 @property (weak, nonatomic) IBOutlet UIImageView *addImageView;
-@property (strong, nonatomic) NSString *addImageViewStr;
+//@property (strong, nonatomic) NSString *addImageViewStr;
 @property (strong, nonatomic) NSDictionary *dataDic;
+@property (strong, nonatomic) NSArray *imageStrArray;
 
 @property (nonatomic , strong) ReleaseHomeworkTimeViewMask *timeViewMask;
 @property (nonatomic , assign) NSInteger tagSwitch;
@@ -154,40 +155,29 @@
 }
 
 - (void)updateLoadImage:(UIImage *)upImage{
+    
     __weak typeof(self) weakSelf = self;
     //上传图片
-    AFHTTPSessionManager*  manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes= [NSSet setWithObjects:@"text/html",@"image/jpeg",nil];
-    [manager POST:@"http://10.3.61.154:80/app/file/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-        NSData *data = UIImageJPEGRepresentation(upImage, 0.8);
-        [formData appendPartWithFileData:data name:@"file" fileName:@".jpg" mimeType:@"image/jpeg"];
-        
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (responseObject[@"data"][@"src"]) {
-            weakSelf.addImageViewStr = responseObject[@"data"][@"src"];
-            [self updatePersonData];
-        }else{
-            [weakSelf alertWithMsg:@"上传图片出错" handler:nil];
+    NSArray *imageArray = @[upImage
+                            ];
+
+    [NetWork uploadMoreFileHttpRequestURL:DetailUrlString(@"/upload") RequestPram:@{} arrayImg:imageArray arrayAudio:@[] RequestSuccess:^(id  _Nonnull respoes) {
+        if (respoes) {
+            weakSelf.imageStrArray = [respoes componentsSeparatedByString:@";"];
+            [weakSelf updatePersonData];
         }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } RequestFaile:^(NSError * _Nonnull erro) {
         [weakSelf alertWithMsg:@"上传图片出错" handler:nil];
-        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-    }];
+    } UploadProgress:nil];
 }
 
 - (void)updatePersonData{
-    if (![LoginSession sharedInstance].yhbh) {
-        [LoginSession sharedInstance].yhbh = @"";
-    }
         __weak typeof(self) weakSelf = self;
     NSDictionary *pram = @{@"hjfl":self.oneTextField.text
                            ,@"hjszd":self.threeTextField.text
-                           ,@"yhbh":[LoginSession sharedInstance].yhbh
+//                           ,@"yhbh":[LoginSession sharedInstance].yhbh
                            ,@"hyzk":self.twoTextField.text
-                           ,@"hkb":self.addImageViewStr
+                           ,@"hkb":weakSelf.imageStrArray[0]
                            };
 
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savemy/new") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
@@ -225,7 +215,7 @@
                 self.threeTextField.text = tempgrxx[@"jtcy"][@"hjszd"];
             }
             if (![Utility is_empty:tempgrxx[@"zzxx"][@"hkb"]]) {//图片
-                [self.addImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseImageUrl,tempgrxx[@"zzxx"][@"hkb"]]]];
+                [self.addImageView setCommenImageUrl:tempgrxx[@"zzxx"][@"hkb"]];
             }
      
         }else{

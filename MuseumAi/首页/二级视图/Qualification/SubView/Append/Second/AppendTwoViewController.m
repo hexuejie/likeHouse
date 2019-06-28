@@ -11,16 +11,16 @@
 #import "UIView+add.h"
 #import "PureCamera.h"
 #import "RealFinishTipView1.h"
+#import "AppendChooseViewController.h"
 
 @interface AppendTwoViewController ()
 
 //@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *timeTextField;
-
 @property (weak, nonatomic) IBOutlet UIImageView *addImageView;
 
 @property (nonatomic , strong) ReleaseHomeworkTimeViewMask *timeViewMask;
-
+@property (nonatomic , strong) NSArray *imageStrArray;
 @end
 
 @implementation AppendTwoViewController
@@ -102,12 +102,54 @@
         self.addImageView.image
         ) {
         
-        [SVProgressHelper dismissWithMsg:@"保存成功 刷新数据！"];
-        [self callBackClick];
+        [self updateLoadImage:nil];
         
     }else{
         [SVProgressHelper dismissWithMsg:@"请完善申请人信息!"];
     }
 }
 
+
+
+- (void)updateLoadImage:(UIImage *)upImage{
+    __weak typeof(self) weakSelf = self;
+    NSArray *imageArray = @[self.addImageView.image
+                            ];
+    [NetWork uploadMoreFileHttpRequestURL:DetailUrlString(@"/upload") RequestPram:@{} arrayImg:imageArray arrayAudio:@[] RequestSuccess:^(id  _Nonnull respoes) {
+        if (respoes) {
+            weakSelf.imageStrArray = [respoes componentsSeparatedByString:@";"];
+            [weakSelf updatePersonData];
+        }
+    } RequestFaile:^(NSError * _Nonnull erro) {
+        [weakSelf alertWithMsg:@"上传图片出错" handler:nil];
+    } UploadProgress:nil];
+}
+
+- (void)updatePersonData{
+    
+    NSMutableDictionary *pramDic = [NSMutableDictionary new];
+
+    [pramDic setObject:self.timeTextField.text forKey:@"zsbasj"];
+
+    [pramDic setObject:@"是" forKey:@"sfzsjt"];
+    [pramDic setObject:self.imageStrArray[0] forKey:@"zsjtzm"];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/zsjt") para:pramDic isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        //banner
+        if (success) {
+            [SVProgressHelper dismissWithMsg:response[@"msg"]];
+            for (UIViewController *controller in self.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[AppendChooseViewController class]]) {
+                    AppendChooseViewController *A =(AppendChooseViewController *)controller;
+                    [self.navigationController popToViewController:A animated:YES];
+                }
+            }
+            
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
 @end

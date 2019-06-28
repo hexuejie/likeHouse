@@ -16,6 +16,8 @@
                 <outlet property="codeImageMid" destination="sM8-Ud-Cow" id="6LK-No-8XZ"/>
                 <outlet property="codeImageViewTop" destination="h6A-3z-aku" id="wa4-EX-I0q"/>
                 <outlet property="codeLabel" destination="3Ew-nL-wQM" id="QQk-uq-x4r"/>
+                <outlet property="refeashButton" destination="mOB-h0-dM2" id="Ulm-Sb-oex"/>
+                <outlet property="tipReturnLabel" destination="mU9-yV-4kg" id="vJz-Ri-ZMj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -39,7 +41,7 @@
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OxA-mW-1Lh">
-                    <rect key="frame" x="15" y="143" width="345" height="406"/>
+                    <rect key="frame" x="15" y="143" width="345" height="408"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="形状 1 拷贝 2" translatesAutoresizingMaskIntoConstraints="NO" id="h6A-3z-aku">
                             <rect key="frame" x="10" y="8" width="325" height="71"/>
@@ -49,7 +51,7 @@
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sM8-Ud-Cow">
                             <rect key="frame" x="97.5" y="153" width="150" height="150"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="150" id="k8c-RF-fED"/>
                                 <constraint firstAttribute="height" constant="150" id="mBT-Hh-Ptt"/>
@@ -74,20 +76,42 @@
                             <color key="textColor" red="0.47455930709838867" green="0.47060346603393555" blue="0.4704824686050415" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（支付完成后返回页面刷新查看）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mU9-yV-4kg">
+                            <rect key="frame" x="80.5" y="379" width="184" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.47455930709999999" green="0.47060346600000003" blue="0.47048246859999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOB-h0-dM2">
+                            <rect key="frame" x="264.5" y="366.5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="Ice-vP-5I6"/>
+                                <constraint firstAttribute="height" constant="40" id="dHk-yE-fRr"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" image="图层 3"/>
+                            <connections>
+                                <action selector="refeashClick:" destination="-1" eventType="touchUpInside" id="L64-YD-yib"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="sM8-Ud-Cow" firstAttribute="top" secondItem="Jcx-JM-2N2" secondAttribute="bottom" constant="21" id="0bc-F5-N7S"/>
                         <constraint firstItem="3Ew-nL-wQM" firstAttribute="centerX" secondItem="OxA-mW-1Lh" secondAttribute="centerX" id="4Si-Ba-ZRd"/>
+                        <constraint firstItem="mOB-h0-dM2" firstAttribute="centerY" secondItem="mU9-yV-4kg" secondAttribute="centerY" id="5mW-hJ-mkj"/>
+                        <constraint firstItem="mU9-yV-4kg" firstAttribute="centerX" secondItem="OxA-mW-1Lh" secondAttribute="centerX" id="8L0-bo-8q9"/>
                         <constraint firstItem="qvn-uF-zTb" firstAttribute="centerX" secondItem="OxA-mW-1Lh" secondAttribute="centerX" id="9Oo-HF-DdQ"/>
                         <constraint firstItem="h6A-3z-aku" firstAttribute="leading" secondItem="OxA-mW-1Lh" secondAttribute="leading" constant="10" id="MeC-f4-AER"/>
                         <constraint firstItem="3Ew-nL-wQM" firstAttribute="top" secondItem="h6A-3z-aku" secondAttribute="bottom" constant="15" id="T4n-Ek-sOP"/>
                         <constraint firstItem="Jcx-JM-2N2" firstAttribute="top" secondItem="3Ew-nL-wQM" secondAttribute="bottom" constant="20" id="Vkw-DX-fav"/>
+                        <constraint firstItem="mU9-yV-4kg" firstAttribute="top" secondItem="qvn-uF-zTb" secondAttribute="bottom" constant="37" id="YXA-hA-PFE"/>
                         <constraint firstItem="h6A-3z-aku" firstAttribute="top" secondItem="OxA-mW-1Lh" secondAttribute="top" constant="8" id="ZqZ-9b-ETK"/>
                         <constraint firstAttribute="trailing" secondItem="Jcx-JM-2N2" secondAttribute="trailing" constant="15" id="dGV-Yp-Ce5"/>
-                        <constraint firstAttribute="height" constant="406" id="efi-SD-U4t"/>
+                        <constraint firstAttribute="height" constant="408" id="efi-SD-U4t"/>
                         <constraint firstItem="sM8-Ud-Cow" firstAttribute="centerX" secondItem="OxA-mW-1Lh" secondAttribute="centerX" id="fPJ-Gs-DmV"/>
                         <constraint firstItem="Jcx-JM-2N2" firstAttribute="leading" secondItem="OxA-mW-1Lh" secondAttribute="leading" constant="15" id="ina-Dr-geM"/>
+                        <constraint firstItem="mOB-h0-dM2" firstAttribute="leading" secondItem="mU9-yV-4kg" secondAttribute="trailing" id="kYe-AA-0ak"/>
                         <constraint firstItem="qvn-uF-zTb" firstAttribute="top" secondItem="sM8-Ud-Cow" secondAttribute="bottom" constant="23" id="ky7-ee-RZt"/>
                         <constraint firstAttribute="trailing" secondItem="h6A-3z-aku" secondAttribute="trailing" constant="10" id="pqS-pa-0Zc"/>
                     </constraints>
@@ -133,6 +157,7 @@
     </objects>
     <resources>
         <image name="myCenter_background" width="375" height="192.5"/>
+        <image name="图层 3" width="18" height="18"/>
         <image name="形状 1 拷贝 2" width="324.5" height="71"/>
         <image name="返回" width="10" height="18.5"/>
     </resources>

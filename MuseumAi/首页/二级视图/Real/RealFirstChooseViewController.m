@@ -47,8 +47,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *frontImage;
 @property (weak, nonatomic) IBOutlet UIImageView *behindImage;
 
-@property (strong, nonatomic) NSString *frontImageStr;
-@property (strong, nonatomic) NSString *behindImageStr;
+@property (strong, nonatomic) NSArray *imageStrArray;
+//@property (strong, nonatomic) NSString *behindImageStr;
 
 /** 倒计时 */
 @property (nonatomic , strong) NSTimer *timer;
@@ -240,39 +240,26 @@
 }
 
 - (void)updateLoadImage:(UIImage *)upImage{
+    
     __weak typeof(self) weakSelf = self;
     //上传图片
-    AFHTTPSessionManager*  manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes= [NSSet setWithObjects:@"text/html",@"image/jpeg",nil];
-    [manager POST:@"http://10.3.61.154:80/app/file/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-        NSData *data = UIImageJPEGRepresentation(upImage, 0.8);
-        [formData appendPartWithFileData:data name:@"file" fileName:@".jpg" mimeType:@"image/jpeg"];
-        
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (upImage == weakSelf.frontImage.image) {
-            weakSelf.frontImageStr = responseObject[@"data"][@"src"];
-        }else if (upImage == weakSelf.behindImage.image) {
-            //            weakSelf.behindImageStr =
-            weakSelf.behindImageStr = responseObject[@"data"][@"src"];
+    NSArray *imageArray = @[upImage
+                            ];
+    
+    [NetWork uploadMoreFileHttpRequestURL:DetailUrlString(@"/upload") RequestPram:@{} arrayImg:imageArray arrayAudio:@[] RequestSuccess:^(id  _Nonnull respoes) {
+        if (respoes) {
+            weakSelf.imageStrArray = [respoes componentsSeparatedByString:@";"];
+            [weakSelf finishUpInfo
+             ];
         }
-        if (!weakSelf.frontImageStr) {
-            [self updateLoadImage:self.frontImage.image];
-        }else if(!weakSelf.behindImageStr) {
-            [self updateLoadImage:self.behindImage.image];
-        }else{
-            [self finishUpInfo];
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } RequestFaile:^(NSError * _Nonnull erro) {
         [weakSelf alertWithMsg:@"上传图片出错" handler:nil];
-        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-    }];
+    } UploadProgress:nil];
 }
 
 - (void)finishUpInfo{
     __weak typeof(self) weakSelf = self;
-    NSDictionary *pram = @{@"verifyType":@"0",
+    NSDictionary *pram = @{
                            @"zjlx":@"身份证",@"xm":self.nameTextField.text,@"mz":self.typeTextField.text//民族
                            ,@"csrq":self.brithdayTExtField.text//出生日期
                            ,@"zz":self.addressTextField.text
@@ -281,8 +268,8 @@
                            ,@"yxq":self.timeTextField.text
                            ,@"qfjg":self.organizationTextField.text,
                            
-                           @"sfzzm":self.frontImageStr,//http://app.cszjw.net:11000/img?path=/2019/04/05/155446198745056156623334787220109147.jpg
-                           @"sfzfm":self.behindImageStr
+                           @"sfzzm":[self.imageStrArray firstObject],//http://app.cszjw.net:11000/img?path=/2019/04/05/155446198745056156623334787220109147.jpg
+                           @"sfzfm":[self.imageStrArray lastObject]
                            };
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newverify") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];

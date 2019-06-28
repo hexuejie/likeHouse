@@ -12,6 +12,7 @@
 #import "ReleaseHomeworkTimeViewMask.h"
 #import "XWCountryCodeController.h"
 #import "PureCamera.h"
+#import "ChooseQualificationTypeViewController.h"
 
 @interface RealChooseForeignViewController ()
 
@@ -40,9 +41,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *exchangeImageThree;
 @property (weak, nonatomic) IBOutlet UIView *threeBackgroundView;//hidden
 
-@property (strong, nonatomic) NSString *exchangeImageOneStr;
-@property (strong, nonatomic) NSString *exchangeImageTwoStr;
-@property (strong, nonatomic) NSString *exchangeImageThreeStr;
+@property (strong, nonatomic) NSArray *imageStrArray;
+//@property (strong, nonatomic) NSString *exchangeImageTwoStr;
+//@property (strong, nonatomic) NSString *exchangeImageThreeStr;
 
 /** 倒计时 */
 @property (nonatomic , strong) NSTimer *timer;
@@ -290,53 +291,37 @@
 - (void)beginUpLoad{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self updateLoadImage:self.exchangeImageOne.image];
-    //    @property (weak, nonatomic) IBOutlet UIImageView *exchangeImageOne;
-    //    @property (weak, nonatomic) IBOutlet UIImageView *exchangeImageTwo;
-    //    @property (weak, nonatomic) IBOutlet UIImageView *exchangeImageThree;
-    //    @property (weak, nonatomic) IBOutlet UIView *threeBackgroundView;//hidden
 }
 
 
 - (void)updateLoadImage:(UIImage *)upImage{
     __weak typeof(self) weakSelf = self;
     //上传图片
-    AFHTTPSessionManager*  manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes= [NSSet setWithObjects:@"text/html",@"image/jpeg",nil];
-    [manager POST:@"http://10.3.61.154:80/app/file/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-        NSData *data = UIImageJPEGRepresentation(upImage, 0.8);
-        [formData appendPartWithFileData:data name:@"file" fileName:@".jpg" mimeType:@"image/jpeg"];
-        
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (upImage == weakSelf.exchangeImageOne.image) {
-            weakSelf.exchangeImageOneStr = responseObject[@"data"][@"src"];
-        }else if (upImage == weakSelf.exchangeImageTwo.image) {
-            weakSelf.exchangeImageTwoStr = responseObject[@"data"][@"src"];
-        }else if (upImage == weakSelf.exchangeImageThree.image) {
-            weakSelf.exchangeImageThreeStr = responseObject[@"data"][@"src"];
+    NSArray *imageArray = @[self.exchangeImageOne.image,self.exchangeImageTwo.image
+                            ];
+    if (self.exchangeImageThree.image) {
+        imageArray = @[self.exchangeImageOne.image,self.exchangeImageTwo.image,self.exchangeImageThree.image
+                       ];
+    }
+    [NetWork uploadMoreFileHttpRequestURL:DetailUrlString(@"/upload") RequestPram:@{} arrayImg:imageArray arrayAudio:@[] RequestSuccess:^(id  _Nonnull respoes) {
+        if (respoes) {
+            weakSelf.imageStrArray = [respoes componentsSeparatedByString:@";"];
+            if ([LoginSession sharedInstance].pageType == 1) {//+240
+                [weakSelf finishUpInfoPo];
+            }else if ([LoginSession sharedInstance].pageType == 2) {//子女
+                [weakSelf finishUpInfoZn];
+            }else{
+                [weakSelf finishUpInfoReal];
+            }
         }
-        if (!weakSelf.exchangeImageOneStr) {
-            [self updateLoadImage:self.exchangeImageOne.image];
-        }else if(!weakSelf.exchangeImageTwoStr) {
-            [self updateLoadImage:self.exchangeImageTwo.image];
-        }
-        //        else if(!weakSelf.exchangeImageThreeStr&&[LoginSession sharedInstance].pageType == 1) {
-        //            [self updateLoadImage:self.exchangeImageThree.image];
-        //        }
-        
-        else{
-            [self finishUpInfo];
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } RequestFaile:^(NSError * _Nonnull erro) {
         [weakSelf alertWithMsg:@"上传图片出错" handler:nil];
-        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-    }];
+    } UploadProgress:nil];
 }
 
-- (void)finishUpInfo{
+- (void)finishUpInfoZn{
     __weak typeof(self) weakSelf = self;
-    NSDictionary *pram = @{@"verifyType":@"2",//2外籍
+    NSDictionary *pram = @{
                            @"zjlx":@"护照",@"xm":self.nameTextField.text
                            ,@"csrq":self.brithDayTextField.text//出生日期
                            ,@"gj":self.areaTextField.text//香港九龙
@@ -344,8 +329,57 @@
                            ,@"zjhm":self.changeTimes.text//证件号码
                            ,@"yxq":[NSString stringWithFormat:@"%@-%@",self.beginTimeTextField.text,self.endTimeTextField.text]//有效期限
                            
-                           ,@"txzzm":self.exchangeImageOneStr,
-                           @"txzfm":self.exchangeImageTwoStr
+                           ,@"hz":self.imageStrArray[0],
+                           @"hzqzy":self.imageStrArray[1],
+                           };
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savezn/new") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        if (success) {
+            
+            [weakSelf sureButtonClick];
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
+
+- (void)finishUpInfoPo{
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *pram = @{
+                           @"zjlx":@"护照",@"xm":self.nameTextField.text
+                           ,@"csrq":self.brithDayTextField.text//出生日期
+                           ,@"gj":self.areaTextField.text//香港九龙
+                           ,@"xb":self.sexTextField.text//性别
+                           ,@"zjhm":self.changeTimes.text//证件号码
+                           ,@"yxq":[NSString stringWithFormat:@"%@-%@",self.beginTimeTextField.text,self.endTimeTextField.text]//有效期限
+                           
+                           ,@"hz":self.imageStrArray[0],
+                           @"hzqzy":self.imageStrArray[1],
+                           @"jhz":self.imageStrArray[2]
+                           };
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savepo/new") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        if (success) {
+            
+            [weakSelf sureButtonClick];
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
+
+- (void)finishUpInfoReal{
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *pram = @{
+                           @"zjlx":@"护照",@"xm":self.nameTextField.text
+                           ,@"csrq":self.brithDayTextField.text//出生日期
+                           ,@"gj":self.areaTextField.text//香港九龙
+                           ,@"xb":self.sexTextField.text//性别
+                           ,@"zjhm":self.changeTimes.text//证件号码
+                           ,@"yxq":[NSString stringWithFormat:@"%@-%@",self.beginTimeTextField.text,self.endTimeTextField.text]//有效期限
+                           
+                           ,@"txzzm":self.imageStrArray[0],
+                           @"txzfm":self.imageStrArray[1]
                            };
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newverify") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
@@ -371,6 +405,15 @@
 }
 
 - (void)backRootVC{
+    if ([LoginSession sharedInstance].pageType >0) {//+240
+        for (UIViewController *controller in self.navigationController.viewControllers) {
+            if ([controller isKindOfClass:[ChooseQualificationTypeViewController class]]) {
+                ChooseQualificationTypeViewController *A =(ChooseQualificationTypeViewController *)controller;
+                [self.navigationController popToViewController:A animated:YES];
+            }
+        }
+        return;
+    }
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

@@ -13,6 +13,7 @@
 #import "PureCamera.h"
 #import "ChooseQualificationTypeViewController.h"
 #import "ChooseOtherRealViewController.h"
+#import "MOFSPickerManager.h"
 
 @interface AddChildrenViewController ()
 
@@ -29,7 +30,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *areaTextField;
 @property (weak, nonatomic) IBOutlet UITextField *sexTextField;
 
-
+@property (nonatomic , strong) NSArray *imageStrArray;
 
 //图片
 @property (weak, nonatomic) IBOutlet UIImageView *exchangeImage;
@@ -82,9 +83,17 @@
         }break;
             
         case 103:{//地区
-            _timeViewMask.titleLabel.text = @"请选择婚户籍所在地";
-            [self showOtherAlertView:@[@"中国香港",@"中国澳门",@"中国台湾"]];///
-            
+//            _timeViewMask.titleLabel.text = @"请选择婚户籍所在地";
+//            [self showOtherAlertView:@[@"中国香港",@"中国澳门",@"中国台湾"]];///
+            //湖南省-长沙市-岳麓区
+            NSString *string = self.areaTextField.text;
+            [[MOFSPickerManager shareManger] showMOFSAddressPickerWithDefaultAddress:string title:@"请选择户籍所在地" cancelTitle:@"取消" commitTitle:@"完成" commitBlock:^(NSString * _Nullable address, NSString * _Nullable zipcode) {
+                self.areaTextField.text = address;
+                NSLog(@"%@", zipcode);
+                
+            } cancelBlock:^{
+                
+            }];
         }break;
             
         default:
@@ -160,13 +169,7 @@
         self.exchangeImage.image
         ) {
         
-        [SVProgressHelper dismissWithMsg:@"保存成功 刷新数据！"];
-        for (UIViewController *controller in self.navigationController.viewControllers) {
-            if ([controller isKindOfClass:[ChooseQualificationTypeViewController class]]) {
-                ChooseQualificationTypeViewController *A =(ChooseQualificationTypeViewController *)controller;
-                [self.navigationController popToViewController:A animated:YES];
-            }
-        }
+        [self updateLoadImage:nil];
         
     }else{
         [SVProgressHelper dismissWithMsg:@"请完善子女信息"];
@@ -179,4 +182,52 @@
     [[ProUtils getCurrentVC].navigationController pushViewController:realController animated:YES];
 }
 
+
+- (void)updateLoadImage:(UIImage *)upImage{
+    __weak typeof(self) weakSelf = self;
+    //上传图片
+    NSArray *imageArray = @[self.exchangeImage.image
+                            ];
+ 
+    [NetWork uploadMoreFileHttpRequestURL:DetailUrlString(@"/upload") RequestPram:@{} arrayImg:imageArray arrayAudio:@[] RequestSuccess:^(id  _Nonnull respoes) {
+        if (respoes) {
+            weakSelf.imageStrArray = [respoes componentsSeparatedByString:@";"];
+            [weakSelf finishUpInfoZn];
+        }
+    } RequestFaile:^(NSError * _Nonnull erro) {
+        [weakSelf alertWithMsg:@"上传图片出错" handler:nil];
+    } UploadProgress:nil];
+}
+
+- (void)finishUpInfoZn{
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *pram = @{@"zjlx":@"户口薄",
+                           @"yhbh":[NSString stringWithFormat:@"%@",[LoginSession sharedInstance].otherYhbh]
+                           ,@"xm":self.nameTextField.text
+                           ,@"hjfl":self.typeTextField.text//出生日期
+                    
+                           ,@"xb":self.sexTextField.text//性别
+                           ,@"zjhm":self.numberTextField.text//证件号码
+                           ,@"hjszd":self.areaTextField.text//证件号码
+                           
+                           ,@"sfyfyq":@"是"
+                           ,@"hkb":self.imageStrArray[0]
+                           };
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savezn/new") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        if (success) {
+            
+            [SVProgressHelper dismissWithMsg:response[@"msg"]];
+            for (UIViewController *controller in self.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[ChooseQualificationTypeViewController class]]) {
+                    ChooseQualificationTypeViewController *A =(ChooseQualificationTypeViewController *)controller;
+                    [self.navigationController popToViewController:A animated:YES];
+                }
+            }
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
+///listznxx
 @end

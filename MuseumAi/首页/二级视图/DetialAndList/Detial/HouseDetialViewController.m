@@ -237,7 +237,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section >= 3) {
-        [self testButtonClick];
+        HouseDetialViewController *vc = [HouseDetialViewController new];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -322,26 +324,36 @@
 }
 
 - (void)reloadData {
-    //    __weak typeof(self) weakSelf = self;
-    //
-    //    //    @{@"page":@"1",@"rows":@"3",@"token":[LoginSession sharedInstance].token};
-    //    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"3"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-    //
-    //        if (success) {
-    //            NSDictionary *dic = response[@"data"];
-    //            [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"linkUrl"];
-    //            [[NSUserDefaults standardUserDefaults] synchronize];
-    //
-    //            [weakSelf.contentCollectionView reloadData];
-    //
-    //        }else{
-    //            [weakSelf alertWithMsg:kFailedTips handler:nil];
-    //        }
-    //        [weakSelf.contentCollectionView.mj_header endRefreshing];
-    //        [weakSelf.contentCollectionView.mj_footer endRefreshing];
-    //        //            [weakSelf.contentCollectionView.mj_header endRefreshing];
-    //        //            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
-    //    }];
+        __weak typeof(self) weakSelf = self;
+    
+        [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newhousedetail") para: self.parm isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    
+            if (success) {
+                NSDictionary *dic = response[@"data"];
+                [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"linkUrl"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+    
+                [weakSelf.contentCollectionView reloadData];
+    
+            }else{
+                [weakSelf alertWithMsg:kFailedTips handler:nil];
+            }
+            [weakSelf.contentCollectionView.mj_header endRefreshing];
+            [weakSelf.contentCollectionView.mj_footer endRefreshing];
+        }];
 }
 
+
+//token String 用户token
+//yhbh String 用户id
+//lpbh String 楼盘编号
+//lx String 类型(1：效果图，2：样板图片，3：配套图片，4：展示图片，5：视频，6：VR)
+//kpsj String 开盘时间
+//ztbh Integer 专题编号
+//ldbh String 楼栋编号
+//xqly Integer 详情来源  (1,banner,2,专题,3,新闻,4,推荐,5,其他)
+//bannerbh Integer banner编号
+//xwbh Integer 新闻编号
+//page Integer
+//rows Integer
 @end
