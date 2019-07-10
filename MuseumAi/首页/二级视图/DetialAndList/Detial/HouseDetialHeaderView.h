@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IndexBannerView.h"
+#import "DetialHouseBanner.h"
+#import "HouseDetialModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,9 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIButton *moreButton;
 
-@property (strong, nonatomic) NSDictionary *model;
+@property (nonatomic , strong) HouseDetialModel *model;
 
-@property (nonatomic,strong)IndexBannerView *bannerScrollView;
+@property (nonatomic,strong)DetialHouseBanner *bannerScrollView;
 @end
 
 NS_ASSUME_NONNULL_END

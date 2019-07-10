@@ -34,8 +34,8 @@
     // Segmented Control customization
     self.segmentedPager.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
     self.segmentedPager.segmentedControl.backgroundColor = [UIColor whiteColor];
-    self.segmentedPager.segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : kUIColorFromRGB(0x999999),NSFontAttributeName:kSysFont(14.0)};
-    self.segmentedPager.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : MJThemeColor,NSFontAttributeName:kSysFont(14.0)};
+    self.segmentedPager.segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : kUIColorFromRGB(0x999999),NSFontAttributeName:kSysFont(16.0)};
+    self.segmentedPager.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : MJThemeColor,NSFontAttributeName:kSysFont(16.0)};
     self.segmentedPager.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
     self.segmentedPager.segmentedControl.selectionIndicatorHeight = 3;
     self.segmentedPager.segmentedControl.selectionIndicatorCornerRadius = 1.5;

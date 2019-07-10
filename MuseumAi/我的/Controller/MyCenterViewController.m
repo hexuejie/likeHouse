@@ -17,6 +17,7 @@
 #import "MyCenterAboutViewController.h"
 #import "MyCenterSettingViewController.h"
 #import "RealFirstTipViewController.h"
+#import "MyCenterChangePhoneViewController.h"
 
 @interface MyCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -84,7 +85,6 @@
         //banner
         if (success) {
             NSDictionary *dic = response[@"data"];
-            
             [LoginSession sharedInstance].sjhm = [dic objectForKey:@"zcyh"][@"sjhm"];//
             [LoginSession sharedInstance].rzzt = [dic objectForKey:@"zcyh"][@"rzzt"];//
             [LoginSession sharedInstance].grrzzt = [dic objectForKey:@"jtcy"][@"rzzt"];
@@ -103,13 +103,14 @@
     }
     
     if (![Utility is_empty:[LoginSession sharedInstance].rzzt]) {
-        if ([[LoginSession sharedInstance].rzzt integerValue] == 2) {
+        NSInteger rzzt = [[LoginSession sharedInstance].rzzt integerValue];
+        if ( rzzt== 2) {
             [self.goIntoReal setTitle:@">" forState:UIControlStateNormal];
             self.realLabel.text = @"已实名认证";
-        }else if ([[LoginSession sharedInstance].rzzt integerValue] == 3) {
+        }else if (rzzt == 3) {
             [self.goIntoReal setTitle:@">" forState:UIControlStateNormal];
             self.realLabel.text = @"实名认证未通过";
-        }else if ([[LoginSession sharedInstance].rzzt integerValue] == 1) {
+        }else if (rzzt == 1 || rzzt == 0) {
             [self.goIntoReal setTitle:@">" forState:UIControlStateNormal];
             self.realLabel.text = @"实名认证待审核";
         }else{
@@ -123,11 +124,13 @@
     
     self.qualityStatueLabel.text = @"未提交";//已通过  待审核
     if (![Utility is_empty:[LoginSession sharedInstance].grrzzt]) {
-        if ([[LoginSession sharedInstance].grrzzt integerValue] == 2) {
+        
+        NSInteger grrzzt = [[LoginSession sharedInstance].grrzzt integerValue];
+        if (grrzzt == 2) {
             self.qualityStatueLabel.text = @"未通过";//已通过  待审核
-        }else if ([[LoginSession sharedInstance].grrzzt integerValue] == 0) {
+        }else if (grrzzt == 0) {
             self.qualityStatueLabel.text = @"待审核";//已通过  待审核
-        }else if ([[LoginSession sharedInstance].grrzzt integerValue] == 1) {
+        }else if (grrzzt == 1) {
             self.qualityStatueLabel.text = @"已通过";//已通过  待审核
         }
     }
@@ -229,17 +232,17 @@
             vc.hidesBottomBarWhenPushed = YES;
             vc.isReal = NO;
             [self.navigationController pushViewController:vc animated:YES];
+            return;
         }
-    }else{
-        RealFirstTipViewController *vc = [RealFirstTipViewController new];
-        vc.title = @"购房资格审查说明";
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
     }
+    RealFirstTipViewController *vc = [RealFirstTipViewController new];
+    vc.title = @"购房资格审查说明";
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)realClick:(id)sender {//[[LoginSession sharedInstance].rzzt integerValue]>0
-    if (![Utility is_empty:[LoginSession sharedInstance].rzzt]&&[[LoginSession sharedInstance].rzzt integerValue]>0) {
+    if ([LoginSession sharedInstance].rzzt) {
         
         ResultQualityViewController *vc = [ResultQualityViewController new];
         vc.title = @"实名认证";
@@ -398,5 +401,14 @@
 }
 
 
+- (IBAction)changePhone:(id)sender {
+    
+    
+    MyCenterChangePhoneViewController *vc = [MyCenterChangePhoneViewController new];
+    vc.title = @"更换手机号";
+    vc.hidesBottomBarWhenPushed = YES;
+//    vc.isReal = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end

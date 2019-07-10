@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *lpmc;// "鑫远紫越香苑",
 @property (nonatomic,copy) NSString *province;// "",
 @property (nonatomic,copy) NSString *bq;// "",
-@property (nonatomic,copy) NSString *img;// "http://192.168.99.234/storage/15403858389573531869258636207927538.jpeg,http://192.168.99.234/storage/15403858389573531869258636207927538.jpeg,http://192.168.99.234/storage/15403858389573531869258636207927538.jpeg"
+@property (nonatomic,strong) NSString *img;// "http://192.168.99.234/storage/15403858389573531869258636207927538.jpeg,http://192.168.99.234/storage/15403858389573531869258636207927538.jpeg,http://192.168.99.234/storage/15403858389573531869258636207927538.jpeg"
 
 
 @end

@@ -29,9 +29,13 @@
     self.titleLabel.text = _model.lpmc;
     self.contentBeginLabel.text = _model.kprq;
     self.contentEndLabel.text = _model.kpjsrq;
+    if (![_model.kprq hasPrefix:@"开始"]) {
+        self.contentBeginLabel.text = [NSString stringWithFormat:@"开始：%@",_model.kprq];
+        self.contentEndLabel.text = [NSString stringWithFormat:@"结束：%@",_model.kpjsrq];;
+    }
     self.priceLabel.text = [NSString stringWithFormat:@"%@",_model.jj];
     
-    if (self.tipTagLabel.text.length >0) {
+    if (self.tipTagLabel.text.length >1) {
         self.tipTagLabel.hidden = NO;
     }else{
         self.tipTagLabel.hidden = YES;

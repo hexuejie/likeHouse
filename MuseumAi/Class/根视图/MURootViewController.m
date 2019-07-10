@@ -41,9 +41,27 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kDidLoginSuccessNotification object:nil];
     
     [self reloadData];
+    
+    
+    [[UINavigationBar appearance] setShadowImage: [self viewImageFromColor:kUIColorFromRGB(0xf2f2f1) rect:CGRectMake(0, 0, SCREEN_WIDTH, 1)]];
 }
 
-- (void)reloadData{}
+- (UIImage *)viewImageFromColor:(UIColor *)color rect:(CGRect)rect{
+    
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+
+- (void)reloadData{
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
 
 
 - (void)callBackClick{
@@ -99,23 +117,90 @@
 
 - (void)testButtonClick{
 //    [self.navigationController pushViewController:[MURootViewController new] animated:YES];
-    
     HouseDetialViewController *vc = [HouseDetialViewController new];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+
+
 - (void)addNoneDataTipView{
     UIView *tipView1 = [[NSBundle mainBundle] loadNibNamed:@"NoneDataTipView" owner:self options:nil].firstObject;
     tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     tipView1.tag = 9595;
-    [self.view addSubview:tipView1];
+    if (!_allView) {
+        _allView = self.view;
+    }
+    [_allView addSubview:tipView1];
+    
+    [tipView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.top.equalTo(_allView);
+        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.height.mas_equalTo(_allView.bounds.size.height);
+    }];
 }
 
 - (void)removeNoneDataTipView{
-    UIView *tipView1 = [self.view viewWithTag:9595];
+    if (!_allView) {
+        _allView = self.view;
+    }
+    
+    UIView *tipView1 = [_allView viewWithTag:9595];
     if (tipView1) {
         [tipView1 removeFromSuperview];
+    }
+}
+
+
+- (void)addErrprTipView{
+    UIView *tipView1 = [[NSBundle mainBundle] loadNibNamed:@"NoneDataTipView" owner:self options:nil].lastObject;
+    tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    tipView1.tag = 9696;
+    
+    if (!_allView) {
+        _allView = self.view;
+    }
+    [_allView addSubview:tipView1];
+    
+    tipView1.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(reloadData)];
+    [tipView1 addGestureRecognizer:tap];
+    
+    [tipView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.top.equalTo(_allView);
+        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.height.mas_equalTo(_allView.bounds.size.height);
+    }];
+}
+
+- (void)removeErrorTipView{
+    if (!_allView) {
+        _allView = self.view;
+    }
+    UIView *tipView1 = [_allView viewWithTag:9696];
+    if (tipView1) {
+        [tipView1 removeFromSuperview];
+    }
+}
+
+
+- (void)loadingPageSuccess{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self removeNoneDataTipView];
+    [self removeErrorTipView];
+}
+
+- (void)loadingPageError{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self alertWithMsg:kFailedTips handler:nil];
+    [self addErrprTipView];
+}
+
+- (void)loadingPageWidthSuccess:(BOOL)success{
+    if (success) {
+        [self loadingPageSuccess];
+    }else{
+        [self loadingPageError];
     }
 }
 @end

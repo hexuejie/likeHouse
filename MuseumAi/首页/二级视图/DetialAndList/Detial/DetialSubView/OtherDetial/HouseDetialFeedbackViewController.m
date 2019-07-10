@@ -81,8 +81,41 @@
 }
 
 - (IBAction)updateFinishClick:(id)sender {
-    [SVProgressHelper dismissWithMsg:@"已提交"];
-    [self callBackClick];
+    if(self.contentTextView.text.length == 0) {
+        [self alertWithMsg:[NSString stringWithFormat:@"请输入%@",self.titleLabel.text] handler:nil];
+        return;
+    }
+    
+    if (!_strBH) {
+        _strBH = @"201806110829";
+    }
+    NSString *strURL;
+    NSDictionary *pram;
+    if ([self.title isEqualToString:@"反馈纠错"]) {
+        strURL = @"/api/family/xf/user/correct";
+        pram = @{@"xmbh":_strBH
+                 ,@"nr":self.contentTextView.text
+                 ,@"lxsj":[NSString stringWithFormat:@"%@",self.phoneTextField.text]
+                 };
+    }else{
+        strURL = @"/api/family/xf/user/lxw";
+        pram = @{@"xmbh":_strBH
+                 ,@"nr":self.contentTextView.text
+                 ,@"sjhm":[NSString stringWithFormat:@"%@",self.phoneTextField.text]
+                 };
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(strURL) para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        if (success) {
+            [SVProgressHelper dismissWithMsg:@"已提交"];
+            [weakSelf callBackClick];
+            
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
 }
 
 @end

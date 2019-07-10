@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HouseAroundViewController : MURootViewController
 
+@property  (nonatomic ,strong) NSArray *zbArray;
+
 @end
 
 NS_ASSUME_NONNULL_END

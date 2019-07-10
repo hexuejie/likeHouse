@@ -12,7 +12,7 @@
 @interface HouseAroundViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) NSArray *dataArray;
+//@property (strong, nonatomic) NSArray *dataArray;
 
 @end
 
@@ -23,14 +23,7 @@
     // Do any additional setup after loading the view.
     self.title = @"位置周边";
     self.view.backgroundColor = [UIColor whiteColor];
-    _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"},
-                   @{@"title":@"购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改",@"content":@"myCenter_change"},
-                   @{@"title":@"常见问题",@"content":@"myCenter_question"},
-                   @{@"title":@"用户设置",@"content":@"myCenter_setting"},
-                   @{@"title":@"关于悦居星城",@"content":@"myCenter_about"},
-                   @{@"title":@"添加前配偶需要哪些信息？",@"content":@"myCenter_setting"},
-                   @{@"title":@"添加前配偶需要哪些信息？添加前配偶需要哪些信息？",@"content":@"myCenter_about"}
-                   ];
+ 
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = [UIColor whiteColor];
@@ -38,6 +31,7 @@
 //    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DetialMoreHeader class])  bundle:nil] forHeaderFooterViewReuseIdentifier:@"DetialMoreHeader"];
     
     self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -46,14 +40,14 @@
 
 #pragma mark - UITableViewDelegate && UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _dataArray.count;
+    return _zbArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HouseAroundTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HouseAroundTableViewCell" forIndexPath:indexPath];
     
-    cell.contentLabel.text = _dataArray[indexPath.row][@"title"];
+    cell.contentLabel.text = _zbArray[indexPath.row][@"zbmc"];
     
     
     if (cell.contentLabel.text.length > 0) {
@@ -65,6 +59,47 @@
         [cell.contentLabel setAttributedText:attributedString];
     }
     
+    switch ([_zbArray[indexPath.row][@"zblx"] integerValue]) {
+            
+        case 1:{
+            cell.titleLabel.text = @"学校";
+            cell.titleLogoImage.image = [UIImage imageNamed:@"detial_school"];
+        }break;
+            
+        case 2:{
+            cell.titleLabel.text = @"地铁";
+            cell.titleLogoImage.image = [UIImage imageNamed:@"detial_metro"];
+        }break;
+            
+        case 3:{
+            cell.titleLabel.text = @"公交";
+            cell.titleLogoImage.image = [UIImage imageNamed:@"detial_bus"];
+        }break;
+            
+        case 4:{
+            cell.titleLabel.text = @"医院";
+            cell.titleLogoImage.image = [UIImage imageNamed:@"detial_hospital"];
+        }break;
+            
+        case 5:{
+            cell.titleLabel.text = @"银行";
+            cell.titleLogoImage.image = [UIImage imageNamed:@"detial_bank"];
+        }break;
+            
+        case 6:{
+            cell.titleLabel.text = @"商圈";
+            cell.titleLogoImage.image = [UIImage imageNamed:@"detial_shop"];
+        }break;
+            
+        case 7:{
+            cell.titleLabel.text = @"其他";
+            cell.titleLogoImage.image = [UIImage imageNamed:@"detial_other"];
+        }break;
+            
+//   1 学校 2 地铁 3 公交  4 医院  5 银行  6 商圈  7 其他
+        default:
+            break;
+    }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -78,5 +113,14 @@
     return 0.01;
 }
 
+- (void)setZbArray:(NSArray *)zbArray{
+    _zbArray = zbArray;
+    
+    [self.tableView reloadData];
+    
+    if (self.zbArray.count == 0) {
+        [self addNoneDataTipView];
+    }
+}
 
 @end

@@ -171,8 +171,7 @@
             }
          
         NSInteger resultCode = [responseDict[@"code"] integerValue];
-        
-        // 2 token错误 3 token 过期 401 未授权
+   
         if (resultCode == 0) {
             if (isTologin) {
 //                [[LoginSession sharedInstance] destroyInstance];
@@ -336,8 +335,11 @@
    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //登录
-        MULoginViewController *loginController = [[MULoginViewController alloc] init];
-        [[ProUtils getCurrentVC] presentViewController:loginController animated:YES completion:nil];
+        if (![[ProUtils getCurrentVC] isKindOfClass:[MULoginViewController class]] && [LoginSession sharedInstance].toLogin == YES) {
+            
+            MULoginViewController *loginController = [[MULoginViewController alloc] init];
+            [[ProUtils getCurrentVC] presentViewController:loginController animated:YES completion:nil];
+        }
     });
 }
 
@@ -352,33 +354,8 @@
     
     [manager POST:url parameters:pram constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
-        ///用时间设置文件名
-        
-        NSDate *date = [NSDate date];
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        
-        [formatter setDateFormat:@"yyyyMMddhhmmss"];
-        
-        NSString *dateNow = [formatter stringFromDate:date];
-        
-        
-        
-        NSString *imgFileId = @"handsomekkImg";
-        
-        //  NSString *avdioFileId = @"ebookAvdio";
-        
-        ///图片文件data追加
-        
+        ///可文件名
         for (int i = 0; i < arrayImg.count; i++) {
-            
-//            ///文件名：这是多个文件名不一样，多以我就用i实现
-//
-//            NSString *fileName = [NSString stringWithFormat:@"%@%@%d.png",imgFileId,dateNow,i];
-//
-//            ///图片支持类型jpg/png/jpeg
-//
-//            [formData appendPartWithFileData:arrayImg[i] name:[NSString stringWithFormat:@"%@%d",imgFileId,i] fileName:fileName mimeType:@"jpg/png/jpeg"];
             
             NSData *data = UIImageJPEGRepresentation(arrayImg[i], 0.8);
             [formData appendPartWithFileData:data name:@"file" fileName:@".jpg" mimeType:@"image/jpg/png/jpeg"];
@@ -386,9 +363,7 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
         ///进度回调
-        
 //        progress(uploadProgress);
-        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         ///上传功能回调

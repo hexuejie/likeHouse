@@ -20,6 +20,8 @@
 
 @property (nonatomic,strong)NSTimer *timer;
 
+//@property (nonatomic,strong)UIPageControl *pageControl;
+
 @end
 
 @implementation IndexBannerView
@@ -54,12 +56,10 @@
         self.rightImageV.contentMode = UIViewContentModeScaleAspectFill;
         self.middleImageV.contentMode = UIViewContentModeScaleAspectFill;
         self.leftImageV.contentMode = UIViewContentModeScaleAspectFill;
+        self.rightImageV.clipsToBounds = YES;
+        self.middleImageV.clipsToBounds = YES;
+        self.leftImageV.clipsToBounds = YES;
         
-//        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.height - 70, 100, 70)];
-//        [self.pageControl setPageIndicatorTintColor:UIColorFromRGB(0xffffff)];
-//        [self.pageControl setCurrentPageIndicatorTintColor:UIColorFromRGB(0xf94f4f)];
-//        [self.pageControl setBackgroundColor:[UIColor blueColor]];
-//        [self addSubview:self.pageControl];
         self.pagingEnabled = YES;
         self.clipsToBounds = YES;
         self.showsVerticalScrollIndicator = NO;
@@ -68,6 +68,16 @@
         self.bounces = NO;
         self.delegate = self;
         [self loadTimer];
+        
+//        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - 70, 100, 70)];
+//        [self.pageControl setPageIndicatorTintColor:kUIColorFromRGB(0xffffff)];
+//        [self.pageControl setCurrentPageIndicatorTintColor:kUIColorFromRGB(0xC0905D)];
+//        [self.pageControl setBackgroundColor:[UIColor blueColor]];
+//        [self.superview addSubview:self.pageControl];
+//        self.pageControl.layer.zPosition = 10;
+//        self.pageControl.hidesForSinglePage = YES;
+//        self.pageControl.defersCurrentPageDisplay = YES;
+      
     }
     return self;
 }
@@ -76,6 +86,7 @@
 - (void)setCurrentIndex:(NSInteger)currentIndex{
     _currentIndex = currentIndex;
 //    self.pageControl.currentPage = currentIndex;
+//    [self.pageControl updateCurrentPageDisplay];
 }
 
 - (void)setImageArray:(NSArray *)imageArray{
@@ -113,7 +124,12 @@
     [self.middleImageV setOtherImageUrl:self.imageArray[_currentIndex].img];
     [self.rightImageV setOtherImageUrl:self.imageArray[rightimageindex].img];
     
-   
+    CGFloat heightH = self.bounds.size.height;
+    self.contentSize = CGSizeMake(SCREEN_WIDTH*3, self.bounds.size.height);
+    self.leftImageV.frame = CGRectMake(0, 0, SCREEN_WIDTH - 0, heightH);
+    self.middleImageV.frame = CGRectMake(SCREEN_WIDTH+0, 0, SCREEN_WIDTH - 0, heightH);
+    self.rightImageV.frame = CGRectMake(SCREEN_WIDTH*2+ 0, 0, SCREEN_WIDTH - 0, heightH);
+
 }
 
 
@@ -190,31 +206,5 @@
     vc.strBH = admodel.bh;
     [[ProUtils getCurrentVC].navigationController pushViewController:vc animated:YES];
     
-    
-//    AdModel *admodel = self.imageArray[index];
-////    [ProUtils clickModelWithJumpType:admodel.jumpType relateId:admodel.relateId h5Url:admodel.linkUrl];
-//    CloudWebController *controller = [[CloudWebController alloc] init];
-//    controller.requestURL = admodel.linkUrl;
-//    [[ProUtils getCurrentVC].navigationController pushViewController:controller animated:YES];
-    
-    
-//
-//    
-//    AdModel *info ;
-//    info = self.imageArray[_currentIndex];
-//    [ProUtils clickModelWithJumpType:info.jumpType relateId:info.relateId h5Url:info.linkUrl];
 }
-
-
-
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 @end

@@ -74,7 +74,6 @@ alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
 #define kMainColor kUIColorFromRGB(0xFF4E4E)
 
 #define kLineColorDE kUIColorFromRGB(0xDEDEDE)
-#define kPlaceHolderImage [UIImage imageNamed:@"加载占位"]
 
 #define kARFoundTargetNotification @"kARFoundTargetNotification"
 #define kARPlayCompleteNotification @"kARPlayCompleteNotification"
@@ -86,7 +85,7 @@ alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
 
 #define kSysFont(float) [UIFont systemFontOfSize:float]
 
-#define kTestColor kUIColorFromRGB(0x0F4E4E)
+#define kTestColor kUIColorFromRGB(0xf0f0f0)
 
 #define MJThemeColor kUIColorFromRGB(0xC0905D)
 
@@ -96,7 +95,7 @@ alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
 //#define BaseUrl @"http://app.cszjw.net:11001"    //扒取数据
 //#define H5BaseUrl @"http://192.168.0.199:94"
 //#else
-#define BaseUrl @"http://192.168.99.234:8000"        //内部数据
+#define BaseUrl @"http://192.168.99.234:8000"        //内部数据 
 #define H5BaseUrl @"https://appweb.bnbn99.com"
 //#endif
 

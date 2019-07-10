@@ -11,12 +11,6 @@
 @implementation BannerModel
 
 
-- (void)setImg:(NSString *)img{
-    _img = img;
-    if (![_img hasPrefix:@"http"]) {
-        _img = [NSString stringWithFormat:@"%@%@",BaseImageUrl,img];
-    }
-}
 
 - (void)setXmbh:(NSString *)xmbh{
     _xmbh = xmbh;

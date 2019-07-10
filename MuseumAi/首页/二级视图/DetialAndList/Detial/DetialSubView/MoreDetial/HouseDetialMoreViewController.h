@@ -7,10 +7,13 @@
 //
 
 #import "MURootViewController.h"
+#import "HouseDetialModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HouseDetialMoreViewController : MURootViewController
+
+@property (nonatomic , strong) HouseDetialModel *detialModel;
 
 @end
 

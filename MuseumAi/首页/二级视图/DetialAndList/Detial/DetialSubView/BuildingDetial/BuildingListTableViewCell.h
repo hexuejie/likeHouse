@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BuildingListTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *dhLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ztLabel;
+
 @end
 
 NS_ASSUME_NONNULL_END

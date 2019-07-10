@@ -10,7 +10,9 @@
 #import "UIButton+EdgeInsets.h"
 #import "MUMapHandler.h"
 #import "MJRefresh.h"
+#import "hxlistVoHouseDetial.h"
 
+#import "hxlistVoHouseDetial.h"
 #import "DetialStyleCollectionViewCell.h"
 #import "JYEqualCellSpaceFlowLayout.h"
 
@@ -28,19 +30,14 @@
     // Do any additional setup after loading the view from its nib.
 
     self.title = @"户型列表";
-    [self dataInit];
+
     [self viewInit];
     
 }
 
-
-- (void)dataInit{
- 
-}
-
 - (void)viewInit {
     
-    JYEqualCellSpaceFlowLayout * layout = [[JYEqualCellSpaceFlowLayout alloc]initWithType:AlignWithCenter betweenOfCell:0];
+    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     layout.minimumLineSpacing = 0.01;
     layout.minimumInteritemSpacing = 0.01;
     self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:layout];
@@ -48,9 +45,8 @@
     self.contentCollectionView.dataSource = self;
     self.contentCollectionView.showsVerticalScrollIndicator = NO;
     self.contentCollectionView.showsHorizontalScrollIndicator = NO;
-    self.contentCollectionView.backgroundColor = [UIColor whiteColor];
+    self.contentCollectionView.backgroundColor = kUIColorFromRGB(0xF4F4F4);
     [self.view addSubview:self.contentCollectionView];
-    
 
     [self.contentCollectionView registerNib:[UINib nibWithNibName:@"DetialStyleCollectionViewCell" bundle:[NSBundle bundleForClass:[DetialStyleCollectionViewCell class]]] forCellWithReuseIdentifier:@"DetialStyleCollectionViewCell"];
     
@@ -59,21 +55,23 @@
 
 #pragma mark -
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return  8;
+    return  _hxlistVo.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     DetialStyleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetialStyleCollectionViewCell" forIndexPath:indexPath];
-    
+    cell.detial = _hxlistVo[indexPath.row];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((SCREEN_WIDTH-1)/2, 132*CustomScreenFit +105);
+    return CGSizeMake((SCREEN_WIDTH-12)/2, 132*CustomScreenFit +105);
 }
 
-
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(5, 5, 5, 5);
+}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -89,27 +87,13 @@
 }
 
 
-- (void)reloadData {
-    //    __weak typeof(self) weakSelf = self;
-    //
-    //    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"3"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-    //
-    //        if (success) {
-    //            NSDictionary *dic = response[@"data"];
-    //            [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"linkUrl"];
-    //            [[NSUserDefaults standardUserDefaults] synchronize];
-    //
-    //            [weakSelf.contentCollectionView reloadData];
-    //
-    //        }else{
-    //            [weakSelf alertWithMsg:kFailedTips handler:nil];
-    //        }
-    //        [weakSelf.contentCollectionView.mj_header endRefreshing];
-    //        [weakSelf.contentCollectionView.mj_footer endRefreshing];
-    //        //            [weakSelf.contentCollectionView.mj_header endRefreshing];
-    //        //            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
-    //    }];
+- (void)setHxlistVo:(NSArray *)hxlistVo{
+    _hxlistVo = hxlistVo;
+    [self.contentCollectionView reloadData];
+    
+    if (_hxlistVo.count == 0) {
+        [self addNoneDataTipView];
+    }
 }
-
 
 @end

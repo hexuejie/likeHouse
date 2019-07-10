@@ -30,6 +30,8 @@
 @property (strong, nonatomic) NSArray *nameArray;
 @property (strong, nonatomic) NSDictionary *realData;
 
+@property (strong, nonatomic) NSArray *foreignArray;
+@property (strong, nonatomic) NSArray *HKArray;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topContent;
 
@@ -132,12 +134,18 @@
             ResultContentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultContentTableViewCell" forIndexPath:indexPath];
             
             cell.titleLabel.text = tempDic[@"title"];
+            NSString *mz = self.realData[@"mz"];
+            NSString *qfjg = self.realData[@"qfjg"];
+            if ([self.realData[@"zjlx"] isEqualToString:@"护照"]||[self.realData[@"zjlx"] isEqualToString:@"港澳台来往大陆通行证"]) {
+                mz = self.realData[@"zz"];
+                qfjg = [NSString stringWithFormat:@"%@",self.realData[@"hzcs"]];
+            }
             switch (indexPath.row) {
                 case 0:
                     cell.contentTextField.text = self.realData[@"xb"];
                     break;
                 case 1:
-                    cell.contentTextField.text = self.realData[@"mz"];
+                    cell.contentTextField.text = mz;
                     break;
                 case 2:
                     cell.contentTextField.text = self.realData[@"csrq"];
@@ -146,7 +154,7 @@
                     cell.contentTextField.text = self.realData[@"zjhm"];
                     break;
                 case 4:
-                    cell.contentTextField.text = self.realData[@"qfjg"];
+                    cell.contentTextField.text = qfjg;
                     break;
                 case 5:
                     cell.contentTextField.text = self.realData[@"yxq"];
@@ -183,32 +191,58 @@
             }
             
             ResultContentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultContentTableViewCell" forIndexPath:indexPath];
-            
-            cell.titleLabel.text = _nameArray[0][indexPath.row][@"title"];
-            switch (indexPath.row) {
-                case 0:
-                    cell.contentTextField.text = model.jtcy.xm;
-                    break;
-                case 1:
-                    cell.contentTextField.text = model.jtcy.zjhm;
-                    break;
-                case 2:
-                    cell.contentTextField.text = model.jtcy.xb;
-                    break;
-                case 3:
-                    cell.contentTextField.text = model.jtcy.hjfl;
-                    break;
-                case 4:
-                    cell.contentTextField.text = model.jtcy.hyzk;
-                    break;
-                case 5:
-                    cell.contentTextField.text = model.jtcy.hjszd;
-                    break;
-                    
-                default:
-                    break;
+            if ([model.jtcy.zjlx isEqualToString:@"护照"] || [model.jtcy.zjlx isEqualToString:@"港澳台来往大陆通行证"]) {
+                cell.titleLabel.text = _foreignArray[indexPath.row][@"title"];
+                switch (indexPath.row) {
+                    case 0:
+                        cell.contentTextField.text = model.jtcy.xm;
+                        break;
+                    case 1:
+                        cell.contentTextField.text = model.jtcy.gj;
+                        break;
+                    case 2:
+                        cell.contentTextField.text = model.jtcy.xb;
+                        break;
+                    case 3:
+                        cell.contentTextField.text = model.jtcy.qtzjcsrq;
+                        break;
+                    case 4:
+                        cell.contentTextField.text = model.jtcy.zjhm;
+                        break;
+                    case 5:
+                        cell.contentTextField.text = model.jtcy.qtzjyxq;
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }else{
+                cell.titleLabel.text = _nameArray[0][indexPath.row][@"title"];
+                switch (indexPath.row) {
+                    case 0:
+                        cell.contentTextField.text = model.jtcy.xm;
+                        break;
+                    case 1:
+                        cell.contentTextField.text = model.jtcy.zjhm;
+                        break;
+                    case 2:
+                        cell.contentTextField.text = model.jtcy.xb;
+                        break;
+                    case 3:
+                        cell.contentTextField.text = model.jtcy.hjfl;
+                        break;
+                    case 4:
+                        cell.contentTextField.text = model.jtcy.hyzk;
+                        break;
+                    case 5:
+                        cell.contentTextField.text = model.jtcy.hjszd;
+                        break;
+                        
+                    default:
+                        break;
+                }
             }
-            
+        
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }else if ([headerStr isEqual:@"子女信息"]) {
@@ -545,20 +579,22 @@
     }
     if (_isReal) {
         header.headerLabel.text = self.realData[@"xm"];
-        if ([[LoginSession sharedInstance].rzzt integerValue] == 3) {
+        NSInteger rzzt = [[LoginSession sharedInstance].rzzt integerValue];
+        if (rzzt == 3) {
             header.headerImageView.image = [UIImage imageNamed:@"result_3"];
-        }else if ([[LoginSession sharedInstance].rzzt integerValue] == 2) {
+        }else if (rzzt == 2) {
             header.headerImageView.image = [UIImage imageNamed:@"result_2"];
-        }else if ([[LoginSession sharedInstance].rzzt integerValue] == 1) {
+        }else if (rzzt == 1  || rzzt == 0) {
             header.headerImageView.image = [UIImage imageNamed:@"result_1"];
         }
     }else{
         if (![Utility is_empty:[LoginSession sharedInstance].grrzzt]) {
-            if ([[LoginSession sharedInstance].grrzzt integerValue] == 2) {
+            NSInteger grrzzt = [[LoginSession sharedInstance].grrzzt integerValue];
+            if (grrzzt == 2) {
                 header.headerImageView.image = [UIImage imageNamed:@"result_3"];
-            }else if ([[LoginSession sharedInstance].grrzzt integerValue] == 0) {//待审核
+            }else if (grrzzt == 0) {//待审核
                 header.headerImageView.image = [UIImage imageNamed:@"result_1"];
-            }else if ([[LoginSession sharedInstance].grrzzt integerValue] == 1) {
+            }else if (grrzzt == 1) {
                 header.headerImageView.image = [UIImage imageNamed:@"result_2"];
             }
         }
@@ -566,129 +602,8 @@
     return header;
 }
 
-#pragma mark - data
-///newverifydetail
-- (void)reloadData {
-    if (_isReal) {
-        __weak typeof(self) weakSelf = self;
-        [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newverifydetail") para: @{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-            //banner
-            if (success) {
-                weakSelf.realData = response[@"data"];
-                [weakSelf.tableview reloadData];
-            }else{
-                [weakSelf alertWithMsg:kFailedTips handler:nil];
-            }
-        }];
-    }else{
-        __weak typeof(self) weakSelf = self;
-        [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/allmessage/new") para: @{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
- 
-            if (success) {
-                NSDictionary *allDic = response[@"data"];
-                
-                weakSelf.dataArray = [self modelForDic:allDic];
-                
-                [weakSelf.tableview reloadData];
-            }else{
-                [weakSelf alertWithMsg:kFailedTips handler:nil];
-            }
-        }];
-    }
-}
 
-- (NSMutableArray *)modelForDic:(NSDictionary *)allDic{
-    NSMutableArray *allArray = [NSMutableArray new];
-    PersonModel *tempgrxx = [PersonModel mj_objectWithKeyValues:allDic[@"grxx"]];
-    if (tempgrxx) {
-        NSDictionary *temp = @{@"header":@"申请人信息",@"array":@[tempgrxx]};
-        [allArray addObject:temp];
-    }
-    PersonModel *temppoxx = [PersonModel mj_objectWithKeyValues:allDic[@"poxx"]];
-    if (temppoxx) {
-        NSDictionary *temp = @{@"header":@"配偶信息",@"array":@[temppoxx]};
-        [allArray addObject:temp];
-    }
-    NSArray *znxxlist = [PersonModel mj_objectArrayWithKeyValuesArray:allDic[@"znxxlist"]];
-    if (temppoxx) {
-        NSDictionary *temp = @{@"header":@"子女信息",@"array":znxxlist};
-        [allArray addObject:temp];
-    }
-    
-    
-    
-    NSArray *tsrcList = [AddOtherModel mj_objectArrayWithKeyValuesArray:allDic[@"tsrcList"]];
-    temppoxx.titleString = @"特殊人才资料";
-    if (tsrcList) {
-        NSDictionary *temp = @{@"header":@"附加信息",@"array":tsrcList,@"title":@"特殊人才资料"};
-        [allArray addObject:temp];
-    }
-    AddOtherModel *zsjt = [AddOtherModel mj_objectWithKeyValues:allDic[@"zsjt"]];
-    if (zsjt) {
-        NSString *str = @"附加信息";
-        if (tsrcList) {
-            str = @"";
-        }
-        NSDictionary *temp = @{@"header":str,@"array":@[zsjt],@"title":@"征收家庭资料"};
-        [allArray addObject:temp];
-    }
-    NSArray *szsbList = [AddOtherModel mj_objectArrayWithKeyValuesArray:allDic[@"szsbList"]];
-    if (szsbList) {
-        NSString *str = @"附加信息";
-        if (zsjt||tsrcList) {
-            str = @"";
-        }
-        NSDictionary *temp = @{@"header":str,@"array":szsbList,@"title":@"省直机关社保"};
-        [allArray addObject:temp];
-    }
-    
-    return allArray;
-}
 
-- (void)dataReset{
-    if (_isReal) {
-        _nameArray = @[//实名认证用
-                       @{@"title":@"性别"},
-                       @{@"title":@"民族"},
-                       @{@"title":@"出生"},
-                       //                   @{@"title":@"住址"},
-                       @{@"title":@"身份证号码"},
-                       @{@"title":@"签证机关"},
-                       @{@"title":@"有效期限"},
-                       @{@"image":@[@"http://img.findlawimg.com/info/2019/0610/20190610114035328.jpg",@"http://img.findlawimg.com/info/2019/0610/20190610114035328.jpg"]},
-                       //                   @{@"image":@""}
-                       ];
-    }else{
-        _nameArray = @[@[@{@"title":@"姓名"},
-                         @{@"title":@"身份证号码"},
-                         @{@"title":@"性别"},
-                         @{@"title":@"家庭户口类型"},
-                         @{@"title":@"婚姻状况"},
-                         @{@"title":@"户籍所在地"}
-                         ],//申请人信息 配偶信息【0】
-                       
-                       @[@{@"title":@"姓名"},
-                         @{@"title":@"性别"},
-                         @{@"title":@"家庭户口类型"},
-                         @{@"title":@"户籍所在地"},
-                         @{@"title":@"身份证号码"},
-                         @{@"title":@""}],//子女信息【1】
-                       
-                       @[@{@"title":@"特殊人才资料"},
-                         @{@"title":@"人才类型"},
-                         @{@"title":@"姓名"},
-                         @{@"title":@"工资流水月数"},@{@"title":@""}],//特殊人才【2】
-                       
-                       @[@{@"title":@"征收家庭资料"},
-                         @{@"title":@"征收备案时间"},@{@"title":@""}],//征收家庭资料【3】
-                       
-                       @[@{@"title":@"省直机关社保"},
-                         @{@"title":@"姓名"},
-                         @{@"title":@"缴纳时长"},@{@"title":@""}],//省直机关社保【4】
-                       ];
-    }
-}
-//图片
 
 #pragma mark - other
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -736,11 +651,6 @@
         //banner
         if (success) {
             
-//            weakSelf.dataDic = response[@"data"];
-//            [weakSelf.tableView reloadData];
-//            if (weakSelf.dataDic.count == 0) {
-//                [weakSelf addNoneDataTipView];
-//            }
             ///  去网络提交 再弹出
             weakSelf.tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
             weakSelf.tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -761,4 +671,191 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+#pragma mark - data
+///newverifydetail
+- (void)reloadData {
+    if (_isReal) {
+        __weak typeof(self) weakSelf = self;
+        [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newverifydetail") para: @{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+            
+            [weakSelf loadingPageWidthSuccess:success];
+            if (success) {
+                weakSelf.realData = response[@"data"];
+                
+                if (weakSelf.realData == nil || weakSelf.realData.count < 5) {
+                    [weakSelf addNoneDataTipView];
+                }else{
+                    [weakSelf dataReset];
+                    [weakSelf.tableview reloadData];
+                }
+            }else{
+            }
+        }];
+    }else{
+        __weak typeof(self) weakSelf = self;
+        [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/allmessage/new") para: @{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+            
+            [weakSelf loadingPageWidthSuccess:success];
+            if (success) {
+                NSDictionary *allDic = response[@"data"];
+                
+                weakSelf.dataArray = [self modelForDic:allDic];
+                
+                if (weakSelf.dataArray.count == 0) {
+                    [weakSelf addNoneDataTipView];
+                }else{
+                    [weakSelf.tableview reloadData];
+                }
+            }else{
+            }
+        }];
+    }
+}
+
+- (NSMutableArray *)modelForDic:(NSDictionary *)allDic{
+    NSMutableArray *allArray = [NSMutableArray new];
+    PersonModel *tempgrxx = [PersonModel mj_objectWithKeyValues:allDic[@"grxx"]];
+    if (tempgrxx) {
+        NSDictionary *temp = @{@"header":@"申请人信息",@"array":@[tempgrxx]};
+        [allArray addObject:temp];
+    }
+    PersonModel *temppoxx = [PersonModel mj_objectWithKeyValues:allDic[@"poxx"]];
+    if (temppoxx) {
+        NSDictionary *temp = @{@"header":@"配偶信息",@"array":@[temppoxx]};
+        [allArray addObject:temp];
+    }
+    NSArray *znxxlist = [PersonModel mj_objectArrayWithKeyValuesArray:allDic[@"znxxlist"]];
+    if (znxxlist.count>0) {
+        NSDictionary *temp = @{@"header":@"子女信息",@"array":znxxlist};
+        [allArray addObject:temp];
+    }
+    
+    
+    
+    NSArray *tsrcList = [AddOtherModel mj_objectArrayWithKeyValuesArray:allDic[@"tsrcList"]];
+    temppoxx.titleString = @"特殊人才资料";
+    if (tsrcList.count>0) {
+        NSDictionary *temp = @{@"header":@"附加信息",@"array":tsrcList,@"title":@"特殊人才资料"};
+        [allArray addObject:temp];
+    }
+    AddOtherModel *zsjt = [AddOtherModel mj_objectWithKeyValues:allDic[@"zsjt"]];
+    if (zsjt) {
+        NSString *str = @"附加信息";
+        if (tsrcList) {
+            str = @"";
+        }
+        NSDictionary *temp = @{@"header":str,@"array":@[zsjt],@"title":@"征收家庭资料"};
+        [allArray addObject:temp];
+    }
+    NSArray *szsbList = [AddOtherModel mj_objectArrayWithKeyValuesArray:allDic[@"szsbList"]];
+    if (szsbList.count>0) {
+        NSString *str = @"附加信息";
+        if (zsjt||tsrcList) {
+            str = @"";
+        }
+        NSDictionary *temp = @{@"header":str,@"array":szsbList,@"title":@"省直机关社保"};
+        [allArray addObject:temp];
+    }
+    
+    return allArray;
+}
+
+- (void)dataReset{
+    if (_isReal) {
+        _nameArray = @[//实名认证用
+                       @{@"title":@"性别"},
+                       @{@"title":@"民族"},
+                       @{@"title":@"出生"},
+                       
+                       @{@"title":@"身份证号码"},
+                       @{@"title":@"签证机关"},
+                       @{@"title":@"有效期限"},
+                       @{@"image":@[@"http://img.findlawimg.com/info/2019/0610/20190610114035328.jpg",@"http://img.findlawimg.com/info/2019/0610/20190610114035328.jpg"]},
+                       //                   @{@"image":@""}
+                       ];
+        if ([self.realData[@"zjlx"] isEqualToString:@"护照"]||[self.realData[@"zjlx"] isEqualToString:@"港澳台来往大陆通行证"]) {
+            _nameArray = @[//实名认证用
+                           @{@"title":@"性别"},
+                           @{@"title":@"国家"},//zz
+                           @{@"title":@"出生"},
+                           
+                           @{@"title":@"证件号码"},
+                           @{@"title":@"换证次数"},//hzcs
+                           @{@"title":@"有效期限"},
+                           @{@"image":@[@"http://img.findlawimg.com/info/2019/0610/20190610114035328.jpg",@"http://img.findlawimg.com/info/2019/0610/20190610114035328.jpg"]},
+                           //                   @{@"image":@""}
+                           ];
+        }
+        
+    }else{
+        _nameArray = @[@[@{@"title":@"姓名"},
+                         @{@"title":@"身份证号码"},
+                         @{@"title":@"性别"},
+                         @{@"title":@"家庭户口类型"},
+                         @{@"title":@"婚姻状况"},
+                         @{@"title":@"户籍所在地"}
+                         ],//申请人信息 配偶信息【0】
+                       
+                       @[@{@"title":@"姓名"},
+                         @{@"title":@"性别"},
+                         @{@"title":@"家庭户口类型"},
+                         @{@"title":@"户籍所在地"},
+                         @{@"title":@"身份证号码"},
+                         @{@"title":@""}],//子女信息【1】
+                       
+                       @[@{@"title":@"特殊人才资料"},
+                         @{@"title":@"人才类型"},
+                         @{@"title":@"姓名"},
+                         @{@"title":@"工资流水月数"},@{@"title":@""}],//特殊人才【2】
+                       
+                       @[@{@"title":@"征收家庭资料"},
+                         @{@"title":@"征收备案时间"},@{@"title":@""}],//征收家庭资料【3】
+                       
+                       @[@{@"title":@"省直机关社保"},
+                         @{@"title":@"姓名"},
+                         @{@"title":@"缴纳时长"},@{@"title":@""}],//省直机关社保【4】
+                       ];
+    }
+    
+    _HKArray = @[@{@"title":@"姓名"},
+                 @{@"title":@"地区"},
+                 @{@"title":@"性别"},
+                 @{@"title":@"出生日期"},
+                 @{@"title":@"护照号码"},
+                 @{@"title":@"证件有效期"}];
+    _foreignArray = @[@{@"title":@"姓名"},
+                      @{@"title":@"国籍"},
+                      @{@"title":@"性别"},
+                      @{@"title":@"出生日期"},
+                      @{@"title":@"护照号码"},
+                      @{@"title":@"证件有效期"}];
+    
+}
+//图片
+//else if () {
+//    cell.titleLabel.text = _HKArray[indexPath.row][@"title"];
+//    switch (indexPath.row) {
+//        case 0:
+//            cell.contentTextField.text = model.jtcy.xm;
+//            break;
+//        case 1:
+//            cell.contentTextField.text = model.jtcy.gj;
+//            break;
+//        case 2:
+//            cell.contentTextField.text = model.jtcy.xb;
+//            break;
+//        case 3:
+//            cell.contentTextField.text = model.jtcy.qtzjcsrq;
+//            break;
+//        case 4:
+//            cell.contentTextField.text = model.jtcy.zjhm;
+//            break;
+//        case 5:
+//            cell.contentTextField.text = model.jtcy.qtzjyxq;
+//            break;
+//
+//        default:
+//            break;
+//    }
+//}
 @end

@@ -24,6 +24,7 @@
 		7EF3CE902155EB1900CB49A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF3CE882155EB1800CB49A2 /* UIKit.framework */; };
 		7EF3CE912155EB1900CB49A2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF3CE892155EB1900CB49A2 /* Accelerate.framework */; };
 		7EF3CE922155EB1900CB49A2 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF3CE8A2155EB1900CB49A2 /* CoreImage.framework */; };
+		A106883C22D460BD005D7E84 /* ZTDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A106883B22D460BD005D7E84 /* ZTDetialViewController.m */; };
 		A1094DBE2297D34000A278A1 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = A1094DB12297D34000A278A1 /* NetWork.m */; };
 		A1094DBF2297D34000A278A1 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A1094DB52297D34000A278A1 /* GTMBase64.m */; };
 		A1094DC02297D34000A278A1 /* ProUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A1094DB62297D34000A278A1 /* ProUtils.m */; };
@@ -77,6 +78,8 @@
 		A15871B022B8FDAD001567F8 /* MyHouseCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15871AE22B8FDAD001567F8 /* MyHouseCodeViewController.xib */; };
 		A15871B622B9C9CD001567F8 /* QiCodePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = A15871B222B9C9CD001567F8 /* QiCodePreviewView.m */; };
 		A15871B722B9C9CD001567F8 /* QiCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A15871B322B9C9CD001567F8 /* QiCodeManager.m */; };
+		A159089022CAE87600EAAC6D /* QuestionDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A159088E22CAE87600EAAC6D /* QuestionDetialViewController.m */; };
+		A159089122CAE87600EAAC6D /* QuestionDetialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A159088F22CAE87600EAAC6D /* QuestionDetialViewController.xib */; };
 		A15B3ECC22C46205004BF242 /* ResultContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A15B3ECA22C46205004BF242 /* ResultContentTableViewCell.m */; };
 		A15B3ECD22C46205004BF242 /* ResultContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15B3ECB22C46205004BF242 /* ResultContentTableViewCell.xib */; };
 		A15B3ED122C46214004BF242 /* ResultTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A15B3ECF22C46214004BF242 /* ResultTitleTableViewCell.m */; };
@@ -157,6 +160,16 @@
 		A16A985B22AE4F3700078BEE /* MyCenterSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16A985922AE4F3700078BEE /* MyCenterSettingViewController.xib */; };
 		A16BB41C22B7715900C2E7F5 /* MyHouseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BB41B22B7715900C2E7F5 /* MyHouseListViewController.m */; };
 		A16D949522C5A3AC001F8483 /* HouseListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D949422C5A3AC001F8483 /* HouseListModel.m */; };
+		A16D949922C5BB52001F8483 /* MyCenterChangePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D949722C5BB52001F8483 /* MyCenterChangePhoneViewController.m */; };
+		A16D949A22C5BB52001F8483 /* MyCenterChangePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16D949822C5BB52001F8483 /* MyCenterChangePhoneViewController.xib */; };
+		A16D949E22C5C33A001F8483 /* lpHouseDetial.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D949D22C5C33A001F8483 /* lpHouseDetial.m */; };
+		A16D94A122C5C356001F8483 /* xmbcHouseDetial.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D94A022C5C356001F8483 /* xmbcHouseDetial.m */; };
+		A16D94A422C5C377001F8483 /* zbHouseDetial.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D94A322C5C377001F8483 /* zbHouseDetial.m */; };
+		A16D94A722C5C3A5001F8483 /* hxlistVoHouseDetial.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D94A622C5C3A5001F8483 /* hxlistVoHouseDetial.m */; };
+		A16D94AA22C5C3D7001F8483 /* zstListHousePicture.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D94A922C5C3D7001F8483 /* zstListHousePicture.m */; };
+		A16D94AD22C5C408001F8483 /* kpxmHouseDetial.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D94AC22C5C408001F8483 /* kpxmHouseDetial.m */; };
+		A16D94B022C5C453001F8483 /* ldxxListHouseDetial.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D94AF22C5C453001F8483 /* ldxxListHouseDetial.m */; };
+		A16D94B322C5F7C6001F8483 /* DetialHouseBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D94B222C5F7C6001F8483 /* DetialHouseBanner.m */; };
 		A1817F64229E8704003B2FBF /* ChooseOtherRealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1817F62229E8704003B2FBF /* ChooseOtherRealViewController.m */; };
 		A1817F65229E8704003B2FBF /* ChooseOtherRealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1817F63229E8704003B2FBF /* ChooseOtherRealViewController.xib */; };
 		A1817F68229FA715003B2FBF /* RealFinishTipView1.m in Sources */ = {isa = PBXBuildFile; fileRef = A1817F67229FA715003B2FBF /* RealFinishTipView1.m */; };
@@ -530,6 +543,8 @@
 		7EF3CE882155EB1800CB49A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7EF3CE892155EB1900CB49A2 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7EF3CE8A2155EB1900CB49A2 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		A106883A22D460BD005D7E84 /* ZTDetialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZTDetialViewController.h; sourceTree = "<group>"; };
+		A106883B22D460BD005D7E84 /* ZTDetialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZTDetialViewController.m; sourceTree = "<group>"; };
 		A1094DB12297D34000A278A1 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		A1094DB32297D34000A278A1 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		A1094DB42297D34000A278A1 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -626,6 +641,9 @@
 		A15871B322B9C9CD001567F8 /* QiCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCodeManager.m; sourceTree = "<group>"; };
 		A15871B422B9C9CD001567F8 /* QiCodePreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCodePreviewView.h; sourceTree = "<group>"; };
 		A15871B522B9C9CD001567F8 /* QiCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCodeManager.h; sourceTree = "<group>"; };
+		A159088D22CAE87600EAAC6D /* QuestionDetialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionDetialViewController.h; sourceTree = "<group>"; };
+		A159088E22CAE87600EAAC6D /* QuestionDetialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionDetialViewController.m; sourceTree = "<group>"; };
+		A159088F22CAE87600EAAC6D /* QuestionDetialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionDetialViewController.xib; sourceTree = "<group>"; };
 		A15B3EC922C46205004BF242 /* ResultContentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultContentTableViewCell.h; sourceTree = "<group>"; };
 		A15B3ECA22C46205004BF242 /* ResultContentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultContentTableViewCell.m; sourceTree = "<group>"; };
 		A15B3ECB22C46205004BF242 /* ResultContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultContentTableViewCell.xib; sourceTree = "<group>"; };
@@ -744,6 +762,25 @@
 		A16BB41B22B7715900C2E7F5 /* MyHouseListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseListViewController.m; sourceTree = "<group>"; };
 		A16D949322C5A3AC001F8483 /* HouseListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseListModel.h; sourceTree = "<group>"; };
 		A16D949422C5A3AC001F8483 /* HouseListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseListModel.m; sourceTree = "<group>"; };
+		A16D949622C5BB52001F8483 /* MyCenterChangePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterChangePhoneViewController.h; sourceTree = "<group>"; };
+		A16D949722C5BB52001F8483 /* MyCenterChangePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCenterChangePhoneViewController.m; sourceTree = "<group>"; };
+		A16D949822C5BB52001F8483 /* MyCenterChangePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCenterChangePhoneViewController.xib; sourceTree = "<group>"; };
+		A16D949C22C5C33A001F8483 /* lpHouseDetial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lpHouseDetial.h; sourceTree = "<group>"; };
+		A16D949D22C5C33A001F8483 /* lpHouseDetial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lpHouseDetial.m; sourceTree = "<group>"; };
+		A16D949F22C5C356001F8483 /* xmbcHouseDetial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xmbcHouseDetial.h; sourceTree = "<group>"; };
+		A16D94A022C5C356001F8483 /* xmbcHouseDetial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xmbcHouseDetial.m; sourceTree = "<group>"; };
+		A16D94A222C5C377001F8483 /* zbHouseDetial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zbHouseDetial.h; sourceTree = "<group>"; };
+		A16D94A322C5C377001F8483 /* zbHouseDetial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zbHouseDetial.m; sourceTree = "<group>"; };
+		A16D94A522C5C3A5001F8483 /* hxlistVoHouseDetial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hxlistVoHouseDetial.h; sourceTree = "<group>"; };
+		A16D94A622C5C3A5001F8483 /* hxlistVoHouseDetial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hxlistVoHouseDetial.m; sourceTree = "<group>"; };
+		A16D94A822C5C3D7001F8483 /* zstListHousePicture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zstListHousePicture.h; sourceTree = "<group>"; };
+		A16D94A922C5C3D7001F8483 /* zstListHousePicture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zstListHousePicture.m; sourceTree = "<group>"; };
+		A16D94AB22C5C408001F8483 /* kpxmHouseDetial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kpxmHouseDetial.h; sourceTree = "<group>"; };
+		A16D94AC22C5C408001F8483 /* kpxmHouseDetial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kpxmHouseDetial.m; sourceTree = "<group>"; };
+		A16D94AE22C5C453001F8483 /* ldxxListHouseDetial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ldxxListHouseDetial.h; sourceTree = "<group>"; };
+		A16D94AF22C5C453001F8483 /* ldxxListHouseDetial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ldxxListHouseDetial.m; sourceTree = "<group>"; };
+		A16D94B122C5F7C6001F8483 /* DetialHouseBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetialHouseBanner.h; sourceTree = "<group>"; };
+		A16D94B222C5F7C6001F8483 /* DetialHouseBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetialHouseBanner.m; sourceTree = "<group>"; };
 		A1817F61229E8704003B2FBF /* ChooseOtherRealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseOtherRealViewController.h; sourceTree = "<group>"; };
 		A1817F62229E8704003B2FBF /* ChooseOtherRealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseOtherRealViewController.m; sourceTree = "<group>"; };
 		A1817F63229E8704003B2FBF /* ChooseOtherRealViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseOtherRealViewController.xib; sourceTree = "<group>"; };
@@ -1760,6 +1797,31 @@
 			path = MyHouse;
 			sourceTree = "<group>";
 		};
+		A16D949B22C5C1ED001F8483 /* House */ = {
+			isa = PBXGroup;
+			children = (
+				A16D949322C5A3AC001F8483 /* HouseListModel.h */,
+				A16D949422C5A3AC001F8483 /* HouseListModel.m */,
+				A1EFACED22B395A6007593EB /* HouseDetialModel.h */,
+				A1EFACEE22B395A6007593EB /* HouseDetialModel.m */,
+				A16D949C22C5C33A001F8483 /* lpHouseDetial.h */,
+				A16D949D22C5C33A001F8483 /* lpHouseDetial.m */,
+				A16D949F22C5C356001F8483 /* xmbcHouseDetial.h */,
+				A16D94A022C5C356001F8483 /* xmbcHouseDetial.m */,
+				A16D94A222C5C377001F8483 /* zbHouseDetial.h */,
+				A16D94A322C5C377001F8483 /* zbHouseDetial.m */,
+				A16D94A522C5C3A5001F8483 /* hxlistVoHouseDetial.h */,
+				A16D94A622C5C3A5001F8483 /* hxlistVoHouseDetial.m */,
+				A16D94A822C5C3D7001F8483 /* zstListHousePicture.h */,
+				A16D94A922C5C3D7001F8483 /* zstListHousePicture.m */,
+				A16D94AB22C5C408001F8483 /* kpxmHouseDetial.h */,
+				A16D94AC22C5C408001F8483 /* kpxmHouseDetial.m */,
+				A16D94AE22C5C453001F8483 /* ldxxListHouseDetial.h */,
+				A16D94AF22C5C453001F8483 /* ldxxListHouseDetial.m */,
+			);
+			path = House;
+			sourceTree = "<group>";
+		};
 		A1817F5F229E7D72003B2FBF /* Real */ = {
 			isa = PBXGroup;
 			children = (
@@ -1956,6 +2018,8 @@
 				A1FF19C622AF82FC00C09386 /* RecogtionHousesCollectionViewCell.h */,
 				A1FF19C722AF82FC00C09386 /* RecogtionHousesCollectionViewCell.m */,
 				A1FF19C822AF82FC00C09386 /* RecogtionHousesCollectionViewCell.xib */,
+				A106883A22D460BD005D7E84 /* ZTDetialViewController.h */,
+				A106883B22D460BD005D7E84 /* ZTDetialViewController.m */,
 			);
 			path = DetialAndList;
 			sourceTree = "<group>";
@@ -2248,6 +2312,8 @@
 				A1FF19DF22B0EDC100C09386 /* DetialHouseTypeItem.h */,
 				A1FF19E022B0EDC100C09386 /* DetialHouseTypeItem.m */,
 				A1FF19E122B0EDC100C09386 /* DetialHouseTypeItem.xib */,
+				A16D94B122C5F7C6001F8483 /* DetialHouseBanner.h */,
+				A16D94B222C5F7C6001F8483 /* DetialHouseBanner.m */,
 			);
 			path = Detial;
 			sourceTree = "<group>";
@@ -2436,6 +2502,12 @@
 				A16A985722AE4F3700078BEE /* MyCenterSettingViewController.h */,
 				A16A985822AE4F3700078BEE /* MyCenterSettingViewController.m */,
 				A16A985922AE4F3700078BEE /* MyCenterSettingViewController.xib */,
+				A16D949622C5BB52001F8483 /* MyCenterChangePhoneViewController.h */,
+				A16D949722C5BB52001F8483 /* MyCenterChangePhoneViewController.m */,
+				A16D949822C5BB52001F8483 /* MyCenterChangePhoneViewController.xib */,
+				A159088D22CAE87600EAAC6D /* QuestionDetialViewController.h */,
+				A159088E22CAE87600EAAC6D /* QuestionDetialViewController.m */,
+				A159088F22CAE87600EAAC6D /* QuestionDetialViewController.xib */,
 			);
 			path = "二级页面";
 			sourceTree = "<group>";
@@ -2850,6 +2922,7 @@
 		DCBD357F215084C200763961 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A16D949B22C5C1ED001F8483 /* House */,
 				A1A990B922C1CE7B000EB09A /* Person */,
 				A1094DC72297DE4400A278A1 /* LoginSession.h */,
 				A1094DC62297DE4400A278A1 /* LoginSession.m */,
@@ -2859,10 +2932,6 @@
 				A1EFACF122B395B9007593EB /* NewsModel.m */,
 				A1139D4E22BB879200463FAD /* MyHouseMode.h */,
 				A1139D4F22BB879200463FAD /* MyHouseMode.m */,
-				A1EFACED22B395A6007593EB /* HouseDetialModel.h */,
-				A1EFACEE22B395A6007593EB /* HouseDetialModel.m */,
-				A16D949322C5A3AC001F8483 /* HouseListModel.h */,
-				A16D949422C5A3AC001F8483 /* HouseListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3306,6 +3375,7 @@
 				A1BFB4E522A76C24008B629B /* ChooseQualificationTableViewCell.xib in Resources */,
 				A16A982D22AA6E0F00078BEE /* AppendTwoViewController.xib in Resources */,
 				DC55BE05215A012D009654EC /* MULoginViewController.xib in Resources */,
+				A16D949A22C5BB52001F8483 /* MyCenterChangePhoneViewController.xib in Resources */,
 				DCBD36872150C79A00763961 /* mapapi.bundle in Resources */,
 				A1A990B022C0AA92000EB09A /* AddChildrenTableViewCell.xib in Resources */,
 				A16A984C22AE32C900078BEE /* QuestionListTableViewCell.xib in Resources */,
@@ -3376,6 +3446,7 @@
 				A1BFB4E022A7656E008B629B /* ChooseQualificationTypeViewController.xib in Resources */,
 				A19AD94F22A4B053004713A2 /* TOCropViewControllerLocalizable.strings in Resources */,
 				A16093F5229E1BC100FBC19B /* RealFirstTipViewController.xib in Resources */,
+				A159089122CAE87600EAAC6D /* QuestionDetialViewController.xib in Resources */,
 				A1EFACA522B3483C007593EB /* NoneDataTipView.xib in Resources */,
 				A16A977922A8F71300078BEE /* AppendChooseViewController.xib in Resources */,
 				A1EFAD4622B3A8E0007593EB /* scaningbgimage@3x.png in Resources */,
@@ -3396,6 +3467,7 @@
 				DC7991B82151E5DC00368A56 /* KGOCarouselView.m in Sources */,
 				DC0AF5462152198E00B41476 /* UIView+WebCache.m in Sources */,
 				DCBD35F921509D7000763961 /* NSArray+MASAdditions.m in Sources */,
+				A16D949922C5BB52001F8483 /* MyCenterChangePhoneViewController.m in Sources */,
 				A160946B229E54FE00FBC19B /* KYPopupPresentationManager.swift in Sources */,
 				DCBD35C321509D4600763961 /* AFNetworkReachabilityManager.m in Sources */,
 				DCBD35D421509D5700763961 /* FMDatabase.m in Sources */,
@@ -3425,6 +3497,7 @@
 				A1094DEF229BD48500A278A1 /* HomePageHousesCollectionViewCell.m in Sources */,
 				A1EFACC922B34E5C007593EB /* FirstAndSecondConditionModel.m in Sources */,
 				A16093F9229E250700FBC19B /* RealFirstChooseViewController.m in Sources */,
+				A16D94AD22C5C408001F8483 /* kpxmHouseDetial.m in Sources */,
 				A1FC0CB022C352F7002B214E /* AddOtherModel.m in Sources */,
 				A160945D229E54FE00FBC19B /* KYPopupTransitionAnimators.swift in Sources */,
 				A1139D4622BB1E6100463FAD /* MJProperty.m in Sources */,
@@ -3516,6 +3589,7 @@
 				A16A984722AE322E00078BEE /* QuesttionListViewController.m in Sources */,
 				DC0AF5312152198E00B41476 /* SDAnimatedImageRep.m in Sources */,
 				A16A983622ADF15000078BEE /* MyCenterViewController.m in Sources */,
+				A16D94B322C5F7C6001F8483 /* DetialHouseBanner.m in Sources */,
 				DCBD35742150839200763961 /* MURootViewController.m in Sources */,
 				DCB860C9215B388A001C58EF /* YMSPhotoPickerViewController.m in Sources */,
 				DC0AF5372152198E00B41476 /* SDWebImageCompat.m in Sources */,
@@ -3537,6 +3611,7 @@
 				A158719622B8DB71001567F8 /* MyHouseDetialTwoCell.m in Sources */,
 				A15B3ECC22C46205004BF242 /* ResultContentTableViewCell.m in Sources */,
 				A1609427229E378B00FBC19B /* CloudWebController.m in Sources */,
+				A16D949E22C5C33A001F8483 /* lpHouseDetial.m in Sources */,
 				A1EFAC8322B2257E007593EB /* MXParallaxHeader.m in Sources */,
 				A16A983122AA71A600078BEE /* AppendThreeViewController.m in Sources */,
 				A1609468229E54FE00FBC19B /* LXAlertContentView.swift in Sources */,
@@ -3553,8 +3628,10 @@
 				A1139D4D22BB1E6100463FAD /* MJFoundation.m in Sources */,
 				A19AD94E22A4B053004713A2 /* TOCropViewController.m in Sources */,
 				A1609465229E54FE00FBC19B /* KYPopupButton.swift in Sources */,
+				A106883C22D460BD005D7E84 /* ZTDetialViewController.m in Sources */,
 				A1609471229E54FE00FBC19B /* KYAlertContentView.swift in Sources */,
 				A1EFACD022B34E5C007593EB /* YYBaseFilter.m in Sources */,
+				A16D94B022C5C453001F8483 /* ldxxListHouseDetial.m in Sources */,
 				A16A977822A8F71300078BEE /* AppendChooseViewController.m in Sources */,
 				A1609464229E54FE00FBC19B /* KYPopupTransitionAnimator.swift in Sources */,
 				A1EFACCC22B34E5C007593EB /* TopConditionCollectionView.m in Sources */,
@@ -3579,12 +3656,14 @@
 				DC718FD221A510390080DB6C /* MUStartViewController.m in Sources */,
 				A1FF1A1E22B1F19100C09386 /* HouseAroundTableViewCell.m in Sources */,
 				A1BFB4EF22A7B9E0008B629B /* ChooseAddMateshipViewController.m in Sources */,
+				A16D94A722C5C3A5001F8483 /* hxlistVoHouseDetial.m in Sources */,
 				DC55BE13215A3D28009654EC /* NSData+Base64.m in Sources */,
 				A1817F68229FA715003B2FBF /* RealFinishTipView1.m in Sources */,
 				DC7991F92151ED5F00368A56 /* UIScrollView+MJExtension.m in Sources */,
 				A160945F229E54FE00FBC19B /* UIView+KYPopup.swift in Sources */,
 				A1817F6D229FC33A003B2FBF /* UIView+add.m in Sources */,
 				A19AD95022A4B053004713A2 /* TOCropView.m in Sources */,
+				A16D94AA22C5C3D7001F8483 /* zstListHousePicture.m in Sources */,
 				DC7991F22151ED5F00368A56 /* MJRefreshBackStateFooter.m in Sources */,
 				A1FF19E222B0EDC100C09386 /* DetialHouseTypeItem.m in Sources */,
 				A16A977D22A900B800078BEE /* AppendOneTipViewController.m in Sources */,
@@ -3633,12 +3712,14 @@
 				A1EFACE122B38913007593EB /* MessageListViewController.m in Sources */,
 				A19AD8F022A0D10F004713A2 /* RealChooseForeignViewController.m in Sources */,
 				A15871B622B9C9CD001567F8 /* QiCodePreviewView.m in Sources */,
+				A159089022CAE87600EAAC6D /* QuestionDetialViewController.m in Sources */,
 				A19AD95522A4B053004713A2 /* UIImage+FixOrientation.m in Sources */,
 				DC7991FB2151ED5F00368A56 /* UIView+MJExtension.m in Sources */,
 				A1094DC52297D64E00A278A1 /* NSObject+null.m in Sources */,
 				A1609462229E54FE00FBC19B /* KYPopupDefaultButton.swift in Sources */,
 				A1094DBF2297D34000A278A1 /* GTMBase64.m in Sources */,
 				A1609463229E54FE00FBC19B /* UIWindow+KYPopup.swift in Sources */,
+				A16D94A122C5C356001F8483 /* xmbcHouseDetial.m in Sources */,
 				A160941C229E378B00FBC19B /* LXMessageHUDView.swift in Sources */,
 				A16A985A22AE4F3700078BEE /* MyCenterSettingViewController.m in Sources */,
 				DCBD35FB21509D7000763961 /* View+MASAdditions.m in Sources */,
@@ -3657,6 +3738,7 @@
 				DCBD365521509DAF00763961 /* NSParagraphStyle+YYText.m in Sources */,
 				DC2DCEF02154A445008A6BB6 /* MULayoutHandler.m in Sources */,
 				DC7991FA2151ED5F00368A56 /* UIScrollView+MJRefresh.m in Sources */,
+				A16D94A422C5C377001F8483 /* zbHouseDetial.m in Sources */,
 				DCBD364621509DAF00763961 /* YYTextContainerView.m in Sources */,
 				DC0AF5402152198E00B41476 /* UIButton+WebCache.m in Sources */,
 				DC7991EA2151ED5F00368A56 /* MJRefreshComponent.m in Sources */,
@@ -3871,7 +3953,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = Z3L7YTPS6H;
+				DEVELOPMENT_TEAM = UFR88FXXU3;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3911,10 +3993,10 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.himuseum.tcsz.museumai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hxj.jiaoyibao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "603576e7-2d8e-4bed-a2f9-80e9c355eef0";
-				PROVISIONING_PROFILE_SPECIFIER = museum_dev;
+				PROVISIONING_PROFILE_SPECIFIER = jyb_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "MuseumAi/commen/MuseumAi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -3928,9 +4010,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = Z3L7YTPS6H;
+				DEVELOPMENT_TEAM = UFR88FXXU3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3969,10 +4051,10 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.himuseum.tcsz.museumai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hxj.jiaoyibao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7eaab269-9b29-46b6-b607-c26fcaff78a0";
-				PROVISIONING_PROFILE_SPECIFIER = museum_adhoc;
+				PROVISIONING_PROFILE_SPECIFIER = jyb_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "MuseumAi/commen/MuseumAi-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

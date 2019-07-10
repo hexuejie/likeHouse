@@ -21,7 +21,7 @@
 
 /** 当前page */
 @property (nonatomic , assign) NSInteger page;
-@property (nonatomic , strong) NSArray *houses;
+@property (nonatomic , strong) NSMutableArray *houses;
 @end
 
 @implementation HousesListViewController
@@ -46,11 +46,12 @@
     [self.view addSubview:self.contentCollectionView];
     
     [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageHousesCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageHousesCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell"];
-    
+    self.houses = [NSMutableArray new];
     __weak typeof (self) weakSelf = self;
     self.contentCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
         [weakSelf.contentCollectionView.mj_footer resetNoMoreData];
+        weakSelf.houses = [NSMutableArray new];
         [weakSelf reloadData];
     }];
     self.contentCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
@@ -90,33 +91,48 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self testButtonClick];
+    HouseDetialViewController *vc = [HouseDetialViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
 - (void)reloadData {
+    NSString *strUrl = @"";
     if ([self.title isEqualToString:@"我的认筹"]) {
-        __weak typeof(self) weakSelf = self;
-        [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/renchouhistory") para: @{@"page":@"1",@"rows":@"999"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-            
-            if (success) {
-                
-                weakSelf.houses = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"data"]];
-                [weakSelf.contentCollectionView reloadData];
-                if (!weakSelf.houses) {
-                    [weakSelf addNoneDataTipView];
-                }
-            }else{
-                [weakSelf addNoneDataTipView];
-                [weakSelf alertWithMsg:kFailedTips handler:nil];
-            }
-            [weakSelf.contentCollectionView.mj_header endRefreshing];
-            [weakSelf.contentCollectionView.mj_footer endRefreshing];
-            //            [weakSelf.contentCollectionView.mj_header endRefreshing];
-            //            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
-        }];
+        strUrl = @"/api/family/xf/user/renchouhistory";
+        
+    }else if ([self.title isEqualToString:@"我的关注"]) {
+        strUrl = @"/api/family/xf/user/guznzhulist";
+        
+    }else if ([self.title isEqualToString:@"浏览历史"]) {
+        strUrl = @"/api/family/xf/user/mybrowsehistory";
+        
     }
-    
+    __weak typeof(self) weakSelf = self;
+    [[NetWork shareManager] postWithUrl:DetailUrlString(strUrl) para: @{@"page":[NSString stringWithFormat:@"%ld",_page],@"rows":@"20"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        
+        [weakSelf loadingPageWidthSuccess:success];
+        if (success) {
+            if ([self.title isEqualToString:@"我的认筹"]) {
+                NSArray *tempArray = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"data"][@"list"]];
+                [weakSelf.houses addObjectsFromArray:tempArray];
+            }else{
+                NSArray *tempArray = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"data"]];
+                [weakSelf.houses addObjectsFromArray:tempArray];
+            }
+            
+            [weakSelf.contentCollectionView reloadData];
+            if (weakSelf.houses.count == 0) {
+                [weakSelf addNoneDataTipView];
+            }
+        }else{
+        }
+        [weakSelf.contentCollectionView.mj_header endRefreshing];
+        [weakSelf.contentCollectionView.mj_footer endRefreshing];
+        //            [weakSelf.contentCollectionView.mj_header endRefreshing];
+        //            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
+    }];
 }
 
 

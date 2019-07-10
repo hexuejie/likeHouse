@@ -55,16 +55,18 @@ typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
     
     [self sysInit];
     [self setLaunchScreen];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    [self getversionsReloadData];
     return YES;
 }
 
 - (void)sysInit {
-    // 屏幕常亮
-    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-    // 后台播放音频设置
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setActive:YES error:nil];
-    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+//    // 屏幕常亮
+//    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+//    // 后台播放音频设置
+//    AVAudioSession *session = [AVAudioSession sharedInstance];
+//    [session setActive:YES error:nil];
+//    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     
     /// FIXME: 调试清除
 //    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"scan_guide"];
@@ -109,6 +111,7 @@ typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
     // 首页
     MULookViewController *lookVC = [MULookViewController new];
     UINavigationController *lookNav = [[UINavigationController alloc]initWithRootViewController:lookVC];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     // 关注
     HousesListViewController *scanVC = [HousesListViewController new];
     scanVC.title = @"我的关注";
@@ -147,9 +150,9 @@ typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
     [mineNav.tabBarItem setSelectedImage:[[UIImage imageNamed:@"我的选中"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [mineNav.tabBarItem setTitle:@"我的"];
     
-    tabBar.selectedIndex = 0;
     self.window.rootViewController = tabBar;
     [self.window makeKeyAndVisible];
+    tabBar.selectedIndex = 0;
 }
 
 //- (void)BaiduMapInit {
@@ -361,5 +364,44 @@ typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
 
 }
 
+- (void)getversionsReloadData{
+    __weak typeof(self) weakSelf = self;
+    [LoginSession sharedInstance].toLogin = YES;
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/login/zjw/user/getversions") para:@{} isShowHUD:YES  isToLogin:NO callBack:^(id  _Nonnull response, BOOL success) {
+        if (success) {
+            NSDictionary *dic = response[@"data"];
+            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+            NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+            if (![dic[@"versionUid"] isEqualToString:app_Version]) {
+                [LoginSession sharedInstance].toLogin = NO;
+                
+                if ([dic[@"versionIsCompulsory"] integerValue] == 0) {//强制
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"检查到新版本" message:dic[@"versionExplain"] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        NSString *str = [NSString stringWithFormat:@"http://itunes.apple.com/us/app/id%@",@"56ce54a5"];
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/%E6%82%A6%E5%B1%85%E6%98%9F%E5%9F%8E/id1417052839?mt=8"]];
+                    }];
+                    [alert addAction:ok];
+                    [[ProUtils getCurrentVC] presentViewController:alert animated:YES completion:nil];
+                }else{
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"检查到新版本" message:dic[@"versionExplain"] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        NSString *str = [NSString stringWithFormat:@"http://itunes.apple.com/us/app/id%@",@"56ce54a5"];
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/%E6%82%A6%E5%B1%85%E6%98%9F%E5%9F%8E/id1417052839?mt=8"]];
+                    }];
+                    [alert addAction:ok];
+                    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [LoginSession sharedInstance].toLogin = YES;
+                    }];
+                    [alert addAction:cancle];
+                    [[ProUtils getCurrentVC] presentViewController:alert animated:YES completion:nil];
+                }
+            }
+            
+        }else{
+        }
+    }];
+    
+}
 
 @end

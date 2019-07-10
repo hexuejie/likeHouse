@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)isLogin;
 
+@property (nonatomic,assign)NSInteger toLogin;//0实名认证   1配偶    2子女
+
 @property (nonatomic,assign)NSInteger pageType;//0实名认证   1配偶    2子女
 
 @property (nonatomic,copy)NSString *phone;
@@ -41,8 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 ////"zjhm": "430122198910102197",
 ////"zjlx": "身份证"
 @property (nonatomic,strong)NSString *yhzt;//状态
-@property (nonatomic,strong)NSString *rzzt;//证状态（0-待审核，1,待人工审核，2-审核通过，3-审核未通过）
-@property (nonatomic,strong)NSString *grrzzt;//证状态（0-待审核，1-审核通过，2-审核未通过）
+@property (nonatomic,strong)NSString *rzzt;//证状态（0-未提交，1,待人工审核，2-审核通过，3-审核未通过）
+@property (nonatomic,strong)NSString *grrzzt;//证状态（0-待审核，1-审核通过，2-审核未通过）-1未提交
 
 @property (nonatomic,copy)NSString *yhbh;
 @property (nonatomic,copy)NSString *zjhm;//证件号码

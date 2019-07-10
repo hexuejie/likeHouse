@@ -41,7 +41,8 @@
     
     while (_imageArray.count > self.imageViews.count) {
         UIImageView *item = [[UIImageView alloc] initWithFrame:CGRectZero];
-        
+        item.clipsToBounds = YES;
+        item.contentMode = UIViewContentModeScaleAspectFill;
         [self.contentView addSubview:item];
         [self.imageViews addObject:item];
     }

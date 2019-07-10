@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DetialPictureSegmentViewController : ESSegmentBaseViewController
 
-@property (nonatomic, strong) NSString *prductId;
-
+@property (nonatomic, strong) NSArray *pictureArray;
+@property (nonatomic, assign) NSInteger currentIndex;
 @end
 
 NS_ASSUME_NONNULL_END

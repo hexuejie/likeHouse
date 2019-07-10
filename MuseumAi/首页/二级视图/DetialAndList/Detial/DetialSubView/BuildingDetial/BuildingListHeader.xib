@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NC2-Cm-kwx">
-                    <rect key="frame" x="20" y="135.5" width="3" height="15"/>
+                    <rect key="frame" x="20" y="138.5" width="3" height="15"/>
                     <color key="backgroundColor" red="0.75338226556777954" green="0.56658035516738892" blue="0.365711510181427" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="3" id="jit-Hv-pR2"/>
@@ -25,7 +25,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="二期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKX-NC-lrq">
-                    <rect key="frame" x="38" y="132.5" width="35" height="21"/>
+                    <rect key="frame" x="38" y="135.5" width="35" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.14507749676704407" green="0.1451098620891571" blue="0.14507544040679932" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="NC2-Cm-kwx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4Cr-B9-TJT"/>
+                <constraint firstItem="NC2-Cm-kwx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="3" id="4Cr-B9-TJT"/>
                 <constraint firstItem="SKX-NC-lrq" firstAttribute="centerY" secondItem="NC2-Cm-kwx" secondAttribute="centerY" id="IaV-jj-l3e"/>
                 <constraint firstItem="NC2-Cm-kwx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="kod-j3-lcs"/>
                 <constraint firstItem="SKX-NC-lrq" firstAttribute="leading" secondItem="NC2-Cm-kwx" secondAttribute="trailing" constant="15" id="l91-0g-chL"/>

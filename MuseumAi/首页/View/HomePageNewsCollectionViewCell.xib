@@ -21,7 +21,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SY7-ku-Hdj">
                         <rect key="frame" x="5" y="5" width="163" height="167"/>
-                        <color key="backgroundColor" red="0.9457889199256897" green="0.91350710391998291" blue="0.9214056134223938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="融信澜月" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuL-cT-Cll">
                         <rect key="frame" x="8" y="16" width="157" height="17"/>
@@ -40,7 +40,7 @@
                     </imageView>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="SuL-cT-Cll" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="20l-7Z-3WD"/>
                 <constraint firstAttribute="bottom" secondItem="SY7-ku-Hdj" secondAttribute="bottom" constant="5" id="5Th-q5-9ao"/>

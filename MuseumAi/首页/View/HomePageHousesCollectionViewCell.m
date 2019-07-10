@@ -23,6 +23,7 @@
 - (void)setModel:(HouseListModel *)model{
     _model = model;
     
+    _titleLabel.numberOfLines = 1;
     self.titleLabel.text = _model.lpmc;
     self.contentLabel.text = _model.addr;
     self.priceLabel.text = [NSString stringWithFormat:@"%@",_model.jj] ;
@@ -46,11 +47,27 @@
         }
     }
     self.tipTagLabel.text = _model.bq;
-    if (self.tipTagLabel.text.length >0) {
+    if (self.tipTagLabel.text.length >1) {
         self.tipTagLabel.hidden = NO;
     }else{
         self.tipTagLabel.hidden = YES;
     }
     [self.coverImageView setOtherImageUrl:_model.img];
 }
+
+- (void)setNewsModel:(NewsModel *)newsModel{
+    _newsModel = newsModel;
+
+    _titleLabel.numberOfLines = 0;
+    _ChatTagLabel.hidden = YES;
+    _tipTagLabel.hidden = YES;
+    _priceLabel.text = @"";
+    _priceLabel.hidden = YES;
+    
+    
+    _titleLabel.text = newsModel.title;
+    _contentLabel.text = newsModel.publishdate;
+     [self.coverImageView setOtherImageUrl:_newsModel.img];
+}
+
 @end

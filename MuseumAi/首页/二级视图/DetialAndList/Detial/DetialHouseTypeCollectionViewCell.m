@@ -48,15 +48,20 @@
     }];
 }
 
+- (void)setHxlistVo:(NSArray *)hxlistVo{
+    _hxlistVo = hxlistVo;
+    [self .allTypeView reloadData];
+}
 
 #pragma mark -
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return  4;
+    return  _hxlistVo.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     DetialHouseTypeItem *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetialHouseTypeItem" forIndexPath:indexPath];
+    cell.model = _hxlistVo[indexPath.row];
     return cell;
 }
 
@@ -68,7 +73,5 @@
     return UIEdgeInsetsMake(0, 10, 0, 10);
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    [self testButtonClick];
-}
+
 @end

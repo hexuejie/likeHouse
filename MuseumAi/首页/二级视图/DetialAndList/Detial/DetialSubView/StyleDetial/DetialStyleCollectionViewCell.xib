@@ -36,12 +36,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="114.72㎡" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZU-MQ-EfB">
-                                <rect key="frame" x="174" y="253.5" width="52" height="16"/>
+                                <rect key="frame" x="172" y="253.5" width="52" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.75338226556777954" green="0.56658035516738892" blue="0.365711510181427" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长沙市雨花区东雨花长沙市雨花区东雨花长沙市雨花区东雨花长" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMG-F2-FF1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长沙市雨花区东雨花长沙市雨花区东雨花长沙市雨花区东雨花长" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMG-F2-FF1">
                                 <rect key="frame" x="4" y="280" width="222" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.52191907167434692" green="0.50585120916366577" blue="0.5056304931640625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,7 +69,7 @@
                             <constraint firstAttribute="trailing" secondItem="fUQ-Ql-Peg" secondAttribute="trailing" id="Zzg-D9-vfp"/>
                             <constraint firstItem="CMG-F2-FF1" firstAttribute="top" secondItem="OVM-Zv-m6p" secondAttribute="bottom" constant="10" id="bau-JE-jZI"/>
                             <constraint firstAttribute="bottom" secondItem="fUQ-Ql-Peg" secondAttribute="bottom" constant="105" id="ka8-Fk-QSX"/>
-                            <constraint firstItem="OVM-Zv-m6p" firstAttribute="trailing" secondItem="RZU-MQ-EfB" secondAttribute="trailing" id="toV-o7-fjm"/>
+                            <constraint firstItem="OVM-Zv-m6p" firstAttribute="trailing" secondItem="RZU-MQ-EfB" secondAttribute="trailing" constant="2" id="toV-o7-fjm"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">

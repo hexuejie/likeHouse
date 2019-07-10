@@ -88,11 +88,32 @@
 
 @property (nonatomic , strong) NSArray *recentArray;
 @property (nonatomic , strong) NSArray *hotArray;
+@property (nonatomic , strong) NSArray *colorArray;
 
 @property(nonatomic,strong)UITextField *searchBar;
 @end
 
 @implementation SearchHouseListViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/search/hot") para: @{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        [weakSelf loadingPageWidthSuccess:success];
+        if (success) {
+            weakSelf.hotArray = response[@"data"];
+            [weakSelf dataReloadData];//数据刷新
+            
+            //            [weakSelf.contentCollectionView reloadData];
+            
+        }else{
+        }
+        [weakSelf.contentCollectionView.mj_header endRefreshing];
+        [weakSelf.contentCollectionView.mj_footer endRefreshing];
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -106,9 +127,10 @@
 - (void)dataReloadData{
     
     self.recentArray = [[NSUserDefaults standardUserDefaults]objectForKey:@"recentArray"];
-    self.hotArray = @[@"实名afasf认证",@"全fafa部楼盘",   @"购房资格房资格房资格房资格",@"精准找房",
-                         @"信息房资格查询",@"楼盘认筹",   @"购房百科",@"楼市房资格要闻"];
-    [self.contentCollectionView reloadData];
+
+    self.colorArray = @[kUIColorFromRGB(0xF5F4FD),kUIColorFromRGB(0xFDF2F3),kUIColorFromRGB(0xFEFBF0),
+                      kUIColorFromRGB(0xF2FEF1),  kUIColorFromRGB(0xF3FBFC)];
+     [self.contentCollectionView reloadData];
 }
 
 - (void)viewInit {
@@ -152,10 +174,10 @@
     if (indexPath.section == 0) {
         cell.contentLabel.text = self.recentArray[indexPath.row];
     }else{
-        cell.contentLabel.text = self.hotArray[indexPath.row];
-    }
-    //F5F4FD    FDF2F3   FEFBF0    F2FEF1   F3FBFC
-    cell.contentView.backgroundColor = kUIColorFromRGB(0xF3FBFC);
+        cell.contentLabel.text = self.hotArray[indexPath.row][@"ssmc"];
+    }//
+    int i = rand() % 5;
+    cell.contentView.backgroundColor = self.colorArray[i];
     return cell;
 }
 
@@ -164,7 +186,7 @@
         CGFloat rowWidth = [self sizeWithText:self.recentArray[indexPath.row] font:kSysFont(13)].width;
         return CGSizeMake(rowWidth +30, 30);
     }else{
-        CGFloat rowWidth = [self sizeWithText:self.hotArray[indexPath.row] font:kSysFont(13)].width;
+        CGFloat rowWidth = [self sizeWithText:self.hotArray[indexPath.row][@"ssmc"] font:kSysFont(13)].width;
         return CGSizeMake(rowWidth +30, 30);
     }
     return CGSizeMake(0.01, 0.01);
@@ -196,7 +218,7 @@
     if (indexPath.section == 0) {
         vc.keyString = self.recentArray[indexPath.row];
     }else{
-        vc.keyString = self.hotArray[indexPath.row];
+        vc.keyString = self.hotArray[indexPath.row][@"ssmc"];
     }
     [self addAcacheForKey:vc.keyString];
     [self.navigationController pushViewController:vc animated:YES];
@@ -214,33 +236,18 @@
     if (![tempArray containsObject:keyString]) {
         [tempArray addObject:keyString];
     }
+    NSMutableArray *addArray = [[NSMutableArray alloc]initWithArray:tempArray];
+    [addArray removeObject:keyString];
+    tempArray = [[NSMutableArray alloc]initWithObjects:keyString, nil];
+    [tempArray addObjectsFromArray:addArray];
+    
     [[NSUserDefaults standardUserDefaults] setObject:tempArray forKey:@"recentArray"];
     [self dataReloadData];//数据刷新
 }
 
 - (void)clearHeaderClick{
     [[NSUserDefaults standardUserDefaults] setObject:@[] forKey:@"recentArray"];
-    
-     [self dataReloadData];//数据刷新
-}
-
-- (void)reloadData {//历史记录
-    __weak typeof(self) weakSelf = self;
-    
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"999"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-        
-        if (success) {
-//            self.hotArray
-//            [weakSelf dataReloadData];//数据刷新
-            
-            [weakSelf.contentCollectionView reloadData];
-            
-        }else{
-            [weakSelf alertWithMsg:kFailedTips handler:nil];
-        }
-        [weakSelf.contentCollectionView.mj_header endRefreshing];
-        [weakSelf.contentCollectionView.mj_footer endRefreshing];
-    }];
+    [self dataReloadData];//数据刷新
 }
 
 #pragma mark - 导航栏

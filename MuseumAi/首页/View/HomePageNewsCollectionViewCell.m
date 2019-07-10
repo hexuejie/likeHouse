@@ -13,6 +13,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    self.backGround.layer.borderColor = kUIColorFromRGB(0xf2f2f0).CGColor;
+    self.backGround.layer.borderWidth = 1.0;
 }
 
 

@@ -42,11 +42,15 @@
                         <constraint firstAttribute="width" constant="60" id="okZ-gz-zff"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="131****1544" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4s-MX-IOP">
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="131****1544" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4s-MX-IOP">
                     <rect key="frame" x="89" y="59" width="99.5" height="21"/>
+                    <gestureRecognizers/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="qJ1-J1-aa1" appends="YES" id="5oZ-7e-cMr"/>
+                    </connections>
                 </label>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FqE-A0-EPZ">
                     <rect key="frame" x="15" y="150" width="168" height="100"/>
@@ -163,10 +167,10 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFw-Zb-3dl">
-                    <rect key="frame" x="287" y="86" width="70" height="32"/>
+                    <rect key="frame" x="257" y="86" width="100" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="Ays-tF-Klb"/>
-                        <constraint firstAttribute="width" constant="70" id="JGk-dT-03o"/>
+                        <constraint firstAttribute="width" constant="100" id="JGk-dT-03o"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="去认证   &gt;">
@@ -202,11 +206,16 @@
                 <constraint firstItem="FqE-A0-EPZ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="z86-F1-O1N"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="-58" y="32"/>
+            <point key="canvasLocation" x="-382" y="68"/>
         </view>
         <tapGestureRecognizer id="NIz-OG-gGN">
             <connections>
                 <action selector="realClick:" destination="-1" id="h3d-ur-Me7"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="qJ1-J1-aa1">
+            <connections>
+                <action selector="changePhone:" destination="-1" id="bLD-C9-NQA"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

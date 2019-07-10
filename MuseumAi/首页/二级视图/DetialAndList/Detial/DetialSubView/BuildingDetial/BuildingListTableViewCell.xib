@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lgt-P5-kMe">
-                        <rect key="frame" x="20" y="5" width="429" height="48"/>
+                        <rect key="frame" x="20" y="10" width="429" height="48"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GF8-35-3us">
                                 <rect key="frame" x="16" y="14" width="17" height="20"/>
@@ -51,13 +51,17 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Lgt-P5-kMe" secondAttribute="bottom" constant="2" id="4ef-WN-wvD"/>
                     <constraint firstAttribute="trailing" secondItem="Lgt-P5-kMe" secondAttribute="trailing" constant="20" id="QTc-FQ-d4n"/>
-                    <constraint firstAttribute="bottom" secondItem="Lgt-P5-kMe" secondAttribute="bottom" constant="5" id="dG8-4A-T7B"/>
-                    <constraint firstItem="Lgt-P5-kMe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="dXE-li-NL8"/>
+                    <constraint firstItem="Lgt-P5-kMe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="dXE-li-NL8"/>
                     <constraint firstItem="Lgt-P5-kMe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hSf-gg-hK6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="dhLabel" destination="GF8-35-3us" id="UsK-ny-i4c"/>
+                <outlet property="ztLabel" destination="nm9-eT-6ML" id="SSi-bZ-rSW"/>
+            </connections>
             <point key="canvasLocation" x="84" y="119.64017991004499"/>
         </tableViewCell>
     </objects>

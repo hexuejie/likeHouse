@@ -39,13 +39,14 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6A-zw-x22">
-                                    <rect key="frame" x="210" y="0.0" width="58" height="22"/>
+                                    <rect key="frame" x="172" y="0.0" width="58" height="22"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="58" id="FPv-1E-4ho"/>
                                         <constraint firstAttribute="height" constant="22" id="aDc-eL-Omi"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="图片">
                                         <color key="titleColor" red="0.26663362979888916" green="0.26668566465377808" blue="0.26663035154342651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -55,8 +56,8 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </button>
-                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXi-vS-0g2">
-                                    <rect key="frame" x="137" y="0.0" width="58" height="22"/>
+                                <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXi-vS-0g2">
+                                    <rect key="frame" x="99" y="0.0" width="58" height="22"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="58" id="6vx-Si-TsI"/>
@@ -80,12 +81,12 @@
                                 <constraint firstItem="ILF-Yl-d8q" firstAttribute="centerY" secondItem="d6A-zw-x22" secondAttribute="centerY" id="CGp-1x-omj"/>
                                 <constraint firstItem="d6A-zw-x22" firstAttribute="top" secondItem="kXi-vS-0g2" secondAttribute="top" id="Fb8-BQ-cna"/>
                                 <constraint firstAttribute="trailing" secondItem="ILF-Yl-d8q" secondAttribute="trailing" constant="18" id="Gwx-gT-CF0"/>
-                                <constraint firstItem="d6A-zw-x22" firstAttribute="centerX" secondItem="YME-P5-CGn" secondAttribute="centerX" constant="38" id="I2W-v0-YR1"/>
+                                <constraint firstItem="d6A-zw-x22" firstAttribute="centerX" secondItem="YME-P5-CGn" secondAttribute="centerX" id="I2W-v0-YR1"/>
                                 <constraint firstAttribute="height" constant="37" id="UNF-NZ-rnP"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.021466927940076038" green="0.89809560779999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="YME-P5-CGn" secondAttribute="trailing" id="9zE-E5-WI8"/>
                         <constraint firstItem="YME-P5-CGn" firstAttribute="leading" secondItem="3eA-0b-yVW" secondAttribute="leading" id="Ey2-ZD-MOT"/>

@@ -25,6 +25,8 @@
 #import "BannerModel.h"
 #import "HouseListModel.h"
 #import "ResultQualityViewController.h"
+#import "HouseDetialViewController.h"
+#import "ZTDetialViewController.h"
 
 @interface MULookViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -56,6 +58,7 @@
     [LoginSession sharedInstance].pageType = 0;
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -64,7 +67,24 @@
     [self dataInit];
     [self viewInit];
     [self customNav];
+    
+    
+    [[UINavigationBar appearance] setShadowImage: [self viewImageFromColor:kUIColorFromRGB(0xf2f2f1) rect:CGRectMake(0, 0, SCREEN_WIDTH, 1)]];
 }
+
+
+- (UIImage *)viewImageFromColor:(UIColor *)color rect:(CGRect)rect{
+    
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 
 
 #pragma mark - delegate
@@ -90,6 +110,14 @@
     }else if (indexPath.section == 1) {
         HomePageNewsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageNewsCollectionViewCell" forIndexPath:indexPath];
         cell.model = self.midArray[indexPath.row];
+        
+//        cell.backGround.backgroundColor = kUIColorFromRGB(0xF1E9EB);
+//        if (indexPath.row == 1) {
+//            cell.backGround.backgroundColor = kUIColorFromRGB(0xE6EFEC);
+//        }else if (indexPath.row == 2) {
+//            cell.backGround.backgroundColor = kUIColorFromRGB(0xF2EEE4);
+//        }
+        
         return cell;
     }else if (indexPath.section == 2) {
         HomePageHousesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell" forIndexPath:indexPath];
@@ -106,11 +134,11 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-         return CGSizeMake((SCREEN_WIDTH-12)/3, 50*CustomScreenFit+22);
+         return CGSizeMake((SCREEN_WIDTH-12)/3, 50*CustomScreenFit+22  +4);
     }else if (indexPath.section == 1) {
          return CGSizeMake((SCREEN_WIDTH-14)/2, 150*CustomScreenFit);
     }else if (indexPath.section == 2) {
-        return CGSizeMake((SCREEN_WIDTH-1)/2,  122*CustomScreenFit +90);
+        return CGSizeMake((SCREEN_WIDTH-1)/2,  122*CustomScreenFit +90  +4);
     }
     return CGSizeMake((SCREEN_WIDTH-12)/4, 77*CustomScreenFit);
 }
@@ -126,6 +154,8 @@
             return headerView;
         }if (indexPath.section ==2 && self.houses.count) {
             HomePageHeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomePageHeaderCollectionReusableView" forIndexPath:indexPath];
+            headerView.topLine.hidden = YES;
+            headerView.titleLabel.font = kSysFont(20);
             return headerView;
         }
         
@@ -173,7 +203,9 @@
     
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"20"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner
+        [weakSelf loadingPageWidthSuccess:success];
         if (success) {
+            
             NSDictionary *dic = response[@"data"];
             for (NSDictionary *tempdic in [dic objectForKey:@"banner"]) {
                 [self.banners addObject:[BannerModel mj_objectWithKeyValues:tempdic]];
@@ -195,12 +227,13 @@
             
             [weakSelf.contentCollectionView reloadData];
         }else{
-           [weakSelf alertWithMsg:kFailedTips handler:nil];
         }
         [weakSelf.contentCollectionView.mj_header endRefreshing];
         [weakSelf.contentCollectionView.mj_footer endRefreshing];
     }];
+    
 }
+
 
 
 #pragma mark - Click
@@ -209,19 +242,19 @@
         switch (indexPath.row) {
             case 0:{
 
-//                if (![Utility is_empty:[LoginSession sharedInstance].grrzzt]) {
-//                    if ([[LoginSession sharedInstance].grrzzt integerValue] == 0||[[LoginSession sharedInstance].grrzzt integerValue] == 1) {
-//                        ResultQualityViewController *vc = [ResultQualityViewController new];
-//                        vc.hidesBottomBarWhenPushed = YES;
-//                        vc.isReal = NO;
-//                        [self.navigationController pushViewController:vc animated:YES];
-//                    }
-//                }else{
-                    RealFirstTipViewController *vc = [RealFirstTipViewController new];
-                    vc.title = @"购房资格审查说明";
-                    vc.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:vc animated:YES];
-//                }
+                if (![Utility is_empty:[LoginSession sharedInstance].grrzzt]) {
+                    if ([[LoginSession sharedInstance].grrzzt integerValue] == 0||[[LoginSession sharedInstance].grrzzt integerValue] == 1) {
+                        ResultQualityViewController *vc = [ResultQualityViewController new];
+                        vc.hidesBottomBarWhenPushed = YES;
+                        vc.isReal = NO;
+                        [self.navigationController pushViewController:vc animated:YES];
+                        return;
+                    }
+                }
+                RealFirstTipViewController *vc = [RealFirstTipViewController new];
+                vc.title = @"购房资格审查说明";
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
                 
             }break;
             case 1:{
@@ -258,11 +291,24 @@
         return;
     }else if (indexPath.section == 1) {
         //        articles
+        ZTDetialViewController *vc = [ZTDetialViewController new];
+        vc.hidesBottomBarWhenPushed = YES;
+        NewsModel *model = self.midArray[indexPath.row];
+        vc.formatString = model.ztnr;
+        vc.title = model.title;
+        if (model.title.length == 0) {
+            vc.title = model.ztmc;
+        }
+        [self.navigationController pushViewController:vc animated:YES];
+        
     }else if (indexPath.section == 2) {
-        //        houses
+        //        house
+        HouseDetialViewController *vc = [HouseDetialViewController new];
+        vc.hidesBottomBarWhenPushed = YES;
+        HouseListModel *model = self.houses[indexPath.row];
+        vc.strBH = model.lpbh;
+        [self.navigationController pushViewController:vc animated:YES];
     }
-    
-    [self testButtonClick];
 }
 #pragma mark 已做
 - (void)authenticationAction{
@@ -316,13 +362,6 @@
     [searchButton setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
     [searchButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
     [searchButton addTarget:self action:@selector(searchClick) forControlEvents:UIControlEventTouchUpInside];
-    
-    for (UIView *subview in self.navigationController.navigationBar.subviews) {
-        //        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
-        if ([subview isKindOfClass:UIImageView.class] && subview.bounds.size.height <= 1.0) {
-            subview.hidden = YES;
-        }
-    }
 }
 
 

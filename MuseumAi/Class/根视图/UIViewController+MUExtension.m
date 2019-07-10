@@ -83,6 +83,7 @@
 //    dispatch_async(dispatch_get_main_queue(), ^{
 //        [weakSelf presentViewController:alert animated:YES completion:nil];
 //    });
+    
 }
 
 - (void)alertWithMsg:(NSString *)msg okHandler:(void (^)())handler {

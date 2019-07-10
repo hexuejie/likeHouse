@@ -14,15 +14,19 @@
 
 @interface MURootViewController : UIViewController
 
+@property (nonatomic,strong) UIView *allView;
 
 @property (nonatomic,strong) UIButton *backItem;
 
 - (void)callBackClick;
 
-//- (void)testButtonClick;
 
 - (void)reloadData;
 
 - (void)addNoneDataTipView;
 - (void)removeNoneDataTipView;
+
+- (void)loadingPageError;
+- (void)loadingPageSuccess;
+- (void)loadingPageWidthSuccess:(BOOL)success;
 @end

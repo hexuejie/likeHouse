@@ -319,7 +319,8 @@
     self.dataArray = [NSMutableArray new];
     NSDictionary *pram = [self.model mj_keyValues];
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/contract/detail") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-        //banner
+        
+        [weakSelf loadingPageWidthSuccess:success];
         if (success) {
 
             weakSelf.dataDic = response[@"data"];
@@ -328,7 +329,7 @@
                 [weakSelf addNoneDataTipView];
             }
         }else{
-            [weakSelf alertWithMsg:kFailedTips handler:nil];
+            
         }
         [weakSelf.tableView.mj_header endRefreshing];
         [weakSelf.tableView.mj_footer endRefreshing];

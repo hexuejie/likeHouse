@@ -196,7 +196,9 @@
         self.brithdayTExtField.text.length == 0||
         
         self.addressTextField.text.length == 0||
-        self.numberIdTextField.text.length == 0
+        self.numberIdTextField.text.length == 0||
+        self.behindImage.image == nil||
+        self.frontImage.image == nil
         ) {
         [SVProgressHelper dismissWithMsg: @"请完善个人信息！"];
         return;
@@ -236,14 +238,15 @@
 
 - (void)beginUpLoad{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self updateLoadImage:self.frontImage.image];
+    [self updateLoadImage:nil];
 }
 
 - (void)updateLoadImage:(UIImage *)upImage{
     
     __weak typeof(self) weakSelf = self;
     //上传图片
-    NSArray *imageArray = @[upImage
+    NSArray *imageArray = @[self.frontImage.image
+                            ,self.behindImage.image
                             ];
     
     [NetWork uploadMoreFileHttpRequestURL:DetailUrlString(@"/upload") RequestPram:@{} arrayImg:imageArray arrayAudio:@[] RequestSuccess:^(id  _Nonnull respoes) {

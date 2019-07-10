@@ -64,9 +64,9 @@
   
     // 验证码登陆
     if (![MUCustomUtils isValidateTelNumber:self.phoneTextField.text]) {
-        [self alertWithMsg:@"手机号码格式不正确" handler:nil];
+        [SVProgressHelper dismissWithMsg:@"手机号码格式不正确"];
     }else if(self.codeTextField.text.length == 0) {
-        [self alertWithMsg:@"请输入验证码" handler:nil];
+        [SVProgressHelper dismissWithMsg:@"请输入验证码"];
     }else {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         __weak typeof(self) weakSelf = self;
@@ -76,12 +76,12 @@
                                @"uuid":udidString,
                                
                                @"scwl":@"wifi",
-                               @"sjxh":@"Meizu16",
+                               @"sjxh":[NetWork deviceModelName],
                                @"jzxx":@"460-0-0-0",
                                
                                @"yys":@"运营商",
                                @"gps":@"123,46",
-                               @"czxtbb":@"8.1.0"
+                               @"czxtbb":[[UIDevice currentDevice] systemVersion]
                                };
         
         [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/login/zjw/user/logincode") para:pram isShowHUD:YES  isToLogin:NO callBack:^(id  _Nonnull response, BOOL success) {
@@ -92,8 +92,8 @@
 
                 NSString * urlString = DetailUrlString(@"/api/login/zjw/user/logincode");
                 NSURL * url = [NSURL URLWithString:urlString];
-                NSHTTPCookieStorage* cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-                NSArray<NSHTTPCookie *> *cookies = [cookieStorage cookiesForURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",url]]];
+                
+                NSArray<NSHTTPCookie *> *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",url]]];
                 
                 NSMutableArray *temoTemp = [[NSMutableArray alloc]init];
                 [cookies enumerateObjectsUsingBlock:^(NSHTTPCookie * _Nonnull cookie, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -146,7 +146,7 @@
 - (void)didGetCodeClicked:(id)sender {
   
     if (![MUCustomUtils isValidateTelNumber:self.phoneTextField.text]) {
-        [self alertWithMsg:@"手机号码格式不正确" handler:nil];
+        [SVProgressHelper dismissWithMsg:@"手机号码格式不正确"];
         return;
     }
     if (self.count > 0) {

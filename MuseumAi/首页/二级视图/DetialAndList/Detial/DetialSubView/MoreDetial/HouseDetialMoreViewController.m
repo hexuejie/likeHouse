@@ -26,14 +26,7 @@
     // Do any additional setup after loading the view.
     self.title = @"楼盘详情";
     self.view.backgroundColor = [UIColor whiteColor];
-    _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"},
-                   @{@"title":@"购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改",@"content":@"myCenter_change"},
-                   @{@"title":@"常见问题",@"content":@"myCenter_question"},
-                   @{@"title":@"用户设置",@"content":@"myCenter_setting"},
-                   @{@"title":@"关于悦居星城",@"content":@"myCenter_about"},
-                   @{@"title":@"添加前配偶需要哪些信息？",@"content":@"myCenter_setting"},
-                   @{@"title":@"添加前配偶需要哪些信息？添加前配偶需要哪些信息？",@"content":@"myCenter_about"}
-                   ];
+    
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = [UIColor whiteColor];
@@ -46,23 +39,42 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.headerView.titleLabel.text = _detialModel.lp.xmmc;
+    self.headerView.contentLabel.text = [_detialModel.xmbc.bq stringByReplacingOccurrencesOfString:@"," withString:@"/"];
+
+    _dataArray = @[
+                   @[@{@"title":@"销售状态：",@"content":[NSString stringWithFormat:@"%@",_detialModel.lpzt]}
+                     ,@{@"title":@"最新开盘：",@"content":[NSString stringWithFormat:@"%@",_detialModel.kprq]}
+                     ,@{@"title":@"楼盘地址：",@"content":[NSString stringWithFormat:@"%@",_detialModel.lp.xmdz]}]
+                   
+                   ,@[@{@"title":@"参考价：",@"content":[NSString stringWithFormat:@"%@",_detialModel.lp.xsqj]}
+                      ,@{@"title":@"售楼电话：",@"content":[NSString stringWithFormat:@"%@",_detialModel.lp.slclxdh]}
+                      ,@{@"title":@"预售许可证：",@"content":[NSString stringWithFormat:@"%@",@""]}]//_detialModel.lp.xmbh
+                   
+                   ,@[@{@"title":@"开发商：",@"content":[NSString stringWithFormat:@"%@",_detialModel.lp.kfgsmc]}
+                      ,@{@"title":@"投资商：",@"content":[NSString stringWithFormat:@"%@",_detialModel.kpxm.kfgsmc]}
+                      ,@{@"title":@"容积率：",@"content":[NSString stringWithFormat:@"%@",_detialModel.lp.rjl]}
+                      ,@{@"title":@"绿化率：",@"content":[NSString stringWithFormat:@"%@",_detialModel.lp.lhl]}
+                      ,@{@"title":@"占地面积：",@"content":[NSString stringWithFormat:@"%@",_detialModel.lp.xmzzdmj]}]
+                   ];
     [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate && UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return _dataArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _dataArray.count;
+    return [_dataArray[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     DetialMoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetialMoreTableViewCell" forIndexPath:indexPath];
-  
-    cell.contentLabel.text = _dataArray[indexPath.row][@"title"];
+    cell.titleLabel.text = _dataArray[indexPath.section][indexPath.row][@"title"];
+    cell.contentLabel.text = _dataArray[indexPath.section][indexPath.row][@"content"];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -81,6 +93,11 @@
     }
     DetialMoreHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"DetialMoreHeader"];
     header.backgroundColor = [UIColor whiteColor];
+    if (section == 1) {
+        header.titleLabel.text = @"销售信息";
+    }else if (section == 1) {
+        header.titleLabel.text = @"建筑规划";
+    }
     return header;
 }
 

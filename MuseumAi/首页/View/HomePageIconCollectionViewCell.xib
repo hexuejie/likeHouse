@@ -20,14 +20,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homePage_item1" translatesAutoresizingMaskIntoConstraints="NO" id="OBm-aH-0al">
-                        <rect key="frame" x="52" y="6" width="37" height="37"/>
+                        <rect key="frame" x="52" y="10" width="37" height="37"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="37" id="0d8-8W-bfF"/>
                             <constraint firstAttribute="width" constant="37" id="Tzy-xc-t8b"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实名认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAl-qX-8GB">
-                        <rect key="frame" x="44" y="51" width="53.5" height="16"/>
+                        <rect key="frame" x="44" y="55" width="53.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.33632254600524902" green="0.18900743126869202" blue="0.034005116671323776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -36,7 +36,7 @@
             </view>
             <constraints>
                 <constraint firstItem="OBm-aH-0al" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Rvu-f2-IHB"/>
-                <constraint firstItem="OBm-aH-0al" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="6" id="Ulo-S5-rXz"/>
+                <constraint firstItem="OBm-aH-0al" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Ulo-S5-rXz"/>
                 <constraint firstItem="PAl-qX-8GB" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="arR-sj-x1q"/>
                 <constraint firstItem="PAl-qX-8GB" firstAttribute="top" secondItem="OBm-aH-0al" secondAttribute="bottom" constant="8" id="zXS-GW-Hcg"/>
             </constraints>

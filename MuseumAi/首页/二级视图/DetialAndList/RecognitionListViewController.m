@@ -12,6 +12,7 @@
 #import "JYEqualCellSpaceFlowLayout.h"
 #import "RecogtionHousesCollectionViewCell.h"
 #import "HouseListModel.h"
+#import "HouseDetialViewController.h"
 
 @interface RecognitionListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -89,7 +90,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return CGSizeMake((SCREEN_WIDTH-10)/2, 118*CustomScreenFit+122);
+    return CGSizeMake((SCREEN_WIDTH-10)/2, 120*CustomScreenFit+122);
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
@@ -98,7 +99,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self testButtonClick];
+    HouseDetialViewController *vc = [HouseDetialViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    HouseListModel *model = self.houses[indexPath.row];
+    vc.strBH = model.lpbh;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)recogtionButtonClick:(UIButton *)button{
@@ -165,11 +170,11 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/renchou") para: @{@"lpbh":[NSString stringWithFormat:@"%@",_tempModel.lpbh]} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/renchou") para: @{@"xmbh":[NSString stringWithFormat:@"%@",_tempModel.lpbh]} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         
         if (success) {
             
-            [SVProgressHelper dismissWithMsg:@"提交成功！"];
+            [SVProgressHelper dismissWithMsg:response[@"msg"]];
         }else{
             [weakSelf alertWithMsg:kFailedTips handler:nil];
         }
@@ -181,16 +186,15 @@
     
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/renchoulist") para: @{@"page":@"1",@"rows":@"999"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         
+        [weakSelf loadingPageWidthSuccess:success];
         if (success) {
             
             weakSelf.houses = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"data"]];
             [weakSelf.contentCollectionView reloadData];
-            if (!weakSelf.houses) {
+            if (weakSelf.houses.count == 0) {
                 [weakSelf addNoneDataTipView];
             }
         }else{
-            [weakSelf addNoneDataTipView];
-            [weakSelf alertWithMsg:kFailedTips handler:nil];
         }
         [weakSelf.contentCollectionView.mj_header endRefreshing];
         [weakSelf.contentCollectionView.mj_footer endRefreshing];

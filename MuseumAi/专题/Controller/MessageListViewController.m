@@ -11,6 +11,7 @@
 #import "CloudWebController.h"
 #import "MUMapHandler.h"
 #import "MJRefresh.h"
+#import "NewsModel.h"
 
 @interface MessageListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -29,14 +30,7 @@
     // Do any additional setup after loading the view from its nib.
 //    self.title = @"常见问题";
     self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
-    _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"},
-                   @{@"title":@"购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改",@"content":@"myCenter_change"},
-                   @{@"title":@"常见问题",@"content":@"myCenter_question"},
-                   @{@"title":@"用户设置",@"content":@"myCenter_setting"},
-                   @{@"title":@"关于悦居星城",@"content":@"myCenter_about"},
-                   @{@"title":@"添加前配偶需要哪些信息？",@"content":@"myCenter_setting"},
-                   @{@"title":@"添加前配偶需要哪些信息？添加前配偶需要哪些信息？",@"content":@"myCenter_about"}
-                   ];
+    _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"}];
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT -[Utility segmentTopMinHeight]-42)];
     [self.view addSubview:self.tableView];
     self.tableView.alwaysBounceVertical = YES;
@@ -60,6 +54,8 @@
 //        weakSelf.page++;
 //        [weakSelf reloadData];
 //    }];
+    
+    self.allView = self.tableView;
 }
 
 #pragma mark - UITableViewDelegate && UITableViewDataSource
@@ -95,5 +91,34 @@
     return [UIView new];
 }
 
+
+- (void)reloadData {
+    NSString *flStr = @"1";
+    NSString *strURL = @"/api/family/xf/user/marketnewslist";
+    if ([self.title isEqualToString:@"楼盘动态"]) {
+        flStr = @"2";
+        strURL = @"/api/family/xf/user/baikejzlist";
+    }else if ([self.title isEqualToString:@"悦居资讯"]) {
+        flStr = @"";
+        strURL = @"/api/family/xf/user/baikejzlist";
+    }
+    __weak typeof(self) weakSelf = self;
+    [[NetWork shareManager] postWithUrl:DetailUrlString(strURL) para: @{@"fl":flStr//2
+                                                                        ,@"page":@"1",@"rows":@"999"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+                                                                            [weakSelf loadingPageWidthSuccess:success];
+                                                                            if (success) {
+                                                                                weakSelf.dataArray = [NewsModel mj_objectArrayWithKeyValuesArray:response[@"data"]];
+                                                                                
+                                                                                [weakSelf.tableView reloadData];
+                                                                                
+                                                                                if (weakSelf.dataArray.count == 0) {
+                                                                                    [weakSelf addNoneDataTipView];
+                                                                                }
+                                                                            }else{
+                                                                            }
+                                                                            [weakSelf.tableView.mj_header endRefreshing];
+                                                                            [weakSelf.tableView.mj_footer endRefreshing];
+                                                                        }];
+}
 
 @end

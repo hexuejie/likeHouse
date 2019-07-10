@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong)NSArray<BannerModel*> *imageArray;
 @property (nonatomic,strong)IndexBannerView *bannerScrollView;
+
+
+@property (nonatomic,strong)UIPageControl *pageControl;
 @end
 
 NS_ASSUME_NONNULL_END

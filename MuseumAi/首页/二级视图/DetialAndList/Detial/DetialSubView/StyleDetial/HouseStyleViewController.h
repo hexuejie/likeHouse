@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HouseStyleViewController : MURootViewController
 
+@property (nonatomic ,strong) NSArray *hxlistVo;
+
 @end
 
 NS_ASSUME_NONNULL_END

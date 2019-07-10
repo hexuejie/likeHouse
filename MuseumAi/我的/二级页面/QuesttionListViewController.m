@@ -9,6 +9,7 @@
 #import "QuesttionListViewController.h"
 #import "QuestionListTableViewCell.h"
 #import "CloudWebController.h"
+#import "QuestionDetialViewController.h"
 
 @interface QuesttionListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -27,14 +28,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"常见问题";
     self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
-    _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"},
-                   @{@"title":@"购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改购房资格审查资料修改",@"content":@"myCenter_change"},
-                   @{@"title":@"常见问题",@"content":@"myCenter_question"},
-                   @{@"title":@"用户设置",@"content":@"myCenter_setting"},
-                   @{@"title":@"关于悦居星城",@"content":@"myCenter_about"},
-                   @{@"title":@"添加前配偶需要哪些信息？",@"content":@"myCenter_setting"},
-                   @{@"title":@"添加前配偶需要哪些信息？添加前配偶需要哪些信息？",@"content":@"myCenter_about"}
-                   ];
+   
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds];
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
@@ -57,8 +51,8 @@
 
     QuestionListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QuestionListTableViewCell" forIndexPath:indexPath];
     
-    [cell.orderButton setTitle:[NSString stringWithFormat:@"%ld",indexPath.row] forState:UIControlStateNormal];
-    cell.contentLabel.text = _dataArray[indexPath.row][@"title"];
+    [cell.orderButton setTitle:[NSString stringWithFormat:@"%ld",indexPath.row+1] forState:UIControlStateNormal];
+    cell.contentLabel.text = _dataArray[indexPath.row][@"wtbt"];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -66,9 +60,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    CloudWebController *vc = [CloudWebController new];
+    QuestionDetialViewController *vc = [QuestionDetialViewController new];
     vc.title = @"问题详情";
-    vc.requestURL = @"http://10.3.61.154/sales/7";
+    vc.dataDic = _dataArray[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -81,5 +75,22 @@
     return [UIView new];
 }
 
+- (void)reloadData{
+    
+    __weak typeof(self) weakSelf = self;
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/questions") para:@{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        [weakSelf loadingPageWidthSuccess:success];
+        if (success) {
+            weakSelf.dataArray = response[@"data"];
+            //            weakSelf.detialModel.dataDic = response[@"data"];
+            
+            [weakSelf.tableView reloadData];
+            if (weakSelf.dataArray.count == 0) {
+                [weakSelf addNoneDataTipView];
+            }
+        }else{
+        }
+    }];
+}
 
 @end

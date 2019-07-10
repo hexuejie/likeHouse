@@ -18,11 +18,13 @@
 #import "HomePageHousesCollectionViewCell.h"
 #import "HomePageHeaderCollectionReusableView.h"
 
+#import "ldxxListHouseDetial.h"
 #import "HouseDetialMoreViewController.h"
 #import "HouseDetialHeaderView.h"
 #import "BuildingDetialViewController.h"
 #import "HouseAroundViewController.h"
 #import "HouseDetialFeedbackViewController.h"
+#import "HouseDetialModel.h"
 
 @interface HouseDetialViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong, nonatomic) HouseDetialHeaderView *headerView;
@@ -37,10 +39,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *collectionButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contactWidth;
 
-@property (nonatomic , strong) NSArray *titles;
-@property (nonatomic , strong) NSArray *icons;
+
+@property (nonatomic , strong) HouseDetialModel *detialModel;
 
 @property (nonatomic , assign) NSInteger page;
+
+@property (nonatomic , assign) NSInteger clearSection;
 @end
 
 @implementation HouseDetialViewController
@@ -61,28 +65,23 @@
     self.contactWidth.constant = 139*CustomScreenFit;
     [self.collectionButton setImagePositionWithType:LXImagePositionTypeTop spacing:4];
     
-    [self dataInit];
     [self viewInit];
     [self customNavInit];
     
-    [self.headerView.videoTipButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.headerView.pictureTipButton setTitleColor:kUIColorFromRGB(0x444444) forState:UIControlStateNormal];
-    self.headerView.videoTipButton.backgroundColor = kUIColorFromRGB(0xE8A660);
-    self.headerView.pictureTipButton.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
+    
+    [self.headerView.videoTipButton setTitleColor:kUIColorFromRGB(0x444444) forState:UIControlStateNormal];
+    self.headerView.videoTipButton.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
+    self.headerView.pictureTipButton.backgroundColor = kUIColorFromRGB(0xE8A660);
+    [self.headerView.pictureTipButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
     self.headerView.countTipLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.43];
 }
 
 
-- (void)dataInit{
-    self.titles = @[@"实名认证",@"全部楼盘",   @"购房资格",@"精准找房",
-                    @"信息查询",@"楼盘认筹",   @"购房百科",@"楼市要闻"];
-    self.icons = @[@"homePage_item1",@"homePage_item2",   @"homePage_item3",@"homePage_item4",
-                   @"homePage_item5",@"homePage_item6",   @"homePage_item7",@"homePage_item8",];
-}
 
 - (void)viewInit {
     
-    JYEqualCellSpaceFlowLayout * layout = [[JYEqualCellSpaceFlowLayout alloc]initWithType:AlignWithCenter betweenOfCell:0];
+    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     layout.minimumLineSpacing = 0.01;
     layout.minimumInteritemSpacing = 0.01;
     self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-52-[Utility safeAreaBottomPlus]) collectionViewLayout:layout];
@@ -101,7 +100,7 @@
     self.headerView.frame = CGRectMake(0, -headerHight-[Utility safeAreaTopStatus], SCREEN_WIDTH, headerHight);
 //    _headerView.backgroundColor = [UIColor cyanColor];
     [self.contentCollectionView addSubview:self.headerView];
-    self.headerView.model = @{};
+
 
     [self.contentCollectionView registerClass:[DetialHouseTypeCollectionViewCell class] forCellWithReuseIdentifier:@"DetialHouseTypeCollectionViewCell"];
     [self.contentCollectionView registerClass:[DetialHouseImageCollectionViewCell class] forCellWithReuseIdentifier:@"DetialHouseImageCollectionViewCell"];
@@ -114,7 +113,6 @@
     [self.contentCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView1"];
     
     [self.headerView.moreButton addTarget:self action:@selector(moreDetialCilck) forControlEvents:UIControlEventTouchUpInside];
-
 }
 
 
@@ -124,24 +122,28 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (section == 0) {
+    if (section == 0 && _detialModel.hxlistVo.count) {
         return 1;
-    }else if (section == 1) {
-        return 1;//第二模块
-    }else if (section == 2) {
-        return 1;//第3模块  楼盘信息
+    }else if (section == 1 && _detialModel.ldxx.img) {
+        return 1;//楼栋
+    }else if (section == 2 && _detialModel.xmbc.jd) {//wd
+        return 1;//地图
+    }else if (section == 3) {
+        return _detialModel.list.count;//第3模块  楼盘信息
+    }else if (section == 4) {
+        return _detialModel.near.count;//第3模块  楼盘信息
     }
-    return  4;
+    return  0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         DetialHouseTypeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetialHouseTypeCollectionViewCell" forIndexPath:indexPath];
-   
+        cell.hxlistVo = _detialModel.hxlistVo;
         return cell;
     }else if (indexPath.section == 1) {//楼栋信息
         DetialHouseImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetialHouseImageCollectionViewCell" forIndexPath:indexPath];
-        cell.allImageView.image = [UIImage imageNamed:@"图层 67"];
+        [cell.allImageView setOtherImageUrl:_detialModel.ldxx.img];
         
         return cell;
     }else if (indexPath.section == 2) {//位置及周边
@@ -149,10 +151,19 @@
         cell.allImageView.image = [UIImage imageNamed:@"testMap"];
         
         return cell;
+    }else if (indexPath.section == 3) {//列表
+        HomePageHousesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell" forIndexPath:indexPath];
+
+        cell.model = _detialModel.list[indexPath.row];
+        return cell;
+    }else if (indexPath.section == 4) {//附近的楼盘
+        HomePageHousesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell" forIndexPath:indexPath];
+
+        cell.model = _detialModel.list[indexPath.row];
+        return cell;
     }
     
     HomePageHousesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell" forIndexPath:indexPath];
-    
     return cell;
 }
 
@@ -164,20 +175,34 @@
     }else if (indexPath.section == 2) {
         return CGSizeMake(SCREEN_WIDTH, 235);
     }
-    return CGSizeMake((SCREEN_WIDTH-1)/2, 122*CustomScreenFit +90);
+    return CGSizeMake((SCREEN_WIDTH-0.1)/2, 122*CustomScreenFit +90);
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     if ([kind isEqualToString:UICollectionElementKindSectionHeader] ) {
+        if (indexPath.section == 0 && !_detialModel.hxlistVo) {
+            return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView" forIndexPath:indexPath];
+        }else if (indexPath.section == 1 && !_detialModel.ldxx.img) {
+            return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView" forIndexPath:indexPath];
+        }else if (indexPath.section == 2 && !_detialModel.xmbc.jd) {//wd
+            return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView" forIndexPath:indexPath];
+        }else if (indexPath.section == 3 && !_detialModel.list) {
+            UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView" forIndexPath:indexPath];
+            headerView.userInteractionEnabled = NO;
+            return headerView;
+        }else if (indexPath.section == 4 && !_detialModel.near) {
+            UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView" forIndexPath:indexPath];
+            headerView.userInteractionEnabled = NO;
+            return headerView;
+        }
+        
         HomePageHeaderCollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomePageHeaderCollectionReusableView" forIndexPath:indexPath];
         header.intoButton.hidden = NO;
         header.intoButton.tag = indexPath.section;
         header.titleLabel.font = kSysFont(16.0);
         if (indexPath.section == 0) {
-            header.topLine.backgroundColor = [UIColor clearColor];
-            header.titleLabel.text = @"主力户型（3）";
+            header.titleLabel.text = [NSString stringWithFormat:@"主力户型（%ld）",_detialModel.hxlistVo.count];
         }else{
-            header.topLine.backgroundColor = kUIColorFromRGB(0xF4F4F4);
             if (indexPath.section == 1) {
                 header.titleLabel.text = @"楼栋信息";
             }else if (indexPath.section == 2) {
@@ -190,13 +215,17 @@
                 header.titleLabel.text = @"附近楼盘";
             }
         }
+        header.topLine.backgroundColor = kUIColorFromRGB(0xF4F4F4);
+        if (_clearSection == indexPath.section) {
+            header.topLine.backgroundColor = [UIColor clearColor];
+        }
         
         [header.intoButton addTarget:self action:@selector(headerSectionClick:) forControlEvents:UIControlEventTouchUpInside];
         return header;
     }else{
         if (indexPath.section ==4) {
             UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView1" forIndexPath:indexPath];
-            
+            headerView.backgroundColor = [UIColor redColor];
             UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, -2, SCREEN_WIDTH, 500)];
             [headerView addSubview:backView];
             backView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
@@ -221,11 +250,29 @@
     }
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-//    if (section ==0) {
-//        return CGSizeMake(SCREEN_WIDTH, (143+15));
-//    }if (section ==2) {
-//        return CGSizeMake(SCREEN_WIDTH, 51);
-//    }
+    
+    
+    if (section == 0 && !_detialModel.hxlistVo) {
+        _clearSection = 1;
+        return CGSizeMake(SCREEN_WIDTH, 0.01);
+    }else if (section == 1 && !_detialModel.ldxx.img) {
+        if (_clearSection == 1) {
+            _clearSection = 2;
+        }
+        return CGSizeMake(SCREEN_WIDTH, 0.01);
+    }else if (section == 2 && !_detialModel.xmbc.jd) {//wd
+        if (_clearSection == 2) {
+            _clearSection = 3;
+        }
+        return CGSizeMake(SCREEN_WIDTH, 0.01);
+    }else if (section == 3 && !_detialModel.list) {
+        if (_clearSection == 3) {
+            _clearSection = 4;
+        }
+        return CGSizeMake(SCREEN_WIDTH, 0.01);
+    }else if (section == 4 && !_detialModel.near) {
+        return CGSizeMake(SCREEN_WIDTH, 0.01);
+    }
     return CGSizeMake(SCREEN_WIDTH, 51);
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
@@ -239,24 +286,39 @@
     if (indexPath.section >= 3) {
         HouseDetialViewController *vc = [HouseDetialViewController new];
         vc.hidesBottomBarWhenPushed = YES;
+        if (indexPath.section == 3) {
+            HouseListModel *model = _detialModel.list[indexPath.row];
+            vc.strBH = model.lpbh;
+        }else if (indexPath.section == 4) {
+            HouseListModel *model = _detialModel.near[indexPath.row];
+            vc.strBH = model.lpbh;
+        }
+        
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
-#pragma mark - Event
-- (void)headerSectionClick:(UIButton *)button{
-    if (button.tag == 0) {
-        [self.navigationController pushViewController:[HouseStyleViewController new] animated:YES];
-    }else if (button.tag == 1) {
-        [self.navigationController pushViewController:[BuildingDetialViewController new] animated:YES];
-    }else if (button.tag == 2) {
-        [self.navigationController pushViewController:[HouseAroundViewController new] animated:YES];
-    }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGFloat yOffset  = scrollView.contentOffset.y;
     if (scrollView == self.contentCollectionView) {
-        if (scrollView.contentOffset.y >-330) {
+//        if(yOffset< -540)
+//        {
+//            CGFloat deviation = yOffset + 540;
+//            CGRect frameImg= self.headerView.bannerScrollView.frame;
+//            CGRect frame= self.headerView.frame;//_bannerScrollView
+//            frame.origin.y=yOffset;
+//            frame.size.height=-yOffset;
+////            frame.origin.x = (yOffset* SCREEN_WIDTH/257+SCREEN_WIDTH)/2;
+////            frame.size.width = -yOffset*SCREEN_WIDTH/257;
+//            self.headerView.frame=frame;
+//
+//
+//            frameImg.size.height = -deviation+257;//257
+//            self.headerView.bannerScrollView.frame=frameImg;
+//
+//        }else
+        if (yOffset >-330) {
             self.customNav.backgroundColor = [UIColor whiteColor];
             self.titleLabel.text = @"楼盘详情";
             [self.backButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
@@ -268,33 +330,70 @@
     }
 }
 
+#pragma mark - Event
+- (void)headerSectionClick:(UIButton *)button{
+    if (button.tag == 0) {
+       HouseStyleViewController *vc = [HouseStyleViewController new];
+        vc.hxlistVo = self.detialModel.hxlistVo;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if (button.tag == 1) {
+        BuildingDetialViewController *vc = [BuildingDetialViewController new];
+        vc.strBH = self.strBH;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if (button.tag == 2) {
+        HouseAroundViewController *vc = [HouseAroundViewController new];
+        vc.zbArray = self.detialModel.zb;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+
 - (void)moreDetialCilck{
     HouseDetialMoreViewController *vc = [HouseDetialMoreViewController new];
-//    vc.title = @"反馈纠错";
+    vc.detialModel = self.detialModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)moreButtonClick{
    HouseDetialFeedbackViewController *vc = [HouseDetialFeedbackViewController new] ;
     vc.title = @"反馈纠错";
+    vc.strBH = self.strBH;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)collectionClick:(UIButton *)sender {
     sender.selected = !sender.selected;
+    NSString *strURL;
     if (sender.selected) {
-        self.collectImage.image = [UIImage imageNamed:@"detial_collectioned"];
-        [SVProgressHelper dismissWithMsg:@"已关注"];
+        strURL = @"/api/family/xf/user/guznzhu";
     }else{
-        [SVProgressHelper dismissWithMsg:@"取消关注"];
-        self.collectImage.image = [UIImage imageNamed:@"detial_collection"];
+        strURL = @"/api/family/xf/user/quexiaoguznzhu";
     }
     
-    
-    [self.collectionButton setImagePositionWithType:LXImagePositionTypeTop spacing:4];
+    __weak typeof(self) weakSelf = self;
+    if (!_strBH) {
+        _strBH = @"201806110829";
+    }
+    [[NetWork shareManager] postWithUrl:DetailUrlString(strURL) para:@{@"xmbh":_strBH} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        if (success) {
+            if (sender.selected) {
+                weakSelf.collectImage.image = [UIImage imageNamed:@"detial_collectioned"];
+                [SVProgressHelper dismissWithMsg:@"已关注"];
+            }else{
+                [SVProgressHelper dismissWithMsg:@"取消关注"];
+                weakSelf.collectImage.image = [UIImage imageNamed:@"detial_collection"];
+            }
+            [weakSelf.collectionButton setImagePositionWithType:LXImagePositionTypeTop spacing:4];
+            
+        }else{
+        }
+    }];
 }
+
 - (IBAction)phoneQuestionClick:(id)sender {
-    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",@"15116171468"];
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",_detialModel.lp.slclxdh];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
     
@@ -302,6 +401,7 @@
     
     HouseDetialFeedbackViewController *vc = [HouseDetialFeedbackViewController new] ;
     vc.title = @"联系商家";
+    vc.strBH = self.strBH;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -325,35 +425,37 @@
 
 - (void)reloadData {
         __weak typeof(self) weakSelf = self;
+    if (!_strBH) {
+        _strBH = @"201806110829";
+    }//xqly Integer 详情来源  (1,banner,2,专题,3,新闻,4,推荐,5,其他)
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newhousedetail") para:@{@"lpbh":_strBH,@"xqly":@"5"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
     
-        [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newhousedetail") para: self.parm isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-    
+            [weakSelf loadingPageWidthSuccess:success];
             if (success) {
-                NSDictionary *dic = response[@"data"];
-                [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"linkUrl"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
+                weakSelf.detialModel = [HouseDetialModel mj_objectWithKeyValues:response[@"data"]];
+                weakSelf.detialModel.dataDic = response[@"data"];
     
-                [weakSelf.contentCollectionView reloadData];
-    
+                [weakSelf customReloaddata];
             }else{
-                [weakSelf alertWithMsg:kFailedTips handler:nil];
             }
             [weakSelf.contentCollectionView.mj_header endRefreshing];
             [weakSelf.contentCollectionView.mj_footer endRefreshing];
         }];
 }
 
-
-//token String 用户token
-//yhbh String 用户id
-//lpbh String 楼盘编号
-//lx String 类型(1：效果图，2：样板图片，3：配套图片，4：展示图片，5：视频，6：VR)
-//kpsj String 开盘时间
-//ztbh Integer 专题编号
-//ldbh String 楼栋编号
-//xqly Integer 详情来源  (1,banner,2,专题,3,新闻,4,推荐,5,其他)
-//bannerbh Integer banner编号
-//xwbh Integer 新闻编号
-//page Integer
-//rows Integer
+- (void)customReloaddata{
+    
+    self.headerView.model = self.detialModel;
+    if ([self.detialModel.isfollow boolValue]) {
+        self.collectionButton.selected = YES;
+        self.collectImage.image = [UIImage imageNamed:@"detial_collectioned"];
+        [self.collectionButton setImagePositionWithType:LXImagePositionTypeTop spacing:4];
+    }else{
+        self.collectionButton.selected = NO;
+        self.collectImage.image = [UIImage imageNamed:@"detial_collection"];
+        [self.collectionButton setImagePositionWithType:LXImagePositionTypeTop spacing:4];
+    }
+    _clearSection = 0;
+    [self.contentCollectionView reloadData];
+}
 @end

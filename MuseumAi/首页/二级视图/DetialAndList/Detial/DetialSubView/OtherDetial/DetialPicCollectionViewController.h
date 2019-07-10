@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DetialPicCollectionViewController : MURootViewController
 
+@property (nonatomic ,strong) NSArray *pictureArray;
+
 @end
 
 NS_ASSUME_NONNULL_END

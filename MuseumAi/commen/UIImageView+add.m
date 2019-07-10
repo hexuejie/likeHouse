@@ -12,28 +12,42 @@
 
 #define keykey @"netwxactive"
 
+static void *strKey = &strKey;
+
 @implementation UIImageView (add)
 
 - (void)setCommenImageUrl:(NSString *)url{
     
     NSString *stepurl = [self decryptWithText:url];
     NSString *strB = [stepurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *replacedStr = [strB stringByReplacingOccurrencesOfString:@"%05"withString:@""];
+    NSArray  *array = [strB componentsSeparatedByString:@"%"];
+    NSString *replacedStr = [array firstObject];
     
     NSURL *requestUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseImageUrl,replacedStr]];
-    
-    [self sd_setImageWithURL:requestUrl placeholderImage:nil options:SDWebImageDownloaderHandleCookies|SDWebImageDownloaderUseNSURLCache|SDWebImageDownloaderAllowInvalidSSLCertificates completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        
-    }];
+    [self setImageWithRequestUrl:requestUrl];
 }
 
 
 - (void)setOtherImageUrl:(NSString *)url{
     
-//    [self sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",url]] placeholderImage:[UIImage imageNamed:BasePlaceholder]];
     NSURL *requestUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@",url]];
-    [self sd_setImageWithURL:requestUrl placeholderImage:nil options:SDWebImageDownloaderHandleCookies|SDWebImageDownloaderUseNSURLCache|SDWebImageDownloaderAllowInvalidSSLCertificates completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        
+    [self setImageWithRequestUrl:requestUrl];
+}
+
+- (void)setImageWithRequestUrl:(NSURL *)requestUrl{
+    UIImage* img=[UIImage imageNamed:@"loading_img-1"];//原图
+    //    if (type == LXPlachImageSmallFill || type == LXPlachImageCircleFill){
+    //        self.contentMode = UIViewContentModeScaleToFill;
+    //    }else{
+    //    }
+    //    self.backgroundColor = LXImagePlaceholdColor;
+    self.customViewModel = self.contentMode;
+//    self.contentMode = UIViewContentModeCenter;
+    [self sd_setImageWithURL:requestUrl placeholderImage:img options:SDWebImageDownloaderHandleCookies|SDWebImageDownloaderUseNSURLCache|SDWebImageDownloaderAllowInvalidSSLCertificates completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        if (image != nil){
+            self.backgroundColor = [UIColor clearColor];
+            self.contentMode = self.customViewModel;
+        }
     }];
 }
 
@@ -118,5 +132,18 @@
 //                                                       @strongify(self);
 //
 //                                                       dispatch_async(dispatch_get_main_queue(), ^{
+
+
+-(void)setCustomViewModel:(NSInteger)customViewModel{
+    objc_setAssociatedObject(self, &strKey, @(customViewModel), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+-(NSInteger)customViewModel{
+    NSNumber *temp = objc_getAssociatedObject(self, &strKey);
+    
+    if (temp == nil){
+        return -1;
+    }
+    return [temp integerValue];
+}
 
 @end

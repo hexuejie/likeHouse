@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NetWork : NSObject
 
++ (NSString*)deviceModelName;
 + (instancetype)shareManager;
 //+ (NSString *)deviceModelName;
 

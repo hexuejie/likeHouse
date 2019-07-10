@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-D7-hbb">
-                    <rect key="frame" x="128" y="253.5" width="119.5" height="160"/>
+                    <rect key="frame" x="128" y="228.5" width="119.5" height="160"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonData_image" translatesAutoresizingMaskIntoConstraints="NO" id="uE8-uR-W3u">
                             <rect key="frame" x="-32.5" y="0.0" width="184" height="135"/>
@@ -51,13 +51,60 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="cEr-D7-hbb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="nA1-2w-b4I"/>
+                <constraint firstItem="cEr-D7-hbb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-25" id="nA1-2w-b4I"/>
                 <constraint firstItem="cEr-D7-hbb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="noz-gW-KBL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-342" y="130"/>
+        </view>
+        <view contentMode="scaleToFill" id="v7C-9c-ePf">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgO-0w-V6H">
+                    <rect key="frame" x="101.5" y="223.5" width="172.5" height="170"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error" translatesAutoresizingMaskIntoConstraints="NO" id="Hqd-IF-qXG">
+                            <rect key="frame" x="7.5" y="0.0" width="157" height="133"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjS-7d-icg">
+                            <rect key="frame" x="0.0" y="157" width="172.5" height="13"/>
+                            <attributedString key="attributedText">
+                                <fragment content="加载失败，点击屏幕重新加载">
+                                    <attributes>
+                                        <color key="NSColor" red="0.63543045520782471" green="0.62745958566665649" blue="0.62728077173233032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Hqd-IF-qXG" firstAttribute="top" secondItem="DgO-0w-V6H" secondAttribute="top" id="0vC-9z-yxz"/>
+                        <constraint firstAttribute="bottom" secondItem="UjS-7d-icg" secondAttribute="bottom" id="Cb6-gm-6dd"/>
+                        <constraint firstItem="Hqd-IF-qXG" firstAttribute="top" secondItem="DgO-0w-V6H" secondAttribute="top" id="FOW-a0-ytB"/>
+                        <constraint firstItem="UjS-7d-icg" firstAttribute="centerX" secondItem="DgO-0w-V6H" secondAttribute="centerX" id="PZm-94-eQm"/>
+                        <constraint firstAttribute="trailing" secondItem="UjS-7d-icg" secondAttribute="trailing" id="UIk-rW-EXg"/>
+                        <constraint firstItem="UjS-7d-icg" firstAttribute="leading" secondItem="DgO-0w-V6H" secondAttribute="leading" id="Viu-2K-8cM"/>
+                        <constraint firstItem="Hqd-IF-qXG" firstAttribute="centerX" secondItem="DgO-0w-V6H" secondAttribute="centerX" id="jP5-TI-NQJ"/>
+                        <constraint firstAttribute="height" constant="170" id="wN6-pB-WVw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DgO-0w-V6H" firstAttribute="centerX" secondItem="v7C-9c-ePf" secondAttribute="centerX" id="0Z6-LC-skB"/>
+                <constraint firstItem="DgO-0w-V6H" firstAttribute="centerY" secondItem="v7C-9c-ePf" secondAttribute="centerY" constant="-25" id="Jit-e4-6jA"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="qfm-Mp-dBz"/>
+            <point key="canvasLocation" x="366" y="130"/>
         </view>
     </objects>
     <resources>
+        <image name="error" width="157" height="133.5"/>
         <image name="nonData_image" width="184" height="135"/>
     </resources>
 </document>

@@ -72,8 +72,9 @@
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/contract/paymentinfo") para:_pramDic isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner
         if (success) {
-            NSDictionary *temp = response[@"data"];
+            [weakSelf loadingPageSuccess];
             
+            NSDictionary *temp = response[@"data"];
             if ([temp[@"paystatus"] integerValue] == 1) {
                 MyHousePaySuccessViewController *vc = [MyHousePaySuccessViewController new];
                 vc.dataDic = temp;
@@ -103,7 +104,7 @@
             }
         
         }else{
-            [weakSelf alertWithMsg:kFailedTips handler:nil];
+            [weakSelf loadingPageError];
         }
     }];
 }

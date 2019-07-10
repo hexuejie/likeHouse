@@ -85,7 +85,8 @@
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/contract/list") para: @{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner
         if (success) {
-   
+            [weakSelf loadingPageSuccess];
+            
             for (NSDictionary *tempdic in response[@"data"]) {
                 [weakSelf.dataArray addObject:[MyHouseMode mj_objectWithKeyValues:tempdic]];
             }
@@ -95,8 +96,7 @@
                 [weakSelf addNoneDataTipView];
             }
         }else{
-            [weakSelf addNoneDataTipView];
-            [weakSelf alertWithMsg:kFailedTips handler:nil];
+            [weakSelf loadingPageError];
         }
     }];
 }

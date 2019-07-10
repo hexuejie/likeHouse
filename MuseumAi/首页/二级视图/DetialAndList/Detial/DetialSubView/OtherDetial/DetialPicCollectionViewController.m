@@ -8,7 +8,8 @@
 
 #import "DetialPicCollectionViewController.h"
 #import "JYEqualCellSpaceFlowLayout.h"
-
+#import "zstListHousePicture.h"
+#import "SDPhotoBrowser.h"
 
 @interface ImageUICollectionViewCell :UICollectionViewCell
 
@@ -27,7 +28,6 @@
 - (void)setup{
     self.contentImage = [[UIImageView alloc]init];
     [self addSubview:self.contentImage];
-    self.contentImage.image = [UIImage imageNamed:@"图层 29"];
     
     [self.contentImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.leading.trailing.bottom.equalTo(self);
@@ -38,7 +38,7 @@
 
 
 
-@interface DetialPicCollectionViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
+@interface DetialPicCollectionViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,SDPhotoBrowserDelegate>
 
 @property (strong, nonatomic) UICollectionView *contentCollectionView;
 
@@ -53,6 +53,7 @@
     
     [self dataInit];
     [self viewInit];
+    self.allView = self.contentCollectionView;
 }
 
 
@@ -82,13 +83,14 @@
 
 #pragma mark -
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return  8;
+    return  _pictureArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ImageUICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageUICollectionViewCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor orangeColor];
+    zstListHousePicture *picture = _pictureArray[indexPath.row];
+    [cell.contentImage setOtherImageUrl:picture.img];
     return cell;
 }
 
@@ -99,31 +101,36 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];//设置容器视图,父视图
+    browser.sourceImagesContainerView = self.contentCollectionView;
+    browser.currentImageIndex = indexPath.row;
+    browser.imageCount = _pictureArray.count;//设置代理
+    browser.delegate = self;//显示图片浏览器
+    [browser show];
     
 
 }
 
+- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index{
+    zstListHousePicture *picInfo = _pictureArray[index];//拿到显示的图片的高清图片地址
+    NSURL *url = [NSURL URLWithString:picInfo.img];
+    return url;
+    
+}
 
-- (void)reloadData {
-    //    __weak typeof(self) weakSelf = self;
-    //
-    //    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"3"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-    //
-    //        if (success) {
-    //            NSDictionary *dic = response[@"data"];
-    //            [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"linkUrl"];
-    //            [[NSUserDefaults standardUserDefaults] synchronize];
-    //
-    //            [weakSelf.contentCollectionView reloadData];
-    //
-    //        }else{
-    //            [weakSelf alertWithMsg:kFailedTips handler:nil];
-    //        }
-    //        [weakSelf.contentCollectionView.mj_header endRefreshing];
-    //        [weakSelf.contentCollectionView.mj_footer endRefreshing];
-    //        //            [weakSelf.contentCollectionView.mj_header endRefreshing];
-    //        //            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
-    //    }];
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    ImageUICollectionViewCell *cell = (ImageUICollectionViewCell *)[self.contentCollectionView cellForItemAtIndexPath:indexPath];
+    return cell.contentImage.image;
+    
+}
+
+- (void)setPictureArray:(NSArray *)pictureArray{
+    _pictureArray = pictureArray;
+    [self.contentCollectionView reloadData];
+    if (_pictureArray.count == 0) {
+        [self addNoneDataTipView];
+    }
 }
 
 

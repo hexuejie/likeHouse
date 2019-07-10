@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HouseListModel.h"
+#import "NewsModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *backView;
+
+@property (strong, nonatomic) NewsModel *newsModel;
 
 @property (strong, nonatomic) HouseListModel *model;
 @end
