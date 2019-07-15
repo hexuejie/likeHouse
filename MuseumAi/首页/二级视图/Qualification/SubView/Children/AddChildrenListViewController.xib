@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddChildrenListViewController">
             <connections>
+                <outlet property="bottomButton" destination="ow5-E9-kZQ" id="ptw-sH-t04"/>
                 <outlet property="tableView" destination="a0A-IC-fgo" id="C0v-2B-1fW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -74,9 +75,11 @@
                         <constraint firstAttribute="height" constant="44" id="rFe-Sc-LQG"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="添加子女">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <state key="selected" title="删除"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
                             <integer key="value" value="2"/>

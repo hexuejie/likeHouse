@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIView *backView;
 
-@property (strong, nonatomic) NewsModel *newsModel;
+//@property (strong, nonatomic) NewsModel *newsModel;
 
 @property (strong, nonatomic) HouseListModel *model;
 @end

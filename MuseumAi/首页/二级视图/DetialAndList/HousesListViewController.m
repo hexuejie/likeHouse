@@ -22,6 +22,8 @@
 /** 当前page */
 @property (nonatomic , assign) NSInteger page;
 @property (nonatomic , strong) NSMutableArray *houses;
+
+@property (nonatomic , strong) RealFinishTipView1 *tipView1;
 @end
 
 @implementation HousesListViewController
@@ -29,9 +31,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.page = 1;
     
-    self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.view.backgroundColor = kListBgColor;
     [self viewInit];
+    self.allView = _contentCollectionView;
+    
+    if ([self.title isEqualToString:@"浏览历史"] ||[self.title isEqualToString:@"我的关注"]) {
+    UIButton *rigthButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 55, 30)];
+    [rigthButton setTitle:@"清空" forState:UIControlStateNormal];
+    [rigthButton setTitleColor:kUIColorFromRGB(0xC0905D) forState:UIControlStateNormal];
+    [rigthButton addTarget:self action:@selector(tipView1Clear) forControlEvents:UIControlEventTouchUpInside];
+    rigthButton.titleLabel.font = kSysFont(16);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rigthButton];
+    }
 }
 
 - (void)viewInit {
@@ -42,7 +55,7 @@
     self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(5, 0, SCREEN_WIDTH-10, SCREEN_HEIGHT) collectionViewLayout:layout];
     self.contentCollectionView.delegate = self;
     self.contentCollectionView.dataSource = self;
-    self.contentCollectionView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.contentCollectionView.backgroundColor = kListBgColor;
     [self.view addSubview:self.contentCollectionView];
     
     [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageHousesCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageHousesCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell"];
@@ -93,11 +106,16 @@
     
     HouseDetialViewController *vc = [HouseDetialViewController new];
     vc.hidesBottomBarWhenPushed = YES;
+    HouseListModel *model = _houses[indexPath.row];
+    vc.strBH = model.lpbh;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 
 - (void)reloadData {
+    if (_page == 0) {
+        _page = 1;
+    }
     NSString *strUrl = @"";
     if ([self.title isEqualToString:@"我的认筹"]) {
         strUrl = @"/api/family/xf/user/renchouhistory";
@@ -113,12 +131,15 @@
     [[NetWork shareManager] postWithUrl:DetailUrlString(strUrl) para: @{@"page":[NSString stringWithFormat:@"%ld",_page],@"rows":@"20"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         
         [weakSelf loadingPageWidthSuccess:success];
+        
+        NSArray *tempArray = [NSArray new];
         if (success) {
             if ([self.title isEqualToString:@"我的认筹"]) {
-                NSArray *tempArray = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"data"][@"list"]];
+                tempArray = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"data"][@"list"]];
+
                 [weakSelf.houses addObjectsFromArray:tempArray];
             }else{
-                NSArray *tempArray = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"data"]];
+                tempArray = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"data"]];
                 [weakSelf.houses addObjectsFromArray:tempArray];
             }
             
@@ -130,10 +151,43 @@
         }
         [weakSelf.contentCollectionView.mj_header endRefreshing];
         [weakSelf.contentCollectionView.mj_footer endRefreshing];
-        //            [weakSelf.contentCollectionView.mj_header endRefreshing];
-        //            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
+        if (tempArray.count < 20) {
+            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
+        }
     }];
 }
 
 
+- (void)tipView1Clear{
+    _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
+    _tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
+    _tipView1.sureType = -1;
+    
+    [_tipView1.cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+    [_tipView1.sureButton setTitle:@"确定" forState:UIControlStateNormal];
+    _tipView1.contentTitleLabel.text = @"确定清理缓存?";
+    [_tipView1.sureButton addTarget:self action:@selector(loginoutFinishClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)loginoutFinishClick{//清空接口
+    
+    NSString *strUrl = @"/api/family/xf/user/delallrecord";
+    if ([self.title isEqualToString:@"我的关注"]) {
+        strUrl = @"/api/family/xf/user/delallfollows";
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    [[NetWork shareManager] postWithUrl:DetailUrlString(strUrl) para: @{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        
+        if (success) {
+            [weakSelf.houses removeAllObjects];
+             [weakSelf.contentCollectionView reloadData];
+            if (weakSelf.houses.count == 0) {
+                [weakSelf addNoneDataTipView];
+            }
+        }else{
+        }
+    }];
+}
 @end

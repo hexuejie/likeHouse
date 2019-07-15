@@ -25,6 +25,14 @@
 		7EF3CE912155EB1900CB49A2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF3CE892155EB1900CB49A2 /* Accelerate.framework */; };
 		7EF3CE922155EB1900CB49A2 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF3CE8A2155EB1900CB49A2 /* CoreImage.framework */; };
 		A106883C22D460BD005D7E84 /* ZTDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A106883B22D460BD005D7E84 /* ZTDetialViewController.m */; };
+		A106883F22D70D62005D7E84 /* MyHousePaperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A106883E22D70D62005D7E84 /* MyHousePaperViewController.m */; };
+		A106884222D713BC005D7E84 /* MyHouseBottomPapaer.m in Sources */ = {isa = PBXBuildFile; fileRef = A106884122D713BC005D7E84 /* MyHouseBottomPapaer.m */; };
+		A106884422D713C3005D7E84 /* MyHouseBottomPapaer.xib in Resources */ = {isa = PBXBuildFile; fileRef = A106884322D713C3005D7E84 /* MyHouseBottomPapaer.xib */; };
+		A106884822D72E20005D7E84 /* ChooseMySelfAndRealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A106884622D72E20005D7E84 /* ChooseMySelfAndRealViewController.m */; };
+		A106884922D72E20005D7E84 /* ChooseMySelfAndRealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A106884722D72E20005D7E84 /* ChooseMySelfAndRealViewController.xib */; };
+		A106884D22D826E0005D7E84 /* NewsHousesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A106884B22D826E0005D7E84 /* NewsHousesCollectionViewCell.m */; };
+		A106884E22D826E0005D7E84 /* NewsHousesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A106884C22D826E0005D7E84 /* NewsHousesCollectionViewCell.xib */; };
+		A106885122D85667005D7E84 /* PersonInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A106885022D85667005D7E84 /* PersonInfo.m */; };
 		A1094DBE2297D34000A278A1 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = A1094DB12297D34000A278A1 /* NetWork.m */; };
 		A1094DBF2297D34000A278A1 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A1094DB52297D34000A278A1 /* GTMBase64.m */; };
 		A1094DC02297D34000A278A1 /* ProUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A1094DB62297D34000A278A1 /* ProUtils.m */; };
@@ -545,6 +553,19 @@
 		7EF3CE8A2155EB1900CB49A2 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		A106883A22D460BD005D7E84 /* ZTDetialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZTDetialViewController.h; sourceTree = "<group>"; };
 		A106883B22D460BD005D7E84 /* ZTDetialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZTDetialViewController.m; sourceTree = "<group>"; };
+		A106883D22D70D62005D7E84 /* MyHousePaperViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHousePaperViewController.h; sourceTree = "<group>"; };
+		A106883E22D70D62005D7E84 /* MyHousePaperViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHousePaperViewController.m; sourceTree = "<group>"; };
+		A106884022D713BC005D7E84 /* MyHouseBottomPapaer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHouseBottomPapaer.h; sourceTree = "<group>"; };
+		A106884122D713BC005D7E84 /* MyHouseBottomPapaer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseBottomPapaer.m; sourceTree = "<group>"; };
+		A106884322D713C3005D7E84 /* MyHouseBottomPapaer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHouseBottomPapaer.xib; sourceTree = "<group>"; };
+		A106884522D72E20005D7E84 /* ChooseMySelfAndRealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseMySelfAndRealViewController.h; sourceTree = "<group>"; };
+		A106884622D72E20005D7E84 /* ChooseMySelfAndRealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseMySelfAndRealViewController.m; sourceTree = "<group>"; };
+		A106884722D72E20005D7E84 /* ChooseMySelfAndRealViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseMySelfAndRealViewController.xib; sourceTree = "<group>"; };
+		A106884A22D826E0005D7E84 /* NewsHousesCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsHousesCollectionViewCell.h; sourceTree = "<group>"; };
+		A106884B22D826E0005D7E84 /* NewsHousesCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsHousesCollectionViewCell.m; sourceTree = "<group>"; };
+		A106884C22D826E0005D7E84 /* NewsHousesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsHousesCollectionViewCell.xib; sourceTree = "<group>"; };
+		A106884F22D85667005D7E84 /* PersonInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonInfo.h; sourceTree = "<group>"; };
+		A106885022D85667005D7E84 /* PersonInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonInfo.m; sourceTree = "<group>"; };
 		A1094DB12297D34000A278A1 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		A1094DB32297D34000A278A1 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		A1094DB42297D34000A278A1 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -1591,6 +1612,11 @@
 				A1A990C022C31BFC000EB09A /* MyHousePaySuccessViewController.h */,
 				A1A990C122C31BFC000EB09A /* MyHousePaySuccessViewController.m */,
 				A1A990C222C31BFC000EB09A /* MyHousePaySuccessViewController.xib */,
+				A106883D22D70D62005D7E84 /* MyHousePaperViewController.h */,
+				A106883E22D70D62005D7E84 /* MyHousePaperViewController.m */,
+				A106884022D713BC005D7E84 /* MyHouseBottomPapaer.h */,
+				A106884122D713BC005D7E84 /* MyHouseBottomPapaer.m */,
+				A106884322D713C3005D7E84 /* MyHouseBottomPapaer.xib */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -1956,6 +1982,9 @@
 		A1BFB4E622A790DB008B629B /* SubView */ = {
 			isa = PBXGroup;
 			children = (
+				A106884522D72E20005D7E84 /* ChooseMySelfAndRealViewController.h */,
+				A106884622D72E20005D7E84 /* ChooseMySelfAndRealViewController.m */,
+				A106884722D72E20005D7E84 /* ChooseMySelfAndRealViewController.xib */,
 				A1BFB4E722A7917A008B629B /* ChooseAddMyselfVC.h */,
 				A1BFB4E822A7917A008B629B /* ChooseAddMyselfVC.m */,
 				A1BFB4E922A7917A008B629B /* ChooseAddMyselfVC.xib */,
@@ -2915,6 +2944,9 @@
 		DCBD357E215084B500763961 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A106884A22D826E0005D7E84 /* NewsHousesCollectionViewCell.h */,
+				A106884B22D826E0005D7E84 /* NewsHousesCollectionViewCell.m */,
+				A106884C22D826E0005D7E84 /* NewsHousesCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2932,6 +2964,8 @@
 				A1EFACF122B395B9007593EB /* NewsModel.m */,
 				A1139D4E22BB879200463FAD /* MyHouseMode.h */,
 				A1139D4F22BB879200463FAD /* MyHouseMode.m */,
+				A106884F22D85667005D7E84 /* PersonInfo.h */,
+				A106885022D85667005D7E84 /* PersonInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3345,10 +3379,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A106884922D72E20005D7E84 /* ChooseMySelfAndRealViewController.xib in Resources */,
 				A1817F65229E8704003B2FBF /* ChooseOtherRealViewController.xib in Resources */,
 				A158718422B8D18F001567F8 /* MyHouseDetialOneCell.xib in Resources */,
 				A1BFB4EB22A7917A008B629B /* ChooseAddMyselfVC.xib in Resources */,
 				DCB860CA215B388A001C58EF /* YMSPhotoPickerViewController.xib in Resources */,
+				A106884422D713C3005D7E84 /* MyHouseBottomPapaer.xib in Resources */,
 				A1FF19E322B0EDC100C09386 /* DetialHouseTypeItem.xib in Resources */,
 				A158719522B8DB71001567F8 /* MyHouseDetialTwoCell.xib in Resources */,
 				A1094DEB229BCF6500A278A1 /* HomePageNewsCollectionViewCell.xib in Resources */,
@@ -3423,6 +3459,7 @@
 				A15871A122B8F35B001567F8 /* MyHouseTaxContentCell.xib in Resources */,
 				A1EFACDC22B34E5C007593EB /* select_square_grey@2x.png in Resources */,
 				DC7991F62151ED5F00368A56 /* MJRefresh.bundle in Resources */,
+				A106884E22D826E0005D7E84 /* NewsHousesCollectionViewCell.xib in Resources */,
 				DCB860C0215B388A001C58EF /* YMSAlbumPickerViewController.xib in Resources */,
 				A1BFB4F522A7BABD008B629B /* AddMateShipHeaderView.xib in Resources */,
 				A1BFB44022A5FF23008B629B /* sortedNameCH.plist in Resources */,
@@ -3582,6 +3619,7 @@
 				DC0AF52F2152198E00B41476 /* NSData+ImageContentType.m in Sources */,
 				A160941F229E378B00FBC19B /* JYEqualCellSpaceFlowLayout.m in Sources */,
 				A160941B229E378B00FBC19B /* JQIndexBannerSubview.m in Sources */,
+				A106883F22D70D62005D7E84 /* MyHousePaperViewController.m in Sources */,
 				A16A977322A8F11300078BEE /* AddChildrenListViewController.m in Sources */,
 				A1EFAD3122B3A8E0007593EB /* JYBDIDCardVC.m in Sources */,
 				A158718322B8D18F001567F8 /* MyHouseDetialOneCell.m in Sources */,
@@ -3643,6 +3681,7 @@
 				DCB860BF215B388A001C58EF /* YMSAlbumPickerViewController.m in Sources */,
 				DCBD364E21509DAF00763961 /* YYTextSelectionView.m in Sources */,
 				A1EFACCF22B34E5C007593EB /* YYFilterTool.m in Sources */,
+				A106885122D85667005D7E84 /* PersonInfo.m in Sources */,
 				DC718FD821A52B6E0080DB6C /* MUActivityViewController.m in Sources */,
 				DCB860BB215B388A001C58EF /* UIScrollView+YMSAdditions.m in Sources */,
 				DCB8608F215B1138001C58EF /* KGOPlaceHolderTextView.m in Sources */,
@@ -3655,6 +3694,7 @@
 				DCBD35F621509D7000763961 /* MASLayoutConstraint.m in Sources */,
 				DC718FD221A510390080DB6C /* MUStartViewController.m in Sources */,
 				A1FF1A1E22B1F19100C09386 /* HouseAroundTableViewCell.m in Sources */,
+				A106884222D713BC005D7E84 /* MyHouseBottomPapaer.m in Sources */,
 				A1BFB4EF22A7B9E0008B629B /* ChooseAddMateshipViewController.m in Sources */,
 				A16D94A722C5C3A5001F8483 /* hxlistVoHouseDetial.m in Sources */,
 				DC55BE13215A3D28009654EC /* NSData+Base64.m in Sources */,
@@ -3737,6 +3777,7 @@
 				A1BFB4E422A76C24008B629B /* ChooseQualificationTableViewCell.m in Sources */,
 				DCBD365521509DAF00763961 /* NSParagraphStyle+YYText.m in Sources */,
 				DC2DCEF02154A445008A6BB6 /* MULayoutHandler.m in Sources */,
+				A106884822D72E20005D7E84 /* ChooseMySelfAndRealViewController.m in Sources */,
 				DC7991FA2151ED5F00368A56 /* UIScrollView+MJRefresh.m in Sources */,
 				A16D94A422C5C377001F8483 /* zbHouseDetial.m in Sources */,
 				DCBD364621509DAF00763961 /* YYTextContainerView.m in Sources */,
@@ -3783,6 +3824,7 @@
 				A1139D4522BB1E6100463FAD /* NSObject+MJKeyValue.m in Sources */,
 				A158718C22B8D7DB001567F8 /* MyHouseDetialViewController.m in Sources */,
 				A1FF1A0422B1E19000C09386 /* BuildingDetialViewController.m in Sources */,
+				A106884D22D826E0005D7E84 /* NewsHousesCollectionViewCell.m in Sources */,
 				A1609422229E378B00FBC19B /* SVProgressAnimatedView.m in Sources */,
 				A1FF19CF22AFA91800C09386 /* HouseDetialViewController.m in Sources */,
 				DCBD364D21509DAF00763961 /* YYTextMagnifier.m in Sources */,

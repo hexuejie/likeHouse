@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DetialStyleCollectionViewCell : UICollectionViewCell
 
 
+@property (weak, nonatomic) IBOutlet UIButton *contentButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;

@@ -14,7 +14,7 @@
 
 @implementation NetWork
 
-#define KTipString @"网络请求超时"
+#define KTipString @"网络请求失败"
 
 // 需要#import <sys/utsname.h>
 + (NSString*)deviceModelName

@@ -60,7 +60,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.headerItemWidth.constant = 168*CustomScreenFit;
-    self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.view.backgroundColor = kListBgColor;
     _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"},
                    @{@"title":@"购房资格审查资料修改",@"content":@"myCenter_change"},
                    @{@"title":@"常见问题",@"content":@"myCenter_question"},
@@ -314,10 +314,23 @@
 }
 
 - (void)sureButtonClick{
-    RealFirstTipViewController *vc = [RealFirstTipViewController new];
-    vc.title = @"购房资格审查说明";
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    
+    if (![Utility is_empty:[LoginSession sharedInstance].grrzzt]) {
+        if ([[LoginSession sharedInstance].grrzzt integerValue] == 0) {
+            [SVProgressHelper dismissWithMsg:@"购房资格审核过程中，不能修改信息"];
+            return;
+        }
+        if ([[LoginSession sharedInstance].grrzzt integerValue] == 2||[[LoginSession sharedInstance].grrzzt integerValue] == 1) {
+            RealFirstTipViewController *vc = [RealFirstTipViewController new];
+            vc.title = @"购房资格审查说明";
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            return;
+        }
+    }
+    [SVProgressHelper dismissWithMsg:@"没找到有效购房资格信息，请先进行购房资格申请"];
 }
 
 - (void)loginoutShowTipView{

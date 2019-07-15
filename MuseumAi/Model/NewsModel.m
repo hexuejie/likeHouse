@@ -10,4 +10,24 @@
 
 @implementation NewsModel
 
+- (void)setPublishdate:(NSString *)publishdate{
+    _publishdate = publishdate;
+    if (publishdate == nil) {
+        _publishdate = _fbsj;
+        if (_fbsj == nil) {
+            _publishdate = _sj;
+            if (_sj == nil) {
+                _publishdate = _tjsj;
+            }
+        }
+    }
+}
+
+- (void)setTitle:(NSString *)title{
+    _title = title;
+    if (title == nil) {
+        _title = _bt;
+    }
+}
+
 @end

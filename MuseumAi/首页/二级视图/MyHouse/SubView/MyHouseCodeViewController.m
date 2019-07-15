@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view from its nib.
 //    [self.codeBackGround setCornerRadius:5 withShadow:YES withOpacity:5];
     [self.codeBackGround setCornerRadius:4 withShadow:YES withOpacity:10 withAlpha:0.1 withCGSize:CGSizeMake(1, 4)];
-    self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.view.backgroundColor = kListBgColor;
     
     [self startTimer];
 }

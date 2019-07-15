@@ -20,13 +20,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="房屋坐落：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j26-wZ-ZKs">
-                        <rect key="frame" x="12" y="12" width="76.5" height="22.5"/>
+                        <rect key="frame" x="12" y="13" width="76.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.57249671220779419" green="0.57265877723693848" blue="0.56839489936828613" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="岳麓区湘仪路" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLP-gB-6Ph">
-                        <rect key="frame" x="88.5" y="14.5" width="92" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="岳麓区湘仪路" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLP-gB-6Ph">
+                        <rect key="frame" x="88.5" y="13" width="92" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.26663362979888916" green="0.26668566465377808" blue="0.26663035154342651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -45,17 +45,16 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="vLP-gB-6Ph" secondAttribute="bottom" constant="3" id="CPg-a0-hCx"/>
                     <constraint firstItem="ku9-eA-vuC" firstAttribute="centerY" secondItem="vkz-2l-0lL" secondAttribute="centerY" id="E9E-lc-TbX"/>
+                    <constraint firstItem="vLP-gB-6Ph" firstAttribute="top" secondItem="j26-wZ-ZKs" secondAttribute="top" id="EB1-Sb-JYG"/>
                     <constraint firstItem="j26-wZ-ZKs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="EDE-W5-Dmy"/>
-                    <constraint firstItem="j26-wZ-ZKs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Hbm-tI-68H"/>
                     <constraint firstItem="vkz-2l-0lL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vLP-gB-6Ph" secondAttribute="trailing" priority="999" id="Oce-ZI-Osh"/>
                     <constraint firstItem="ku9-eA-vuC" firstAttribute="leading" secondItem="vkz-2l-0lL" secondAttribute="trailing" id="RI3-ZN-kgY"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ku9-eA-vuC" secondAttribute="trailing" priority="999" id="RSk-2r-c2l"/>
-                    <constraint firstItem="vLP-gB-6Ph" firstAttribute="centerY" secondItem="j26-wZ-ZKs" secondAttribute="centerY" id="agt-PO-2cK"/>
-                    <constraint firstAttribute="bottom" secondItem="j26-wZ-ZKs" secondAttribute="bottom" constant="12" id="aoc-jA-hgt"/>
                     <constraint firstItem="vkz-2l-0lL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="172" id="dBj-Qh-UZK"/>
-                    <constraint firstItem="j26-wZ-ZKs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="egR-QO-my3"/>
                     <constraint firstItem="vLP-gB-6Ph" firstAttribute="leading" secondItem="j26-wZ-ZKs" secondAttribute="trailing" id="gwy-Qx-ciU"/>
+                    <constraint firstItem="j26-wZ-ZKs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="kmK-OJ-WiK"/>
                     <constraint firstItem="vkz-2l-0lL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="urG-3n-MMC"/>
                 </constraints>
             </tableViewCellContentView>

@@ -29,6 +29,7 @@
 @property (strong, nonatomic) NSArray *dataArray;
 @property (strong, nonatomic) NSMutableArray *firstArray;
 
+@property (strong, nonatomic) NSString *hyzk;
 
 @property (nonatomic , strong) ReleaseHomeworkTimeViewMask *timeViewMask;
 @end
@@ -46,9 +47,20 @@
                        @{@"title":@"户籍所在地",@"content":@""},
                        @{@"title":@"手机号码",@"content":@""}]
                      ];
+   
+    NSDictionary *tempDic = [PersonInfo sharedInstance].allmessageDic;
+    if (tempDic[@"grxx"][@"jtcy"][@"hyzk"]) {
+        if ([tempDic[@"grxx"][@"jtcy"][@"hyzk"] isEqualToString:@"离异"]||[tempDic[@"grxx"][@"jtcy"][@"hyzk"] isEqualToString:@"丧偶"]) {
+            _hyzk = tempDic[@"grxx"][@"jtcy"][@"hyzk"];
+            _dataArray = @[self.firstArray,//身份证扫出来
+                           @[@{@"title":@"家庭户口类型",@"content":@""},
+                             @{@"title":@"户籍所在地",@"content":@""},
+                             @{@"title":@"手机号码",@"content":@""},
+                             @{@"title":[NSString stringWithFormat:@"%@时间",_hyzk],@"content":@""}]
+                           ];
+        }
+    }
     
-//    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AddMateShipFooterView class])  bundle:nil] forHeaderFooterViewReuseIdentifier:@"AddMateShipFooterView"];
-//    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AddMateShipHeaderView class])  bundle:nil] forHeaderFooterViewReuseIdentifier:@"AddMateShipHeaderView"];
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"UITableViewHeaderFooterView"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AddMateShipTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"AddMateShipTableViewCell"];
     self.tableView.dataSource = self;
@@ -75,7 +87,6 @@
     tableViewGesture.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:tableViewGesture];
     
-    _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] lastObject];
 }
 
 - (void)commentTableViewTouchInSide{
@@ -97,11 +108,22 @@
                                @{@"title":@"住址",@"content":info.address},
                                @{@"title":@"身份证号码",@"content":info.num}];
         [weakSelf.firstArray addObjectsFromArray:tempArray];
-        weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
-                       @[@{@"title":@"家庭户口类型",@"content":@""},
-                         @{@"title":@"户籍所在地",@"content":@""},
-                         @{@"title":@"手机号码",@"content":@""}]
-                       ];
+        if (weakSelf.hyzk.length >1) {
+            weakSelf.dataArray = @[self.firstArray,//身份证扫出来
+                                   @[@{@"title":@"家庭户口类型",@"content":@""},
+                                     @{@"title":@"户籍所在地",@"content":@""},
+                                     @{@"title":@"手机号码",@"content":@""},
+                                     @{@"title":[NSString stringWithFormat:@"%@时间",weakSelf.hyzk],@"content":@""}]
+                                   ];
+        }else{
+            weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
+                                   @[@{@"title":@"家庭户口类型",@"content":@""},
+                                     @{@"title":@"户籍所在地",@"content":@""},
+                                     @{@"title":@"手机号码",@"content":@""}]
+                                   ];
+        }
+       
+        
         weakSelf.header.addImageViewOne.image = image;
         [weakSelf.tableView reloadData];
     };
@@ -115,15 +137,25 @@
     AVCaptureVC.isBehinded = YES;
     AVCaptureVC.finish = ^(JYBDCardIDInfo *info, UIImage *image)
     {
-        NSArray *tempArray = @[@{@"title":@"签证机关",@"content":info.issue},
+        NSArray *tempArray = @[@{@"title":@"签发机关",@"content":info.issue},
                                @{@"title":@"有效期限",@"content":info.valid},
                                ];
         [weakSelf.firstArray addObjectsFromArray:tempArray];
-        weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
-                               @[@{@"title":@"家庭户口类型",@"content":@""},
-                                 @{@"title":@"户籍所在地",@"content":@""},
-                                 @{@"title":@"手机号码",@"content":@""}]
-                               ];
+        
+        if (weakSelf.hyzk.length >1) {
+            weakSelf.dataArray = @[self.firstArray,//身份证扫出来
+                                   @[@{@"title":@"家庭户口类型",@"content":@""},
+                                     @{@"title":@"户籍所在地",@"content":@""},
+                                     @{@"title":@"手机号码",@"content":@""},
+                                     @{@"title":[NSString stringWithFormat:@"%@时间",weakSelf.hyzk],@"content":@""}]
+                                   ];
+        }else{
+            weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
+                                   @[@{@"title":@"家庭户口类型",@"content":@""},
+                                     @{@"title":@"户籍所在地",@"content":@""},
+                                     @{@"title":@"手机号码",@"content":@""}]
+                                   ];
+        }
         weakSelf.header.addImageViewTwo.image = image;
         [weakSelf.tableView reloadData];
     };
@@ -176,7 +208,8 @@
     cell.clickButton.hidden = YES;
     cell.clickButton.tag = indexPath.row;
     cell.contentTextField.tag = indexPath.section*100+indexPath.row;
-    if ([cell.titleLabel.text isEqualToString:@"家庭户口类型"]||[cell.titleLabel.text isEqualToString:@"户籍所在地"]) {
+    if ([cell.titleLabel.text isEqualToString:@"家庭户口类型"]||[cell.titleLabel.text isEqualToString:@"户籍所在地"]
+        ||[cell.titleLabel.text containsString:@"时间"]) {
         cell.contentTextField.placeholder = [NSString stringWithFormat:@"请选择%@",cell.titleLabel.text];
         cell.clickButton.hidden = NO;
         [cell.clickButton addTarget:self action:@selector(clickButtonRow:) forControlEvents:UIControlEventTouchUpInside];
@@ -303,8 +336,11 @@
         if ([tempDic[@"title"] isEqualToString:@"户籍所在地"]) {
             [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"hjszd"];
         }
-        if ([tempDic[@"title"] isEqualToString:@"手机号"]) {
+        if ([tempDic[@"title"] isEqualToString:@"手机号码"]) {
             [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"lxdh"];
+        }
+        if ([tempDic[@"title"] isEqualToString:@"离异时间"]||[tempDic[@"title"] isEqualToString:@"丧偶时间"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"lysj"];
         }
     }
     
@@ -316,7 +352,7 @@
     [pramDic setObject:self.imageStrArray[2] forKey:@"hkb"];
     [pramDic setObject:self.imageStrArray[3] forKey:@"jhz"];
     __weak typeof(self) weakSelf = self;
-
+//lysj
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savepo/new") para:pramDic isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner
         if (success) {
@@ -355,7 +391,7 @@
 
 - (void)clickButtonRow:(UIButton *)button{
     __weak typeof(self) weakSelf = self;
-    if (button.tag) {
+    if (button.tag == 1) {
         NSString *string;
         for (NSDictionary *tempDic in [_dataArray lastObject]) {
             
@@ -366,28 +402,48 @@
         [[MOFSPickerManager shareManger] showMOFSAddressPickerWithDefaultAddress:string title:@"请选择户籍所在地" cancelTitle:@"取消" commitTitle:@"完成" commitBlock:^(NSString * _Nullable address, NSString * _Nullable zipcode) {
             NSMutableArray *tempArr = [[NSMutableArray alloc]initWithArray:[weakSelf.dataArray lastObject]];
             
-            weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
-                                   @[tempArr.firstObject,
-                                     @{@"title":@"户籍所在地",@"content":address},
-                                     tempArr.lastObject]
-                                   ];
+            if (self.hyzk.length >1) {
+                weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
+                                       @[tempArr.firstObject,
+                                         @{@"title":@"户籍所在地",@"content":address},
+                                         tempArr[2],
+                                         tempArr.lastObject]
+                                       ];
+                
+            }else{
+                weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
+                                       @[tempArr.firstObject,
+                                         @{@"title":@"户籍所在地",@"content":address},
+                                         tempArr.lastObject]
+                                       ];
+            }
+            
             [self.tableView reloadData];
             NSLog(@"%@", zipcode);
             
         } cancelBlock:^{
             
         }];
+    }else if (button.tag == 3) {
+        _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] firstObject];
+        _timeViewMask.titleLabel.text = [NSString stringWithFormat:@"请选择%@时间",_hyzk];
+        [[UIApplication sharedApplication].keyWindow addSubview:_timeViewMask];
+        _timeViewMask.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        
+        [_timeViewMask.finishButton addTarget:self action:@selector(timefinishClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_timeViewMask.cancleButton addTarget:self action:@selector(timecancleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }else{
-        _timeViewMask.titleLabel.text = @"请选择家庭户口类型";
+        
         [self showOtherAlertView:@[@"集体户口",@"家庭户口"]];
     }
 }
 - (void)showOtherAlertView:(NSArray *)array{
-    
+    _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] lastObject];
     [[UIApplication sharedApplication].keyWindow addSubview:_timeViewMask];
     _timeViewMask.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     _timeViewMask.customPickArray = array;
     
+    _timeViewMask.titleLabel.text = @"请选择家庭户口类型";
     [_timeViewMask.finishButton addTarget:self action:@selector(timefinishClick:) forControlEvents:UIControlEventTouchUpInside];
     [_timeViewMask.cancleButton addTarget:self action:@selector(timecancleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -396,14 +452,36 @@
 }
 - (void)timefinishClick:(UIButton *)button{
     [_timeViewMask removeFromSuperview];
-    
-    NSMutableArray *tempArr = [[NSMutableArray alloc]initWithArray:[self.dataArray lastObject]];
-    NSDictionary *temp1 = tempArr[1];
-    self.dataArray = @[self.firstArray,//身份证扫出来
-                       @[@{@"title":@"家庭户口类型",@"content":_timeViewMask.selectedString},
-                         temp1,
-                         tempArr.lastObject]
-                       ];
+    if( [_timeViewMask.titleLabel.text isEqualToString:@"请选择家庭户口类型"]){
+        NSMutableArray *tempArr = [[NSMutableArray alloc]initWithArray:[self.dataArray lastObject]];
+         if (self.hyzk.length >1) {
+             self.dataArray = @[self.firstArray,//身份证扫出来
+                                @[@{@"title":@"家庭户口类型",@"content":_timeViewMask.selectedString},
+                                  tempArr[1],
+                                  tempArr[2],
+                                  tempArr.lastObject]
+                                ];
+         }else{
+             self.dataArray = @[self.firstArray,//身份证扫出来
+                                @[@{@"title":@"家庭户口类型",@"content":_timeViewMask.selectedString},
+                                  tempArr[1],
+                                  tempArr.lastObject]
+                                ];
+         }
+    }else{
+        NSDate *select = _timeViewMask.pickBottom.date;
+        NSDateFormatter *selectDateFormatter = [[NSDateFormatter alloc]init];
+        selectDateFormatter.dateFormat = @"yyyy.MM.dd";
+        NSString *dateAndTime = [selectDateFormatter stringFromDate:select];
+        
+        NSMutableArray *tempArr = [[NSMutableArray alloc]initWithArray:[self.dataArray lastObject]];
+        self.dataArray = @[self.firstArray,//身份证扫出来
+                           @[tempArr[0],
+                             tempArr[1],
+                             tempArr[2],
+                             @{@"title":[NSString stringWithFormat:@"%@时间",_hyzk],@"content":dateAndTime}]
+                           ];
+    }
     [self.tableView reloadData];
 }
 

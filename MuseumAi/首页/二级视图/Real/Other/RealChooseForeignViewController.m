@@ -33,7 +33,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *beginTimeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *endTimeTextField;
 
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *midLineTop;//3
+@property (weak, nonatomic) IBOutlet UITextField *lysjTextField;
+@property (weak, nonatomic) IBOutlet UILabel *lysjTitle;
 
 //图片
 @property (weak, nonatomic) IBOutlet UIImageView *exchangeImageOne;
@@ -51,7 +53,7 @@
 @property (nonatomic , strong) RealFinishTipView1 *tipView1;
 
 @property (nonatomic , strong) ReleaseHomeworkTimeViewMask *timeViewMask;
-
+@property (strong, nonatomic) NSString *tipStr;
 @property (nonatomic , assign) NSInteger tagSwitch;
 @end
 
@@ -61,8 +63,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"外籍人士";
+    self.midLineTop.constant = 0;
     
+    self.title = @"外籍人士";
+    self.tipStr = @"请完善个人信息！";
     [self.contentScrolleView addSubview:self.contentView];
     
     if ([LoginSession sharedInstance].pageType == 1) {//+240
@@ -70,7 +74,19 @@
         self.contentScrolleView.contentSize = CGSizeMake(SCREEN_WIDTH, 810+240);
         self.contentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 810+240);
         self.threeBackgroundView.hidden = NO;
+        NSDictionary *tempDic = [PersonInfo sharedInstance].allmessageDic;
+        if (tempDic[@"grxx"][@"jtcy"][@"hyzk"]) {
+            if ([tempDic[@"grxx"][@"jtcy"][@"hyzk"] isEqualToString:@"离异"]||[tempDic[@"grxx"][@"jtcy"][@"hyzk"] isEqualToString:@"丧偶"]) {
+                self.midLineTop.constant = 51;
+                self.lysjTitle.text = [NSString stringWithFormat:@"%@时间",tempDic[@"grxx"][@"jtcy"][@"hyzk"]];
+                self.lysjTextField.placeholder  = [NSString stringWithFormat:@"请选择%@",self.lysjTitle.text];
+                self.contentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 810+240+51);
+                self.contentScrolleView.contentSize = CGSizeMake(SCREEN_WIDTH, 810+240+51);
+            }
+        }
+        self.tipStr = @"请完善配偶信息！";
     }else{
+        self.tipStr = @"请完善子女信息！";
         self.contentScrolleView.contentSize = CGSizeMake(SCREEN_WIDTH, 810);
         self.contentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 810);
     }
@@ -111,18 +127,21 @@
             
         }break;
         case 103:{//出生日期
-            [self showCompletionAlertView];
+            [self showCompletionAlertView:@"请选择出生日期"];
             
         }break;
         case 104:{//有效期
             
-            [self showCompletionAlertView];
+            [self showCompletionAlertView:@"请选择有效期开始时间"];
         }break;
         case 105:{//有效期
-            [self showCompletionAlertView];
+            [self showCompletionAlertView:@"请选择有效期结束时间"];
             
         }break;
+        case 106:{//有效期
+            [self showCompletionAlertView:@"请选择k离异时间"];
             
+        }break;
         default:
             break;
     }
@@ -186,12 +205,12 @@
     [_timeViewMask.cancleButton addTarget:self action:@selector(timecancleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)showCompletionAlertView{
+- (void)showCompletionAlertView:(NSString *)title{
     
     _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] firstObject];
     [[UIApplication sharedApplication].keyWindow addSubview:_timeViewMask];
     _timeViewMask.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    
+    _timeViewMask.titleLabel.text = title;
     [_timeViewMask.finishButton addTarget:self action:@selector(timefinishClick:) forControlEvents:UIControlEventTouchUpInside];
     [_timeViewMask.cancleButton addTarget:self action:@selector(timecancleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -230,6 +249,10 @@
             self.endTimeTextField.text = dateAndTime;
             
         }break;
+        case 106:{//有效期
+            self.lysjTextField.text = dateAndTime;
+            
+        }break;
         default:
             break;
     }
@@ -240,6 +263,10 @@
 
 
 - (IBAction)finishClick:(id)sender {
+    if (self.lysjTextField.text.length == 0&&self.lysjTitle.text.length>1) {
+        [SVProgressHelper dismissWithMsg: self.tipStr];
+        return;
+    }
     if (self.nameTextField.text.length == 0||
         self.sexTextField.text.length == 0||
         self.changeTimes.text.length == 0||
@@ -251,13 +278,13 @@
         !self.exchangeImageOne.image ||
         !self.exchangeImageTwo.image
         ) {
-        [SVProgressHelper dismissWithMsg: @"请完善个人信息！"];
+        [SVProgressHelper dismissWithMsg: self.tipStr];
         return;
     }
     if (
         !self.exchangeImageThree.image&&[LoginSession sharedInstance].pageType == 1
         ) {
-        [SVProgressHelper dismissWithMsg: @"请完善个人信息！"];
+        [SVProgressHelper dismissWithMsg: self.tipStr];
         return;
     }
     
@@ -352,6 +379,7 @@
                            ,@"xb":self.sexTextField.text//性别
                            ,@"zjhm":self.changeTimes.text//证件号码
                            ,@"yxq":[NSString stringWithFormat:@"%@-%@",self.beginTimeTextField.text,self.endTimeTextField.text]//有效期限
+                           ,@"lysj":[NSString stringWithFormat:@"%@",self.lysjTextField.text]
                            
                            ,@"hz":self.imageStrArray[0],
                            @"hzqzy":self.imageStrArray[1],

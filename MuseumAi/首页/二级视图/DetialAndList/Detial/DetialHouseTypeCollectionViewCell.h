@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) NSArray *hxlistVo;
 
+
+@property (nonatomic,strong) UIView *customSuperView;
 @end
 
 NS_ASSUME_NONNULL_END

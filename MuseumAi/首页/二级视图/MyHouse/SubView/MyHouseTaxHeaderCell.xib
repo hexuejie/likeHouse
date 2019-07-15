@@ -26,8 +26,8 @@
                                 <rect key="frame" x="103" y="8" width="129" height="129"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="业务宗号：KF1311020007" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qL8-ij-t9V">
-                                <rect key="frame" x="95.5" y="158" width="144.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <rect key="frame" x="87" y="158" width="161.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13.5"/>
                                 <color key="textColor" red="0.45058667659759521" green="0.45811593532562256" blue="0.4995914101600647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

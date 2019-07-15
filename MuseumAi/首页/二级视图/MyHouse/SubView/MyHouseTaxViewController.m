@@ -12,6 +12,7 @@
 #import "MyHouseTaxHeaderCell.h"
 #import "MuHouseDetialHeader.h"
 #import "MyHouseCodeViewController.h"
+#import "MyHouseBottomPapaer.h"
 
 @interface MyHouseTaxViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -32,8 +33,6 @@
     self.view.backgroundColor = kUIColorFromRGB(0xffffff);
     
     [self initView];
-    
-    //    [self addNoneDataTipView];
 }
 
 - (void)customAddContentWith:(NSArray *)keys{
@@ -54,7 +53,7 @@
         [self customAddContentWith:@[@"xmmc",@"dh",@"sh",@"zlms"
                                      ,@"gfr",@"gfrzjlx",@"gfrzjhm",@"jgyhmc"
                                      ,@"jgyhzh",@"bz",@"yjje",@"yjjedx"]];
-        _headerArray = @[@""];
+        _headerArray = @[@" "];
         
     }else if ([self.title isEqualToString:@"税额缴纳"]) { // jkqx
         _dataArray = @[@[@"纳税人识别号",@"纳税人名称",@"税款限缴日期",@"自缴ID",@"购房人名称",@"证件号码",@"房屋用途",@"建筑面积（㎡）",@"合同签订日期",@"购房人家庭已有住房"],
@@ -69,7 +68,7 @@
         //纳税人识别号nsrsbh   nsrxm      zjid  gfr  gfrzjhm   fwyt  jzmj  合同签订日期htqdrq   jtyyzfts套数
         //qszsmc  qsjsje  qsjssl  qsyjje
         //yhszsmc  yhsjsje  yhsjssl  yhsyjje   hjyjje  hjyjjedx
-         _headerArray = @[@"",@"契税",@"印花税"];
+         _headerArray = @[@" ",@"契税",@"印花税"];
     }else if ([self.title isEqualToString:@"维修资金缴纳"]) {
         _dataArray = @[@[@"名称",@"证件号码",@"项目名称",@"物业类型",@"房屋坐落",@"建筑面积（㎡）",@"缴交标准（元）"],
                        @[@"账户名称",@"开户行",@"账号",@"应缴金额（元）",@"应缴金额（大写）"]
@@ -106,14 +105,14 @@
     if (indexPath.section == 0) {
         
         MyHouseTaxHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyHouseTaxHeaderCell" forIndexPath:indexPath];
-        if ([self.title isEqualToString:@"房款信息"]) {
+        if ([self.title isEqualToString:@"房款缴纳"]) {
             cell.logoIMageView.image = [UIImage imageNamed:@"house_house"];
         }else if ([self.title isEqualToString:@"税额缴纳"]) { // jkqx
             cell.logoIMageView.image = [UIImage imageNamed:@"house_tax"];
         }else if ([self.title isEqualToString:@"维修资金缴纳"]) {
             cell.logoIMageView.image = [UIImage imageNamed:@"house_fix"];
         }
-        cell.contentLabel.text = [NSString stringWithFormat:@"%@",self.dataDic[@"ywzh"]];
+        cell.contentLabel.text = [NSString stringWithFormat:@"合同编号：%@",self.htbh];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -125,7 +124,9 @@
            cunstomRow = cunstomRow+[_dataArray[i] count];
         }
     }
-    if ([title isEqualToString:@"合计（小写）"]||[title isEqualToString:@"合计（大写）"]) {
+    if ([title isEqualToString:@"合计（小写）"]||[title isEqualToString:@"合计（大写）"]
+        ||[title isEqualToString:@"应缴金额（元）"]||[title isEqualToString:@"应缴金额（大写）"]
+        ) {
         MyHouseTaxContentBottomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyHouseTaxContentBottomCell" forIndexPath:indexPath];
         cell.titleLabel.text = title;
         cell.contentLabel.text = _contentArray[cunstomRow];
@@ -147,6 +148,9 @@
     NSString *strHeader = _headerArray[section-1];
     if (strHeader==nil ||!strHeader.length) {
         return 0.01;
+    }
+    if (strHeader.length == 1) {
+        return 10.0;
     }
     return 46.0;
 }
@@ -181,7 +185,7 @@
 - (void)initView{
     
     [self.view addSubview:self.tableView];
-    self.tableView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.tableView.backgroundColor = kListBgColor;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyHouseTaxContentCell class])  bundle:nil] forCellReuseIdentifier:@"MyHouseTaxContentCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyHouseTaxContentBottomCell class])  bundle:nil] forCellReuseIdentifier:@"MyHouseTaxContentBottomCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyHouseTaxHeaderCell class])  bundle:nil] forCellReuseIdentifier:@"MyHouseTaxHeaderCell"];
@@ -190,12 +194,27 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView reloadData];
 
+    if (_dataDic[@"url"] != nil) {//hpdVo
+        MyHouseBottomPapaer *footer = [[NSBundle mainBundle] loadNibNamed:@"MyHouseBottomPapaer" owner:self options:nil].firstObject;
+        footer.frame = CGRectMake(0, 0, SCREEN_WIDTH, 55);
+        footer.url =  _dataDic[@"url"];
+        self.tableView.tableFooterView = footer;
+    }
+    if ( [_dataDic[@"hpdVo"] count]>0) {//hpdVo
+        MyHouseBottomPapaer *footer = [[NSBundle mainBundle] loadNibNamed:@"MyHouseBottomPapaer" owner:self options:nil].firstObject;
+        footer.frame = CGRectMake(0, 0, SCREEN_WIDTH, 55);
+        footer.detialArray =  _dataDic[@"hpdVo"];
+        self.tableView.tableFooterView = footer;
+    }
 }
 - (IBAction)codeClick:(id)sender {
+    
+    if ([self.dataDic[@"jnbz"] integerValue] == 1) {
+        [SVProgressHelper dismissWithMsg:[NSString stringWithFormat:@"%@已完成",self.title]];
+        return;
+    }
     MyHouseCodeViewController *vc = [MyHouseCodeViewController new];
-    vc.title = @"税额缴纳";
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         vc.codeStr = [NSString stringWithFormat:@"%@",self.dataDic[@"qrcode"]];
     });

@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *textField3;
 @property (weak, nonatomic) IBOutlet UITextField *textField4;
 
-@property (weak, nonatomic) IBOutlet UITextField *textField5;
+@property (weak, nonatomic) IBOutlet UILabel *textField5;
 @property (weak, nonatomic) IBOutlet UITextField *textField6;
 @property (weak, nonatomic) IBOutlet UITextField *textField7;
 @property (weak, nonatomic) IBOutlet UITextField *textField8;

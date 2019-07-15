@@ -38,7 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"楼盘认筹";
-    self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.view.backgroundColor = kListBgColor;
     [self viewInit];
     
     
@@ -54,7 +54,7 @@
     self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(5, 0, SCREEN_WIDTH-10, SCREEN_HEIGHT) collectionViewLayout:layout];
     self.contentCollectionView.delegate = self;
     self.contentCollectionView.dataSource = self;
-    self.contentCollectionView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.contentCollectionView.backgroundColor = kListBgColor;
     [self.view addSubview:self.contentCollectionView];
     
     [self.contentCollectionView registerNib:[UINib nibWithNibName:@"RecogtionHousesCollectionViewCell" bundle:[NSBundle bundleForClass:[RecogtionHousesCollectionViewCell class]]] forCellWithReuseIdentifier:@"RecogtionHousesCollectionViewCell"];

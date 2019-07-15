@@ -359,7 +359,7 @@
 - (void)keyboardChange:(NSNotification *)note{
     CGRect frame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGFloat keyHeight =  [UIScreen mainScreen].bounds.size.height - frame.origin.y;
-    self.view.frame = CGRectMake(0, -keyHeight, SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.view.frame = CGRectMake(0, -keyHeight/2, SCREEN_WIDTH, SCREEN_HEIGHT);
     [UIView animateWithDuration:0.25 animations:^{
         [self.view layoutIfNeeded];
     }];

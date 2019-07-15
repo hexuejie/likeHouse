@@ -46,7 +46,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.view.backgroundColor = kListBgColor;
     [self viewInit];
     [self customNav];
     self.allView = _contentCollectionView;
@@ -67,7 +67,7 @@
     self.contentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(5, 46 +[Utility segmentTopMinHeight], SCREEN_WIDTH-10, SCREEN_HEIGHT-46 -[Utility segmentTopMinHeight]) collectionViewLayout:layout];
     self.contentCollectionView.delegate = self;
     self.contentCollectionView.dataSource = self;
-    self.contentCollectionView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.contentCollectionView.backgroundColor = kListBgColor;
     [self.view addSubview:self.contentCollectionView];
     
     [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageHousesCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageHousesCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell"];
@@ -122,6 +122,9 @@
 
 
 - (void)reloadData {
+    if (_page == 0) {
+        _page = 1;
+    }
     NSMutableDictionary *pram = [[NSMutableDictionary alloc]initWithDictionary:@{@"page":[NSString stringWithFormat:@"%ld",_page],@"rows":@"20"}];//搜索1 筛选2
     if (self.sortFilters1.count>0) {
         FilterSelectIndexModel *innermostModel = [self.sortFilters1 firstObject];
@@ -173,9 +176,11 @@
     __weak typeof(self) weakSelf = self;
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/search/search") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         [weakSelf loadingPageWidthSuccess:success];
+        
+        NSArray *tempArray = [NSArray new];
         if (success) {
             NSDictionary *dic = response[@"data"];
-            NSArray *tempArray = [HouseListModel mj_objectArrayWithKeyValuesArray:dic];
+            tempArray = [HouseListModel mj_objectArrayWithKeyValuesArray:dic];
             [weakSelf.houses addObjectsFromArray:tempArray];
             [weakSelf.contentCollectionView reloadData];
             if (weakSelf.houses.count == 0) {
@@ -187,8 +192,9 @@
         }
         [weakSelf.contentCollectionView.mj_header endRefreshing];
         [weakSelf.contentCollectionView.mj_footer endRefreshing];
-        //            [weakSelf.contentCollectionView.mj_header endRefreshing];
-        //            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
+        if (tempArray.count < 20) {
+            [weakSelf.contentCollectionView.mj_footer endRefreshingWithNoMoreData];
+        }
     }];
 }
 //xmmc String 项目名称{普通搜索}

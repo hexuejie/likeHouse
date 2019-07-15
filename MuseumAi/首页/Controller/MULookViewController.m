@@ -34,7 +34,6 @@
 @property (nonatomic,strong) RealFinishTipView1 *tipView1;
 
 /** 当前page */
-@property (nonatomic , assign) NSInteger page;
 
 @property (nonatomic , strong) NSMutableArray *banners;
 @property (nonatomic , strong) NSMutableArray *midArray;
@@ -68,8 +67,8 @@
     [self viewInit];
     [self customNav];
     
-    
-    [[UINavigationBar appearance] setShadowImage: [self viewImageFromColor:kUIColorFromRGB(0xf2f2f1) rect:CGRectMake(0, 0, SCREEN_WIDTH, 1)]];
+    self.allView = self.contentCollectionView;
+    [[UINavigationBar appearance] setShadowImage: [self viewImageFromColor:kUIColorFromRGB(0xf7f7f7) rect:CGRectMake(0, 0, SCREEN_WIDTH, 1)]];
 }
 
 
@@ -166,14 +165,14 @@
             
             UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, -2, SCREEN_WIDTH, 500)];
             [headerView addSubview:backView];
-            backView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+            backView.backgroundColor = kListBgColor;
             
             UIButton *moreButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 46)];
             [moreButton setTitle:@"查看更多" forState:UIControlStateNormal];
             [moreButton setTitleColor:kUIColorFromRGB(0xC0905D) forState:UIControlStateNormal];
             moreButton.titleLabel.font = kSysFont(13);
             [headerView addSubview:moreButton];
-            moreButton.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+            moreButton.backgroundColor = kListBgColor;
             [moreButton addTarget:self action:@selector(moreButtonClick) forControlEvents:UIControlEventTouchUpInside];
             return headerView;
         }
@@ -403,7 +402,6 @@
     
     __weak typeof (self) weakSelf = self;
     self.contentCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        weakSelf.page = 1;
         [weakSelf.contentCollectionView.mj_footer resetNoMoreData];
         [weakSelf reloadData];
     }];

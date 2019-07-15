@@ -15,7 +15,7 @@
     // Initialization code
     
     self.tipTagLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.4];
-    self.backView.backgroundColor = kUIColorFromRGB(0xf1f1f1);
+    self.backView.backgroundColor = kListBgColor;
     [self.contentView bringSubviewToFront:self.viewview];
 }
 

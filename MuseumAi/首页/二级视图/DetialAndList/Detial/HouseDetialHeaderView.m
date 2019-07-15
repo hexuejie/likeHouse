@@ -32,7 +32,7 @@
     _bannerScrollView.imageArray = _model.zstList;
     _countTipLabel.text = [NSString stringWithFormat:@"共%ld张",_model.zstList.count];
     _titleLabel.text = _model.lp.xmmc;
-    _tagLabel.text = [_model.xmbc.bq stringByReplacingOccurrencesOfString:@"," withString:@"/"];
+    _tagLabel.text = [_model.lp.bq stringByReplacingOccurrencesOfString:@"," withString:@"/"];
     _priceLabel.text = _model.lp.xmmc;
     _timeLabel.text = _model.kprq;
     _statueLabel.text = _model.lpzt;

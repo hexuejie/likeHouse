@@ -20,12 +20,19 @@
 @property (weak, nonatomic) IBOutlet UITextField *threeTextField;
 
 @property (weak, nonatomic) IBOutlet UIImageView *addImageView;
-//@property (strong, nonatomic) NSString *addImageViewStr;
+
+@property (weak, nonatomic) IBOutlet UIView *bgView1;
+@property (weak, nonatomic) IBOutlet UIView *bgView3;
+@property (weak, nonatomic) IBOutlet UIView *bgView4;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *itemHeight;//51
+@property (weak, nonatomic) IBOutlet UILabel *midline;
+
 @property (strong, nonatomic) NSDictionary *dataDic;
 @property (strong, nonatomic) NSArray *imageStrArray;
 
 @property (nonatomic , strong) ReleaseHomeworkTimeViewMask *timeViewMask;
 @property (nonatomic , assign) NSInteger tagSwitch;
+@property (nonatomic , assign) BOOL tagBool;
 @end
 
 @implementation ChooseAddMyselfVC
@@ -33,6 +40,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.tagBool = 0;
+    NSDictionary *tempDic = [PersonInfo sharedInstance].allmessageDic;
+    if (tempDic[@"zcyh"][@"zjlx"]) {
+        if ([tempDic[@"zcyh"][@"zjlx"] isEqualToString:@"港澳台来往大陆通行证"] || [tempDic[@"zcyh"][@"zjlx"] isEqualToString:@"护照"]) {
+            self.bgView1.hidden = YES;
+            self.bgView3.hidden = YES;
+            self.itemHeight.constant = 0;
+            self.midline.hidden = YES;
+            self.bgView4.hidden = YES;
+            self.tagBool = 1;
+        }
+    }
+    
     
     self.title = @"完善申请人信息";
     [self.addImageView setBorderWithView];
@@ -103,6 +123,9 @@
 
 - (IBAction)saveClick:(id)sender {
     
+    if (self.tagBool == 1&&self.twoTextField.text.length>0) {
+        [self updatePersonData];
+    }
     
     if (self.oneTextField.text.length>0&&
         self.twoTextField.text.length>0&&
@@ -173,12 +196,20 @@
 
 - (void)updatePersonData{
         __weak typeof(self) weakSelf = self;
-    NSDictionary *pram = @{@"hjfl":self.oneTextField.text
-                           ,@"hjszd":self.threeTextField.text
-//                           ,@"yhbh":[LoginSession sharedInstance].yhbh
-                           ,@"hyzk":self.twoTextField.text
-                           ,@"hkb":weakSelf.imageStrArray[0]
-                           };
+    NSDictionary *pram;
+    if (self.tagBool == 1) {
+        pram = @{
+                 @"hyzk":self.twoTextField.text
+                 };
+    }else{
+        pram = @{@"hjfl":self.oneTextField.text
+                 ,@"hjszd":self.threeTextField.text
+                 //                           ,@"yhbh":[LoginSession sharedInstance].yhbh
+                 ,@"hyzk":self.twoTextField.text
+                 ,@"hkb":weakSelf.imageStrArray[0]
+                 };
+    }
+    
 
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savemy/new") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner

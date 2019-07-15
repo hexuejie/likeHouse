@@ -43,6 +43,24 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *xsqj;//"价格待定",
 @property (nonatomic,copy) NSString *xmbh;//"201806110829"
 
+
+@property (nonatomic,copy) NSString *jd;//"113.096968",
+@property (nonatomic,copy) NSString *wd;//"28.283927",
+@property (nonatomic,copy) NSString *qu;//null,
+@property (nonatomic,copy) NSString *sfsx;//0,
+@property (nonatomic,copy) NSString *sftj;//0,
+@property (nonatomic,copy) NSString *sheng;//null,
+@property (nonatomic,copy) NSString *shi;//null,
+@property (nonatomic,copy) NSString *sxsj;//null,
+@property (nonatomic,copy) NSString *slbdh;//null,
+@property (nonatomic,copy) NSString *cnxh;//0,
+@property (nonatomic,copy) NSString *gxqdr;//0,
+@property (nonatomic,copy) NSString *rcpx;//0,
+@property (nonatomic,copy) NSString *sspx;//0,
+@property (nonatomic,copy) NSString *sfsc;//0,
+@property (nonatomic,copy) NSString *tgmc;//"鑫远紫越香苑",
+@property (nonatomic,copy) NSString *bq;//"老盘加推,繁华地段,人车分流",
+//@property (nonatomic,copy) NSString *xmbh;//"201806110829"
 @end
 
 NS_ASSUME_NONNULL_END

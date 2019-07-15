@@ -201,8 +201,8 @@
 
 - (void)finishUpInfoZn{
     __weak typeof(self) weakSelf = self;
-    NSDictionary *pram = @{@"zjlx":@"户口薄",
-                           @"yhbh":[NSString stringWithFormat:@"%@",[LoginSession sharedInstance].otherYhbh]
+    NSDictionary *pram = @{@"zjlx":@"户口薄"
+                           ,@"yhbh":[NSString stringWithFormat:@"%@",[LoginSession sharedInstance].otherYhbh]
                            ,@"xm":self.nameTextField.text
                            ,@"hjfl":self.typeTextField.text//出生日期
                     

@@ -22,14 +22,14 @@
     _zstList = [zstListHousePicture mj_objectArrayWithKeyValuesArray:_zstList];
 }
 
-- (void)setNear:(NSArray *)near{
+- (void)setNear:(NSMutableArray *)near{
     _near = near;
-    _near = [HouseListModel mj_objectArrayWithKeyValuesArray:_near];
+    _near = [HouseListModel mj_objectArrayWithKeyValuesArray:_near].mutableCopy;
 }
 
-- (void)setList:(NSArray *)list{
+- (void)setList:(NSMutableArray *)list{
     _list = list;
-    _list = [HouseListModel mj_objectArrayWithKeyValuesArray:_list];
+    _list = [HouseListModel mj_objectArrayWithKeyValuesArray:_list].mutableCopy;
 }
 
 
@@ -37,7 +37,7 @@
     _dataDic = dataDic;
     
     _lp = [lpHouseDetial mj_objectWithKeyValues:_dataDic[@"lp"]];
-    _xmbc = [xmbcHouseDetial mj_objectWithKeyValues:_dataDic[@"xmbc"]];
+//    _xmbc = [xmbcHouseDetial mj_objectWithKeyValues:_dataDic[@"xmbc"]];
     _kpxm = [kpxmHouseDetial mj_objectWithKeyValues:_dataDic[@"kpxm"]];
     _ldxx = [ldxxListHouseDetial mj_objectWithKeyValues:_dataDic[@"ldxx"]];
 }

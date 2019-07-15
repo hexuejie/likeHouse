@@ -15,12 +15,12 @@
 #import "hxlistVoHouseDetial.h"
 #import "DetialStyleCollectionViewCell.h"
 #import "JYEqualCellSpaceFlowLayout.h"
+#import "SDPhotoBrowser.h"
 
-@interface HouseStyleViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface HouseStyleViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,SDPhotoBrowserDelegate>
 
 @property (strong, nonatomic) UICollectionView *contentCollectionView;
 
-@property (nonatomic , assign) NSInteger page;
 @end
 
 @implementation HouseStyleViewController
@@ -62,6 +62,8 @@
     
     DetialStyleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetialStyleCollectionViewCell" forIndexPath:indexPath];
     cell.detial = _hxlistVo[indexPath.row];
+    cell.contentButton.tag = indexPath.row;
+    [cell.contentButton addTarget:self action:@selector(contentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -73,9 +75,8 @@
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    DetialStyleCollectionViewCell *cell = (DetialStyleCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+- (void)contentButtonClick:(UIButton *)button{
+    DetialStyleCollectionViewCell *cell = (DetialStyleCollectionViewCell *)[self.contentCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:button.tag inSection:0]];
     RealFinishTipView1 * _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
     _tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
@@ -84,6 +85,18 @@
     _tipView1.contentTitleLabel.text = cell.contentLabel.text;
     [_tipView1.sureButton setTitle:@"知道了" forState:UIControlStateNormal];
     [_tipView1 setContentLineSpacing:5];
+    
+    
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];//设置容器视图,父视图
+        browser.sourceImagesContainerView = self.contentCollectionView;
+    browser.currentImageIndex = indexPath.row;
+    browser.imageCount = _hxlistVo.count;//设置代理
+    browser.delegate = self;//显示图片浏览器
+    [browser show];
 }
 
 
@@ -94,6 +107,21 @@
     if (_hxlistVo.count == 0) {
         [self addNoneDataTipView];
     }
+}
+
+
+
+- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index{
+    hxlistVoHouseDetial *model = _hxlistVo[index];
+    NSURL *url = [NSURL URLWithString:model.img];
+    return url;
+}
+///api/family/xf/user/delrecord
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    DetialStyleCollectionViewCell *cell = (DetialStyleCollectionViewCell *)[self.contentCollectionView cellForItemAtIndexPath:indexPath];
+    return cell.coverImageView.image;
+    
 }
 
 @end

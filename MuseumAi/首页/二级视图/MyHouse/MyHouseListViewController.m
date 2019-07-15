@@ -31,7 +31,7 @@
     _dataArray = [NSMutableArray new];
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds];
     [self.view addSubview:self.tableView];
-    self.tableView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.tableView.backgroundColor = kUIColorFromRGB(0xf8f8f8);
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyHouseListTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"MyHouseListTableViewCell"];
 
     

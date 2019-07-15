@@ -43,7 +43,7 @@
     [self reloadData];
     
     
-    [[UINavigationBar appearance] setShadowImage: [self viewImageFromColor:kUIColorFromRGB(0xf2f2f1) rect:CGRectMake(0, 0, SCREEN_WIDTH, 1)]];
+    [[UINavigationBar appearance] setShadowImage: [self viewImageFromColor:kUIColorFromRGB(0xf7f7f7) rect:CGRectMake(0, 0, SCREEN_WIDTH, 1)]];
 }
 
 - (UIImage *)viewImageFromColor:(UIColor *)color rect:(CGRect)rect{
@@ -115,12 +115,6 @@
     [self.view endEditing:YES];
 }
 
-- (void)testButtonClick{
-//    [self.navigationController pushViewController:[MURootViewController new] animated:YES];
-    HouseDetialViewController *vc = [HouseDetialViewController new];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 
 

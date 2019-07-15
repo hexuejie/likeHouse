@@ -9,6 +9,7 @@
 #import "MUSpecialViewController.h"
 #import "Utility.h"
 #import "MessageListViewController.h"
+#import "NewsListViewController.h"
 
 @interface MUSpecialViewController ()
 
@@ -29,11 +30,11 @@
     MessageListViewController *infoVC1 = [[MessageListViewController alloc] initWithNibName:nil bundle:nil];
     infoVC1.title = @"系统消息";
     
-    MessageListViewController *infoVC2 = [[MessageListViewController alloc] initWithNibName:nil bundle:nil];
+    NewsListViewController *infoVC2 = [[NewsListViewController alloc] initWithNibName:nil bundle:nil];
     //    comboVC.shopId = self.shopId;
     infoVC2.title = @"楼盘动态";
     
-    MessageListViewController *infoVC3 = [[MessageListViewController alloc] initWithNibName:nil bundle:nil];
+    NewsListViewController *infoVC3 = [[NewsListViewController alloc] initWithNibName:nil bundle:nil];
     //    comboVC.shopId = self.shopId;
     infoVC3.title = @"悦居资讯";
     

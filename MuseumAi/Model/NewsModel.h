@@ -13,12 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NewsModel : NSObject//动态
 
 
-@property (nonatomic,copy)NSString *title;//"金地铂悦 韶山南 双地铁",
-@property (nonatomic,copy)NSString *publishdate;//链接图
+
 
 @property (nonatomic,copy)NSString *bt;//"金地铂悦 韶山南 双地铁",
 @property (nonatomic,copy)NSString *nr;//链接图
 @property (nonatomic,copy)NSString *fbsj;//1
+@property (nonatomic,copy)NSString *sj;//1
 
 @property (nonatomic,copy)NSString *fl;
 @property (nonatomic,copy)NSString *rdl;
@@ -46,6 +46,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy)NSString *xmmc;//项目名称
 @property (nonatomic,copy)NSString *xmbh;//楼盘编号  //跳转
+
+@property (nonatomic,copy)NSString *publishdate;
+@property (nonatomic,copy)NSString *title;//"金地铂悦 韶山南 双地铁",
 @end
 
 NS_ASSUME_NONNULL_END

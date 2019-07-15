@@ -8,9 +8,9 @@
 
 #import "DetialHouseTypeCollectionViewCell.h"
 #import "DetialHouseTypeItem.h"
+#import "SDPhotoBrowser.h"
 
-
-@interface DetialHouseTypeCollectionViewCell ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
+@interface DetialHouseTypeCollectionViewCell ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,SDPhotoBrowserDelegate>
 
 @end
 
@@ -71,6 +71,29 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(0, 10, 0, 10);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];//设置容器视图,父视图
+//    browser.sourceImagesContainerView = self.customSuperView;
+    browser.currentImageIndex = indexPath.row;
+    browser.imageCount = _hxlistVo.count;//设置代理
+    browser.delegate = self;//显示图片浏览器
+    [browser show];
+}
+
+
+- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index{
+    hxlistVoHouseDetial *model = _hxlistVo[index];
+    NSURL *url = [NSURL URLWithString:model.img];
+    return url;
+}
+///api/family/xf/user/delrecord
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    DetialHouseTypeItem *cell = (DetialHouseTypeItem *)[self.allTypeView cellForItemAtIndexPath:indexPath];
+    return cell.imageType.image;
+    
 }
 
 

@@ -15,6 +15,7 @@
 #import "AppendChooseViewController.h"
 #import "ChooseOtherRealViewController.h"
 #import "ResultQualityViewController.h"
+#import "ChooseMySelfAndRealViewController.h"
 
 @interface ChooseQualificationTypeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -86,22 +87,42 @@
     switch (indexPath.row) {
         case 0:
             {
-                [self.navigationController pushViewController:[ChooseAddMyselfVC new] animated:YES];
+                if ([LoginSession sharedInstance].rzzt) {
+                    [self.navigationController pushViewController:[ChooseAddMyselfVC new] animated:YES];
+                }else{
+                    [self.navigationController pushViewController:[ChooseMySelfAndRealViewController new] animated:YES];
+                }
+                
             }break;
         case 1:
         {
+            if ( [self.dataDic[@"jtcy"][@"hyzk"] isEqualToString:@"未婚"]) {
+                [SVProgressHelper dismissWithMsg:@"当前婚姻状况为未婚，不需要添加配偶信息"];
+                return;
+            }
+            if ( self.dataDic[@"jtcy"][@"hyzk"] == nil) {
+                [SVProgressHelper dismissWithMsg:@"请先添加申购人信息"];
+                return;
+            }
             [LoginSession sharedInstance].pageType = 1;
-            
             [self.navigationController pushViewController:[ChooseOtherRealViewController new] animated:YES];
 //             [self.navigationController pushViewController:[ChooseAddMateshipViewController new] animated:YES];
         }break;
         case 2:
         {
+            if ( self.dataDic[@"jtcy"][@"hyzk"] == nil) {
+                [SVProgressHelper dismissWithMsg:@"请先添加申购人信息"];
+                return;
+            }
             [self.navigationController pushViewController:[AddChildrenListViewController new] animated:YES];
             
         }break;
         case 3:
         {
+            if ( self.dataDic[@"jtcy"][@"hyzk"] == nil) {
+                [SVProgressHelper dismissWithMsg:@"请先添加申购人信息"];
+                return;
+            }
             [self.navigationController pushViewController:[AppendChooseViewController new] animated:YES];
         }break;
             
@@ -117,14 +138,14 @@
     return [UIView new];
 }
 - (IBAction)nextStepClick:(id)sender {
-//    if (0) {
-//        
-//        [SVProgressHelper dismissWithMsg:@"当前婚姻状况为未婚，不需要添加配偶信息"];
-//        return;
-//    }else if (1) {
-//        [SVProgressHelper dismissWithMsg:@"请完善配偶信息"];
-//        return;
-//    }
+    if (self.dataDic[@"jtcy"][@"hyzk"] == nil || [self.dataDic[@"jtcy"][@"hyzk"] isEqualToString:@""]) {
+        [SVProgressHelper dismissWithMsg:@"您还未添加任何信息"];
+        return;
+    }
+    if ( [self.dataDic[@"jtcy"][@"hyzk"] isEqualToString:@"已婚"] && self.poxx == NO) {
+        [SVProgressHelper dismissWithMsg:@"请完善配偶信息"];
+        return;
+    }
 
     ResultQualityViewController *vc = [ResultQualityViewController new];
     vc.hidesBottomBarWhenPushed = YES;
@@ -146,6 +167,7 @@
         //banner
         if (success) {
            weakSelf.dataDic = response[@"data"];
+            
             if (![Utility is_empty:weakSelf.dataDic[@"grxx"]]) {
                 weakSelf.grxx = [weakSelf.dataDic[@"grxx"] boolValue];
             }
@@ -162,6 +184,15 @@
             [weakSelf.tableView reloadData];
         }else{
             [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/allmessage/new") para:@{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        //banner
+        if (success) {
+            NSDictionary *allDic = response[@"data"];
+            [PersonInfo sharedInstance].allmessageDic = allDic;
+        }else{
         }
     }];
 }

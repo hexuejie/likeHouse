@@ -44,6 +44,7 @@
 #import "Utility.h"
 #import "MJExtension.h"
 #import "UIImageView+add.h"
+#import "PersonInfo.h"
 
 #define kEnterBackgroundNotification @"kEnterBackgroundNotification"
 #define kEnterForegroundNotification @"kEnterForegroundNotification"
@@ -85,7 +86,9 @@ alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
 
 #define kSysFont(float) [UIFont systemFontOfSize:float]
 
-#define kTestColor kUIColorFromRGB(0xf0f0f0)
+#define kListBgColor kUIColorFromRGB(0xf8f8f8)
+#define kListLineColor kUIColorFromRGB(0xf1f1f1)
+
 
 #define MJThemeColor kUIColorFromRGB(0xC0905D)
 
@@ -95,7 +98,7 @@ alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
 //#define BaseUrl @"http://app.cszjw.net:11001"    //扒取数据
 //#define H5BaseUrl @"http://192.168.0.199:94"
 //#else
-#define BaseUrl @"http://192.168.99.234:8000"        //内部数据 
+#define BaseUrl @"http://192.168.99.234:8000"        //内部数据
 #define H5BaseUrl @"https://appweb.bnbn99.com"
 //#endif
 

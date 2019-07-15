@@ -14,6 +14,7 @@
 #import "MyHouseCodeViewController.h"
 #import "MUMapHandler.h"
 #import "MJRefresh.h"
+#import "MyHousePaperViewController.h"
 
 @interface MyHouseDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -33,23 +34,25 @@
     
     self.title = @"购房信息";
     self.view.backgroundColor = kUIColorFromRGB(0xffffff);
-    _dataArray = @[@[@{@"title":@"房屋坐落："},
+    _dataArray = @[@[@{@"title":@"开发公司："},@{@"title":@"房屋坐落："},
                    @{@"title":@"栋号：",@"title2":@"室号："},
                    @{@"title":@"建筑面积：",@"title2":@"套内面积："},
-                   @{@"title":@"购房人："},
-                   @{@"title":@"共有人："},
-                   @{@"title":@"开发公司："},
                      @{@"title":@"物业："}],
                    
-                   @[@{@"title":@"签订时间："},
+                   @[@{@"title":@"购房人："},
+                     @{@"title":@"共有人："},@{@"title":@"签订时间："},
                      @{@"title":@"备案状态："},
                      @{@"title":@"办证状态："}],
                    
                    @[@{@"title":@"总房款：",@"title2":@"首付："}
+                     ,@{@"title":@"总房款：",@"title2":@"首付："}
                    ,@{@"title":@"已缴纳：",@"title2":@"贷款："}],
                    @[@{@"title":@"契税应缴：",@"title2":@"契税实缴："}
+                     ,@{@"title":@"契税应缴：",@"title2":@"契税实缴："}
                      ,@{@"title":@"印花税应缴：",@"title2":@"印花税实缴："}],
                    @[@{@"title":@"维修资金应缴：",@"title2":@"维修资金实缴："}
+                     ,@{@"title":@"维修资金应缴："}
+                     ,@{@"title":@"维修资金实缴："}
                     ,@{@"title":@"缴交标准："}],
                    ];
     [self initView];
@@ -106,59 +109,63 @@
         case 0:{
             NSDictionary *contentDic = self.dataDic[@"houseVO"];
             if (indexPath.row == 0) {
-                content1 = contentDic[@"fwzl"];
+                content1 = contentDic[@"kfgsmc"];
             }else if (indexPath.row == 1) {
+                content1 = contentDic[@"fwzl"];
+                
+            }else if (indexPath.row == 2) {
                 content1 = contentDic[@"dh"];
                 content2 = contentDic[@"sh"];
-            }else if (indexPath.row == 2) {
+                
+            }else if (indexPath.row == 3) {
                 content1 = contentDic[@"jzmj"];
                 content2 = contentDic[@"tnmj"];
-            }else if (indexPath.row == 3) {
-                content1 = contentDic[@"gfr"];
             }else if (indexPath.row == 4) {
-                content1 = contentDic[@"gyr"];
-            }else if (indexPath.row == 5) {
-                content1 = contentDic[@"kfgsmc"];
-            }else if (indexPath.row == 6) {
                 content1 = contentDic[@"wygsmc"];
             }
         }break;
         case 1:{
             NSDictionary *contentDic = self.dataDic[@"paperVO"];
             if (indexPath.row == 0) {
-                content1 = contentDic[@"htqdrq"];
+                content1 = contentDic[@"gfr"];
             }else if (indexPath.row == 1) {
-                content1 = contentDic[@"bazt"];
+                content1 = contentDic[@"gyr"];//
             }else if (indexPath.row == 2) {
+                content1 = contentDic[@"htqdrq"];
+            }else if (indexPath.row == 3) {
+                content1 = contentDic[@"bazt"];
+            }else if (indexPath.row == 4) {
                 content1 = contentDic[@"bzzt"];
-            }//url
+            }
         }break;
         case 2:{
             NSDictionary *contentDic = self.dataDic[@"paymentVO"][@"housePayment"];
-            if (indexPath.row == 0) {
+            if (indexPath.row == 1) {
                 content1 = contentDic[@"zje"];
                 content2 = contentDic[@"sfje"];
-            }else if (indexPath.row == 1) {
+            }else if (indexPath.row == 2) {
                 content1 = contentDic[@"yjje"];
                 content2 = contentDic[@"dkje"];
             }
         }break;
         case 3:{
             NSDictionary *contentDic = self.dataDic[@"paymentVO"][@"taxPayment"];
-            if (indexPath.row == 0) {
+            if (indexPath.row == 1) {
                 content1 = contentDic[@"qsyjje"];
                 content2 = contentDic[@"qssjje"];
-            }else if (indexPath.row == 1) {
+            }else if (indexPath.row == 2) {
                 content1 = contentDic[@"yhsyjje"];
                 content2 = contentDic[@"yhssjje"];
             }
         }break;
         case 4:{
             NSDictionary *contentDic = self.dataDic[@"paymentVO"][@"fundsPayment"];
-            if (indexPath.row == 0) {
+            if (indexPath.row == 1) {
                 content1 = contentDic[@"yjje"];
-                content2 = contentDic[@"sjje"];
-            }else if (indexPath.row == 1) {
+//                content2 = contentDic[@"sjje"];
+            }else if (indexPath.row == 2) {
+                content1 = contentDic[@"sjje"];
+            }else if (indexPath.row == 3) {
                 content1 = contentDic[@"jjbz"];
             }
         }break;
@@ -181,6 +188,15 @@
 //},
 - (void)headerButtonToFix:(UIButton *)button{
     switch (button.tag) {
+        case 1:
+        {
+     
+            MyHousePaperViewController *vc = [MyHousePaperViewController new];
+            vc.title = @"查看合同";
+            vc.url = self.dataDic[@"paperVO"][@"url"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
         case 2:
         {
             MyHouseTaxViewController *vc = [MyHouseTaxViewController new];
@@ -212,6 +228,7 @@
             break;
     }
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section <=2) {
         if (section == 0) {
@@ -233,6 +250,8 @@
             header.headerButton.hidden = YES;
         }else{
             header.headerButton.hidden = NO;
+            header.headerButton.tag = 1;
+            [header.headerButton addTarget:self action:@selector(headerButtonToFix:) forControlEvents:UIControlEventTouchUpInside];
         }
         switch (section) {
             case 0:header.headerTitle.text = @"房屋信息";
@@ -288,7 +307,7 @@
     
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.view addSubview:self.tableView];
-    self.tableView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.tableView.backgroundColor = kListBgColor;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyHouseDetialOneCell class])  bundle:nil] forCellReuseIdentifier:@"MyHouseDetialOneCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyHouseDetialTwoCell class])  bundle:nil] forCellReuseIdentifier:@"MyHouseDetialTwoCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MuHouseDetialHeader class])  bundle:nil] forHeaderFooterViewReuseIdentifier:@"MuHouseDetialHeader"];
@@ -316,13 +335,13 @@
 #pragma mark - request
 - (void)reloadData {
     __weak typeof(self) weakSelf = self;
-    self.dataArray = [NSMutableArray new];
+//    self.dataArray = [NSMutableArray new];
     NSDictionary *pram = [self.model mj_keyValues];
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/contract/detail") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         
         [weakSelf loadingPageWidthSuccess:success];
         if (success) {
-
+//jnbz == 1  已缴纳
             weakSelf.dataDic = response[@"data"];
             [weakSelf.tableView reloadData];
             if (weakSelf.dataDic.count == 0) {

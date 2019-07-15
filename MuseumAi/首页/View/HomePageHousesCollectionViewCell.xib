@@ -19,8 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="210" height="227"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmg-pb-Sdb">
-                        <rect key="frame" x="-5" y="0.0" width="220" height="227"/>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dmg-pb-Sdb">
+                        <rect key="frame" x="-5" y="0.0" width="233" height="227"/>
                         <color key="backgroundColor" red="0.92931067943572998" green="0.92946994304656982" blue="0.92930072546005249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BK2-4B-UOW">

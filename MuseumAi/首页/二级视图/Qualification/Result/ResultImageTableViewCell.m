@@ -72,7 +72,7 @@
         }else{
             [item setCommenImageUrl:coment];
         }
-        item.backgroundColor = kTestColor;
+//        item.backgroundColor = kTestColor;
         if (i == 0 ){
             [item mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.leading.equalTo(self.contentView).offset(kMerchantLeading);
@@ -122,7 +122,7 @@
             }else{
                 [item setCommenImageUrl:coment];
             }
-            item.backgroundColor = kTestColor;
+//            item.backgroundColor = kTestColor;
             
             if (index == kFirtLineNumber){ //第一个
                 UIImageView *preItem = self.imageViews[0];

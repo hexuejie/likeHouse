@@ -55,19 +55,5 @@
     [self.coverImageView setOtherImageUrl:_model.img];
 }
 
-- (void)setNewsModel:(NewsModel *)newsModel{
-    _newsModel = newsModel;
-
-    _titleLabel.numberOfLines = 0;
-    _ChatTagLabel.hidden = YES;
-    _tipTagLabel.hidden = YES;
-    _priceLabel.text = @"";
-    _priceLabel.hidden = YES;
-    
-    
-    _titleLabel.text = newsModel.title;
-    _contentLabel.text = newsModel.publishdate;
-     [self.coverImageView setOtherImageUrl:_newsModel.img];
-}
 
 @end

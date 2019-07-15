@@ -41,7 +41,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.headerView.titleLabel.text = _detialModel.lp.xmmc;
-    self.headerView.contentLabel.text = [_detialModel.xmbc.bq stringByReplacingOccurrencesOfString:@"," withString:@"/"];
+    self.headerView.contentLabel.text = [_detialModel.lp.bq stringByReplacingOccurrencesOfString:@"," withString:@"/"];
 
     _dataArray = @[
                    @[@{@"title":@"销售状态：",@"content":[NSString stringWithFormat:@"%@",_detialModel.lpzt]}

@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *kprq;//"待定",            日期
 
 @property (nonatomic,copy) lpHouseDetial *lp;//Object{...},    楼盘信息
-@property (nonatomic,copy) xmbcHouseDetial *xmbc;//Object{...},    项目补充信息
+//@property (nonatomic,copy) xmbcHouseDetial *xmbc;//Object{...},    项目补充信息
 @property (nonatomic,copy) kpxmHouseDetial *kpxm;//Object{...}      //开盘项目
 @property (nonatomic,copy) ldxxListHouseDetial *ldxx;    //楼栋信息
 
@@ -38,8 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 //HouseListModel
 @property (nonatomic,copy) NSArray *zb;//Array[0],       周边   附近的楼盘
-@property (nonatomic,copy) NSArray *list;//Array[0],        感兴趣的人还浏览了   ..楼盘列表
-@property (nonatomic,copy) NSArray *near;//null,
+@property (nonatomic,copy) NSMutableArray *list;//Array[0],        感兴趣的人还浏览了   ..楼盘列表
+@property (nonatomic,copy) NSMutableArray *near;//null,
 
 @property (nonatomic,copy) NSDictionary *dataDic;
 @end

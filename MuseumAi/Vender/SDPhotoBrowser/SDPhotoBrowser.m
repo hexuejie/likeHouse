@@ -218,6 +218,14 @@
 
     _saveButton.hidden = YES;
     
+    
+    if (self.sourceImagesContainerView == nil) {
+        tempView.frame = targetTemp;
+        weakSelf.backgroundColor = [UIColor clearColor];
+        weakSelf.indexLabel.alpha = 0.1;
+        [weakSelf removeFromSuperview];
+        return;
+    }
     [UIView animateWithDuration:SDPhotoBrowserHideImageAnimationDuration animations:^{
         tempView.frame = targetTemp;
         weakSelf.backgroundColor = [UIColor clearColor];
@@ -310,7 +318,14 @@
     tempView.contentMode = [_scrollView.subviews[self.currentImageIndex] contentMode];
     _scrollView.hidden = YES;
     
-    
+    if (self.sourceImagesContainerView == nil) {
+        tempView.center = self.center;
+        tempView.bounds = (CGRect){CGPointZero, targetTemp.size};
+        _hasShowedFistView = YES;
+        [tempView removeFromSuperview];
+        _scrollView.hidden = NO;
+        return;
+    }
     [UIView animateWithDuration:SDPhotoBrowserShowImageAnimationDuration animations:^{
         tempView.center = self.center;
         tempView.bounds = (CGRect){CGPointZero, targetTemp.size};

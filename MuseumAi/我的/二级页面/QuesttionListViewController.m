@@ -27,11 +27,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"常见问题";
-    self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.view.backgroundColor = kListBgColor;
    
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds];
     [self.view addSubview:self.tableView];
-    self.tableView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.tableView.backgroundColor = kListBgColor;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([QuestionListTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"QuestionListTableViewCell"];
 //    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyCenterLoginOutTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"MyCenterLoginOutTableViewCell"];
    

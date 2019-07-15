@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="NewsHousesCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="318"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="325" height="318"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ten-bd-8sq">
+                        <rect key="frame" x="-5" y="0.0" width="335" height="318"/>
+                        <color key="backgroundColor" red="0.92931067940000001" green="0.92946994299999997" blue="0.92930072549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nxZ-zy-jwA">
+                        <rect key="frame" x="6" y="10" width="313" height="302"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="圆角矩形 4 拷贝" translatesAutoresizingMaskIntoConstraints="NO" id="4f2-6Y-4AG">
+                                <rect key="frame" x="0.0" y="0.0" width="313" height="214"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正荣悦玺（复式住宅）" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHK-H7-ZHb">
+                                <rect key="frame" x="9" y="227" width="296" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.26663362979999999" green="0.26668566469999999" blue="0.26663035149999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长沙市雨花区东二环.高桥南长沙市雨花区东二环.高桥南" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dmu-pX-yYG">
+                                <rect key="frame" x="9" y="276.5" width="304" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.62739300730000003" green="0.62756395340000004" blue="0.62329071759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4f2-6Y-4AG" firstAttribute="leading" secondItem="nxZ-zy-jwA" secondAttribute="leading" id="7Jc-ds-AcS"/>
+                            <constraint firstItem="4f2-6Y-4AG" firstAttribute="top" secondItem="nxZ-zy-jwA" secondAttribute="top" id="9Zz-HH-bWc"/>
+                            <constraint firstItem="Dmu-pX-yYG" firstAttribute="leading" secondItem="PHK-H7-ZHb" secondAttribute="leading" id="NzY-cB-T95"/>
+                            <constraint firstAttribute="trailing" secondItem="PHK-H7-ZHb" secondAttribute="trailing" constant="8" id="O1R-9k-0j2"/>
+                            <constraint firstAttribute="bottom" secondItem="Dmu-pX-yYG" secondAttribute="bottom" constant="11" id="bQC-fe-z95"/>
+                            <constraint firstAttribute="trailing" secondItem="4f2-6Y-4AG" secondAttribute="trailing" id="gaf-gX-jpR"/>
+                            <constraint firstAttribute="trailing" secondItem="Dmu-pX-yYG" secondAttribute="trailing" id="jHk-RW-PDX"/>
+                            <constraint firstItem="PHK-H7-ZHb" firstAttribute="top" secondItem="4f2-6Y-4AG" secondAttribute="bottom" constant="13" id="sYr-b4-HCq"/>
+                            <constraint firstAttribute="bottom" secondItem="4f2-6Y-4AG" secondAttribute="bottom" constant="88" id="shk-HZ-dGz"/>
+                            <constraint firstItem="PHK-H7-ZHb" firstAttribute="leading" secondItem="nxZ-zy-jwA" secondAttribute="leading" constant="9" id="xWC-Ww-H1J"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                <integer key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="nxZ-zy-jwA" secondAttribute="trailing" constant="6" id="2Kd-0I-VCL"/>
+                <constraint firstAttribute="trailing" secondItem="ten-bd-8sq" secondAttribute="trailing" constant="-5" id="MFh-eM-SqS"/>
+                <constraint firstAttribute="bottom" secondItem="nxZ-zy-jwA" secondAttribute="bottom" constant="6" id="a7q-Fa-Ju1"/>
+                <constraint firstItem="nxZ-zy-jwA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="ada-29-ym3"/>
+                <constraint firstAttribute="bottom" secondItem="ten-bd-8sq" secondAttribute="bottom" id="bzc-Jl-OLO"/>
+                <constraint firstItem="nxZ-zy-jwA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="k13-lt-SNF"/>
+                <constraint firstItem="ten-bd-8sq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="-5" id="uSj-uq-Ktd"/>
+                <constraint firstItem="ten-bd-8sq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="wj4-04-Z53"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="325" height="318"/>
+            <connections>
+                <outlet property="backView" destination="ten-bd-8sq" id="eOo-yF-G4W"/>
+                <outlet property="contentLabel" destination="Dmu-pX-yYG" id="0ep-HE-ERI"/>
+                <outlet property="coverImageView" destination="4f2-6Y-4AG" id="kUA-mi-dDX"/>
+                <outlet property="titleLabel" destination="PHK-H7-ZHb" id="gju-C3-S75"/>
+            </connections>
+            <point key="canvasLocation" x="79.200000000000003" y="148.42578710644679"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="圆角矩形 4 拷贝" width="168" height="122"/>
+    </resources>
+</document>

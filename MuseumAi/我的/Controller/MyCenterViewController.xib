@@ -167,10 +167,9 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFw-Zb-3dl">
-                    <rect key="frame" x="257" y="86" width="100" height="32"/>
+                    <rect key="frame" x="93" y="86" width="264" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="Ays-tF-Klb"/>
-                        <constraint firstAttribute="width" constant="100" id="JGk-dT-03o"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="去认证   &gt;">
@@ -197,6 +196,7 @@
                 <constraint firstItem="zsa-1o-rt2" firstAttribute="top" secondItem="FqE-A0-EPZ" secondAttribute="bottom" constant="2" id="d7t-TD-WqU"/>
                 <constraint firstItem="zoW-xd-Chf" firstAttribute="width" secondItem="FqE-A0-EPZ" secondAttribute="width" id="h06-BJ-6e3"/>
                 <constraint firstItem="tYo-Xl-LXv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="hk9-kw-huP"/>
+                <constraint firstItem="MFw-Zb-3dl" firstAttribute="leading" secondItem="tYo-Xl-LXv" secondAttribute="trailing" constant="20" id="kZM-lW-W8d"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="zsa-1o-rt2" secondAttribute="bottom" id="ltr-oI-SKm"/>
                 <constraint firstItem="FqE-A0-EPZ" firstAttribute="bottom" secondItem="c8a-Vg-RMW" secondAttribute="bottom" constant="57" id="tlV-1s-WhD"/>
                 <constraint firstItem="tYo-Xl-LXv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="13" id="vOK-LE-cOI"/>
@@ -220,7 +220,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="header_logo" width="60" height="60"/>
+        <image name="header_logo" width="65" height="65"/>
         <image name="myCenter_Identification" width="30" height="30"/>
         <image name="myCenter_background" width="375" height="192.5"/>
         <image name="myCenter_qualification" width="30" height="30"/>

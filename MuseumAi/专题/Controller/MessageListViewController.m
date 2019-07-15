@@ -12,13 +12,14 @@
 #import "MUMapHandler.h"
 #import "MJRefresh.h"
 #import "NewsModel.h"
+#import "ZTDetialViewController.h"
+#import "HomePageHousesCollectionViewCell.h"
 
 @interface MessageListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
 
 @property (strong, nonatomic) NSArray *dataArray;
-@property (nonatomic , assign) NSInteger page;
 @end
 
 @implementation MessageListViewController
@@ -29,27 +30,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 //    self.title = @"常见问题";
-    self.view.backgroundColor = kUIColorFromRGB(0xF1F1F1);
-    _dataArray = @[@{@"title":@"浏览记录",@"content":@"myCenter_footer"}];
+    self.view.backgroundColor = kListBgColor;
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT -[Utility segmentTopMinHeight]-42)];
     [self.view addSubview:self.tableView];
     self.tableView.alwaysBounceVertical = YES;
 //    self.tableView.alwaysBounceHorizontal = YES;
-    self.tableView.backgroundColor = kUIColorFromRGB(0xF1F1F1);
+    self.tableView.backgroundColor = kListBgColor;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([SysMesssageTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"SysMesssageTableViewCell"];
-    //    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyCenterLoginOutTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"MyCenterLoginOutTableViewCell"];
+        [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([HomePageHousesCollectionViewCell class])  bundle:nil] forCellReuseIdentifier:@"HomePageHousesCollectionViewCell"];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView reloadData];
     
-//    __weak typeof (self) weakSelf = self;
-//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-////        weakSelf.page = 1;
-////        [weakSelf.tableView.mj_footer resetNoMoreData];
-////        [weakSelf reloadData];
-//    }];
+    __weak typeof (self) weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        weakSelf.page = 1;
+        [weakSelf.tableView.mj_footer resetNoMoreData];
+        [weakSelf reloadData];
+    }];
 //    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
 //        weakSelf.page++;
 //        [weakSelf reloadData];
@@ -67,18 +66,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SysMesssageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SysMesssageTableViewCell" forIndexPath:indexPath];
-    
-
+    NewsModel *tempModel = _dataArray[indexPath.row];
+    cell.contentLabel.text = [NSString stringWithFormat:@"%@",tempModel.bt];
+    cell.timeLabel.text = [NSString stringWithFormat:@"%@",tempModel.fbsj];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    CloudWebController *vc = [CloudWebController new];
-    vc.title = @"消息详情";
-    vc.requestURL = @"http://10.3.61.154/sales/7";
+    
+    NewsModel *tempModel = _dataArray[indexPath.row];
+    ZTDetialViewController *vc = [ZTDetialViewController new];
     vc.hidesBottomBarWhenPushed = YES;
+    
+    vc.formatString = tempModel.nr;
+    vc.title = tempModel.title;
+    if (tempModel.title.length == 0) {
+        vc.title = tempModel.bt;
+    }
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -94,31 +100,24 @@
 
 - (void)reloadData {
     NSString *flStr = @"1";
-    NSString *strURL = @"/api/family/xf/user/marketnewslist";
-    if ([self.title isEqualToString:@"楼盘动态"]) {
-        flStr = @"2";
-        strURL = @"/api/family/xf/user/baikejzlist";
-    }else if ([self.title isEqualToString:@"悦居资讯"]) {
-        flStr = @"";
-        strURL = @"/api/family/xf/user/baikejzlist";
-    }
+    NSString *strURL = @"/api/family/xf/user/xtinform";
+    
     __weak typeof(self) weakSelf = self;
-    [[NetWork shareManager] postWithUrl:DetailUrlString(strURL) para: @{@"fl":flStr//2
-                                                                        ,@"page":@"1",@"rows":@"999"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-                                                                            [weakSelf loadingPageWidthSuccess:success];
-                                                                            if (success) {
-                                                                                weakSelf.dataArray = [NewsModel mj_objectArrayWithKeyValuesArray:response[@"data"]];
-                                                                                
-                                                                                [weakSelf.tableView reloadData];
-                                                                                
-                                                                                if (weakSelf.dataArray.count == 0) {
-                                                                                    [weakSelf addNoneDataTipView];
-                                                                                }
-                                                                            }else{
-                                                                            }
-                                                                            [weakSelf.tableView.mj_header endRefreshing];
-                                                                            [weakSelf.tableView.mj_footer endRefreshing];
-                                                                        }];
+    [[NetWork shareManager] postWithUrl:DetailUrlString(strURL) para: @{@"page":@"1",@"rows":@"999"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        [weakSelf loadingPageWidthSuccess:success];
+        if (success) {
+            weakSelf.dataArray = [NewsModel mj_objectArrayWithKeyValuesArray:response[@"data"]];
+            
+            [weakSelf.tableView reloadData];
+            
+            if (weakSelf.dataArray.count == 0) {
+                [weakSelf addNoneDataTipView];
+            }
+        }else{
+        }
+        [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf.tableView.mj_footer endRefreshing];
+    }];
 }
 
 @end

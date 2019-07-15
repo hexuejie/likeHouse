@@ -28,13 +28,6 @@
                                 <color key="titleColor" red="0.42360782619999998" green="0.41976410149999999" blue="0.41133743519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iDA-ha-n1b">
-                            <rect key="frame" x="12" y="27" width="164" height="103"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="103" id="Sy3-1t-eQB"/>
-                                <constraint firstAttribute="width" constant="164" id="X2r-q2-tOT"/>
-                            </constraints>
-                        </imageView>
                         <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK2-AK-JV4">
                             <rect key="frame" x="228" y="27" width="164" height="103"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -54,6 +47,13 @@
                                 <constraint firstAttribute="height" constant="10" id="Eo8-fm-WXo"/>
                             </constraints>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDA-ha-n1b">
+                            <rect key="frame" x="40" y="60" width="164" height="103"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="103" id="Sy3-1t-eQB"/>
+                                <constraint firstAttribute="width" constant="164" id="X2r-q2-tOT"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>

@@ -45,6 +45,8 @@
     
     [self dataReset];
 
+    self.tableview.backgroundColor = kListBgColor;
+    self.view.backgroundColor = kListBgColor;
     [self.tableview registerClass:[ResultImageTableViewCell class] forCellReuseIdentifier:@"ResultImageTableViewCell"];
     [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([ResultContentTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"ResultContentTableViewCell"];
     [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([ResultTitleTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"ResultTitleTableViewCell"];
@@ -62,9 +64,12 @@
     _isReal = isReal;
     if (_isReal) {
         self.title = @"实名认证";
-        if ([[LoginSession sharedInstance].rzzt integerValue] == 3) {
-            self.tableBottomLay.constant = 70;
-            [self.bottomButton setTitle:@"重新认证" forState:UIControlStateNormal];
+        NSInteger tempInt = [[LoginSession sharedInstance].rzzt integerValue];
+        if (tempInt == 3) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                self.tableBottomLay.constant = 70;
+                [self.bottomButton setTitle:@"重新认证" forState:UIControlStateNormal];
+            });
         }
     }else{
         self.tableBottomLay.constant = 0;
@@ -76,9 +81,11 @@
     _isSubmit = isSubmit;
     if (_isSubmit) {
         self.title = @"核对并提交信息";
-        self.topContent.constant = 48;
-        self.tableBottomLay.constant = 70;
-        [self.bottomButton setTitle:@"确认提交" forState:UIControlStateNormal];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.topContent.constant = 48;
+            self.tableBottomLay.constant = 70;
+            [self.bottomButton setTitle:@"确认提交" forState:UIControlStateNormal];
+        });
     }
 }
 
@@ -121,7 +128,8 @@
     if (self.realData) {
         NSDictionary *tempDic = _nameArray[indexPath.row];
         if ([tempDic[@"image"] isKindOfClass:[NSArray class]] ) {//图片
-            NSArray *tempImage = @[self.realData[@"sfzzm"],self.realData[@"sfzfm"]];
+            NSArray *tempImage = @[[NSString stringWithFormat:@"%@",self.realData[@"sfzzm"]],
+                                   [NSString stringWithFormat:@"%@",self.realData[@"sfzfm"]]];
             NSInteger  count = ceilf(tempImage.count/2.0);
             if (count>0) {
                 
@@ -598,6 +606,9 @@
                 header.headerImageView.image = [UIImage imageNamed:@"result_2"];
             }
         }
+        if (_isSubmit) {
+            header.headerImageView.hidden = YES;
+        }
     }
     return header;
 }
@@ -615,7 +626,7 @@
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
-    line.backgroundColor = kUIColorFromRGB(0xF3F3F2);
+    line.backgroundColor = kListBgColor;
     return  line;
 }
 
@@ -645,6 +656,8 @@
 }
 
 - (void)sureClick{///  去网络提交 再弹出
+    
+    
     __weak typeof(self) weakSelf = self;
     self.dataArray = [NSMutableArray new];
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/submitgfsq") para:@{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
@@ -768,7 +781,7 @@
                        @{@"title":@"出生"},
                        
                        @{@"title":@"身份证号码"},
-                       @{@"title":@"签证机关"},
+                       @{@"title":@"签发机关"},
                        @{@"title":@"有效期限"},
                        @{@"image":@[@"http://img.findlawimg.com/info/2019/0610/20190610114035328.jpg",@"http://img.findlawimg.com/info/2019/0610/20190610114035328.jpg"]},
                        //                   @{@"image":@""}
