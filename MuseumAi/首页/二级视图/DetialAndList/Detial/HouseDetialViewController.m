@@ -26,6 +26,8 @@
 #import "HouseDetialFeedbackViewController.h"
 #import "HouseDetialModel.h"
 #import "SDPhotoBrowser.h"
+#import "HouseDetialMapViewController.h"
+#import "DetialCustomMapView.h"
 
 @interface HouseDetialViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,SDPhotoBrowserDelegate>
 @property (strong, nonatomic) HouseDetialHeaderView *headerView;
@@ -113,6 +115,7 @@
     [self.contentCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView1"];
     
     [self.headerView.moreButton addTarget:self action:@selector(moreDetialCilck) forControlEvents:UIControlEventTouchUpInside];
+    [self.headerView.locationBUtton addTarget:self action:@selector(locationButtonCilck) forControlEvents:UIControlEventTouchUpInside];
 }
 
 
@@ -145,12 +148,17 @@
     }else if (indexPath.section == 1) {//楼栋信息
         DetialHouseImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetialHouseImageCollectionViewCell" forIndexPath:indexPath];
         [cell.allImageView setOtherImageUrl:_detialModel.ldxx.img];
+        cell.allImageView.hidden = NO;
+        cell.mapView.hidden = YES;
         
         return cell;
     }else if (indexPath.section == 2) {//位置及周边
         DetialHouseImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetialHouseImageCollectionViewCell" forIndexPath:indexPath];
-        cell.allImageView.image = [UIImage imageNamed:@"testMap"];
+        cell.allImageView.hidden = YES;
+        cell.mapView.hidden = NO;
         
+        cell.mapView.coordinate = CLLocationCoordinate2DMake([self.detialModel.lp.wd doubleValue], [self.detialModel.lp.jd doubleValue]);
+        cell.mapView.strTitle = self.detialModel.lp.xmdz;
         return cell;
     }else if (indexPath.section == 3) {//列表
         HomePageHousesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell" forIndexPath:indexPath];
@@ -379,6 +387,14 @@
     }
 }
 
+- (void)locationButtonCilck{
+    NSLog(@"\nself.detialModel.lp.wd : %@      self.detialModel.lp.jd: %@\n",self.detialModel.lp.wd,self.detialModel.lp.jd);
+    HouseDetialMapViewController *vc = [HouseDetialMapViewController new];
+    vc.strTitle = self.detialModel.lp.xmdz;
+    vc.coordinate = CLLocationCoordinate2DMake([self.detialModel.lp.wd doubleValue], [self.detialModel.lp.jd doubleValue]);
+//    vc.detialModel = self.detialModel;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)moreDetialCilck{
     HouseDetialMoreViewController *vc = [HouseDetialMoreViewController new];

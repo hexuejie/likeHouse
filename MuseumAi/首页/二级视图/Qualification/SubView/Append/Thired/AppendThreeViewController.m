@@ -39,6 +39,13 @@
     
     [self.addImageView setBorderWithView];
     
+    NSDictionary *tempDic = [[PersonInfo sharedInstance].allmessageDic[@"szsbList"] firstObject];
+    self.addmodel = [AddOtherModel mj_objectWithKeyValues:tempDic];
+    if (self.addmodel) {
+        _nameTextField.text = _addmodel.xm;
+        _timeTextField.text = _addmodel.szsb;
+        [_addImageView setCommenImageUrl:_addmodel.szssbzm];
+    }
 }
 
 - (IBAction)chooseItemClick:(UIButton *)sender {

@@ -73,6 +73,9 @@
     [super viewWillAppear:animated];
 //    self.tabBarController.tabBar.hidden = YES;
     
+    if ([LoginSession sharedInstance].isNavigationBarHidden == NO) {
+         [self.navigationController setNavigationBarHidden:NO animated:animated];
+    }
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     }
@@ -80,6 +83,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
     
 //    if ([self isEqual:self.navigationController.viewControllers[0]]) {
 //        // 切tab的时候需要还原tabbar状态为显示
@@ -107,7 +111,7 @@
 }
 
 - (void)dealloc {
-    
+    [LoginSession sharedInstance].isNavigationBarHidden = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

@@ -38,6 +38,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSString *img;// "http://192.168.99.234/storage/15403858389573531869258636207927538.jpeg,http://192.168.99.234/storage/15403858389573531869258636207927538.jpeg,http://192.168.99.234/storage/15403858389573531869258636207927538.jpeg"
 
 
+@property (nonatomic,copy) NSString *xmmc;// "201806110829",
+@property (nonatomic,copy) NSString *xmbh;// "201806110829",
+@property (nonatomic,copy) NSString *kfsmc;// "201806110829",
+
+@property (nonatomic,copy) NSString *ksts;
+@property (nonatomic,copy) NSString *gxts;
+@property (nonatomic,copy) NSString *rcsj;
+
 @end
 
 NS_ASSUME_NONNULL_END

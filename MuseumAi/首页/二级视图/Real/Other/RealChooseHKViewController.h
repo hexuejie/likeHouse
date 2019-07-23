@@ -8,9 +8,13 @@
 
 #import "MURootViewController.h"
 
+#import "PersonModel.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RealChooseHKViewController : MURootViewController
+
+@property (nonatomic,strong) PersonModel *personData;
 
 @end
 

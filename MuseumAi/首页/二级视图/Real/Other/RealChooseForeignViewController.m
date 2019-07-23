@@ -63,12 +63,32 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.midLineTop.constant = 0;
     
-    self.title = @"外籍人士";
-    self.tipStr = @"请完善个人信息！";
     [self.contentScrolleView addSubview:self.contentView];
     
+    [self initCustomData];
+    
+    [self.exchangeImageOne setBorderWithView];
+    [self.exchangeImageTwo setBorderWithView];
+    [self.exchangeImageThree setBorderWithView];
+    
+    UITapGestureRecognizer *tableViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentTableViewTouchInSide)];
+    tableViewGesture.numberOfTapsRequired = 1;
+    tableViewGesture.cancelsTouchesInView = NO;
+    [self.contentScrolleView addGestureRecognizer:tableViewGesture];
+}
+
+- (void)commentTableViewTouchInSide{
+    [self.view endEditing:YES];
+}
+
+- (void)initCustomData{
+
+    self.title = @"外籍人士";
+    self.tipStr = @"请完善个人信息！";
+    self.midLineTop.constant = 0;
+    self.contentScrolleView.contentSize = CGSizeMake(SCREEN_WIDTH, 810);
+    self.contentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 810);
     if ([LoginSession sharedInstance].pageType == 1) {//+240
         self.threeBackgroundView.hidden = YES;
         self.contentScrolleView.contentSize = CGSizeMake(SCREEN_WIDTH, 810+240);
@@ -85,24 +105,42 @@
             }
         }
         self.tipStr = @"请完善配偶信息！";
-    }else{
+    }else if ([LoginSession sharedInstance].pageType == 2){
         self.tipStr = @"请完善子女信息！";
         self.contentScrolleView.contentSize = CGSizeMake(SCREEN_WIDTH, 810);
         self.contentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 810);
     }
     
-    [self.exchangeImageOne setBorderWithView];
-    [self.exchangeImageTwo setBorderWithView];
-    [self.exchangeImageThree setBorderWithView];
+    if (self.personData) {
+       
+        self.nameTextField.text = self.personData.jtcy.xm;
+        self.brithDayTextField.text = self.personData.jtcy.qtzjcsrq;
+        self.areaTextField.text = self.personData.jtcy.gj;
+        
+        self.sexTextField.text = self.personData.jtcy.xb;
+//        self.numberTextField.text = self.personData.jtcy.zjhm;
+        self.changeTimes.text = self.personData.jtcy.hzcs;
+        
+        if (self.personData.jtcy.lysj.length >0) {
+            self.lysjTextField.text = self.personData.jtcy.lysj;
+        }
+        if (self.personData.jtcy.qtzjyxq.length >0) {
+            NSArray  *array = [self.personData.jtcy.qtzjyxq componentsSeparatedByString:@"-"];
+            self.beginTimeTextField.text = [array firstObject];
+            self.endTimeTextField.text = [array lastObject];
+        }
     
-    UITapGestureRecognizer *tableViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentTableViewTouchInSide)];
-    tableViewGesture.numberOfTapsRequired = 1;
-    tableViewGesture.cancelsTouchesInView = NO;
-    [self.contentScrolleView addGestureRecognizer:tableViewGesture];
-}
-
-- (void)commentTableViewTouchInSide{
-    [self.view endEditing:YES];
+        [self.exchangeImageOne setCommenImageUrl:self.personData.zzxx.hz];
+        [self.exchangeImageTwo setCommenImageUrl:self.personData.zzxx.hzqzy];
+        [self.exchangeImageThree setCommenImageUrl:self.personData.zzxx.jhz];
+        
+        UIButton *_rigthButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 55, 30)];
+        [_rigthButton setTitle:@"删除" forState:UIControlStateNormal];
+        [_rigthButton setTitleColor:kUIColorFromRGB(0xC0905D) forState:UIControlStateNormal];
+        [_rigthButton addTarget:self action:@selector(tightViewClear) forControlEvents:UIControlEventTouchUpInside];
+        _rigthButton.titleLabel.font = kSysFont(16);
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rigthButton];
+    }
 }
 
 - (IBAction)chooseSwitchCick:(UIButton *)sender {
@@ -275,8 +313,8 @@
         self.brithDayTextField.text.length == 0||
         self.beginTimeTextField.text.length == 0||
         
-        !self.exchangeImageOne.image ||
-        !self.exchangeImageTwo.image
+        !self.exchangeImageOne.image
+//        ||!self.exchangeImageTwo.image
         ) {
         [SVProgressHelper dismissWithMsg: self.tipStr];
         return;
@@ -285,6 +323,10 @@
         !self.exchangeImageThree.image&&[LoginSession sharedInstance].pageType == 1
         ) {
         [SVProgressHelper dismissWithMsg: self.tipStr];
+        return;
+    }
+    if([LoginSession sharedInstance].pageType == 1||[LoginSession sharedInstance].pageType == 2){
+        [self beginUpLoad];
         return;
     }
     
@@ -323,16 +365,38 @@
 
 - (void)updateLoadImage:(UIImage *)upImage{
     __weak typeof(self) weakSelf = self;
-    //上传图片
-    NSArray *imageArray = @[self.exchangeImageOne.image,self.exchangeImageTwo.image
-                            ];
-    if (self.exchangeImageThree.image) {
-        imageArray = @[self.exchangeImageOne.image,self.exchangeImageTwo.image,self.exchangeImageThree.image
-                       ];
+    NSArray *imageArray;
+    if (self.exchangeImageTwo.image) {
+        //上传图片
+        imageArray = @[self.exchangeImageOne.image,self.exchangeImageTwo.image
+                                ];
+        if (self.exchangeImageThree.image) {
+            imageArray = @[self.exchangeImageOne.image,self.exchangeImageTwo.image,self.exchangeImageThree.image
+                           ];
+        }
+    }else{
+        //上传图片
+        imageArray = @[self.exchangeImageOne.image
+                                ];
+        if (self.exchangeImageThree.image) {
+            imageArray = @[self.exchangeImageOne.image,self.exchangeImageThree.image
+                           ];
+        }
     }
+   
     [NetWork uploadMoreFileHttpRequestURL:DetailUrlString(@"/upload") RequestPram:@{} arrayImg:imageArray arrayAudio:@[] RequestSuccess:^(id  _Nonnull respoes) {
         if (respoes) {
             weakSelf.imageStrArray = [respoes componentsSeparatedByString:@";"];
+            
+            if (!self.exchangeImageTwo.image) {
+                weakSelf.imageStrArray = [respoes componentsSeparatedByString:@";"];
+                if (self.exchangeImageThree.image) {
+                    weakSelf.imageStrArray = @[[weakSelf.imageStrArray firstObject],@"",[weakSelf.imageStrArray lastObject]] ;
+                }else{
+                    weakSelf.imageStrArray = @[[weakSelf.imageStrArray firstObject],@""] ;
+                }
+            }
+            
             if ([LoginSession sharedInstance].pageType == 1) {//+240
                 [weakSelf finishUpInfoPo];
             }else if ([LoginSession sharedInstance].pageType == 2) {//子女
@@ -349,6 +413,7 @@
 - (void)finishUpInfoZn{
     __weak typeof(self) weakSelf = self;
     NSDictionary *pram = @{
+                           @"yhbh": [NSString stringWithFormat:@"%@",[LoginSession sharedInstance].otherYhbh],
                            @"zjlx":@"护照",@"xm":self.nameTextField.text
                            ,@"csrq":self.brithDayTextField.text//出生日期
                            ,@"gj":self.areaTextField.text//香港九龙
@@ -487,4 +552,25 @@
     [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
     _tipView1.sureType = 6;
 }
+
+
+- (void)tightViewClear{
+    NSString *strUrl = @"/api/family/zjw/user/delpo";
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *parm = @{};
+    if ([LoginSession sharedInstance].pageType == 2){
+        parm = @{@"yhbh": [NSString stringWithFormat:@"%@",[LoginSession sharedInstance].otherYhbh]};
+        strUrl = @"/api/family/zjw/user/delznxx";
+    }
+    [[NetWork shareManager] postWithUrl:DetailUrlString(strUrl) para:parm isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        if (success) {
+            [SVProgressHelper dismissWithMsg:@"删除成功！"];
+            [weakSelf backRootVC];
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
+
 @end

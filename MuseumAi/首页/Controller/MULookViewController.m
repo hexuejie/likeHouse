@@ -27,6 +27,7 @@
 #import "ResultQualityViewController.h"
 #import "HouseDetialViewController.h"
 #import "ZTDetialViewController.h"
+#import "ResultQualityResultVC.h"
 
 @interface MULookViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -210,7 +211,9 @@
                 [self.banners addObject:[BannerModel mj_objectWithKeyValues:tempdic]];
             }
             for (NSDictionary *tempdic in [dic objectForKey:@"zt"]) {
-                [self.midArray addObject:[NewsModel mj_objectWithKeyValues:tempdic]];
+               NewsModel *model = [NewsModel mj_objectWithKeyValues:tempdic];
+                model.ztid = tempdic[@"id"];
+                [self.midArray addObject:model];
             }
             for (NSDictionary *tempdic in [dic objectForKey:@"recommend"]) {
                 [self.houses addObject:[HouseListModel mj_objectWithKeyValues:tempdic]];
@@ -242,10 +245,10 @@
             case 0:{
 
                 if (![Utility is_empty:[LoginSession sharedInstance].grrzzt]) {
-                    if ([[LoginSession sharedInstance].grrzzt integerValue] == 0||[[LoginSession sharedInstance].grrzzt integerValue] == 1) {
-                        ResultQualityViewController *vc = [ResultQualityViewController new];
+                    if ([[LoginSession sharedInstance].grrzzt integerValue] == 0||[[LoginSession sharedInstance].grrzzt integerValue] == 1||[[LoginSession sharedInstance].grrzzt integerValue] == 2) {
+                        ResultQualityResultVC *vc = [ResultQualityResultVC new];
                         vc.hidesBottomBarWhenPushed = YES;
-                        vc.isReal = NO;
+//                        vc.isReal = NO;
                         [self.navigationController pushViewController:vc animated:YES];
                         return;
                     }
@@ -291,13 +294,17 @@
     }else if (indexPath.section == 1) {
         //        articles
         ZTDetialViewController *vc = [ZTDetialViewController new];
-        vc.hidesBottomBarWhenPushed = YES;
         NewsModel *model = self.midArray[indexPath.row];
+        vc.urlString = @"/api/family/zjw/user/specialdetail";
+        vc.pramDic = @{@"ztbh":[NSString stringWithFormat:@"%@",model.ztid]};
+        
+        
         vc.formatString = model.ztnr;
-        vc.title = model.title;
-        if (model.title.length == 0) {
-            vc.title = model.ztmc;
-        }
+        vc.title = @"专题详情";
+//        if (model.title.length == 0) {
+//            vc.title = model.ztmc;
+//        }
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
         
     }else if (indexPath.section == 2) {
@@ -308,7 +315,7 @@
         vc.strBH = model.lpbh;
         [self.navigationController pushViewController:vc animated:YES];
     }
-}
+}//    专题详情   参数：ztbh
 #pragma mark 已做
 - (void)authenticationAction{
     if (_tipView1) {

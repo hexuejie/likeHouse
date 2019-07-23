@@ -65,6 +65,13 @@
 		A1139D6322BC7D7C00463FAD /* MOFSPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1139D5A22BC7D7C00463FAD /* MOFSPickerView.m */; };
 		A1139D6422BC7D7C00463FAD /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1139D5B22BC7D7C00463FAD /* AddressModel.m */; };
 		A1139D6522BC7D7C00463FAD /* MOFSAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1139D5E22BC7D7C00463FAD /* MOFSAddressPickerView.m */; };
+		A14B5D9E22DECA9800F98E74 /* MyHouseTaxListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A14B5D9C22DECA9800F98E74 /* MyHouseTaxListTableViewCell.m */; };
+		A14B5D9F22DECA9800F98E74 /* MyHouseTaxListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14B5D9D22DECA9800F98E74 /* MyHouseTaxListTableViewCell.xib */; };
+		A14B5DA222DECAC900F98E74 /* MyHouseTaxHeaderSection.m in Sources */ = {isa = PBXBuildFile; fileRef = A14B5DA122DECAC900F98E74 /* MyHouseTaxHeaderSection.m */; };
+		A14B5DA422DECADB00F98E74 /* MyHouseTaxHeaderSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14B5DA322DECADB00F98E74 /* MyHouseTaxHeaderSection.xib */; };
+		A14B5DAD22DF1F3F00F98E74 /* ResultQualityResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A14B5DAB22DF1F3F00F98E74 /* ResultQualityResultVC.m */; };
+		A14B5DAE22DF1F3F00F98E74 /* ResultQualityResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14B5DAC22DF1F3F00F98E74 /* ResultQualityResultVC.xib */; };
+		A14B5DB122E1567E00F98E74 /* HouseDetialMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14B5DB022E1567E00F98E74 /* HouseDetialMapViewController.m */; };
 		A158717E22B8C97F001567F8 /* MyHouseListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A158717C22B8C97F001567F8 /* MyHouseListTableViewCell.m */; };
 		A158717F22B8C97F001567F8 /* MyHouseListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A158717D22B8C97F001567F8 /* MyHouseListTableViewCell.xib */; };
 		A158718322B8D18F001567F8 /* MyHouseDetialOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A158718122B8D18F001567F8 /* MyHouseDetialOneCell.m */; };
@@ -92,6 +99,19 @@
 		A15B3ECD22C46205004BF242 /* ResultContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15B3ECB22C46205004BF242 /* ResultContentTableViewCell.xib */; };
 		A15B3ED122C46214004BF242 /* ResultTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A15B3ECF22C46214004BF242 /* ResultTitleTableViewCell.m */; };
 		A15B3ED222C46214004BF242 /* ResultTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15B3ED022C46214004BF242 /* ResultTitleTableViewCell.xib */; };
+		A15BD93322E172A900D899F1 /* DetialCustomMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BD93222E172A900D899F1 /* DetialCustomMapView.m */; };
+		A15BD93722E1A26600D899F1 /* NewRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BD93522E1A26600D899F1 /* NewRegisterViewController.m */; };
+		A15BD93822E1A26600D899F1 /* NewRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15BD93622E1A26600D899F1 /* NewRegisterViewController.xib */; };
+		A15BD93C22E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BD93A22E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.m */; };
+		A15BD93D22E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15BD93B22E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.xib */; };
+		A15BD94022E5597F00D899F1 /* ZTDetialHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BD93F22E5597F00D899F1 /* ZTDetialHeadView.m */; };
+		A15BD94222E5598900D899F1 /* ZTDetialHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15BD94122E5598900D899F1 /* ZTDetialHeadView.xib */; };
+		A15BD94522E5621E00D899F1 /* ZTDetialBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BD94422E5621E00D899F1 /* ZTDetialBottomView.m */; };
+		A15BD94722E5622500D899F1 /* ZTDetialBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15BD94622E5622500D899F1 /* ZTDetialBottomView.xib */; };
+		A15BD95022E6C3DE00D899F1 /* MyCenterPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BD94E22E6C3DE00D899F1 /* MyCenterPhoneViewController.m */; };
+		A15BD95122E6C3DE00D899F1 /* MyCenterPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15BD94F22E6C3DE00D899F1 /* MyCenterPhoneViewController.xib */; };
+		A15BD95522E6E2C700D899F1 /* FixPhoneShowInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BD95322E6E2C700D899F1 /* FixPhoneShowInfoViewController.m */; };
+		A15BD95622E6E2C700D899F1 /* FixPhoneShowInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A15BD95422E6E2C700D899F1 /* FixPhoneShowInfoViewController.xib */; };
 		A16093F4229E1BC100FBC19B /* RealFirstTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16093F2229E1BC100FBC19B /* RealFirstTipViewController.m */; };
 		A16093F5229E1BC100FBC19B /* RealFirstTipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16093F3229E1BC100FBC19B /* RealFirstTipViewController.xib */; };
 		A16093F9229E250700FBC19B /* RealFirstChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16093F7229E250700FBC19B /* RealFirstChooseViewController.m */; };
@@ -178,6 +198,8 @@
 		A16D94AD22C5C408001F8483 /* kpxmHouseDetial.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D94AC22C5C408001F8483 /* kpxmHouseDetial.m */; };
 		A16D94B022C5C453001F8483 /* ldxxListHouseDetial.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D94AF22C5C453001F8483 /* ldxxListHouseDetial.m */; };
 		A16D94B322C5F7C6001F8483 /* DetialHouseBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = A16D94B222C5F7C6001F8483 /* DetialHouseBanner.m */; };
+		A16F947A22DC7815008CF8B9 /* MyHouseTaxListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16F947822DC7815008CF8B9 /* MyHouseTaxListViewController.m */; };
+		A16F947B22DC7815008CF8B9 /* MyHouseTaxListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F947922DC7815008CF8B9 /* MyHouseTaxListViewController.xib */; };
 		A1817F64229E8704003B2FBF /* ChooseOtherRealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1817F62229E8704003B2FBF /* ChooseOtherRealViewController.m */; };
 		A1817F65229E8704003B2FBF /* ChooseOtherRealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1817F63229E8704003B2FBF /* ChooseOtherRealViewController.xib */; };
 		A1817F68229FA715003B2FBF /* RealFinishTipView1.m in Sources */ = {isa = PBXBuildFile; fileRef = A1817F67229FA715003B2FBF /* RealFinishTipView1.m */; };
@@ -629,6 +651,17 @@
 		A1139D5C22BC7D7C00463FAD /* MOFSToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOFSToolView.h; sourceTree = "<group>"; };
 		A1139D5D22BC7D7C00463FAD /* MOFSDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOFSDatePicker.h; sourceTree = "<group>"; };
 		A1139D5E22BC7D7C00463FAD /* MOFSAddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOFSAddressPickerView.m; sourceTree = "<group>"; };
+		A14B5D9B22DECA9800F98E74 /* MyHouseTaxListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHouseTaxListTableViewCell.h; sourceTree = "<group>"; };
+		A14B5D9C22DECA9800F98E74 /* MyHouseTaxListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseTaxListTableViewCell.m; sourceTree = "<group>"; };
+		A14B5D9D22DECA9800F98E74 /* MyHouseTaxListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHouseTaxListTableViewCell.xib; sourceTree = "<group>"; };
+		A14B5DA022DECAC900F98E74 /* MyHouseTaxHeaderSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHouseTaxHeaderSection.h; sourceTree = "<group>"; };
+		A14B5DA122DECAC900F98E74 /* MyHouseTaxHeaderSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseTaxHeaderSection.m; sourceTree = "<group>"; };
+		A14B5DA322DECADB00F98E74 /* MyHouseTaxHeaderSection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHouseTaxHeaderSection.xib; sourceTree = "<group>"; };
+		A14B5DAA22DF1F3F00F98E74 /* ResultQualityResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultQualityResultVC.h; sourceTree = "<group>"; };
+		A14B5DAB22DF1F3F00F98E74 /* ResultQualityResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultQualityResultVC.m; sourceTree = "<group>"; };
+		A14B5DAC22DF1F3F00F98E74 /* ResultQualityResultVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultQualityResultVC.xib; sourceTree = "<group>"; };
+		A14B5DAF22E1567E00F98E74 /* HouseDetialMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseDetialMapViewController.h; sourceTree = "<group>"; };
+		A14B5DB022E1567E00F98E74 /* HouseDetialMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseDetialMapViewController.m; sourceTree = "<group>"; };
 		A158717B22B8C97F001567F8 /* MyHouseListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHouseListTableViewCell.h; sourceTree = "<group>"; };
 		A158717C22B8C97F001567F8 /* MyHouseListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseListTableViewCell.m; sourceTree = "<group>"; };
 		A158717D22B8C97F001567F8 /* MyHouseListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHouseListTableViewCell.xib; sourceTree = "<group>"; };
@@ -671,6 +704,26 @@
 		A15B3ECE22C46214004BF242 /* ResultTitleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultTitleTableViewCell.h; sourceTree = "<group>"; };
 		A15B3ECF22C46214004BF242 /* ResultTitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultTitleTableViewCell.m; sourceTree = "<group>"; };
 		A15B3ED022C46214004BF242 /* ResultTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTitleTableViewCell.xib; sourceTree = "<group>"; };
+		A15BD93122E172A900D899F1 /* DetialCustomMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetialCustomMapView.h; sourceTree = "<group>"; };
+		A15BD93222E172A900D899F1 /* DetialCustomMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetialCustomMapView.m; sourceTree = "<group>"; };
+		A15BD93422E1A26600D899F1 /* NewRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewRegisterViewController.h; sourceTree = "<group>"; };
+		A15BD93522E1A26600D899F1 /* NewRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewRegisterViewController.m; sourceTree = "<group>"; };
+		A15BD93622E1A26600D899F1 /* NewRegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewRegisterViewController.xib; sourceTree = "<group>"; };
+		A15BD93922E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseListRenchouCollectionViewCell.h; sourceTree = "<group>"; };
+		A15BD93A22E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseListRenchouCollectionViewCell.m; sourceTree = "<group>"; };
+		A15BD93B22E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseListRenchouCollectionViewCell.xib; sourceTree = "<group>"; };
+		A15BD93E22E5597F00D899F1 /* ZTDetialHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZTDetialHeadView.h; sourceTree = "<group>"; };
+		A15BD93F22E5597F00D899F1 /* ZTDetialHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZTDetialHeadView.m; sourceTree = "<group>"; };
+		A15BD94122E5598900D899F1 /* ZTDetialHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZTDetialHeadView.xib; sourceTree = "<group>"; };
+		A15BD94322E5621E00D899F1 /* ZTDetialBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZTDetialBottomView.h; sourceTree = "<group>"; };
+		A15BD94422E5621E00D899F1 /* ZTDetialBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZTDetialBottomView.m; sourceTree = "<group>"; };
+		A15BD94622E5622500D899F1 /* ZTDetialBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZTDetialBottomView.xib; sourceTree = "<group>"; };
+		A15BD94D22E6C3DE00D899F1 /* MyCenterPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterPhoneViewController.h; sourceTree = "<group>"; };
+		A15BD94E22E6C3DE00D899F1 /* MyCenterPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCenterPhoneViewController.m; sourceTree = "<group>"; };
+		A15BD94F22E6C3DE00D899F1 /* MyCenterPhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCenterPhoneViewController.xib; sourceTree = "<group>"; };
+		A15BD95222E6E2C700D899F1 /* FixPhoneShowInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixPhoneShowInfoViewController.h; sourceTree = "<group>"; };
+		A15BD95322E6E2C700D899F1 /* FixPhoneShowInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FixPhoneShowInfoViewController.m; sourceTree = "<group>"; };
+		A15BD95422E6E2C700D899F1 /* FixPhoneShowInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FixPhoneShowInfoViewController.xib; sourceTree = "<group>"; };
 		A16093F1229E1BC100FBC19B /* RealFirstTipViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RealFirstTipViewController.h; sourceTree = "<group>"; };
 		A16093F2229E1BC100FBC19B /* RealFirstTipViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RealFirstTipViewController.m; sourceTree = "<group>"; };
 		A16093F3229E1BC100FBC19B /* RealFirstTipViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RealFirstTipViewController.xib; sourceTree = "<group>"; };
@@ -802,6 +855,9 @@
 		A16D94AF22C5C453001F8483 /* ldxxListHouseDetial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ldxxListHouseDetial.m; sourceTree = "<group>"; };
 		A16D94B122C5F7C6001F8483 /* DetialHouseBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetialHouseBanner.h; sourceTree = "<group>"; };
 		A16D94B222C5F7C6001F8483 /* DetialHouseBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetialHouseBanner.m; sourceTree = "<group>"; };
+		A16F947722DC7815008CF8B9 /* MyHouseTaxListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHouseTaxListViewController.h; sourceTree = "<group>"; };
+		A16F947822DC7815008CF8B9 /* MyHouseTaxListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseTaxListViewController.m; sourceTree = "<group>"; };
+		A16F947922DC7815008CF8B9 /* MyHouseTaxListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHouseTaxListViewController.xib; sourceTree = "<group>"; };
 		A1817F61229E8704003B2FBF /* ChooseOtherRealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseOtherRealViewController.h; sourceTree = "<group>"; };
 		A1817F62229E8704003B2FBF /* ChooseOtherRealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseOtherRealViewController.m; sourceTree = "<group>"; };
 		A1817F63229E8704003B2FBF /* ChooseOtherRealViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseOtherRealViewController.xib; sourceTree = "<group>"; };
@@ -1617,6 +1673,15 @@
 				A106884022D713BC005D7E84 /* MyHouseBottomPapaer.h */,
 				A106884122D713BC005D7E84 /* MyHouseBottomPapaer.m */,
 				A106884322D713C3005D7E84 /* MyHouseBottomPapaer.xib */,
+				A16F947722DC7815008CF8B9 /* MyHouseTaxListViewController.h */,
+				A16F947822DC7815008CF8B9 /* MyHouseTaxListViewController.m */,
+				A16F947922DC7815008CF8B9 /* MyHouseTaxListViewController.xib */,
+				A14B5D9B22DECA9800F98E74 /* MyHouseTaxListTableViewCell.h */,
+				A14B5D9C22DECA9800F98E74 /* MyHouseTaxListTableViewCell.m */,
+				A14B5D9D22DECA9800F98E74 /* MyHouseTaxListTableViewCell.xib */,
+				A14B5DA022DECAC900F98E74 /* MyHouseTaxHeaderSection.h */,
+				A14B5DA122DECAC900F98E74 /* MyHouseTaxHeaderSection.m */,
+				A14B5DA322DECADB00F98E74 /* MyHouseTaxHeaderSection.xib */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -1967,7 +2032,6 @@
 		A1BFB4DB22A76459008B629B /* Qualification */ = {
 			isa = PBXGroup;
 			children = (
-				A1C0992B22AF412100AAE38E /* Result */,
 				A1BFB4DC22A7656D008B629B /* ChooseQualificationTypeViewController.h */,
 				A1BFB4DD22A7656D008B629B /* ChooseQualificationTypeViewController.m */,
 				A1BFB4DE22A7656D008B629B /* ChooseQualificationTypeViewController.xib */,
@@ -2031,6 +2095,9 @@
 				A15B3ECE22C46214004BF242 /* ResultTitleTableViewCell.h */,
 				A15B3ECF22C46214004BF242 /* ResultTitleTableViewCell.m */,
 				A15B3ED022C46214004BF242 /* ResultTitleTableViewCell.xib */,
+				A14B5DAA22DF1F3F00F98E74 /* ResultQualityResultVC.h */,
+				A14B5DAB22DF1F3F00F98E74 /* ResultQualityResultVC.m */,
+				A14B5DAC22DF1F3F00F98E74 /* ResultQualityResultVC.xib */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -2047,8 +2114,9 @@
 				A1FF19C622AF82FC00C09386 /* RecogtionHousesCollectionViewCell.h */,
 				A1FF19C722AF82FC00C09386 /* RecogtionHousesCollectionViewCell.m */,
 				A1FF19C822AF82FC00C09386 /* RecogtionHousesCollectionViewCell.xib */,
-				A106883A22D460BD005D7E84 /* ZTDetialViewController.h */,
-				A106883B22D460BD005D7E84 /* ZTDetialViewController.m */,
+				A15BD93922E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.h */,
+				A15BD93A22E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.m */,
+				A15BD93B22E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.xib */,
 			);
 			path = DetialAndList;
 			sourceTree = "<group>";
@@ -2431,6 +2499,10 @@
 				A1EFAC9622B22971007593EB /* DetialPictureSegmentViewController.m */,
 				A1EFAC9822B229AD007593EB /* DetialPicCollectionViewController.h */,
 				A1EFAC9922B229AD007593EB /* DetialPicCollectionViewController.m */,
+				A14B5DAF22E1567E00F98E74 /* HouseDetialMapViewController.h */,
+				A14B5DB022E1567E00F98E74 /* HouseDetialMapViewController.m */,
+				A15BD93122E172A900D899F1 /* DetialCustomMapView.h */,
+				A15BD93222E172A900D899F1 /* DetialCustomMapView.m */,
 			);
 			path = OtherDetial;
 			sourceTree = "<group>";
@@ -2507,6 +2579,9 @@
 				DC55BE0B215A016B009654EC /* MUForgetPwdViewController.h */,
 				DC55BE0C215A016B009654EC /* MUForgetPwdViewController.m */,
 				DC55BE0D215A016B009654EC /* MUForgetPwdViewController.xib */,
+				A15BD93422E1A26600D899F1 /* NewRegisterViewController.h */,
+				A15BD93522E1A26600D899F1 /* NewRegisterViewController.m */,
+				A15BD93622E1A26600D899F1 /* NewRegisterViewController.xib */,
 			);
 			path = "登陆注册";
 			sourceTree = "<group>";
@@ -2537,6 +2612,12 @@
 				A159088D22CAE87600EAAC6D /* QuestionDetialViewController.h */,
 				A159088E22CAE87600EAAC6D /* QuestionDetialViewController.m */,
 				A159088F22CAE87600EAAC6D /* QuestionDetialViewController.xib */,
+				A15BD94D22E6C3DE00D899F1 /* MyCenterPhoneViewController.h */,
+				A15BD94E22E6C3DE00D899F1 /* MyCenterPhoneViewController.m */,
+				A15BD94F22E6C3DE00D899F1 /* MyCenterPhoneViewController.xib */,
+				A15BD95222E6E2C700D899F1 /* FixPhoneShowInfoViewController.h */,
+				A15BD95322E6E2C700D899F1 /* FixPhoneShowInfoViewController.m */,
+				A15BD95422E6E2C700D899F1 /* FixPhoneShowInfoViewController.xib */,
 			);
 			path = "二级页面";
 			sourceTree = "<group>";
@@ -2930,6 +3011,8 @@
 		DCBD357C215084B500763961 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A106883A22D460BD005D7E84 /* ZTDetialViewController.h */,
+				A106883B22D460BD005D7E84 /* ZTDetialViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2947,6 +3030,12 @@
 				A106884A22D826E0005D7E84 /* NewsHousesCollectionViewCell.h */,
 				A106884B22D826E0005D7E84 /* NewsHousesCollectionViewCell.m */,
 				A106884C22D826E0005D7E84 /* NewsHousesCollectionViewCell.xib */,
+				A15BD93E22E5597F00D899F1 /* ZTDetialHeadView.h */,
+				A15BD93F22E5597F00D899F1 /* ZTDetialHeadView.m */,
+				A15BD94122E5598900D899F1 /* ZTDetialHeadView.xib */,
+				A15BD94322E5621E00D899F1 /* ZTDetialBottomView.h */,
+				A15BD94422E5621E00D899F1 /* ZTDetialBottomView.m */,
+				A15BD94622E5622500D899F1 /* ZTDetialBottomView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3281,6 +3370,7 @@
 				A19AD8F222A10F3D004713A2 /* View */,
 				A1817F5F229E7D72003B2FBF /* Real */,
 				A1BFB4DB22A76459008B629B /* Qualification */,
+				A1C0992B22AF412100AAE38E /* Result */,
 			);
 			path = "二级视图";
 			sourceTree = "<group>";
@@ -3384,6 +3474,7 @@
 				A158718422B8D18F001567F8 /* MyHouseDetialOneCell.xib in Resources */,
 				A1BFB4EB22A7917A008B629B /* ChooseAddMyselfVC.xib in Resources */,
 				DCB860CA215B388A001C58EF /* YMSPhotoPickerViewController.xib in Resources */,
+				A14B5DA422DECADB00F98E74 /* MyHouseTaxHeaderSection.xib in Resources */,
 				A106884422D713C3005D7E84 /* MyHouseBottomPapaer.xib in Resources */,
 				A1FF19E322B0EDC100C09386 /* DetialHouseTypeItem.xib in Resources */,
 				A158719522B8DB71001567F8 /* MyHouseDetialTwoCell.xib in Resources */,
@@ -3396,7 +3487,9 @@
 				A15B3ECD22C46205004BF242 /* ResultContentTableViewCell.xib in Resources */,
 				DCB860CB215B388A001C58EF /* YMSPhotoPickerAssets.xcassets in Resources */,
 				A19AD8F122A0D10F004713A2 /* RealChooseForeignViewController.xib in Resources */,
+				A15BD95122E6C3DE00D899F1 /* MyCenterPhoneViewController.xib in Resources */,
 				A1EFAD3D22B3A8E0007593EB /* scaningline@2x.png in Resources */,
+				A16F947B22DC7815008CF8B9 /* MyHouseTaxListViewController.xib in Resources */,
 				A1FF1A0E22B1E45500C09386 /* BuildingListHeader.xib in Resources */,
 				A1609425229E378B00FBC19B /* SVProgressHUD.bundle in Resources */,
 				A1094DD6229BB90F00A278A1 /* HomePageIconCollectionViewCell.xib in Resources */,
@@ -3406,6 +3499,7 @@
 				A1A990AB22C05B74000EB09A /* InformationLookoutViewController.xib in Resources */,
 				A1094DF0229BD48500A278A1 /* HomePageHousesCollectionViewCell.xib in Resources */,
 				A16A983C22ADF9EA00078BEE /* MyCenterTableViewCell.xib in Resources */,
+				A15BD93822E1A26600D899F1 /* NewRegisterViewController.xib in Resources */,
 				A1A990A622C05B74000EB09A /* NewsCollectionViewCell.xib in Resources */,
 				A1EFACE622B3898B007593EB /* SysMesssageTableViewCell.xib in Resources */,
 				A1BFB4E522A76C24008B629B /* ChooseQualificationTableViewCell.xib in Resources */,
@@ -3416,6 +3510,7 @@
 				A1A990B022C0AA92000EB09A /* AddChildrenTableViewCell.xib in Resources */,
 				A16A984C22AE32C900078BEE /* QuestionListTableViewCell.xib in Resources */,
 				A158717F22B8C97F001567F8 /* MyHouseListTableViewCell.xib in Resources */,
+				A14B5D9F22DECA9800F98E74 /* MyHouseTaxListTableViewCell.xib in Resources */,
 				A16A977E22A900B800078BEE /* AppendOneTipViewController.xib in Resources */,
 				DC55BE0A215A014D009654EC /* MURegisterViewController.xib in Resources */,
 				A15B3ED222C46214004BF242 /* ResultTitleTableViewCell.xib in Resources */,
@@ -3428,7 +3523,9 @@
 				A15871B022B8FDAD001567F8 /* MyHouseCodeViewController.xib in Resources */,
 				A1EFACA022B23E3B007593EB /* AllHousesListViewController.xib in Resources */,
 				A1FF1A2522B1F7AB00C09386 /* HouseDetialFeedbackViewController.xib in Resources */,
+				A15BD94222E5598900D899F1 /* ZTDetialHeadView.xib in Resources */,
 				DCB860C4215B388A001C58EF /* YMSPhotoCell.xib in Resources */,
+				A15BD95622E6E2C700D899F1 /* FixPhoneShowInfoViewController.xib in Resources */,
 				A158719C22B8F081001567F8 /* MyHouseTaxHeaderCell.xib in Resources */,
 				A1EFACD822B34E5C007593EB /* select_square_right@2x.png in Resources */,
 				A16A985B22AE4F3700078BEE /* MyCenterSettingViewController.xib in Resources */,
@@ -3457,6 +3554,7 @@
 				A1EFACDA22B34E5C007593EB /* small_remove@3x.png in Resources */,
 				A1609472229E54FE00FBC19B /* .gitkeep in Resources */,
 				A15871A122B8F35B001567F8 /* MyHouseTaxContentCell.xib in Resources */,
+				A15BD93D22E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.xib in Resources */,
 				A1EFACDC22B34E5C007593EB /* select_square_grey@2x.png in Resources */,
 				DC7991F62151ED5F00368A56 /* MJRefresh.bundle in Resources */,
 				A106884E22D826E0005D7E84 /* NewsHousesCollectionViewCell.xib in Resources */,
@@ -3470,6 +3568,7 @@
 				A1817F6A229FA71E003B2FBF /* RealFinishTipView1.xib in Resources */,
 				A16A984122AE078600078BEE /* MyCenterLoginOutTableViewCell.xib in Resources */,
 				A16A976E22A8E5EC00078BEE /* ChooseAppendViewController.xib in Resources */,
+				A14B5DAE22DF1F3F00F98E74 /* ResultQualityResultVC.xib in Resources */,
 				A1BFB4FF22A7C409008B629B /* AddMateShipFooterView.xib in Resources */,
 				A1EFAD4122B3A8E0007593EB /* flashlightscan@3x.png in Resources */,
 				A1EFACDE22B34E5C007593EB /* small_remove@2x.png in Resources */,
@@ -3482,6 +3581,7 @@
 				A1817F72229FCD54003B2FBF /* RealChooseHKViewController.xib in Resources */,
 				A1BFB4E022A7656E008B629B /* ChooseQualificationTypeViewController.xib in Resources */,
 				A19AD94F22A4B053004713A2 /* TOCropViewControllerLocalizable.strings in Resources */,
+				A15BD94722E5622500D899F1 /* ZTDetialBottomView.xib in Resources */,
 				A16093F5229E1BC100FBC19B /* RealFirstTipViewController.xib in Resources */,
 				A159089122CAE87600EAAC6D /* QuestionDetialViewController.xib in Resources */,
 				A1EFACA522B3483C007593EB /* NoneDataTipView.xib in Resources */,
@@ -3538,6 +3638,7 @@
 				A1FC0CB022C352F7002B214E /* AddOtherModel.m in Sources */,
 				A160945D229E54FE00FBC19B /* KYPopupTransitionAnimators.swift in Sources */,
 				A1139D4622BB1E6100463FAD /* MJProperty.m in Sources */,
+				A15BD94022E5597F00D899F1 /* ZTDetialHeadView.m in Sources */,
 				DCB860C5215B388A001C58EF /* YMSSinglePhotoViewController.m in Sources */,
 				DCBD35F721509D7000763961 /* MASViewAttribute.m in Sources */,
 				A1FF1A1122B1E88700C09386 /* BuildingDetialMoreViewController.m in Sources */,
@@ -3546,6 +3647,7 @@
 				DCBD364921509DAF00763961 /* YYTextInput.m in Sources */,
 				DCBD365B21509DAF00763961 /* YYTextWeakProxy.m in Sources */,
 				DC7991EC2151ED5F00368A56 /* MJRefreshHeader.m in Sources */,
+				A15BD95522E6E2C700D899F1 /* FixPhoneShowInfoViewController.m in Sources */,
 				A1609469229E54FE00FBC19B /* LXAlertViewController.swift in Sources */,
 				A1817F64229E8704003B2FBF /* ChooseOtherRealViewController.m in Sources */,
 				DC0AF53D2152198E00B41476 /* SDWebImageManager.m in Sources */,
@@ -3575,6 +3677,7 @@
 				DC55BE09215A014D009654EC /* MURegisterViewController.m in Sources */,
 				A1A990AF22C0AA92000EB09A /* AddChildrenTableViewCell.m in Sources */,
 				A1094DCB229B924C00A278A1 /* MUSpecialViewController.m in Sources */,
+				A15BD95022E6C3DE00D899F1 /* MyCenterPhoneViewController.m in Sources */,
 				DC7991F42151ED5F00368A56 /* MJRefreshNormalHeader.m in Sources */,
 				DC7991F82151ED5F00368A56 /* NSBundle+MJRefresh.m in Sources */,
 				A1FF1A0C22B1E44D00C09386 /* BuildingListHeader.m in Sources */,
@@ -3621,6 +3724,7 @@
 				A160941B229E378B00FBC19B /* JQIndexBannerSubview.m in Sources */,
 				A106883F22D70D62005D7E84 /* MyHousePaperViewController.m in Sources */,
 				A16A977322A8F11300078BEE /* AddChildrenListViewController.m in Sources */,
+				A14B5DAD22DF1F3F00F98E74 /* ResultQualityResultVC.m in Sources */,
 				A1EFAD3122B3A8E0007593EB /* JYBDIDCardVC.m in Sources */,
 				A158718322B8D18F001567F8 /* MyHouseDetialOneCell.m in Sources */,
 				DCBD35F521509D7000763961 /* MASConstraintMaker.m in Sources */,
@@ -3643,7 +3747,9 @@
 				DC7991F32151ED5F00368A56 /* MJRefreshGifHeader.m in Sources */,
 				A1817F71229FCD54003B2FBF /* RealChooseHKViewController.m in Sources */,
 				A1EFAC8722B225AA007593EB /* HMSegmentedControl.m in Sources */,
+				A16F947A22DC7815008CF8B9 /* MyHouseTaxListViewController.m in Sources */,
 				DC7991E82151ED5F00368A56 /* MJRefreshAutoFooter.m in Sources */,
+				A14B5D9E22DECA9800F98E74 /* MyHouseTaxListTableViewCell.m in Sources */,
 				DC55BDFF2159D794009654EC /* MUUserModel.m in Sources */,
 				A1C0BCA322AF824400AAE38E /* RecognitionListViewController.m in Sources */,
 				A158719622B8DB71001567F8 /* MyHouseDetialTwoCell.m in Sources */,
@@ -3699,6 +3805,7 @@
 				A16D94A722C5C3A5001F8483 /* hxlistVoHouseDetial.m in Sources */,
 				DC55BE13215A3D28009654EC /* NSData+Base64.m in Sources */,
 				A1817F68229FA715003B2FBF /* RealFinishTipView1.m in Sources */,
+				A15BD94522E5621E00D899F1 /* ZTDetialBottomView.m in Sources */,
 				DC7991F92151ED5F00368A56 /* UIScrollView+MJExtension.m in Sources */,
 				A160945F229E54FE00FBC19B /* UIView+KYPopup.swift in Sources */,
 				A1817F6D229FC33A003B2FBF /* UIView+add.m in Sources */,
@@ -3711,11 +3818,13 @@
 				A15871AF22B8FDAD001567F8 /* MyHouseCodeViewController.m in Sources */,
 				A160946F229E54FE00FBC19B /* KYActionSheetContentView.swift in Sources */,
 				A1EFACCA22B34E5C007593EB /* ThirdTableView.m in Sources */,
+				A15BD93322E172A900D899F1 /* DetialCustomMapView.m in Sources */,
 				DC0AF5412152198E00B41476 /* UIImage+ForceDecode.m in Sources */,
 				A1A990AA22C05B74000EB09A /* NewsSegmentViewController.m in Sources */,
 				A1EFAD2F22B3A8E0007593EB /* UIAlertController+IDCardExtend.m in Sources */,
 				A16093F4229E1BC100FBC19B /* RealFirstTipViewController.m in Sources */,
 				A160945E229E54FE00FBC19B /* KYPopupViewController.swift in Sources */,
+				A14B5DA222DECAC900F98E74 /* MyHouseTaxHeaderSection.m in Sources */,
 				A160941A229E378B00FBC19B /* JQFlowView.m in Sources */,
 				A1EFAC9322B228AD007593EB /* Env.m in Sources */,
 				A1BFB4F322A7BAB4008B629B /* AddMateShipHeaderView.m in Sources */,
@@ -3731,6 +3840,7 @@
 				A1FF1A2422B1F7AB00C09386 /* HouseDetialFeedbackViewController.m in Sources */,
 				A1EFAD3322B3A8E0007593EB /* JYBDBankCardSearch.m in Sources */,
 				A1094DEA229BCF6500A278A1 /* HomePageNewsCollectionViewCell.m in Sources */,
+				A15BD93722E1A26600D899F1 /* NewRegisterViewController.m in Sources */,
 				DCBD35F821509D7000763961 /* MASViewConstraint.m in Sources */,
 				DC7991EB2151ED5F00368A56 /* MJRefreshFooter.m in Sources */,
 				DCBD35C221509D4600763961 /* AFHTTPSessionManager.m in Sources */,
@@ -3755,6 +3865,7 @@
 				A159089022CAE87600EAAC6D /* QuestionDetialViewController.m in Sources */,
 				A19AD95522A4B053004713A2 /* UIImage+FixOrientation.m in Sources */,
 				DC7991FB2151ED5F00368A56 /* UIView+MJExtension.m in Sources */,
+				A15BD93C22E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.m in Sources */,
 				A1094DC52297D64E00A278A1 /* NSObject+null.m in Sources */,
 				A1609462229E54FE00FBC19B /* KYPopupDefaultButton.swift in Sources */,
 				A1094DBF2297D34000A278A1 /* GTMBase64.m in Sources */,
@@ -3800,6 +3911,7 @@
 				A16A985022AE3C8B00078BEE /* ResultQualityViewController.m in Sources */,
 				DC7991E92151ED5F00368A56 /* MJRefreshBackFooter.m in Sources */,
 				A19AD95322A4B053004713A2 /* TOCropToolbar.m in Sources */,
+				A14B5DB122E1567E00F98E74 /* HouseDetialMapViewController.m in Sources */,
 				A1139D6122BC7D7C00463FAD /* MOFSToolView.m in Sources */,
 				DCBD365C21509DAF00763961 /* YYLabel.m in Sources */,
 				A1A990BC22C1CEBD000EB09A /* jtcyPersonModel.m in Sources */,
@@ -3995,7 +4107,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = UFR88FXXU3;
+				DEVELOPMENT_TEAM = Z3L7YTPS6H;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4035,10 +4147,10 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hxj.jiaoyibao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gigainfo.yuejuxingcheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "603576e7-2d8e-4bed-a2f9-80e9c355eef0";
-				PROVISIONING_PROFILE_SPECIFIER = jyb_dev;
+				PROVISIONING_PROFILE_SPECIFIER = museum_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "MuseumAi/commen/MuseumAi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -4054,7 +4166,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = UFR88FXXU3;
+				DEVELOPMENT_TEAM = TFCB5AC8DJ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4093,10 +4205,10 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hxj.jiaoyibao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gigainfo.yuejuxingcheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7eaab269-9b29-46b6-b607-c26fcaff78a0";
-				PROVISIONING_PROFILE_SPECIFIER = jyb_dev;
+				PROVISIONING_PROFILE_SPECIFIER = yuejuxingcheng_adhoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "MuseumAi/commen/MuseumAi-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

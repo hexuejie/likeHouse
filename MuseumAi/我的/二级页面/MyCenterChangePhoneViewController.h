@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MyCenterChangePhoneViewController : MURootViewController
 
+@property (nonatomic, strong) NSString *zjhm;
+
 @end
 
 NS_ASSUME_NONNULL_END

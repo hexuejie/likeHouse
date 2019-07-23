@@ -10,6 +10,8 @@
 #import "AddChildrenViewController.h"
 #import "ChooseOtherRealViewController.h"
 #import "AddChildrenTableViewCell.h"
+#import "RealChooseHKViewController.h"
+#import "RealChooseForeignViewController.h"
 
 @interface AddChildrenListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,6 +23,11 @@
 @end
 
 @implementation AddChildrenListViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self customReloadData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,7 +52,6 @@
     [_rigthButton addTarget:self action:@selector(tightViewClear:) forControlEvents:UIControlEventTouchUpInside];
     _rigthButton.titleLabel.font = kSysFont(16);
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rigthButton];
-    
 }
 - (IBAction)addChildrenClick:(id)sender {
     if (self.bottomButton.selected) {
@@ -88,19 +94,38 @@
 //        [self.tableView reloadData];
         return;
     }
-    
-    
+    [LoginSession sharedInstance].pageType = 2;
     NSDictionary *tempDic = _dataArray[indexPath.row];
-    ChooseOtherRealViewController *vc = [ChooseOtherRealViewController new];
-//    vc.dataDic = tempDic;//回填
     [LoginSession sharedInstance].otherYhbh = tempDic[@"jtcy"][@"yhbh"];
     if ([LoginSession sharedInstance].otherYhbh == nil) {
         [LoginSession sharedInstance].otherYhbh = @"";
     }
+    NSString *zjlxStr = [NSString stringWithFormat:@"%@",tempDic[@"jtcy"][@"zjlx"]];
+    if(zjlxStr != nil){
+        if([zjlxStr isEqualToString:@"港澳台来往大陆通行证"]){
+            RealChooseHKViewController *vc = [RealChooseHKViewController new];
+            vc.personData = [PersonModel mj_objectWithKeyValues:tempDic];
+            [self.navigationController pushViewController:vc animated:YES];
+            return;
+        }else if([zjlxStr isEqualToString:@"护照"]){
+            RealChooseForeignViewController *vc = [RealChooseForeignViewController new];
+            vc.personData = [PersonModel mj_objectWithKeyValues:tempDic];
+            [self.navigationController pushViewController:vc animated:YES];
+            return;
+        }else if([zjlxStr isEqualToString:@"户口薄"]||[zjlxStr isEqualToString:@"身份证"]){
+            AddChildrenViewController *vc = [AddChildrenViewController new];
+            vc.personData = [PersonModel mj_objectWithKeyValues:tempDic];
+            [self.navigationController pushViewController:vc animated:YES];
+            return;
+        }
+    }
+    
+    ChooseOtherRealViewController *vc = [ChooseOtherRealViewController new];
+//    vc.dataDic = tempDic;//回填
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)reloadData {
+- (void)customReloadData {
     
     __weak typeof(self) weakSelf = self;
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/listznxx") para:@{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
@@ -159,7 +184,7 @@
     if (button.selected) {
         [self.tableView reloadData];
     }else{
-        [self reloadData];
+        [self customReloadData];
     }
 }
 @end

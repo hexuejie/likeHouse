@@ -70,6 +70,7 @@
         if ([coment isKindOfClass:[UIImage class]]) {
             item.image = coment;
         }else{
+            item.contentMode = UIViewContentModeScaleAspectFill;
             [item setCommenImageUrl:coment];
         }
 //        item.backgroundColor = kTestColor;
@@ -115,11 +116,12 @@
             }
             
             UIImageView *item = self.imageViews[index];
-            id coment = self.imageArray[i];
-            item.tag = i;
+            item.tag = (i+1)*2 +j;
+            id coment = self.imageArray[item.tag];
             if ([coment isKindOfClass:[UIImage class]]) {
                 item.image = coment;
             }else{
+                item.contentMode = UIViewContentModeScaleAspectFill;
                 [item setCommenImageUrl:coment];
             }
 //            item.backgroundColor = kTestColor;

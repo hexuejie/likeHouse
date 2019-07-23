@@ -74,6 +74,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)NSString *createTime;
 
 
+@property (nonatomic,assign)BOOL isNavigationBarHidden;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

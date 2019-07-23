@@ -28,9 +28,9 @@
 
 @property (strong, nonatomic) NSDictionary *dataDic;
 
-@property (assign, nonatomic) BOOL grxx;
-@property (assign, nonatomic) BOOL poxx;
-@property (assign, nonatomic) BOOL znxx;
+@property (assign, nonatomic) BOOL tsrc;
+@property (assign, nonatomic) BOOL zsjt;
+@property (assign, nonatomic) BOOL szssb;
 
 @end
 
@@ -74,23 +74,6 @@
 
 - (IBAction)saveButtonClick:(id)sender {
     [self callBackClick];
-//    if (self.oneTextField.text.length>0&&
-//        self.twoTextField.text.length>0&&
-//        self.threeTextField.text.length>0&&
-//        self.addImageView.image
-//        ) {
-//
-//        [SVProgressHelper dismissWithMsg:@"保存成功 刷新数据！"];
-//        for (UIViewController *controller in self.navigationController.viewControllers) {
-//            if ([controller isKindOfClass:[ChooseQualificationTypeViewController class]]) {
-//                ChooseQualificationTypeViewController *A =(ChooseQualificationTypeViewController *)controller;
-//                [self.navigationController popToViewController:A animated:YES];
-//            }
-//        }
-//
-//    }else{
-//        [SVProgressHelper dismissWithMsg:@"请完善申请人信息!"];
-//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -107,21 +90,24 @@
         if (success) {
             weakSelf.dataDic = response[@"data"];
             if (![Utility is_empty:weakSelf.dataDic[@"tsrc"]]) {
-                weakSelf.grxx = [weakSelf.dataDic[@"tsrc"] boolValue];
+                weakSelf.tsrc = [weakSelf.dataDic[@"tsrc"] boolValue];
             }
             if (![Utility is_empty:weakSelf.dataDic[@"zsjt"]]) {
-                weakSelf.poxx = [weakSelf.dataDic[@"zsjt"] boolValue];
+                weakSelf.zsjt = [weakSelf.dataDic[@"zsjt"] boolValue];
             }
             if (![Utility is_empty:weakSelf.dataDic[@"szssb"]]) {
-                weakSelf.znxx = [weakSelf.dataDic[@"szssb"] boolValue];
+                weakSelf.szssb = [weakSelf.dataDic[@"szssb"] boolValue];
             }
-            if (weakSelf.grxx) {
+            weakSelf.tagLabel1.text = @"无";
+            weakSelf.tagLabel2.text = @"无";
+            weakSelf.tagLabel3.text = @"无";
+            if (weakSelf.tsrc) {
                 weakSelf.tagLabel1.text = @"已添加";
             }
-            if (weakSelf.poxx) {
+            if (weakSelf.zsjt) {
                 weakSelf.tagLabel2.text = @"已添加";
             }
-            if (weakSelf.znxx) {
+            if (weakSelf.szssb) {
                 weakSelf.tagLabel3.text = @"已添加";
             }
 //            [weakSelf.tableView reloadData];

@@ -18,7 +18,7 @@
 
 typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
 
-@interface AppDelegate ()<BMKGeneralDelegate, TencentSessionDelegate>
+@interface AppDelegate ()<BMKGeneralDelegate, TencentSessionDelegate,BMKLocationAuthDelegate>
 {
     BMKMapManager *_mapManager;
     UIBackgroundTaskIdentifier taskId;
@@ -39,7 +39,7 @@ typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
 //    if (![easyar_Engine initialize:EasyARKey]) {
 //        NSLog(@"Initialization Failed.");
 //    }
-//    [self BaiduMapInit];
+    [self BaiduMapInit];
     BOOL registerWX = [WXApi registerApp:WEIXINKEY];
     if (registerWX) {
         NSLog(@"微信注册成功");
@@ -155,29 +155,29 @@ typedef void(^LoginHandler)(NSString *errorMsg, NSDictionary *response);
     tabBar.selectedIndex = 0;
 }
 
-//- (void)BaiduMapInit {
-//    // 初始化定位SDK
-//    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:BaiduMapKey authDelegate:self];
-//    //要使用百度地图，请先启动BMKMapManager
-//    _mapManager = [[BMKMapManager alloc] init];
-//
-//    /**
-//     百度地图SDK所有API均支持百度坐标（BD09）和国测局坐标（GCJ02），用此方法设置您使用的坐标类型.
-//     默认是BD09（BMK_COORDTYPE_BD09LL）坐标.
-//     如果需要使用GCJ02坐标，需要设置CoordinateType为：BMK_COORDTYPE_COMMON.
-//     */
-//    if ([BMKMapManager setCoordinateTypeUsedInBaiduMapSDK:BMK_COORDTYPE_BD09LL]) {
-//        NSLog(@"经纬度类型设置成功");
-//    } else {
-//        NSLog(@"经纬度类型设置失败");
-//    }
-//
-//    //启动引擎并设置AK并设置delegate
-//    BOOL result = [_mapManager start:BaiduMapKey generalDelegate:self];
-//    if (!result) {
-//        NSLog(@"启动引擎失败");
-//    }
-//}
+- (void)BaiduMapInit {
+    // 初始化定位SDK
+    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:BaiduMapKey authDelegate:self];
+    //要使用百度地图，请先启动BMKMapManager
+    _mapManager = [[BMKMapManager alloc] init];
+
+    /**
+     百度地图SDK所有API均支持百度坐标（BD09）和国测局坐标（GCJ02），用此方法设置您使用的坐标类型.
+     默认是BD09（BMK_COORDTYPE_BD09LL）坐标.
+     如果需要使用GCJ02坐标，需要设置CoordinateType为：BMK_COORDTYPE_COMMON.
+     */
+    if ([BMKMapManager setCoordinateTypeUsedInBaiduMapSDK:BMK_COORDTYPE_BD09LL]) {
+        NSLog(@"经纬度类型设置成功");
+    } else {
+        NSLog(@"经纬度类型设置失败");
+    }
+
+    //启动引擎并设置AK并设置delegate
+    BOOL result = [_mapManager start:BaiduMapKey generalDelegate:self];
+    if (!result) {
+        NSLog(@"启动引擎失败");
+    }
+}
 
 /**
  联网结果回调

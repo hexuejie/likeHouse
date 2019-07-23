@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *fl;
 @property (nonatomic,copy)NSString *rdl;
 
+@property (nonatomic,copy)NSString *ztid;
+
 
 @property (nonatomic,copy)NSString *ztmc;//"金地铂悦 韶山南 双地铁",标签
 @property (nonatomic,copy)NSString *ztnr;

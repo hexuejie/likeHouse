@@ -157,8 +157,7 @@
         if (![innermostModel.filterName isEqualToString:@"户型不限"]) {
             NSString *filterString;
             for (FilterSelectIndexModel *innermostModel in self.sortFilters3) {
-                NSInteger index = [self.sortFilters3 indexOfObject:innermostModel];
-                if (index == self.sortFilters3.count-1) {
+                if (filterString == nil) {
                     filterString = [NSString stringWithFormat:@"%ld",innermostModel.index];
                 } else {
                     filterString = [NSString stringWithFormat:@"%@,%ld",filterString,innermostModel.index];
@@ -338,6 +337,7 @@
         [sender setTitle:filterString forState:UIControlStateNormal];
         [sender setTitle:filterString forState:UIControlStateSelected];
         [sender setImagePositionWithType:LXImagePositionTypeRight spacing:7 maxWidth:(sender.bounds.size.width-25)];
+        weakSelf.houses = [NSMutableArray new];
         [weakSelf reloadData];
     };
     

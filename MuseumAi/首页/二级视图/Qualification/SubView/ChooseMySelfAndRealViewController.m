@@ -28,9 +28,14 @@
 @property (strong, nonatomic) NSDictionary *dataDic;
 @property (strong, nonatomic) NSArray *dataArray;
 @property (strong, nonatomic) NSMutableArray *firstArray;
+@property (strong, nonatomic) NSMutableArray *secondArray;
 
 @property (nonatomic , assign) NSInteger tagSwitch;
 @property (nonatomic , strong) ReleaseHomeworkTimeViewMask *timeViewMask;
+
+@property (nonatomic , strong) RealFinishTipView1 *tipView1;
+@property (nonatomic , strong) NSTimer *timer;
+@property (nonatomic , assign) NSInteger count;
 @end
 
 @implementation ChooseMySelfAndRealViewController
@@ -41,10 +46,12 @@
     
     self.title = @"添加申购人信息";
     _firstArray = [NSMutableArray new];
-    _dataArray = @[self.firstArray,//身份证扫出来
-                   @[@{@"title":@"家庭户口类型",@"content":@""},
+    
+    _secondArray = @[@{@"title":@"家庭户口类型",@"content":@""},
                      @{@"title":@"户籍所在地",@"content":@""},
-                     @{@"title":@"婚姻状况",@"content":@""}]
+                     @{@"title":@"婚姻状况",@"content":@""}].mutableCopy;
+    _dataArray = @[self.firstArray,//身份证扫出来
+                   _secondArray
                    ];
     
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"UITableViewHeaderFooterView"];
@@ -78,7 +85,7 @@
     tableViewGesture.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:tableViewGesture];
     
-    _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] lastObject];
+    
 }
 
 - (void)commentTableViewTouchInSide{
@@ -93,6 +100,7 @@
     AVCaptureVC.isBehinded = NO;
     AVCaptureVC.finish = ^(JYBDCardIDInfo *info, UIImage *image)
     {
+        weakSelf.secondArray = [weakSelf.dataArray lastObject];
         NSArray *tempArray = @[@{@"title":@"姓名",@"content":info.name},
                                @{@"title":@"性别",@"content":info.gender},
                                @{@"title":@"民族",@"content":info.nation},
@@ -101,9 +109,9 @@
                                @{@"title":@"身份证号码",@"content":info.num}];
         [weakSelf.firstArray addObjectsFromArray:tempArray];
         weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
-                               @[@{@"title":@"家庭户口类型",@"content":@""},
-                                 @{@"title":@"户籍所在地",@"content":@""},
-                                 @{@"title":@"婚姻状况",@"content":@""}]
+                               @[weakSelf.secondArray[0],
+                                 weakSelf.secondArray[1],
+                                 weakSelf.secondArray[2]]
                                ];
         weakSelf.header.addImageViewOne.image = image;
         [weakSelf.tableView reloadData];
@@ -118,14 +126,15 @@
     AVCaptureVC.isBehinded = YES;
     AVCaptureVC.finish = ^(JYBDCardIDInfo *info, UIImage *image)
     {
-        NSArray *tempArray = @[@{@"title":@"签证机关",@"content":info.issue},
+        weakSelf.secondArray = [weakSelf.dataArray lastObject];
+        NSArray *tempArray = @[@{@"title":@"签发机关",@"content":info.issue},
                                @{@"title":@"有效期限",@"content":info.valid},
                                ];
         [weakSelf.firstArray addObjectsFromArray:tempArray];
         weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
-                               @[@{@"title":@"家庭户口类型",@"content":@""},
-                                 @{@"title":@"户籍所在地",@"content":@""},
-                                 @{@"title":@"婚姻状况",@"content":@""}]
+                               @[weakSelf.secondArray[0],
+                                 weakSelf.secondArray[1],
+                                 weakSelf.secondArray[2]]
                                ];
         weakSelf.header.addImageViewTwo.image = image;
         [weakSelf.tableView reloadData];
@@ -245,11 +254,72 @@
 
         self.dataArray.count>=2
         ) {
-        [self updateLoadImage:nil];
+        _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
+        _tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
+        _tipView1.sureType = 0;
+        
+        for (NSDictionary *tempDic in [_dataArray firstObject]) {
+            if ([tempDic[@"title"] isEqualToString:@"姓名"]) {
+                _tipView1.textField1.text = [NSString stringWithFormat:@"%@",tempDic[@"content"]];
+            }else if ([tempDic[@"title"] isEqualToString:@"性别"]) {
+                _tipView1.textField2.text = [NSString stringWithFormat:@"%@",tempDic[@"content"]];
+            }else if ([tempDic[@"title"] isEqualToString:@"民族"]) {
+                _tipView1.textField3.text = [NSString stringWithFormat:@"%@",tempDic[@"content"]];
+            }else if ([tempDic[@"title"] isEqualToString:@"出生日期"]) {
+                _tipView1.textField4.text = [NSString stringWithFormat:@"%@",tempDic[@"content"]];
+            }else if ([tempDic[@"title"] isEqualToString:@"住址"]) {
+                _tipView1.textField5.text = [NSString stringWithFormat:@"%@",tempDic[@"content"]];
+            }else if ([tempDic[@"title"] isEqualToString:@"身份证号码"]) {
+                _tipView1.textField6.text = [NSString stringWithFormat:@"%@",tempDic[@"content"]];
+            }else if ([tempDic[@"title"] isEqualToString:@"签发机关"]) {
+                _tipView1.textField7.text = [NSString stringWithFormat:@"%@",tempDic[@"content"]];
+            }else if ([tempDic[@"title"] isEqualToString:@"有效期限"]) {
+                _tipView1.textField8.text = [NSString stringWithFormat:@"%@",tempDic[@"content"]];
+            }
+        }
+        
+        [self startCount];
+        _tipView1.sureButton.userInteractionEnabled = NO;
+        [_tipView1.sureButton addTarget:self action:@selector(beginUpLoad) forControlEvents:UIControlEventTouchUpInside];
+        
+//        [self updateLoadImage:nil];
     }else{
         [SVProgressHelper dismissWithMsg:@"请完善申购人信息"];
     }
 }
+- (void)startCount {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(didOneSecReached:) userInfo:nil repeats:YES];
+    self.count = 3;
+    
+    [_tipView1.sureButton setTitle:@"3s后可提交" forState:UIControlStateNormal];
+    _tipView1.sureButton.backgroundColor = kUIColorFromRGB(0xcbc2b9);
+}
+- (void)beginUpLoad{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self updateLoadImage:nil];
+}
+
+- (void)didOneSecReached:(id)sender {
+    
+    if (self.count > 0) {
+        self.count--;
+        NSString *countStr = [NSString stringWithFormat:@"%lds后可提交",self.count];
+        [_tipView1.sureButton setTitle:countStr forState:UIControlStateNormal];
+        [_tipView1.sureButton setTitle:countStr forState:UIControlStateSelected];
+        _tipView1.sureButton.backgroundColor = kUIColorFromRGB(0xcbc2b9);
+        if (self.count == 0) {
+            
+            _tipView1.sureButton.userInteractionEnabled = YES;
+            [_tipView1.sureButton setTitle:@"确认提交" forState:UIControlStateNormal];
+            [_tipView1.sureButton setTitle:@"确认提交" forState:UIControlStateSelected];
+            _tipView1.sureButton.backgroundColor = kUIColorFromRGB(0xC0905D);
+            [self.timer invalidate];
+            self.timer = nil;
+        }
+    }
+}
+
 
 - (void)updateLoadImage:(UIImage *)upImage{
     __weak typeof(self) weakSelf = self;
@@ -307,23 +377,24 @@
         if ([tempDic[@"title"] isEqualToString:@"户籍所在地"]) {
             [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"hjszd"];
         }
-//        if ([tempDic[@"title"] isEqualToString:@"手机号"]) {
-//            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"lxdh"];
-//        }
+        if ([tempDic[@"title"] isEqualToString:@"婚姻状况"]) {
+            [pramDic setObject:[NSString stringWithFormat:@"%@",tempDic[@"content"]] forKey:@"hyzk"];
+        }
     }
     
     [pramDic setObject:@"身份证" forKey:@"zjlx"];
     
-    [pramDic setObject:[LoginSession sharedInstance].otherYhbh forKey:@"yhbh"];
+//    [pramDic setObject:[LoginSession sharedInstance].otherYhbh forKey:@"yhbh"];
     [pramDic setObject:self.imageStrArray[0] forKey:@"sfzzm"];
     [pramDic setObject:self.imageStrArray[1] forKey:@"sfzfm"];
     [pramDic setObject:self.imageStrArray[2] forKey:@"hkb"];
 //    [pramDic setObject:self.imageStrArray[3] forKey:@"jhz"];
     __weak typeof(self) weakSelf = self;
     
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"") para:pramDic isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savehost") para:pramDic isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner
         if (success) {
+            [LoginSession sharedInstance].rzzt = @"1";
             [SVProgressHelper dismissWithMsg:response[@"msg"]];
             for (UIViewController *controller in self.navigationController.viewControllers) {
                 if ([controller isKindOfClass:[ChooseQualificationTypeViewController class]]) {
@@ -391,7 +462,7 @@
     }
 }
 - (void)showOtherAlertView:(NSArray *)array{
-    
+    _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] lastObject];
     [[UIApplication sharedApplication].keyWindow addSubview:_timeViewMask];
     _timeViewMask.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     _timeViewMask.customPickArray = array;

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSString *titleString;
 @property (nonatomic,strong) jtcyPersonModel *jtcy;
 @property (nonatomic,strong) zzxxPersonModel *zzxx;
+@property (nonatomic,strong) NSDictionary *sfz;
 @end
 
 NS_ASSUME_NONNULL_END

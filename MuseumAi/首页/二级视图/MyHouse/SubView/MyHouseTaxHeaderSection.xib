@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyHouseTaxHeaderSection">
+            <rect key="frame" x="0.0" y="0.0" width="397" height="264"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tax_header_tag" translatesAutoresizingMaskIntoConstraints="NO" id="pv5-8K-Fl5">
+                    <rect key="frame" x="17" y="108.5" width="47" height="47"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yF2-eR-fBS">
+                    <rect key="frame" x="74" y="263" width="323" height="1"/>
+                    <color key="backgroundColor" red="0.97244364023208618" green="0.97260981798171997" blue="0.97243314981460571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="xr5-yb-IvN"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POS机缴款" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2i5-cL-PKj">
+                    <rect key="frame" x="76" y="108.5" width="81" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.26663362979888916" green="0.26668566465377808" blue="0.26663035154342651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-201024.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adu-XG-mtD">
+                    <rect key="frame" x="241" y="107.5" width="110" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="TUI-eD-Ceh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.16468328237533569" green="0.16471883654594421" blue="0.16468104720115662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易时间：2019.09.11   11:49:56" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5M-6g-LHN">
+                    <rect key="frame" x="76" y="138.5" width="180.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.76070064306259155" green="0.76083260774612427" blue="0.760692298412323" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tig-3P-jf2">
+                    <rect key="frame" x="14" y="109" width="369" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="IpS-1q-uG7"/>
+                    </constraints>
+                    <state key="normal" image="tax_header_arrow"/>
+                    <state key="selected" image="tax_header_arrowed"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="s5M-6g-LHN" firstAttribute="top" secondItem="2i5-cL-PKj" secondAttribute="bottom" constant="10" id="0vz-17-BWx"/>
+                <constraint firstItem="2i5-cL-PKj" firstAttribute="top" secondItem="pv5-8K-Fl5" secondAttribute="top" id="EAr-mC-iH6"/>
+                <constraint firstItem="Adu-XG-mtD" firstAttribute="centerY" secondItem="2i5-cL-PKj" secondAttribute="centerY" id="HwH-TZ-68U"/>
+                <constraint firstItem="s5M-6g-LHN" firstAttribute="leading" secondItem="2i5-cL-PKj" secondAttribute="leading" id="K2U-vx-lT0"/>
+                <constraint firstItem="tig-3P-jf2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="MEE-0B-nP2"/>
+                <constraint firstItem="tig-3P-jf2" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="VQ9-Im-aFd"/>
+                <constraint firstItem="yF2-eR-fBS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="74" id="YQN-bq-tlp"/>
+                <constraint firstItem="pv5-8K-Fl5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ZYe-WF-wYd"/>
+                <constraint firstItem="2i5-cL-PKj" firstAttribute="leading" secondItem="pv5-8K-Fl5" secondAttribute="trailing" constant="12" id="fDG-QA-94d"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Adu-XG-mtD" secondAttribute="trailing" constant="46" id="icE-T5-ry7"/>
+                <constraint firstItem="yF2-eR-fBS" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="nTd-N1-dS6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tig-3P-jf2" secondAttribute="trailing" constant="14" id="nXV-9F-Uzm"/>
+                <constraint firstItem="pv5-8K-Fl5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="17" id="rlD-wu-TLt"/>
+                <constraint firstItem="yF2-eR-fBS" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="vg7-8m-uMx"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="clickButton" destination="tig-3P-jf2" id="QTm-e0-hwZ"/>
+                <outlet property="priceLabel" destination="Adu-XG-mtD" id="lpI-kR-U4G"/>
+                <outlet property="timeLabel" destination="s5M-6g-LHN" id="e25-Nd-jtj"/>
+            </connections>
+            <point key="canvasLocation" x="-105" y="331"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tax_header_arrow" width="13" height="13"/>
+        <image name="tax_header_arrowed" width="13" height="13"/>
+        <image name="tax_header_tag" width="47" height="47"/>
+    </resources>
+</document>

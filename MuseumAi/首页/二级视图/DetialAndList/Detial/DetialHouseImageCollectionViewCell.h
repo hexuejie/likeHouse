@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetialCustomMapView.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) UIView *allView;
 @property (nonatomic,strong) UIImageView *allImageView;
+@property (nonatomic,strong) DetialCustomMapView *mapView;
+
 @end
 
 NS_ASSUME_NONNULL_END

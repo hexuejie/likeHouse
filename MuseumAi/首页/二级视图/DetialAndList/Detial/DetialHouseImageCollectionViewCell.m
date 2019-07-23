@@ -28,6 +28,7 @@
     _allView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 257)];
     [self.contentView addSubview: _allView];
     
+    
     [_allView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.contentView).offset(12);
         make.top.equalTo(self.contentView).offset(3);
@@ -38,12 +39,24 @@
     
     _allImageView = [[UIImageView alloc]init];
     _allImageView.clipsToBounds = YES;
-//    UIViewContentModeScaleAspectFill,
     [_allView addSubview:_allImageView];
     [_allImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.top.trailing.bottom.equalTo(self.allView);
     }];
     _allImageView.contentMode = UIViewContentModeScaleToFill;
+    
+    
+    
+    _mapView = [[DetialCustomMapView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-24, 257-18)];
+    [self.contentView addSubview: _mapView];
+    _mapView.clipsToBounds = YES;
+    [_allView addSubview:_mapView];
+    
+    [_mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.top.trailing.bottom.equalTo(self.allView);
+    }];
+    _allView.contentMode = UIViewContentModeScaleToFill;
 }
+
 
 @end

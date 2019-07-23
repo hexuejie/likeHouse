@@ -102,6 +102,9 @@
                         <button opaque="NO" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IxT-kq-GMq">
                             <rect key="frame" x="0.0" y="10" width="346" height="30"/>
                             <state key="normal" image="push_into"/>
+                            <connections>
+                                <action selector="chooseSwitchCick:" destination="-1" eventType="touchUpInside" id="ylY-OU-XXY"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

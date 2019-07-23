@@ -7,10 +7,13 @@
 //
 
 #import "MURootViewController.h"
+#import "AddOtherModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AppendThreeViewController : MURootViewController
+
+@property (nonatomic,strong) AddOtherModel *addmodel;
 
 @end
 

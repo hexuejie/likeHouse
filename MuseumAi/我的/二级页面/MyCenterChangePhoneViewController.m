@@ -26,7 +26,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.view.backgroundColor = kListBgColor;
+    
     [self.getCodeButton addTapTarget:self action:@selector(didGetCodeClicked:)];
+    
     
     self.phoneTextField.delegate = self;
     self.codeTextField.delegate = self;
@@ -99,7 +102,9 @@
 - (IBAction)didLoginClicked:(id)sender {
  
     [self.view endEditing:YES];
-    
+    if (!_zjhm) {
+        return;
+    }
     // 验证码登陆
     if (![MUCustomUtils isValidateTelNumber:self.phoneTextField.text]) {
         [self alertWithMsg:@"手机号码格式不正确" handler:nil];
@@ -107,51 +112,23 @@
         [self alertWithMsg:@"请输入验证码" handler:nil];
     }else {
         [self alertWithMsg:@"请求方法不存在" handler:nil];
-//        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        __weak typeof(self) weakSelf = self;
-//        NSString *udidString = [UIDevice currentDevice].identifierForVendor.UUIDString;
-//        NSDictionary *pram = @{@"code":self.codeTextField.text,@"sjhm":self.phoneTextField.text,
-//                               @"yhsjhm":self.phoneTextField.text,
-//                               @"uuid":udidString,
-//
-//                               @"scwl":@"wifi",
-//                               @"sjxh":@"Meizu16",
-//                               @"jzxx":@"460-0-0-0",
-//
-//                               @"yys":@"运营商",
-//                               @"gps":@"123,46",
-//                               @"czxtbb":@"8.1.0"
-//                               };
-//
-//        [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/login/zjw/user/logincode") para:pram isShowHUD:YES  isToLogin:NO callBack:^(id  _Nonnull response, BOOL success) {
-//
-//            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-//            if (success) {
-////                [self loginSuccess:response[@"data"]];
-//
-//                NSString * urlString = DetailUrlString(@"/api/login/zjw/user/logincode");
-//                NSURL * url = [NSURL URLWithString:urlString];
-//                NSHTTPCookieStorage* cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-//                NSArray<NSHTTPCookie *> *cookies = [cookieStorage cookiesForURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",url]]];
-//
-//                NSMutableArray *temoTemp = [[NSMutableArray alloc]init];
-//                [cookies enumerateObjectsUsingBlock:^(NSHTTPCookie * _Nonnull cookie, NSUInteger idx, BOOL * _Nonnull stop) {
-//                    NSMutableDictionary *properties = [[cookie properties] mutableCopy];
-//                    if ([properties[@"Name"] isEqualToString:@"token"]) {
-//                        [temoTemp addObject:properties];
-//                    }
-//                }];
-//                if (temoTemp.count) {
-//                    [[NSUserDefaults standardUserDefaults] setObject:temoTemp forKey:@"Cookie"];
-//                }
-//
-//                [[NSNotificationCenter defaultCenter] postNotificationName:kDidLoginSuccessNotification object:nil];
-//                [weakSelf dismissViewControllerAnimated:YES completion:nil];
-//
-//            }else{
-//
-//            }
-//        }];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        __weak typeof(self) weakSelf = self;
+        
+        NSDictionary *pram = @{@"code":self.codeTextField.text,
+                               @"sjhm":self.phoneTextField.text,
+                               @"zjhm":_zjhm,
+                               };
+        [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/revisephonenum") para:pram isShowHUD:YES  isToLogin:NO callBack:^(id  _Nonnull response, BOOL success) {
+
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+            if (success) {
+                 [self alertWithMsg:@"手机号码修改成功！" handler:nil];
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            }else{
+
+            }
+        }];
     }
 }
 @end

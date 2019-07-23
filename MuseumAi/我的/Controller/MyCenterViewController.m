@@ -18,6 +18,8 @@
 #import "MyCenterSettingViewController.h"
 #import "RealFirstTipViewController.h"
 #import "MyCenterChangePhoneViewController.h"
+#import "ResultQualityResultVC.h"
+#import "MyCenterPhoneViewController.h"
 
 @interface MyCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -50,10 +52,10 @@
     [self dataRelaod];
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-}
+//- (void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+//    [self.navigationController setNavigationBarHidden:NO animated:animated];
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,7 +76,6 @@
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView reloadData];
-    
    
 }
 
@@ -227,10 +228,12 @@
 - (IBAction)qualityClick:(id)sender {//购房资格
     
     if (![Utility is_empty:[LoginSession sharedInstance].grrzzt]) {
-        if ([[LoginSession sharedInstance].grrzzt integerValue] == 0||[[LoginSession sharedInstance].grrzzt integerValue] == 1) {
-            ResultQualityViewController *vc = [ResultQualityViewController new];
+        if ([[LoginSession sharedInstance].grrzzt integerValue] == 0||[[LoginSession sharedInstance].grrzzt integerValue] == 1||[[LoginSession sharedInstance].grrzzt integerValue] == 2) {
+            ResultQualityResultVC *vc = [ResultQualityResultVC new];
             vc.hidesBottomBarWhenPushed = YES;
-            vc.isReal = NO;
+//            vc.isReal = NO;
+            [LoginSession sharedInstance].isNavigationBarHidden = YES;
+            [self.navigationController setNavigationBarHidden:YES animated:NO];
             [self.navigationController pushViewController:vc animated:YES];
             return;
         }
@@ -315,18 +318,26 @@
 
 - (void)sureButtonClick{
     
-    
-    
+    __weak typeof(self) weakSelf = self;
     if (![Utility is_empty:[LoginSession sharedInstance].grrzzt]) {
         if ([[LoginSession sharedInstance].grrzzt integerValue] == 0) {
             [SVProgressHelper dismissWithMsg:@"购房资格审核过程中，不能修改信息"];
             return;
         }
         if ([[LoginSession sharedInstance].grrzzt integerValue] == 2||[[LoginSession sharedInstance].grrzzt integerValue] == 1) {
-            RealFirstTipViewController *vc = [RealFirstTipViewController new];
-            vc.title = @"购房资格审查说明";
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
+//            RealFirstTipViewController *vc = [RealFirstTipViewController new];
+//            vc.title = @"购房资格审查说明";
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:vc animated:YES];
+            [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/recommit") para:nil isShowHUD:YES  isToLogin:NO callBack:^(id  _Nonnull response, BOOL success) {
+                if (success) {
+                    [weakSelf customReloadData];
+                    //            [weakSelf.contentCollectionView reloadData];
+                    [SVProgressHelper dismissWithMsg:response[@"data"]];
+                    
+                }else{
+                }
+            }];
             return;
         }
     }
@@ -417,7 +428,7 @@
 - (IBAction)changePhone:(id)sender {
     
     
-    MyCenterChangePhoneViewController *vc = [MyCenterChangePhoneViewController new];
+    MyCenterPhoneViewController *vc = [MyCenterPhoneViewController new];
     vc.title = @"更换手机号";
     vc.hidesBottomBarWhenPushed = YES;
 //    vc.isReal = YES;

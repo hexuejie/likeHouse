@@ -12,7 +12,7 @@
 #import "WXApi.h"
 #import "MUForgetPwdViewController.h"
 #import "AppDelegate.h"
-
+#import "NewRegisterViewController.h"
 
 @interface MULoginViewController ()<UITextFieldDelegate>
 
@@ -245,6 +245,10 @@
 }
 - (IBAction)agreePageClick:(id)sender {
      [self.navigationController pushViewController:[MURootViewController new] animated:YES];
+}
+- (IBAction)registerClick:(id)sender {
+//    [self.navigationController pushViewController:[NewRegisterViewController new] animated:YES];
+    [self presentViewController:[NewRegisterViewController new] animated:YES completion:nil];
 }
 
 

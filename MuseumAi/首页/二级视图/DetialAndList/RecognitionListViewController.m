@@ -116,7 +116,7 @@
     
     _tipView1.contentTitleLabel.font = kSysFont(13);
     _tipView1.contentTitleLabel.text = @"\n是否确定认购该项目？认购成功后，不能同时再认购其他项目。\n\n认购限制解除规则：项目摇号名单确认后，未进入摇号名单，2个工作日解除。如进入摇号名单，选房结束后解除。";
-    _tipView1.titleLabel.text = @"长沙融创城";
+    _tipView1.titleLabel.text = _tempModel.lpmc;
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:_tipView1.contentTitleLabel.text];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 3; // 调整行间距

@@ -27,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *statueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *locationBUtton;
+
 @property (weak, nonatomic) IBOutlet UIButton *moreButton;
 
 @property (nonatomic , strong) HouseDetialModel *model;

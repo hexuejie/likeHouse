@@ -15,7 +15,7 @@
     // Initialization code
     
     self.tipTagLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.4];
-    self.backView.backgroundColor = kUIColorFromRGB(0xF4F4F4);
+    self.backView.backgroundColor = kListBgColor;
     
 }
 
@@ -28,23 +28,24 @@
     self.contentLabel.text = _model.addr;
     self.priceLabel.text = [NSString stringWithFormat:@"%@",_model.jj] ;
     
+    self.ChatTagLabel.text = [NSString stringWithFormat:@"%@",_model.lpzt];
     if (_model.lpzt && ![_model.lpzt isKindOfClass:[NSNull class]]) {
-        switch ([_model.lpzt integerValue]) {
-            case 1:
-                self.ChatTagLabel.text = @"认筹中";
-                break;
-            case 2:
-                self.ChatTagLabel.text = @"待开盘";
-                break;
-            case 3:
-                self.ChatTagLabel.text = @"认筹结束";
-            case 4:
-                self.ChatTagLabel.text = @"开盘待定";
-                break;break;
-                
-            default:
-                break;
-        }
+//        switch ([_model.lpzt integerValue]) {
+//            case 1:
+//                self.ChatTagLabel.text = @"认筹中";
+//                break;
+//            case 2:
+//                self.ChatTagLabel.text = @"待开盘";
+//                break;
+//            case 3:
+//                self.ChatTagLabel.text = @"认筹结束";
+//            case 4:
+//                self.ChatTagLabel.text = @"开盘待定";
+//                break;break;
+//
+//            default:
+//                break;
+//        }
     }
     self.tipTagLabel.text = _model.bq;
     if (self.tipTagLabel.text.length >1) {

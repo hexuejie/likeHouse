@@ -70,7 +70,7 @@
                                 <constraint firstAttribute="height" constant="1" id="vdP-mh-onE"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请在制定POS机上扫描读取支付信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvn-uF-zTb">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请在指定POS机上扫描读取支付信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvn-uF-zTb">
                             <rect key="frame" x="66.5" y="326" width="212" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.47455930709838867" green="0.47060346603393555" blue="0.4704824686050415" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

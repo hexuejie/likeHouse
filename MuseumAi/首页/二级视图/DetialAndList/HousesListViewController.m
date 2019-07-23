@@ -13,6 +13,7 @@
 #import "HomePageHousesCollectionViewCell.h"
 #import "HouseDetialViewController.h"
 #import "HouseListModel.h"
+#import "HouseListRenchouCollectionViewCell.h"
 
 @interface HousesListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -58,6 +59,7 @@
     self.contentCollectionView.backgroundColor = kListBgColor;
     [self.view addSubview:self.contentCollectionView];
     
+    [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HouseListRenchouCollectionViewCell" bundle:[NSBundle bundleForClass:[HouseListRenchouCollectionViewCell class]]] forCellWithReuseIdentifier:@"HouseListRenchouCollectionViewCell"];
     [self.contentCollectionView registerNib:[UINib nibWithNibName:@"HomePageHousesCollectionViewCell" bundle:[NSBundle bundleForClass:[HomePageHousesCollectionViewCell class]]] forCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell"];
     self.houses = [NSMutableArray new];
     __weak typeof (self) weakSelf = self;
@@ -87,7 +89,12 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.title isEqualToString:@"我的认筹"]) {
     
+        HouseListRenchouCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HouseListRenchouCollectionViewCell" forIndexPath:indexPath];
+        cell.model = _houses[indexPath.row];
+        return cell;
+    }
     HomePageHousesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageHousesCollectionViewCell" forIndexPath:indexPath];
     cell.model = _houses[indexPath.row];
     return cell;
@@ -95,6 +102,9 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
+    if ([self.title isEqualToString:@"我的认筹"]) {
+        return CGSizeMake(SCREEN_WIDTH, 240);
+    }
     return CGSizeMake((SCREEN_WIDTH-10)/2, 131*CustomScreenFit+88);
 }
 
@@ -108,6 +118,9 @@
     vc.hidesBottomBarWhenPushed = YES;
     HouseListModel *model = _houses[indexPath.row];
     vc.strBH = model.lpbh;
+    if (!model.lpbh) {
+        vc.strBH = model.xmbh;
+    }
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -166,7 +179,7 @@
     
     [_tipView1.cancelButton setTitle:@"取消" forState:UIControlStateNormal];
     [_tipView1.sureButton setTitle:@"确定" forState:UIControlStateNormal];
-    _tipView1.contentTitleLabel.text = @"确定清理缓存?";
+    _tipView1.contentTitleLabel.text = [NSString stringWithFormat:@"确定清空%@?",self.title];
     [_tipView1.sureButton addTarget:self action:@selector(loginoutFinishClick) forControlEvents:UIControlEventTouchUpInside];
 }
 

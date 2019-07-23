@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZTDetialBottomView">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AhJ-c4-Awn">
+                    <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
+                    <color key="backgroundColor" red="0.97244364023208618" green="0.97260981798171997" blue="0.97243314981460571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="b04-lz-dI3"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相关楼盘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcu-u5-a9Y">
+                    <rect key="frame" x="12" y="29" width="77.5" height="23"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                    <color key="textColor" red="0.75338226556777954" green="0.56658035516738892" blue="0.365711510181427" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rSY-tT-WMa">
+                    <rect key="frame" x="12" y="74" width="115" height="84"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="115" id="EgL-08-Onb"/>
+                        <constraint firstAttribute="height" constant="84" id="vbg-i1-ugt"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="融信澜月 省府低密新盘 5月26日首开" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJT-AJ-jl8">
+                    <rect key="frame" x="142" y="72" width="217" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.26663362979888916" green="0.26668566465377808" blue="0.26663035154342651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="融信澜月 省府低密新盘 5月26日首开" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyp-Y5-vth">
+                    <rect key="frame" x="142" y="117" width="217" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.54906159639358521" green="0.54511767625808716" blue="0.54498392343521118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格待定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMo-S0-Qau">
+                    <rect key="frame" x="142" y="143.5" width="217" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.97572988271713257" green="0.0472840815782547" blue="0.050202958285808563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认筹结束" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKG-A4-Vme">
+                    <rect key="frame" x="12" y="74" width="56" height="18"/>
+                    <color key="backgroundColor" red="0.75338226559999999" green="0.56658035520000005" blue="0.36571151019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="UvE-lO-gPD"/>
+                        <constraint firstAttribute="width" constant="56" id="z3g-o6-KJS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Dcu-u5-a9Y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="3jb-AG-zem"/>
+                <constraint firstItem="UMo-S0-Qau" firstAttribute="top" secondItem="zyp-Y5-vth" secondAttribute="bottom" constant="12" id="4mZ-BE-MfX"/>
+                <constraint firstItem="eJT-AJ-jl8" firstAttribute="top" secondItem="rSY-tT-WMa" secondAttribute="top" constant="-2" id="884-3o-LbK"/>
+                <constraint firstItem="ZKG-A4-Vme" firstAttribute="leading" secondItem="rSY-tT-WMa" secondAttribute="leading" id="9um-BO-JUl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AhJ-c4-Awn" secondAttribute="trailing" id="KiY-1i-jTC"/>
+                <constraint firstItem="UMo-S0-Qau" firstAttribute="trailing" secondItem="eJT-AJ-jl8" secondAttribute="trailing" id="LCr-IK-DfK"/>
+                <constraint firstItem="ZKG-A4-Vme" firstAttribute="top" secondItem="rSY-tT-WMa" secondAttribute="top" id="LIa-fT-w8B"/>
+                <constraint firstItem="Dcu-u5-a9Y" firstAttribute="top" secondItem="AhJ-c4-Awn" secondAttribute="bottom" constant="19" id="N3J-5s-qff"/>
+                <constraint firstItem="rSY-tT-WMa" firstAttribute="leading" secondItem="Dcu-u5-a9Y" secondAttribute="leading" id="PBp-EW-3eW"/>
+                <constraint firstItem="rSY-tT-WMa" firstAttribute="top" secondItem="Dcu-u5-a9Y" secondAttribute="bottom" constant="22" id="RSm-xO-VCe"/>
+                <constraint firstItem="AhJ-c4-Awn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XDz-Rh-Saz"/>
+                <constraint firstItem="UMo-S0-Qau" firstAttribute="bottom" secondItem="rSY-tT-WMa" secondAttribute="bottom" id="bsC-Np-Q1o"/>
+                <constraint firstItem="AhJ-c4-Awn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="g8G-9o-kdX"/>
+                <constraint firstItem="eJT-AJ-jl8" firstAttribute="leading" secondItem="rSY-tT-WMa" secondAttribute="trailing" constant="15" id="mYZ-mB-jDX"/>
+                <constraint firstItem="zyp-Y5-vth" firstAttribute="trailing" secondItem="eJT-AJ-jl8" secondAttribute="trailing" id="new-2d-K2w"/>
+                <constraint firstItem="eJT-AJ-jl8" firstAttribute="leading" secondItem="zyp-Y5-vth" secondAttribute="leading" id="s2w-Ea-m84"/>
+                <constraint firstItem="UMo-S0-Qau" firstAttribute="leading" secondItem="eJT-AJ-jl8" secondAttribute="leading" id="wDL-o0-dpb"/>
+                <constraint firstItem="eJT-AJ-jl8" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-15" id="wwY-xi-vWD"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="contentLabel" destination="zyp-Y5-vth" id="vaH-5w-IPT"/>
+                <outlet property="coverImage" destination="rSY-tT-WMa" id="4aX-Hp-x8i"/>
+                <outlet property="priceLabel" destination="UMo-S0-Qau" id="sGl-Xj-T0i"/>
+                <outlet property="tagLabel" destination="ZKG-A4-Vme" id="UGv-H1-fIT"/>
+                <outlet property="titleLabel" destination="eJT-AJ-jl8" id="XzN-8C-k1q"/>
+            </connections>
+            <point key="canvasLocation" x="-99.200000000000003" y="66.566716641679164"/>
+        </view>
+    </objects>
+</document>

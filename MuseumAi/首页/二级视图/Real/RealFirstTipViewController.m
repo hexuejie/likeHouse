@@ -48,6 +48,7 @@
     if ([self.title isEqualToString:@"购房资格审查说明"]) {
         [self.navigationController pushViewController:[ChooseQualificationTypeViewController new] animated:YES];//购房资格审核
     }else{//[RealFirstChooseViewController
+        [LoginSession sharedInstance].pageType = 0;
         [self.navigationController pushViewController:[ChooseOtherRealViewController new] animated:YES];
 //        [self.navigationController pushViewController:[RealFirstChooseViewController new] animated:YES];
     }

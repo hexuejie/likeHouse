@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSDictionary *dataDic;
 @property (strong, nonatomic) NSArray *dataArray;
 @property (strong, nonatomic) NSMutableArray *firstArray;
+@property (strong, nonatomic) NSMutableArray *secondArray;
 
 @property (strong, nonatomic) NSString *hyzk;
 
@@ -39,27 +40,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.header = [[[NSBundle mainBundle] loadNibNamed:@"AddMateShipHeaderView" owner:nil options:nil] lastObject];
+    self.footer = [[[NSBundle mainBundle] loadNibNamed:@"AddMateShipFooterView" owner:nil options:nil] lastObject];
     
-    self.title = @"添加配偶信息";
-    _firstArray = [NSMutableArray new];
-    _dataArray = @[self.firstArray,//身份证扫出来
-                     @[@{@"title":@"家庭户口类型",@"content":@""},
-                       @{@"title":@"户籍所在地",@"content":@""},
-                       @{@"title":@"手机号码",@"content":@""}]
-                     ];
-   
-    NSDictionary *tempDic = [PersonInfo sharedInstance].allmessageDic;
-    if (tempDic[@"grxx"][@"jtcy"][@"hyzk"]) {
-        if ([tempDic[@"grxx"][@"jtcy"][@"hyzk"] isEqualToString:@"离异"]||[tempDic[@"grxx"][@"jtcy"][@"hyzk"] isEqualToString:@"丧偶"]) {
-            _hyzk = tempDic[@"grxx"][@"jtcy"][@"hyzk"];
-            _dataArray = @[self.firstArray,//身份证扫出来
-                           @[@{@"title":@"家庭户口类型",@"content":@""},
-                             @{@"title":@"户籍所在地",@"content":@""},
-                             @{@"title":@"手机号码",@"content":@""},
-                             @{@"title":[NSString stringWithFormat:@"%@时间",_hyzk],@"content":@""}]
-                           ];
-        }
-    }
+    [self initCustomData];
     
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"UITableViewHeaderFooterView"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AddMateShipTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"AddMateShipTableViewCell"];
@@ -69,8 +53,7 @@
     //    self.tableView.selec = UITableViewCellSelectionStyleNone;
     [self.tableView reloadData];
     
-    self.header = [[[NSBundle mainBundle] loadNibNamed:@"AddMateShipHeaderView" owner:nil options:nil] lastObject];
-    self.footer = [[[NSBundle mainBundle] loadNibNamed:@"AddMateShipFooterView" owner:nil options:nil] lastObject];
+    
     self.header.frame = CGRectMake(0, 0, SCREEN_WIDTH, 320-64 -116);
     self.footer.frame = CGRectMake(0, 0, SCREEN_WIDTH, 140);
     self.tableView.tableHeaderView = self.header;
@@ -87,6 +70,57 @@
     tableViewGesture.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:tableViewGesture];
     
+}
+- (void)initCustomData{
+    self.title = @"添加配偶信息";
+    _firstArray = [NSMutableArray new];
+    _secondArray = @[@{@"title":@"家庭户口类型",@"content":@""},
+                     @{@"title":@"户籍所在地",@"content":@""},
+                     @{@"title":@"手机号码",@"content":@""}].mutableCopy;
+    
+    NSDictionary *tempDic = [PersonInfo sharedInstance].allmessageDic;
+    if (tempDic[@"grxx"][@"jtcy"][@"hyzk"]) {
+        if ([tempDic[@"grxx"][@"jtcy"][@"hyzk"] isEqualToString:@"离异"]||[tempDic[@"grxx"][@"jtcy"][@"hyzk"] isEqualToString:@"丧偶"]) {
+            _hyzk = tempDic[@"grxx"][@"jtcy"][@"hyzk"];
+            [_secondArray addObject:@{@"title":[NSString stringWithFormat:@"%@时间",_hyzk],@"content":@""}];
+        }
+    }
+    
+    if (self.personData) {
+        
+        _firstArray = @[@{@"title":@"姓名",@"content":[NSString stringWithFormat:@"%@",self.personData.jtcy.xm]},
+                               @{@"title":@"性别",@"content":[NSString stringWithFormat:@"%@",self.personData.jtcy.xb]},
+                               @{@"title":@"民族",@"content":[NSString stringWithFormat:@"%@",self.personData.jtcy.xm]},//
+                               @{@"title":@"出生日期",@"content":[NSString stringWithFormat:@"%@",self.personData.jtcy.qtzjcsrq]},//qrrq
+                               @{@"title":@"住址",@"content":[NSString stringWithFormat:@"%@",self.personData.sfz[@"zz"]]},//
+                               @{@"title":@"身份证号码",@"content":[NSString stringWithFormat:@"%@",self.personData.jtcy.zjhm]},
+                               
+                               @{@"title":@"签发机关",@"content":[NSString stringWithFormat:@"%@",self.personData.sfz[@"qfjg"]]},
+                               @{@"title":@"有效期限",@"content":[NSString stringWithFormat:@"%@",self.personData.sfz[@"yxq"]]}
+                               ].mutableCopy;
+        
+        _secondArray = @[@{@"title":@"家庭户口类型",@"content":[NSString stringWithFormat:@"%@",self.personData.jtcy.hjfl]},
+                         @{@"title":@"户籍所在地",@"content":[NSString stringWithFormat:@"%@",self.personData.jtcy.hjszd]},
+                         @{@"title":@"手机号码",@"content":[NSString stringWithFormat:@"%@",self.personData.jtcy.lxdh]}].mutableCopy;
+        if (_hyzk.length>1) {
+             [_secondArray addObject:@{@"title":[NSString stringWithFormat:@"%@时间",_hyzk],@"content":[NSString stringWithFormat:@"%@",self.personData.jtcy.lysj]}];
+        }
+        
+        [self.header.addImageViewOne setCommenImageUrl:self.personData.zzxx.sfzzm];
+        [self.header.addImageViewTwo setCommenImageUrl:self.personData.zzxx.sfzfm];
+        [self.footer.addImageOne setCommenImageUrl:self.personData.zzxx.hkb];
+        [self.footer.addimageTwo setCommenImageUrl:self.personData.zzxx.jhz];
+        
+        UIButton *_rigthButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 55, 30)];
+        [_rigthButton setTitle:@"删除" forState:UIControlStateNormal];
+        [_rigthButton setTitleColor:kUIColorFromRGB(0xC0905D) forState:UIControlStateNormal];
+        [_rigthButton addTarget:self action:@selector(tightViewClear) forControlEvents:UIControlEventTouchUpInside];
+        _rigthButton.titleLabel.font = kSysFont(16);
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rigthButton];
+    }
+    _dataArray = @[self.firstArray,//身份证扫出来
+                   _secondArray
+                   ];
 }
 
 - (void)commentTableViewTouchInSide{
@@ -108,18 +142,19 @@
                                @{@"title":@"住址",@"content":info.address},
                                @{@"title":@"身份证号码",@"content":info.num}];
         [weakSelf.firstArray addObjectsFromArray:tempArray];
+        weakSelf.secondArray = [weakSelf.dataArray lastObject];
         if (weakSelf.hyzk.length >1) {
             weakSelf.dataArray = @[self.firstArray,//身份证扫出来
-                                   @[@{@"title":@"家庭户口类型",@"content":@""},
-                                     @{@"title":@"户籍所在地",@"content":@""},
-                                     @{@"title":@"手机号码",@"content":@""},
+                                   @[weakSelf.secondArray[0],
+                                     weakSelf.secondArray[1],
+                                     weakSelf.secondArray[2],
                                      @{@"title":[NSString stringWithFormat:@"%@时间",weakSelf.hyzk],@"content":@""}]
                                    ];
         }else{
             weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
-                                   @[@{@"title":@"家庭户口类型",@"content":@""},
-                                     @{@"title":@"户籍所在地",@"content":@""},
-                                     @{@"title":@"手机号码",@"content":@""}]
+                                   @[weakSelf.secondArray[0],
+                                     weakSelf.secondArray[1],
+                                     weakSelf.secondArray[2]]
                                    ];
         }
        
@@ -141,19 +176,19 @@
                                @{@"title":@"有效期限",@"content":info.valid},
                                ];
         [weakSelf.firstArray addObjectsFromArray:tempArray];
-        
+        weakSelf.secondArray = [weakSelf.dataArray lastObject];
         if (weakSelf.hyzk.length >1) {
             weakSelf.dataArray = @[self.firstArray,//身份证扫出来
-                                   @[@{@"title":@"家庭户口类型",@"content":@""},
-                                     @{@"title":@"户籍所在地",@"content":@""},
-                                     @{@"title":@"手机号码",@"content":@""},
+                                   @[weakSelf.secondArray[0],
+                                     weakSelf.secondArray[1],
+                                     weakSelf.secondArray[2],
                                      @{@"title":[NSString stringWithFormat:@"%@时间",weakSelf.hyzk],@"content":@""}]
                                    ];
         }else{
             weakSelf.dataArray = @[weakSelf.firstArray,//身份证扫出来
-                                   @[@{@"title":@"家庭户口类型",@"content":@""},
-                                     @{@"title":@"户籍所在地",@"content":@""},
-                                     @{@"title":@"手机号码",@"content":@""}]
+                                   @[weakSelf.secondArray[0],
+                                     weakSelf.secondArray[1],
+                                     weakSelf.secondArray[2]]
                                    ];
         }
         weakSelf.header.addImageViewTwo.image = image;
@@ -346,7 +381,7 @@
     
     [pramDic setObject:@"身份证" forKey:@"zjlx"];
     
-    [pramDic setObject:[LoginSession sharedInstance].otherYhbh forKey:@"yhbh"];
+//    [pramDic setObject:[LoginSession sharedInstance].otherYhbh forKey:@"yhbh"];
     [pramDic setObject:self.imageStrArray[0] forKey:@"sfzzm"];
     [pramDic setObject:self.imageStrArray[1] forKey:@"sfzfm"];
     [pramDic setObject:self.imageStrArray[2] forKey:@"hkb"];
@@ -495,6 +530,20 @@
     self.view.frame = CGRectMake(0, -keyHeight/2, SCREEN_WIDTH, SCREEN_HEIGHT);
     [UIView animateWithDuration:0.25 animations:^{
         [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)tightViewClear{
+    __weak typeof(self) weakSelf = self;
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/delpo") para:@{} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        if (success) {
+            [SVProgressHelper dismissWithMsg:@"删除成功！"];
+            [weakSelf callBackClick];
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
     }];
 }
 

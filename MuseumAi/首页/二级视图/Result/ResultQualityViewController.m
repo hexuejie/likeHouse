@@ -27,6 +27,8 @@
 
 @property (strong, nonatomic) NSArray *dataArray;
 
+@property (strong, nonatomic) NSArray *childrenArray;
+
 @property (strong, nonatomic) NSArray *nameArray;
 @property (strong, nonatomic) NSDictionary *realData;
 
@@ -108,7 +110,8 @@
     if ([headerStr isEqual:@"申请人信息"]||[headerStr isEqual:@"配偶信息"]) {
         count = 7;
     }else if ([headerStr isEqual:@"子女信息"]) {
-        count = 6*[tempDic[@"array"] count];
+        count = self.childrenArray.count;
+//        count = 6*[tempDic[@"array"] count];
     }else{
 //        if ([headerStr isEqual:@"附加信息"])
         if ([titleStr isEqual:@"特殊人才资料"]) {
@@ -134,7 +137,14 @@
             if (count>0) {
                 
                 ResultImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultImageTableViewCell" forIndexPath:indexPath];
-                cell.imageArray = tempImage;
+
+                NSMutableArray *tempArray = [NSMutableArray new];
+                for (NSString *strValue in tempImage) {
+                    if (strValue.length>ImagePathMin) {
+                        [tempArray addObject:strValue];
+                    }
+                }
+                cell.imageArray = tempArray;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 return cell;
             }
@@ -207,6 +217,9 @@
                         break;
                     case 1:
                         cell.contentTextField.text = model.jtcy.gj;
+                        if (model.jtcy.gj == nil) {
+                            cell.contentTextField.text = model.jtcy.dq;
+                        }
                         break;
                     case 2:
                         cell.contentTextField.text = model.jtcy.xb;
@@ -255,50 +268,59 @@
             return cell;
         }else if ([headerStr isEqual:@"子女信息"]) {
             
-            NSInteger itemCount = 6;
-            NSInteger customRow = floorf(indexPath.row/6.0);
-            NSInteger remainder = (indexPath.row)%itemCount;
-            PersonModel *model = tempDic[@"array"][customRow];
-            
-            if (remainder == itemCount-1) {
-                NSDictionary *tempzzxx = [model.zzxx mj_keyValues];
-                NSMutableArray *tempArray = [NSMutableArray new];
-                for (NSString *strValue in tempzzxx.allValues) {
-                    if (strValue.length>ImagePathMin) {
-                        [tempArray addObject:strValue];
-                    }
-                }
+            NSDictionary *tempdic = self.childrenArray[indexPath.row];
+            NSString *keykey = [tempdic.allKeys firstObject];
+            id value = [tempdic.allValues firstObject];
+//            NSInteger itemCount = 6;
+//            NSInteger customRow = floorf(indexPath.row/6.0);
+//            NSInteger remainder = (indexPath.row)%itemCount;
+//            PersonModel *model = tempDic[@"array"][customRow];
+//            image
+            if ([keykey isEqualToString:@"image"]) {
+//                NSDictionary *tempzzxx = [model.zzxx mj_keyValues];
+//                NSMutableArray *tempArray = [NSMutableArray new];
+//                for (NSString *strValue in tempzzxx.allValues) {
+//                    if (strValue.length>ImagePathMin) {
+//                        [tempArray addObject:strValue];
+//                    }
+//                }
                 ResultImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultImageTableViewCell" forIndexPath:indexPath];
-                cell.imageArray = tempArray;
+                cell.imageArray = value;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 return cell;
-            }else if (remainder == 0) {
+            }else if ([keykey isEqualToString:@"姓名"]) {
                 
                 ResultTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultTitleTableViewCell" forIndexPath:indexPath];
-                cell.titleLabel.text = model.jtcy.xm;
+//                cell.titleLabel.text = model.jtcy.xm;
+                cell.titleLabel.text = value;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 return cell;
             }
             
             ResultContentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultContentTableViewCell" forIndexPath:indexPath];
-            
-            cell.titleLabel.text = _nameArray[1][remainder][@"title"];
-            switch (indexPath.row) {
-                case 1:
-                    cell.contentTextField.text = model.jtcy.xb;
-                    break;
-                case 2:
-                    cell.contentTextField.text = model.jtcy.hjfl;
-                    break;
-                case 3:
-                    cell.contentTextField.text = model.jtcy.hjszd;
-                    break;
-                case 4:
-                    cell.contentTextField.text = model.jtcy.zjhm;
-                    break;
-                default:
-                    break;
+            cell.titleLabel.text = keykey;
+            cell.contentTextField.text = value;
+            cell.contentTextField.textColor = kUIColorFromRGB(0x333333);
+            if ([value isEqualToString:@"港澳台来往大陆通行证"]) {
+                cell.contentTextField.textColor = MJThemeColor;
             }
+//            cell.titleLabel.text = _nameArray[1][remainder][@"title"];
+//            switch (indexPath.row) {
+//                case 1:
+//                    cell.contentTextField.text = model.jtcy.xb;
+//                    break;
+//                case 2:
+//                    cell.contentTextField.text = model.jtcy.hjfl;
+//                    break;
+//                case 3:
+//                    cell.contentTextField.text = model.jtcy.hjszd;
+//                    break;
+//                case 4:
+//                    cell.contentTextField.text = model.jtcy.zjhm;
+//                    break;
+//                default:
+//                    break;
+//            }
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -467,24 +489,18 @@
             }
             return 51;
         }else if ([headerStr isEqual:@"子女信息"]) {
-            NSInteger customRow = floorf(indexPath.row/6.0);
-            NSInteger remainder = (indexPath.row)%6;
-            PersonModel *model = tempDic[@"array"][customRow];
-            
-            if (remainder == 5) {
-                NSDictionary *tempzzxx = [model.zzxx mj_keyValues];
-                NSMutableArray *tempArray = [NSMutableArray new];
-                for (NSString *strValue in tempzzxx.allValues) {
-                    if (strValue.length>ImagePathMin) {
-                        [tempArray addObject:strValue];
-                    }
-                }
+            NSDictionary *tempdic = self.childrenArray[indexPath.row];
+            NSString *keykey = [tempdic.allKeys firstObject];
+            id value = [tempdic.allValues firstObject];
+    
+            if ([keykey isEqualToString:@"image"]) {
                 
+                NSMutableArray *tempArray = value;
                 NSInteger  count = ceilf(tempArray.count/2.0);
                 if (count>0) {
                     return 23+3+(108 +12)*CustomScreenFit*count;
                 }
-            }else if (remainder == 0) {}
+            }
             return 51;
         }else {// if ([headerStr isEqual:@"附加信息"])
             if (indexPath.row == 0) {return 51;}
@@ -712,7 +728,8 @@
             if (success) {
                 NSDictionary *allDic = response[@"data"];
                 
-                weakSelf.dataArray = [self modelForDic:allDic];
+                weakSelf.dataArray = [weakSelf modelForDic:allDic];
+                weakSelf.childrenArray = [weakSelf childrenArrayForDic:allDic[@"znxxlist"]];
                 
                 if (weakSelf.dataArray.count == 0) {
                     [weakSelf addNoneDataTipView];
@@ -724,6 +741,57 @@
         }];
     }
 }
+
+- (NSArray *)childrenArrayForDic:(NSArray *)znxxlist{
+    NSArray *znxxlist0 = [PersonModel mj_objectArrayWithKeyValuesArray:znxxlist];
+    
+    NSMutableArray *personArray = [NSMutableArray new];
+    for (PersonModel *tempPerson in znxxlist0) {
+        
+        NSDictionary *tempzzxx = [tempPerson.zzxx mj_keyValues];
+        NSMutableArray *tempArray = [NSMutableArray new];
+        for (NSString *strValue in tempzzxx.allValues) {
+            if (strValue.length>ImagePathMin) {
+                [tempArray addObject:strValue];
+            }
+        }
+        if ([tempPerson.jtcy.zjlx isEqualToString:@"港澳台来往大陆通行证"]) {
+            [personArray addObjectsFromArray:@[@{@"姓名":[NSString stringWithFormat:@"%@",tempPerson.jtcy.xm]}
+                                               ,@{@"证件类型":@"港澳台来往大陆通行证"}
+                                               ,@{@"地区":[NSString stringWithFormat:@"%@",tempPerson.jtcy.dq]}
+                                               ,@{@"性别":[NSString stringWithFormat:@"%@",tempPerson.jtcy.xb]}
+                                               ,@{@"是否有抚养权":[NSString stringWithFormat:@"%@",tempPerson.jtcy.sfyfyq]}
+                                               ,@{@"出生日期":[NSString stringWithFormat:@"%@",tempPerson.jtcy.qtzjcsrq]}
+                                               ,@{@"证件号码":[NSString stringWithFormat:@"%@",tempPerson.jtcy.zjhm]}
+                                               ,@{@"换证次数":[NSString stringWithFormat:@"%@",tempPerson.jtcy.hzcs]}
+                                               ,@{@"证件有效期":[NSString stringWithFormat:@"%@",tempPerson.jtcy.qtzjyxq]}
+                                               ,@{@"image":tempArray}
+                                               ]];
+        }else if ([tempPerson.jtcy.zjlx isEqualToString:@"护照"]) {
+            [personArray addObjectsFromArray:@[@{@"姓名":[NSString stringWithFormat:@"%@",tempPerson.jtcy.xm]}
+                                               ,@{@"国籍":[NSString stringWithFormat:@"%@",tempPerson.jtcy.gj]}
+                                               ,@{@"性别":[NSString stringWithFormat:@"%@",tempPerson.jtcy.xb]}
+                                               ,@{@"是否有抚养权":[NSString stringWithFormat:@"%@",tempPerson.jtcy.sfyfyq]}
+                                               ,@{@"出生日期":[NSString stringWithFormat:@"%@",tempPerson.jtcy.qtzjcsrq]}
+                                               ,@{@"证件号码":[NSString stringWithFormat:@"%@",tempPerson.jtcy.zjhm]}
+                                               ,@{@"证件有效期":[NSString stringWithFormat:@"%@",tempPerson.jtcy.qtzjyxq]}
+                                               ,@{@"image":tempArray}
+                                               ]];
+        }else{
+            [personArray addObjectsFromArray:@[@{@"姓名":[NSString stringWithFormat:@"%@",tempPerson.jtcy.xm]}
+                                               ,@{@"性别":[NSString stringWithFormat:@"%@",tempPerson.jtcy.xb]}
+                                               ,@{@"是否有抚养权":[NSString stringWithFormat:@"%@",tempPerson.jtcy.sfyfyq]}
+                                               ,@{@"家庭户口类型":[NSString stringWithFormat:@"%@",tempPerson.jtcy.hjfl]}
+                                               ,@{@"户籍所在地":[NSString stringWithFormat:@"%@",tempPerson.jtcy.hjszd]}
+                                               ,@{@"身份证号码":[NSString stringWithFormat:@"%@",tempPerson.jtcy.zjhm]}
+                                               ,@{@"image":tempArray}
+                                               ]];
+        }
+    }
+    return personArray;
+}
+
+
 
 - (NSMutableArray *)modelForDic:(NSDictionary *)allDic{
     NSMutableArray *allArray = [NSMutableArray new];
@@ -837,7 +905,7 @@
                  @{@"title":@"护照号码"},
                  @{@"title":@"证件有效期"}];
     _foreignArray = @[@{@"title":@"姓名"},
-                      @{@"title":@"国籍"},
+                      @{@"title":@"地区"},
                       @{@"title":@"性别"},
                       @{@"title":@"出生日期"},
                       @{@"title":@"护照号码"},

@@ -95,7 +95,12 @@
         [LoginSession sharedInstance].otherYhbh = @"";
     }
     
+   
     ChooseAppendViewController *vc = [ChooseAppendViewController new];
+    NSArray *tempArr = [PersonInfo sharedInstance].allmessageDic[@"tsrcList"];
+    if (tempArr.count>indexPath.row) {
+        vc.addmodel = [AddOtherModel mj_objectWithKeyValues:tempArr[indexPath.row]];
+    }
     [self.navigationController pushViewController:vc animated:YES];
 }
 

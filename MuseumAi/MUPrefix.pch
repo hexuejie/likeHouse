@@ -18,7 +18,7 @@
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>//引入检索功能所有的头文件
 #import <BaiduMapAPI_Map/BMKMapView.h>      //只引入所需的单个头文件
 
-#define BaiduMapKey @"SnFNNZTU7NzoLWBtXSS1mRTBU6ThevrS"
+#define BaiduMapKey @"VA60HjAPlhfIG9CPP8m9AihRiP5mRaf0"
 //#define EasyARKey @"P0ik7Rf5kL9xJ8Pn8WRY6CAZP28HtUyhgXSrV40zjHDWYLnojt4Fu5qkwgSQjcffZQE9RcCsK5jzFfSCMHmPTjgqT88CeRr1gmsnVZXQgDgsK9g8Ssreft1chDllvjfjKVcjDZfMpHAtMQewI1YifHEKuwP39Thv6nfpggiutXjmwtuRGrqHZbzmoOIJNwJcfAhJP13V"
 
 #define WEIXINKEY @"wx70db9758743dace6"
@@ -99,6 +99,7 @@ alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
 //#define H5BaseUrl @"http://192.168.0.199:94"
 //#else
 #define BaseUrl @"http://192.168.99.234:8000"        //内部数据
+//#define BaseUrl @"http://zhifang.51vip.biz:8000"        //外部数据
 #define H5BaseUrl @"https://appweb.bnbn99.com"
 //#endif
 

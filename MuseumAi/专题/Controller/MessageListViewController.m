@@ -81,10 +81,10 @@
     vc.hidesBottomBarWhenPushed = YES;
     
     vc.formatString = tempModel.nr;
-    vc.title = tempModel.title;
-    if (tempModel.title.length == 0) {
-        vc.title = tempModel.bt;
-    }
+    vc.title = self.title;
+//    if (tempModel.title.length == 0) {
+//        vc.title = tempModel.bt;
+//    }
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

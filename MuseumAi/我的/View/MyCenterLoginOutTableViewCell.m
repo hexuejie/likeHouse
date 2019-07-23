@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.contentView.backgroundColor = kListBgColor;
+    self.backgroundColor = kListBgColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

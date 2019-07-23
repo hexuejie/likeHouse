@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewRegisterViewController">
+            <connections>
+                <outlet property="navHeight" destination="w6L-o6-uZN" id="8Qs-2q-3D1"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UbV-qj-p76">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-r0-ofd">
+                            <rect key="frame" x="0.0" y="21" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="RnK-1h-mxw"/>
+                                <constraint firstAttribute="height" constant="40" id="SPb-HR-TuD"/>
+                            </constraints>
+                            <state key="normal" image="back_nor"/>
+                            <connections>
+                                <action selector="backClick:" destination="-1" eventType="touchUpInside" id="zfv-4x-VYC"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSd-Nt-LU6">
+                            <rect key="frame" x="0.0" y="63" width="375" height="1"/>
+                            <color key="backgroundColor" red="0.94892865419387817" green="0.94915169477462769" blue="0.94482326507568359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="gRS-Ih-CEJ"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新用户注册协议" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tk-Lt-avr">
+                            <rect key="frame" x="123" y="30" width="129" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" red="0.26663362979888916" green="0.26668566465377808" blue="0.26663035154342651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="SSd-Nt-LU6" secondAttribute="trailing" id="R12-EY-haR"/>
+                        <constraint firstItem="SSd-Nt-LU6" firstAttribute="leading" secondItem="UbV-qj-p76" secondAttribute="leading" id="ZMH-0V-dUP"/>
+                        <constraint firstItem="1tk-Lt-avr" firstAttribute="centerY" secondItem="Y7t-r0-ofd" secondAttribute="centerY" id="aap-BQ-QAX"/>
+                        <constraint firstItem="Y7t-r0-ofd" firstAttribute="leading" secondItem="UbV-qj-p76" secondAttribute="leading" id="ha4-z7-8ts"/>
+                        <constraint firstItem="1tk-Lt-avr" firstAttribute="centerY" secondItem="UbV-qj-p76" secondAttribute="centerY" constant="9" id="pdM-nO-qUj"/>
+                        <constraint firstAttribute="bottom" secondItem="SSd-Nt-LU6" secondAttribute="bottom" id="sCL-H3-gmT"/>
+                        <constraint firstAttribute="height" constant="64" id="w6L-o6-uZN"/>
+                        <constraint firstItem="1tk-Lt-avr" firstAttribute="centerX" secondItem="UbV-qj-p76" secondAttribute="centerX" id="ymU-r2-uXh"/>
+                    </constraints>
+                </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQ0-d0-gfv">
+                    <rect key="frame" x="5" y="64" width="365" height="603"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <attributedString key="attributedText">
+                        <fragment>
+                            <mutableString key="content">
+尊敬的用户：
+         您好！在您注册成为用户之前特别提醒，请您认真阅读本《用户协议》（以下简称“协议”），确保您充分理解本协议中各条款。请您审慎阅读并选择接受或不接受本协议。除非您接受本协议所有条款，否则您无权注册、登录、认证或使用本协议所涉服务。您的注册、登录、使用等行为将视为对本协议的接受，并同意接受本协议各项条款的约束。
+         本协议约定本APP与用户之间关于本APP（以下简称“服务”）的权利义务。“用户”是指认证、登录、使用本服务的个人。本协议可由本APP随时更新，更新后的协议条款一旦公布即代替原来的协议条款，恕不再另行通知，用户可在APP中查阅最新版协议条款。
+         本APP所有权归长沙市住房和城乡建设委员会所有，长沙市住房和城乡建设委员会对用户实名认证结果、用户购房资格审查审核结果负责，并拥有最终解释权。
+         用户对本人在APP中提交数据的真实性全权负责，如因数据真实性问题造成的损失，本APP概不负责。
+         用户在注册帐号或使用本服务的过程中，可能需要填写或提交一些必要的个人信息，如法律法规、规章规范性文件（以下称“法律法规”）规定的需要填写的身份信息。如用户提交的信息不完整或不符合法律法规的规定，则用户可能无法使用本服务或在使用本服务的过程中受到限制。
+         用户个人信息包括：
+      （1）用户自行提供的用户个人信息,如注册时填写的手机号码，使用服务时提供的共享信息等；
+      （2）其他方分享的用户个人信息；
+      （3）本app为提供服务而合法收集的用户必要个人信息（如使用服务时系统自动采集的设备或软件信息，浏览历史信息，通讯时间信息等技术信息，用户开启定位功能并使用服务时的地理位置信息等）。
+         其中个人隐私信息是指涉及用户个人身份或个人隐私的信息，比如，用户身份证信息、手机设备识别码、IP地址、用户家庭信息。非个人隐私信息是指用户对本服务的操作状态以及使用习惯等明确且客观反映在APP服务器端的基本记录信息、个人隐私信息范围外的其它普通信息，以及用户同意公开的上述隐私信息。同意使用该app无需获得用户的另行确认与授权即可收集、使用或公开用户的非个人隐私信息。
+         唯一性：
+      （1）用户一个手机号码只能注册一次本APP，如果手机号码已注册，该手机号码将无法重复注册；
+      （2）同一个身份证号码只能实名认证一次，如果该身份证号码已经提交过实名认证信息，用户将无法进行再次认证和其它操作。该app未经用户同意不向任何第三方公开、透露用户个人隐私信息。
+         但以下特定情形除外：
+      （1）本APP根据法律法规规定或相关部门的指示提供用户的个人隐私信息；
+      （2）由于用户将其用户密码告知他人或与他人共享注册帐户与密码，由此导致的任何个人信息的泄漏，或其他非因本APP原因导致的个人隐私信息的泄露；
+      （3）用户自行向第三方公开其个人隐私信息；
+      （4）用户与本APP及合作单位之间就用户个人隐私信息的使用公开达成约定，本APP有权向合作单位公开用户个人隐私信息；
+      （5）任何由于黑客攻击、电脑病毒侵入及其他不可抗力事件导致用户个人隐私信息的泄露；
+      （6）用户个人信息已经经过处理无法识别特定个人且不能复原。
+
+</mutableString>
+                            <attributes>
+                                <color key="NSColor" red="0.26663362979888916" green="0.26668566465377808" blue="0.26663035154342651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="12" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="2.5" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                    <tabStops/>
+                                </paragraphStyle>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="LQ0-d0-gfv" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="5" id="6T2-nQ-Sq8"/>
+                <constraint firstItem="UbV-qj-p76" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7P1-h4-SF4"/>
+                <constraint firstItem="LQ0-d0-gfv" firstAttribute="top" secondItem="UbV-qj-p76" secondAttribute="bottom" id="EFR-PR-21v"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="LQ0-d0-gfv" secondAttribute="trailing" constant="5" id="NQx-RA-Gef"/>
+                <constraint firstItem="UbV-qj-p76" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="RVy-aW-Pfs"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="LQ0-d0-gfv" secondAttribute="bottom" id="Xuo-rr-Z3y"/>
+                <constraint firstItem="UbV-qj-p76" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fp5-vZ-5em"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="39.200000000000003" y="46.326836581709152"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back_nor" width="10" height="18.5"/>
+    </resources>
+</document>

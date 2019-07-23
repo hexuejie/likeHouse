@@ -17,6 +17,9 @@
 #import "ResultQualityViewController.h"
 #import "ChooseMySelfAndRealViewController.h"
 
+#import "RealChooseHKViewController.h"
+#import "RealChooseForeignViewController.h"
+
 @interface ChooseQualificationTypeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -105,8 +108,27 @@
                 return;
             }
             [LoginSession sharedInstance].pageType = 1;
+            NSString *zjlxStr = [NSString stringWithFormat:@"%@",[PersonInfo sharedInstance].allmessageDic[@"poxx"][@"jtcy"][@"zjlx"]];
+            if(zjlxStr != nil){
+                if([zjlxStr isEqualToString:@"港澳台来往大陆通行证"]){
+                    RealChooseHKViewController *vc = [RealChooseHKViewController new];
+                    vc.personData = [PersonModel mj_objectWithKeyValues:[PersonInfo sharedInstance].allmessageDic[@"poxx"]];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    return;
+                }else if([zjlxStr isEqualToString:@"护照"]){
+                    RealChooseForeignViewController *vc = [RealChooseForeignViewController new];
+                    vc.personData = [PersonModel mj_objectWithKeyValues:[PersonInfo sharedInstance].allmessageDic[@"poxx"]];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    return;
+                }else if([zjlxStr isEqualToString:@"身份证"]){
+                    ChooseAddMateshipViewController *vc = [ChooseAddMateshipViewController new];
+                    vc.personData = [PersonModel mj_objectWithKeyValues:[PersonInfo sharedInstance].allmessageDic[@"poxx"]];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    return;
+                }
+            }
+           
             [self.navigationController pushViewController:[ChooseOtherRealViewController new] animated:YES];
-//             [self.navigationController pushViewController:[ChooseAddMateshipViewController new] animated:YES];
         }break;
         case 2:
         {
@@ -146,7 +168,7 @@
         [SVProgressHelper dismissWithMsg:@"请完善配偶信息"];
         return;
     }
-
+//核对资料
     ResultQualityViewController *vc = [ResultQualityViewController new];
     vc.hidesBottomBarWhenPushed = YES;
     vc.isReal = NO;
@@ -191,6 +213,7 @@
         //banner
         if (success) {
             NSDictionary *allDic = response[@"data"];
+           
             [PersonInfo sharedInstance].allmessageDic = allDic;
         }else{
         }

@@ -62,6 +62,30 @@
     tableViewGesture.numberOfTapsRequired = 1;
     tableViewGesture.cancelsTouchesInView = NO;
     [self.contentScrolleView addGestureRecognizer:tableViewGesture];
+    
+    [self initCustomData];
+}
+
+- (void)initCustomData{
+    
+    if (self.personData) {
+        
+        self.nameTextField.text = self.personData.jtcy.xm;
+        self.typeTextField.text = self.personData.jtcy.hjfl;
+        self.areaTextField.text = self.personData.jtcy.hjszd;
+        
+        self.sexTextField.text = self.personData.jtcy.xb;
+        self.numberTextField.text = self.personData.jtcy.zjhm;
+        
+        [self.exchangeImage setCommenImageUrl:self.personData.zzxx.hkb];
+        
+        UIButton *_rigthButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 55, 30)];
+        [_rigthButton setTitle:@"删除" forState:UIControlStateNormal];
+        [_rigthButton setTitleColor:kUIColorFromRGB(0xC0905D) forState:UIControlStateNormal];
+        [_rigthButton addTarget:self action:@selector(tightViewClear) forControlEvents:UIControlEventTouchUpInside];
+        _rigthButton.titleLabel.font = kSysFont(16);
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rigthButton];
+    }
 }
 
 - (void)commentTableViewTouchInSide{
@@ -230,4 +254,22 @@
     }];
 }
 ///listznxx
+
+- (void)tightViewClear{
+    NSString *strUrl = @"/api/family/zjw/user/delpo";
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *parm = @{};
+        parm = @{@"yhbh": [NSString stringWithFormat:@"%@",[LoginSession sharedInstance].otherYhbh]};
+        strUrl = @"/api/family/zjw/user/delznxx";
+    
+    [[NetWork shareManager] postWithUrl:DetailUrlString(strUrl) para:parm isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        if (success) {
+            [SVProgressHelper dismissWithMsg:@"删除成功！"];
+            [weakSelf callBackClick];
+        }else{
+            [weakSelf alertWithMsg:kFailedTips handler:nil];
+        }
+    }];
+}
 @end

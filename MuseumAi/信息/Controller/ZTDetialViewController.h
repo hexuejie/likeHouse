@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZTDetialViewController : MURootViewController
 
 @property (nonatomic ,strong) NSString *formatString;
+@property (nonatomic ,strong) NSDictionary *formatDic;
+
+
+@property (nonatomic ,strong) NSString *urlString;
+@property (nonatomic ,strong) NSDictionary *pramDic;
 
 @end
 

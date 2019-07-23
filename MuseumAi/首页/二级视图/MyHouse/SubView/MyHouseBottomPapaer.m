@@ -8,14 +8,15 @@
 
 #import "MyHouseBottomPapaer.h"
 #import "MyHousePaperViewController.h"
+#import "MyHouseTaxListViewController.h"
 
 @implementation MyHouseBottomPapaer
 - (IBAction)paperBottomClick:(id)sender {
     if (_detialArray.count>0) {
-//        MyHousePaperViewController *vc = [MyHousePaperViewController new];
-//        vc.title = @"完税凭证";
-//        vc.url = _url;
-//        [[ProUtils getCurrentVC].navigationController pushViewController:vc animated:YES];
+        MyHouseTaxListViewController *vc = [MyHouseTaxListViewController new];
+        vc.title = @"缴款明细";
+        vc.detialArray = _detialArray;
+        [[ProUtils getCurrentVC].navigationController pushViewController:vc animated:YES];
         
         return;
     }

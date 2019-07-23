@@ -33,6 +33,8 @@
 @property (nonatomic , strong) ReleaseHomeworkTimeViewMask *timeViewMask;
 @property (nonatomic , assign) NSInteger tagSwitch;
 @property (nonatomic , assign) BOOL tagBool;
+
+
 @end
 
 @implementation ChooseAddMyselfVC
@@ -56,7 +58,6 @@
     
     self.title = @"完善申请人信息";
     [self.addImageView setBorderWithView];
-    _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] lastObject];
 }
 
 - (IBAction)chooseItemClick:(UIButton *)sender {
@@ -164,7 +165,7 @@
 }
 
 - (void)showOtherAlertView:(NSArray *)array{
-    
+    _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] lastObject];
     [[UIApplication sharedApplication].keyWindow addSubview:_timeViewMask];
     _timeViewMask.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     _timeViewMask.customPickArray = array;

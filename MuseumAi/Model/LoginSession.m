@@ -59,6 +59,8 @@ static dispatch_once_t onceToken;
     self.isBindQQ = [aDecoder decodeBoolForKey:@"isBindQQ"];
     self.isBindWeChat = [aDecoder decodeBoolForKey:@"isBindWeChat"];
     self.isHasUnreadMessage = [aDecoder decodeBoolForKey:@"isHasUnreadMessage"];
+    
+    self.isNavigationBarHidden = NO;
     return self;
 }
 - (instancetype)copyWithZone:(NSZone *)zone

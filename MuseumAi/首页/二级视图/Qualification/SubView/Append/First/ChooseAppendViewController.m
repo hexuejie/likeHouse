@@ -37,7 +37,14 @@
     self.title = @"添加人员";
     
     [self.addImageView setBorderWithView];
-    _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] lastObject];
+   
+    
+    if (self.addmodel) {
+        _oneTextField.text = self.addmodel.tsrclx;
+        _twoTextField.text = self.addmodel.xm;
+        _threeTextField.text = self.addmodel.zcgzlssc;
+        [_addImageView setCommenImageUrl:self.addmodel.tsrczm];
+    }
 }
 
 - (IBAction)chooseItemClick:(UIButton *)sender {
@@ -85,7 +92,7 @@
 }
 
 - (void)showOtherAlertView:(NSArray *)array{
-    
+     _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] lastObject];
     [[UIApplication sharedApplication].keyWindow addSubview:_timeViewMask];
     _timeViewMask.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     _timeViewMask.customPickArray = array;
