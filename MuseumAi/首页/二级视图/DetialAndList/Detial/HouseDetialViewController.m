@@ -297,10 +297,10 @@
         vc.hidesBottomBarWhenPushed = YES;
         if (indexPath.section == 3) {
             HouseListModel *model = _detialModel.list[indexPath.row];
-            vc.strBH = model.lpbh;
+            vc.strBH = model.saleid;
         }else if (indexPath.section == 4) {
             HouseListModel *model = _detialModel.near[indexPath.row];
-            vc.strBH = model.lpbh;
+            vc.strBH = model.saleid;
         }
         if (vc.strBH == nil) {
             [SVProgressHelper dismissWithMsg:@"楼盘编号为空！"];
@@ -420,9 +420,9 @@
     
     __weak typeof(self) weakSelf = self;
     if (!_strBH) {
-        _strBH = @"201806110829";
+        _strBH = @"";
     }
-    [[NetWork shareManager] postWithUrl:DetailUrlString(strURL) para:@{@"xmbh":_strBH} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    [[NetWork shareManager] postWithUrl:DetailUrlString(strURL) para:@{@"saleid":_strBH} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         if (success) {
             if (sender.selected) {
                 weakSelf.collectImage.image = [UIImage imageNamed:@"detial_collectioned"];
@@ -472,9 +472,9 @@
 - (void)reloadData {
         __weak typeof(self) weakSelf = self;
     if (!_strBH) {
-        _strBH = @"201806110829";
+        _strBH = @"";
     }//xqly Integer 详情来源  (1,banner,2,专题,3,新闻,4,推荐,5,其他)
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newhousedetail") para:@{@"lpbh":_strBH,@"xqly":@"5"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newhousedetail") para:@{@"saleid":_strBH,@"xqly":@"5"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
     
             [weakSelf loadingPageWidthSuccess:success];
             if (success) {

@@ -116,7 +116,7 @@
     HouseDetialViewController *vc = [HouseDetialViewController new];
     vc.hidesBottomBarWhenPushed = YES;
     HouseListModel *model = self.houses[indexPath.row];
-    vc.strBH = model.lpbh;
+    vc.strBH = model.saleid;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

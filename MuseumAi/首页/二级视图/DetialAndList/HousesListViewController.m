@@ -117,10 +117,10 @@
     HouseDetialViewController *vc = [HouseDetialViewController new];
     vc.hidesBottomBarWhenPushed = YES;
     HouseListModel *model = _houses[indexPath.row];
-    vc.strBH = model.lpbh;
-    if (!model.lpbh) {
-        vc.strBH = model.xmbh;
-    }
+    vc.strBH = model.saleid;
+//    if (!model.lpbh) {
+//        vc.strBH = model.xmbh;
+//    }
     [self.navigationController pushViewController:vc animated:YES];
 }
 

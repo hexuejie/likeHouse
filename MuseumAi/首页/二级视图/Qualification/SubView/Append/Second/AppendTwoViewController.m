@@ -42,7 +42,7 @@
 }
 
 - (IBAction)chooseItemClick:(UIButton *)sender {
-    _timeViewMask.titleLabel.text = @"请选择征收备案时间";
+    
     [self showCompletionAlertView];
 
 }
@@ -92,7 +92,7 @@
     _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] firstObject];
     [[UIApplication sharedApplication].keyWindow addSubview:_timeViewMask];
     _timeViewMask.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    
+    _timeViewMask.titleLabel.text = @"请选择征收备案时间";
     [_timeViewMask.finishButton addTarget:self action:@selector(timefinishClick:) forControlEvents:UIControlEventTouchUpInside];
     [_timeViewMask.cancleButton addTarget:self action:@selector(timecancleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -112,7 +112,7 @@
         [self updateLoadImage:nil];
         
     }else{
-        [SVProgressHelper dismissWithMsg:@"请完善申请人信息!"];
+        [SVProgressHelper dismissWithMsg:@"请完善征收信息!"];
     }
 }
 

@@ -68,15 +68,6 @@
         self.bounces = NO;
         self.delegate = self;
         [self loadTimer];
-        
-//        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - 70, 100, 70)];
-//        [self.pageControl setPageIndicatorTintColor:kUIColorFromRGB(0xffffff)];
-//        [self.pageControl setCurrentPageIndicatorTintColor:kUIColorFromRGB(0xC0905D)];
-//        [self.pageControl setBackgroundColor:[UIColor blueColor]];
-//        [self.superview addSubview:self.pageControl];
-//        self.pageControl.layer.zPosition = 10;
-//        self.pageControl.hidesForSinglePage = YES;
-//        self.pageControl.defersCurrentPageDisplay = YES;
       
     }
     return self;
@@ -103,6 +94,7 @@
 - (void)nextImage {
     switch (_imageArray.count) {
         case 0:
+            return;
             break;
         case 1:
             break;
@@ -146,7 +138,7 @@
     [self resetImage];
     [self setContentOffset:CGPointMake(self.bounds.size.width, 0) animated:NO] ;
     
-    NSLog(@"currentIndex  %ld",_currentIndex);
+//    NSLog(@"currentIndex  %ld",_currentIndex);
     if ([self.customdelegate respondsToSelector:@selector(scrollerIndexBannerView:forIndex:)]) {
         return [self.customdelegate scrollerIndexBannerView:self forIndex:_currentIndex];
     }

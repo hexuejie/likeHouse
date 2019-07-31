@@ -150,7 +150,7 @@
 
 
 -(CGFloat)heightForSegmentedControlInSegmentedPager:(MXSegmentedPager *)segmentedPager{
-    return 42;
+    return 46;
 }
 
 #pragma mark <MXSegmentedPagerDataSource>

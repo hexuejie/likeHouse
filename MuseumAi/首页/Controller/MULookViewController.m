@@ -54,10 +54,18 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
-    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
     [LoginSession sharedInstance].pageType = 0;
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if (![controller isKindOfClass:[MULookViewController class]]) {
+            [controller.navigationController popViewControllerAnimated:NO];
+        }
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -197,39 +205,48 @@
 
 - (void)reloadData {
     __weak typeof(self) weakSelf = self;
-    self.banners = [NSMutableArray new];
-    self.midArray = [NSMutableArray new];
-    self.houses = [NSMutableArray new];
     
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/cover") para: @{@"page":@"1",@"rows":@"20"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         //banner
+        
         [weakSelf loadingPageWidthSuccess:success];
         if (success) {
+            weakSelf.banners = [NSMutableArray new];
+            weakSelf.midArray = [NSMutableArray new];
+            weakSelf.houses = [NSMutableArray new];
             
             NSDictionary *dic = response[@"data"];
             for (NSDictionary *tempdic in [dic objectForKey:@"banner"]) {
-                [self.banners addObject:[BannerModel mj_objectWithKeyValues:tempdic]];
+                [weakSelf.banners addObject:[BannerModel mj_objectWithKeyValues:tempdic]];
             }
             for (NSDictionary *tempdic in [dic objectForKey:@"zt"]) {
                NewsModel *model = [NewsModel mj_objectWithKeyValues:tempdic];
                 model.ztid = tempdic[@"id"];
-                [self.midArray addObject:model];
+                [weakSelf.midArray addObject:model];
             }
             for (NSDictionary *tempdic in [dic objectForKey:@"recommend"]) {
-                [self.houses addObject:[HouseListModel mj_objectWithKeyValues:tempdic]];
+                [weakSelf.houses addObject:[HouseListModel mj_objectWithKeyValues:tempdic]];
             }
-            if (self.midArray.count%2) {
-                [self.midArray removeLastObject];
+            if (weakSelf.midArray.count%2) {
+                [weakSelf.midArray removeLastObject];
             }
-            if (self.houses.count%2) {
-                [self.houses removeLastObject];
+            if (weakSelf.houses.count%2) {
+                [weakSelf.houses removeLastObject];
             }
             [LoginSession sharedInstance].rzzt = [dic objectForKey:@"newuser"][@"rzzt"];
             [LoginSession sharedInstance].grrzzt = [dic objectForKey:@"gr"][@"rzzt"];
             
             [weakSelf.contentCollectionView reloadData];
         }else{
+            [weakSelf.banners removeAllObjects];
+            [weakSelf.midArray removeAllObjects];
+            [weakSelf.houses removeAllObjects];
+            [weakSelf.midArray removeAllObjects];
+            [weakSelf.houses removeAllObjects];
+            [weakSelf.contentCollectionView reloadData];
+//            [weakSelf.contentCollectionView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         }
+        
         [weakSelf.contentCollectionView.mj_header endRefreshing];
         [weakSelf.contentCollectionView.mj_footer endRefreshing];
     }];
@@ -312,7 +329,7 @@
         HouseDetialViewController *vc = [HouseDetialViewController new];
         vc.hidesBottomBarWhenPushed = YES;
         HouseListModel *model = self.houses[indexPath.row];
-        vc.strBH = model.lpbh;
+        vc.strBH = model.saleid;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }//    专题详情   参数：ztbh
@@ -407,6 +424,7 @@
     [self.contentCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView"];
     [self.contentCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView1"];
     
+     [self.contentCollectionView.mj_footer resetNoMoreData];
     __weak typeof (self) weakSelf = self;
     self.contentCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf.contentCollectionView.mj_footer resetNoMoreData];

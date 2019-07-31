@@ -16,8 +16,9 @@
 //当前界面的mapView
 @property (nonatomic, strong) BMKMapView *mapView;
 
-
-
+@property (nonatomic, strong) UIButton *reduiceButton;
+@property (nonatomic, strong) UIButton *addButton;
+@property (nonatomic) float zoomLevel;
 @end
 @implementation DetialCustomMapView
 
@@ -37,15 +38,34 @@
 
 - (void)commonInit{
     
-    
+    _zoomLevel = 17.0;
     _mapView = [[BMKMapView alloc] initWithFrame:self.bounds];
     _mapView.delegate = self;
     [self addSubview:_mapView];
-    [_mapView setZoomLevel:17];
+    [_mapView setZoomLevel:_zoomLevel];
     [_mapView setShowMapPoi:YES];
     [_mapView setShowMapScaleBar:YES];
     _mapView.showsUserLocation = YES;
     
+    
+    _reduiceButton = [[UIButton alloc]initWithFrame:CGRectMake(self.bounds.size.width-38-10, self.bounds.size.height-38-30, 38, 38)];
+    [self addSubview:_reduiceButton];
+    [_reduiceButton setImage:[UIImage imageNamed:@"map_reduce"] forState:UIControlStateNormal];
+    [_reduiceButton addTarget:self action:@selector(reduiceButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    _addButton = [[UIButton alloc]initWithFrame:CGRectMake(self.bounds.size.width-38-10 , self.bounds.size.height-38-30  -4-38, 38, 38)];
+    [self addSubview:_addButton];
+    [_addButton setImage:[UIImage imageNamed:@"map_add"] forState:UIControlStateNormal];
+    [_addButton addTarget:self action:@selector(addButtonClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)reduiceButtonClick{
+    _zoomLevel = _zoomLevel-0.5;
+    [_mapView zoomOut];
+}
+- (void)addButtonClick{
+    _zoomLevel = _zoomLevel+0.5;
+    [_mapView zoomIn];
 }
 
 - (void)setStrTitle:(NSString *)strTitle{
@@ -116,7 +136,7 @@
     
     BMKActionPaopaoView *paopao=[[BMKActionPaopaoView alloc]initWithCustomView:areaPaoView];
     annotationView.paopaoView = paopao;
-    
+    [_mapView setZoomLevel:_zoomLevel];
     return annotationView;
 }
 

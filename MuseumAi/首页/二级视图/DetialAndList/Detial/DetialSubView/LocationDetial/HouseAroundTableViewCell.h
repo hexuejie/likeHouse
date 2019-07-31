@@ -11,10 +11,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HouseAroundTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UIView *contentBgView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *titleLogoImage;
 
+
+@property (strong, nonatomic) NSArray *itemArray;
 @end
 
 NS_ASSUME_NONNULL_END

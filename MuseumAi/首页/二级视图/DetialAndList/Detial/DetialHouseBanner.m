@@ -123,7 +123,7 @@
     [self resetImage];
     [self setContentOffset:CGPointMake(self.bounds.size.width, 0) animated:NO] ;
     
-    NSLog(@"currentIndex  %ld",_currentIndex);
+//    NSLog(@"currentIndex  %ld",_currentIndex);
     if ([self.customdelegate respondsToSelector:@selector(scrollerIndexBannerView:forIndex:)]) {
         return [self.customdelegate scrollerIndexBannerView:self forIndex:_currentIndex];
     }

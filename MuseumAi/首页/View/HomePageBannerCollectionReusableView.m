@@ -41,6 +41,13 @@
     
     self.pageControl.numberOfPages = _imageArray.count;
     NSLog(@"_imageArray.count  \n %ld",_imageArray.count);
+    
+    
+    if (_imageArray.count == 0) {
+        _bannerScrollView.hidden = YES;
+    }else{
+        _bannerScrollView.hidden = NO;
+    }
 }
 
 - (void)scrollerIndexBannerView:(IndexBannerView *)view forIndex:(NSInteger)index{

@@ -139,6 +139,7 @@
     }
     if (stryhbh.length == 0) {
         [SVProgressHelper dismissWithMsg:@"请选择要删除信息！"];
+        self.addButton.userInteractionEnabled = YES;
         return;
     }
     

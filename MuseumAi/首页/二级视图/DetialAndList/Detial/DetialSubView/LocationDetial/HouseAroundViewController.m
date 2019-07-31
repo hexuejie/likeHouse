@@ -47,18 +47,9 @@
     
     HouseAroundTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HouseAroundTableViewCell" forIndexPath:indexPath];
     
-    cell.contentLabel.text = _zbArray[indexPath.row][@"zbmc"];
-    
-    
-    if (cell.contentLabel.text.length > 0) {
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:cell.contentLabel.text];
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.lineSpacing = 4; // 调整行间距
-        NSRange range = NSMakeRange(0, [cell.contentLabel.text length]);
-        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:range];
-        [cell.contentLabel setAttributedText:attributedString];
-    }
-    
+//    cell.contentLabel.text = _zbArray[indexPath.row][@"zbmc"];
+//
+
     switch ([_zbArray[indexPath.row][@"zblx"] integerValue]) {
             
         case 1:{
@@ -100,7 +91,8 @@
         default:
             break;
     }
-    
+//    zblst
+    cell.itemArray = _zbArray[indexPath.row][@"zblst"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

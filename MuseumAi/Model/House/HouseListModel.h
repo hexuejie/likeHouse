@@ -46,6 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *gxts;
 @property (nonatomic,copy) NSString *rcsj;
 
+@property (nonatomic,copy) NSString *saleid;
+
 @end
 
 NS_ASSUME_NONNULL_END

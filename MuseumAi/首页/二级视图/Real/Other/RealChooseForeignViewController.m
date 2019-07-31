@@ -119,7 +119,7 @@
         
         self.sexTextField.text = self.personData.jtcy.xb;
 //        self.numberTextField.text = self.personData.jtcy.zjhm;
-        self.changeTimes.text = self.personData.jtcy.hzcs;
+        self.changeTimes.text = self.personData.jtcy.zjhm;
         
         if (self.personData.jtcy.lysj.length >0) {
             self.lysjTextField.text = self.personData.jtcy.lysj;
@@ -137,11 +137,24 @@
         UIButton *_rigthButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 55, 30)];
         [_rigthButton setTitle:@"删除" forState:UIControlStateNormal];
         [_rigthButton setTitleColor:kUIColorFromRGB(0xC0905D) forState:UIControlStateNormal];
-        [_rigthButton addTarget:self action:@selector(tightViewClear) forControlEvents:UIControlEventTouchUpInside];
+        [_rigthButton addTarget:self action:@selector(tipView1Clear) forControlEvents:UIControlEventTouchUpInside];
         _rigthButton.titleLabel.font = kSysFont(16);
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rigthButton];
     }
 }
+
+- (void)tipView1Clear{
+    _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"RealFinishTipView1" owner:self options:nil].firstObject;
+    _tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
+    _tipView1.sureType = -1;
+    
+    [_tipView1.cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+    [_tipView1.sureButton setTitle:@"确定" forState:UIControlStateNormal];
+    _tipView1.contentTitleLabel.text = [NSString stringWithFormat:@"确定删除该信息？"];
+    [_tipView1.sureButton addTarget:self action:@selector(tightViewClear) forControlEvents:UIControlEventTouchUpInside];
+}
+
 
 - (IBAction)chooseSwitchCick:(UIButton *)sender {
     _tagSwitch = sender.tag;
@@ -314,7 +327,7 @@
         self.beginTimeTextField.text.length == 0||
         
         !self.exchangeImageOne.image
-//        ||!self.exchangeImageTwo.image
+        ||!self.exchangeImageTwo.image
         ) {
         [SVProgressHelper dismissWithMsg: self.tipStr];
         return;
@@ -427,8 +440,8 @@
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savezn/new") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         if (success) {
-            
-            [weakSelf sureButtonClick];
+            [SVProgressHelper dismissWithMsg:response[@"msg"]];
+            [weakSelf backRootVC];
         }else{
             [weakSelf alertWithMsg:kFailedTips handler:nil];
         }
@@ -453,8 +466,8 @@
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savepo/new") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         if (success) {
-            
-            [weakSelf sureButtonClick];
+            [SVProgressHelper dismissWithMsg:response[@"msg"]];
+            [weakSelf backRootVC];
         }else{
             [weakSelf alertWithMsg:kFailedTips handler:nil];
         }

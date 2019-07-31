@@ -88,7 +88,7 @@
         
             [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
             if (success) {
-                [self loginSuccess:response[@"data"]];
+                [weakSelf loginSuccess:response[@"data"]];
 
                 NSString * urlString = DetailUrlString(@"/api/login/zjw/user/logincode");
                 NSURL * url = [NSURL URLWithString:urlString];

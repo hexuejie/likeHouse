@@ -60,7 +60,8 @@
             //        rzbz
             weakSelf.rzbzStr = allDic[@"grxx"][@"jtcy"][@"rzbz"];
             if (weakSelf.dataDic.count == 0) {
-                [weakSelf addNoneDataTipView];
+//                [SVProgressHelper dismissWithMsg:@""];
+//                [weakSelf addNoneDataTipView];
             }else{
                 [weakSelf reloadView];
             }

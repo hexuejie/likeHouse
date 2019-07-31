@@ -98,8 +98,8 @@ alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
 //#define BaseUrl @"http://app.cszjw.net:11001"    //扒取数据
 //#define H5BaseUrl @"http://192.168.0.199:94"
 //#else
-#define BaseUrl @"http://192.168.99.234:8000"        //内部数据
-//#define BaseUrl @"http://zhifang.51vip.biz:8000"        //外部数据
+//#define BaseUrl @"http://192.168.99.234:8000"        //内部数据
+#define BaseUrl @"http://zhifang.51vip.biz:8000"        //外部数据
 #define H5BaseUrl @"https://appweb.bnbn99.com"
 //#endif
 

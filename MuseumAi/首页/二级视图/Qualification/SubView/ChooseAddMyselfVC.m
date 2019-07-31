@@ -65,14 +65,14 @@
     switch (sender.tag) {
         case 101:
             {
-                _timeViewMask.titleLabel.text = @"请选择家庭户口类型";
+                
                 [self showOtherAlertView:@[@"集体户口",@"家庭户口"]];
             }
             break;
             
         case 102:
         {
-            _timeViewMask.titleLabel.text = @"请选择婚姻状况";
+            
             [self showOtherAlertView:@[@"已婚",@"未婚",@"离异",@"丧偶"]];
         }
             break;
@@ -126,6 +126,7 @@
     
     if (self.tagBool == 1&&self.twoTextField.text.length>0) {
         [self updatePersonData];
+        return;
     }
     
     if (self.oneTextField.text.length>0&&
@@ -169,7 +170,12 @@
     [[UIApplication sharedApplication].keyWindow addSubview:_timeViewMask];
     _timeViewMask.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     _timeViewMask.customPickArray = array;
-    
+    if (array.count == 2) {
+        _timeViewMask.titleLabel.text = @"请选择家庭户口类型";
+    }else{
+        _timeViewMask.titleLabel.text = @"请选择婚姻状况";
+    }
+   
     [_timeViewMask.finishButton addTarget:self action:@selector(timefinishClick:) forControlEvents:UIControlEventTouchUpInside];
     [_timeViewMask.cancleButton addTarget:self action:@selector(timecancleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }

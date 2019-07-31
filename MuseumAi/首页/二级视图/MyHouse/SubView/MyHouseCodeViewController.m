@@ -89,17 +89,17 @@
                      ){
                 if ([temp[@"zfje"] integerValue]>0) {
                     weakSelf.refeashButton.hidden = NO;
-                    NSString *strStip = [NSString stringWithFormat:@"已缴金额：%@\t需缴金额：%@\t",temp[@"zfje"],temp[@"hjyjje"]];
+                    NSString *strStip = [NSString stringWithFormat:@"已缴金额：%@\t应缴金额：%@\t",temp[@"zfje"],temp[@"hjyjje"]];
                     //                        [self alertWithMsg:strStip handler:nil];
-                    self.tipReturnLabel.hidden = NO;
-                    self.tipReturnLabel.textColor = kUIColorFromRGB(0xFF0000);
+                    weakSelf.tipReturnLabel.hidden = NO;
+                    weakSelf.tipReturnLabel.textColor = kUIColorFromRGB(0xFF0000);
                     
                     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:strStip];
                     NSRange range2 = [strStip rangeOfString:@"已缴金额："];
-                    NSRange range3 = [strStip rangeOfString:@"需缴金额："];
+                    NSRange range3 = [strStip rangeOfString:@"应缴金额："];
                     [attributedString addAttribute:NSForegroundColorAttributeName value:kUIColorFromRGB(0x797878) range:range2];
                     [attributedString addAttribute:NSForegroundColorAttributeName value:kUIColorFromRGB(0x797878) range:range3];
-                    [self.tipReturnLabel setAttributedText:attributedString];
+                    [weakSelf.tipReturnLabel setAttributedText:attributedString];
                 }
             }
         

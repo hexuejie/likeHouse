@@ -54,7 +54,7 @@
         _timeViewMask.titleLabel.text = @"请选择缴纳时长";
         [self showCompletionAlertView];
     }else{
-        _timeViewMask.titleLabel.text = @"请选择姓名";
+        
         [self showOtherAlertView:self.nameArray];
     }
 }
@@ -77,6 +77,7 @@
 - (void)showOtherAlertView:(NSArray *)array{
     
     _timeViewMask  = [[[NSBundle mainBundle] loadNibNamed:@"ReleaseHomeworkTimeViewMask" owner:nil options:nil] lastObject];
+    _timeViewMask.titleLabel.text = @"请选择姓名";
     [[UIApplication sharedApplication].keyWindow addSubview:_timeViewMask];
     _timeViewMask.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     _timeViewMask.customPickArray = array;

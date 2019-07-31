@@ -100,9 +100,9 @@
 - (void)reloadData {
     __weak typeof(self) weakSelf = self;
     if (!_strBH) {
-        _strBH = @"201806110829";
+        _strBH = @"";
     }//xqly Integer 详情来源  (1,banner,2,专题,3,新闻,4,推荐,5,其他)
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/buildinfo") para:@{@"lpbh":_strBH} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/buildinfo") para:@{@"saleid":_strBH} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         [weakSelf loadingPageWidthSuccess:success];
         if (success) {
             weakSelf.dataArray = response[@"data"];

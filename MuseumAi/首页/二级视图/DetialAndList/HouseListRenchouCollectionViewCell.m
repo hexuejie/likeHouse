@@ -28,16 +28,16 @@
     if (!_model.lpmc) {
         self.titleLabel.text = _model.xmmc;
     }
-    self.priceLabel.text = [NSString stringWithFormat:@"均价:%@",_model.jj];
-    self.timeLabel.text = [NSString stringWithFormat:@"认筹时间:%@",_model.rcsj];
+    self.priceLabel.text = [NSString stringWithFormat:@"均价：%@",_model.jj];
+    self.timeLabel.text = [NSString stringWithFormat:@"认筹时间：%@",_model.rcsj];
     
     [self.coverImageView setOtherImageUrl:_model.img];
     
     self.contentLabel1.text = _model.kprq;
     self.contentLabel4.text = _model.kfsmc;
     
-    self.contentLabel2.text = _model.ksts;
-    self.contentLabel3.text = _model.gxts;
+    self.contentLabel2.text = [NSString stringWithFormat:@"%@套",_model.ksts];
+    self.contentLabel3.text = [NSString stringWithFormat:@"%@套",_model.gxts];
     self.contentLabel5.text = _model.addr;
     
     if ([_model.lpzt isEqualToString:@"认筹中"]) {

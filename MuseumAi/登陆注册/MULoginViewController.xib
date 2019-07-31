@@ -114,7 +114,7 @@
                         <constraint firstItem="CGL-88-TZu" firstAttribute="centerY" secondItem="UxF-Zx-r2L" secondAttribute="centerY" id="yMi-JI-fPu"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎登陆悦居星城" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8q-Ff-aQD">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎登录悦居星城" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8q-Ff-aQD">
                     <rect key="frame" x="114" y="70" width="147" height="22"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" red="0.75338226556777954" green="0.56658035516738892" blue="0.365711510181427" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -93,13 +93,13 @@
     NSDictionary *pram;
     if ([self.title isEqualToString:@"反馈纠错"]) {
         strURL = @"/api/family/xf/user/correct";
-        pram = @{@"xmbh":_strBH
+        pram = @{@"saleid":_strBH
                  ,@"nr":self.contentTextView.text
                  ,@"lxsj":[NSString stringWithFormat:@"%@",self.phoneTextField.text]
                  };
     }else{
         strURL = @"/api/family/xf/user/lxw";
-        pram = @{@"xmbh":_strBH
+        pram = @{@"saleid":_strBH
                  ,@"nr":self.contentTextView.text
                  ,@"sjhm":[NSString stringWithFormat:@"%@",self.phoneTextField.text]
                  };

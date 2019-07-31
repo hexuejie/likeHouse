@@ -187,7 +187,7 @@
 - (void)tapClickInto{
     HouseDetialViewController *vc = [HouseDetialViewController new];
     vc.hidesBottomBarWhenPushed = YES;
-    vc.strBH = _gllpModel.lpbh;
+    vc.strBH = _gllpModel.saleid;
     if (!vc.strBH) {
         vc.strBH = _gllpModel.xmbh;
     }

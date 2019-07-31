@@ -15,6 +15,7 @@
 #import "ChooseQualificationTypeViewController.h"
 #import "ReleaseHomeworkTimeViewMask.h"
 #import "MOFSPickerManager.h"
+#import "RealFirstTipViewController.h"
 
 @interface ChooseMySelfAndRealViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
@@ -454,7 +455,7 @@
             
         }];
     }else if (button.tag == 2) {
-        _timeViewMask.titleLabel.text = @"请选择婚姻状况";
+        
         [self showOtherAlertView:@[@"已婚",@"未婚",@"离异",@"丧偶"]];
     }else{
         _timeViewMask.titleLabel.text = @"请选择家庭户口类型";
@@ -466,7 +467,11 @@
     [[UIApplication sharedApplication].keyWindow addSubview:_timeViewMask];
     _timeViewMask.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     _timeViewMask.customPickArray = array;
-    
+    if (array.count == 2) {
+        _timeViewMask.titleLabel.text = @"请选择家庭户口类型";
+    }else{
+        _timeViewMask.titleLabel.text = @"请选择婚姻状况";
+    }
     [_timeViewMask.finishButton addTarget:self action:@selector(timefinishClick:) forControlEvents:UIControlEventTouchUpInside];
     [_timeViewMask.cancleButton addTarget:self action:@selector(timecancleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -517,6 +522,14 @@
     [UIView animateWithDuration:0.25 animations:^{
         [self.view layoutIfNeeded];
     }];
+}
+
+
+- (IBAction)realClick:(id)sender {
+    RealFirstTipViewController *vc = [RealFirstTipViewController new];
+    vc.title = @"关于实名认证";
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

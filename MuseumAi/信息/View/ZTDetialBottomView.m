@@ -25,7 +25,7 @@
 - (IBAction)intoButton:(id)sender {
     HouseDetialViewController *vc = [HouseDetialViewController new];
     vc.hidesBottomBarWhenPushed = YES;
-    vc.strBH = _model.lpbh;
+    vc.strBH = _model.saleid;
     if (!vc.strBH) {
         vc.strBH = _model.xmbh;
     }

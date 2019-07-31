@@ -98,6 +98,18 @@
 }
 
 
++ (instancetype)unitleManager{
+    static dispatch_once_t onceToken;
+    static NetWork *netWork = nil;
+    dispatch_once(&onceToken, ^{
+        netWork = [[NetWork alloc] init];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.requestSerializer.timeoutInterval = 5;
+        netWork.manager = manager;
+    });
+    return netWork;
+}
+
 + (instancetype)shareManager{
     static dispatch_once_t onceToken;
     static NetWork *netWork = nil;
@@ -142,7 +154,8 @@
 
    
 
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.requestSerializer.timeoutInterval = 8;
     
     NSArray* headerCookie = [[NSUserDefaults standardUserDefaults]objectForKey:@"Cookie"];
     if (headerCookie.count && isTologin) {
@@ -157,7 +170,7 @@
         }
     }
 
-        [manager POST:urlString parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [[NetWork unitleManager].manager POST:urlString parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
 //        dispatch_async(dispatch_get_main_queue(), ^{
 //            [SVProgressHUD dismiss];

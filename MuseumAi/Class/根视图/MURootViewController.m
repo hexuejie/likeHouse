@@ -65,7 +65,14 @@
 
 
 - (void)callBackClick{
+    if (self.navigationController != nil && self.navigationController.viewControllers.count <= 1){
+        [self dismissViewControllerAnimated:true completion:^{
+        }];
+    }
     [self.navigationController popViewControllerAnimated:YES];
+    [self.view removeFromSuperview];
+//    [self dealloc];
+//    self = nil;
 }
 
 
@@ -107,23 +114,25 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
+     NSLog(@"didReceiveMemoryWarning :%@",self);
 }
 
 - (void)dealloc {
     [LoginSession sharedInstance].isNavigationBarHidden = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSLog(@"dealloc %@",self);
 }
+
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
 
-
-
-
 - (void)addNoneDataTipView{
-    UIView *tipView1 = [[NSBundle mainBundle] loadNibNamed:@"NoneDataTipView" owner:self options:nil].firstObject;
+    UIView *tipView1 = [_allView viewWithTag:9595];
+    if (!tipView1) {
+        tipView1 = [[NSBundle mainBundle] loadNibNamed:@"NoneDataTipView" owner:self options:nil].firstObject;
+    }
     tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     tipView1.tag = 9595;
     if (!_allView) {
@@ -132,9 +141,9 @@
     [_allView addSubview:tipView1];
     
     [tipView1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.top.equalTo(_allView);
+        make.leading.top.equalTo(self.allView);
         make.width.mas_equalTo(SCREEN_WIDTH);
-        make.height.mas_equalTo(_allView.bounds.size.height);
+        make.height.mas_equalTo(self.allView.bounds.size.height);
     }];
 }
 
@@ -151,7 +160,10 @@
 
 
 - (void)addErrprTipView{
-    UIView *tipView1 = [[NSBundle mainBundle] loadNibNamed:@"NoneDataTipView" owner:self options:nil].lastObject;
+    UIView *tipView1 = [_allView viewWithTag:9696];
+    if (!tipView1) {
+        tipView1 = [[NSBundle mainBundle] loadNibNamed:@"NoneDataTipView" owner:self options:nil].lastObject;
+    }
     tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     tipView1.tag = 9696;
     
@@ -165,9 +177,9 @@
     [tipView1 addGestureRecognizer:tap];
     
     [tipView1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.top.equalTo(_allView);
+        make.leading.top.equalTo(self.allView);
         make.width.mas_equalTo(SCREEN_WIDTH);
-        make.height.mas_equalTo(_allView.bounds.size.height);
+        make.height.mas_equalTo(self.allView.bounds.size.height);
     }];
 }
 

@@ -41,7 +41,7 @@
                                 <color key="textColor" red="0.45058667660000001" green="0.4581159353" blue="0.49959141019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juX-t4-loV">
+                            <button opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juX-t4-loV">
                                 <rect key="frame" x="315" y="8" width="33" height="83.5"/>
                                 <state key="normal" image="qualification_choose"/>
                                 <state key="selected" image="qualification_chooseed"/>

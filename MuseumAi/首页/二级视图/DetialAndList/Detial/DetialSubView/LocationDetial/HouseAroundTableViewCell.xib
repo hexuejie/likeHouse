@@ -20,35 +20,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detial_school" translatesAutoresizingMaskIntoConstraints="NO" id="VIK-i6-9wM">
-                        <rect key="frame" x="12" y="20" width="16" height="16"/>
+                        <rect key="frame" x="11" y="20" width="19" height="19"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="16" id="94o-xh-ta3"/>
-                            <constraint firstAttribute="width" constant="16" id="q6A-fu-n9c"/>
+                            <constraint firstAttribute="height" constant="19" id="94o-xh-ta3"/>
+                            <constraint firstAttribute="width" constant="19" id="q6A-fu-n9c"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="学校" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7a-Sg-H8R">
-                        <rect key="frame" x="35" y="18.5" width="33" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="0.14507749676704407" green="0.1451098620891571" blue="0.14507544040679932" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="37" y="18" width="39" height="23"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        <color key="textColor" red="0.75338226556777954" green="0.56658035516738892" blue="0.365711510181427" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nq9-Zf-UIA">
-                        <rect key="frame" x="20" y="54" width="293" height="72.5"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12趟公交：918路，W204路，W107路，W111路，W117路，W226路，355路，357路  " textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6i-VO-4R5">
-                                <rect key="frame" x="16" y="11" width="261" height="50.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.55679994821548462" green="0.55689889192581177" blue="0.5567936897277832" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
+                        <rect key="frame" x="20" y="56" width="293" height="54.5"/>
                         <color key="backgroundColor" red="0.96460121870040894" green="0.96476620435714722" blue="0.96459084749221802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="b6i-VO-4R5" firstAttribute="top" secondItem="Nq9-Zf-UIA" secondAttribute="top" constant="11" id="6J8-eu-xuV"/>
-                            <constraint firstItem="b6i-VO-4R5" firstAttribute="leading" secondItem="Nq9-Zf-UIA" secondAttribute="leading" constant="16" id="ana-ke-pAX"/>
-                            <constraint firstAttribute="trailing" secondItem="b6i-VO-4R5" secondAttribute="trailing" constant="16" id="gpn-Gg-7kj"/>
-                            <constraint firstAttribute="bottom" secondItem="b6i-VO-4R5" secondAttribute="bottom" constant="11" id="idk-KB-QR1"/>
-                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
                                 <integer key="value" value="8"/>
@@ -59,9 +45,9 @@
                 <constraints>
                     <constraint firstItem="Nq9-Zf-UIA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="1Yc-8R-2qw"/>
                     <constraint firstItem="H7a-Sg-H8R" firstAttribute="centerY" secondItem="VIK-i6-9wM" secondAttribute="centerY" id="9wo-E8-I3S"/>
-                    <constraint firstAttribute="bottom" secondItem="Nq9-Zf-UIA" secondAttribute="bottom" id="F7s-5y-3OU"/>
-                    <constraint firstItem="Nq9-Zf-UIA" firstAttribute="top" secondItem="H7a-Sg-H8R" secondAttribute="bottom" constant="16" id="N6R-fP-D6L"/>
-                    <constraint firstItem="VIK-i6-9wM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Vco-Yk-RS3"/>
+                    <constraint firstAttribute="bottom" secondItem="Nq9-Zf-UIA" secondAttribute="bottom" constant="16" id="F7s-5y-3OU"/>
+                    <constraint firstItem="Nq9-Zf-UIA" firstAttribute="top" secondItem="H7a-Sg-H8R" secondAttribute="bottom" constant="15" id="N6R-fP-D6L"/>
+                    <constraint firstItem="VIK-i6-9wM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="Vco-Yk-RS3"/>
                     <constraint firstItem="H7a-Sg-H8R" firstAttribute="leading" secondItem="VIK-i6-9wM" secondAttribute="trailing" constant="7" id="cYg-Dw-pUe"/>
                     <constraint firstAttribute="trailing" secondItem="Nq9-Zf-UIA" secondAttribute="trailing" constant="20" id="l3k-Wg-yd9"/>
                     <constraint firstItem="VIK-i6-9wM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="nYk-5H-veC"/>
@@ -69,7 +55,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
-                <outlet property="contentLabel" destination="b6i-VO-4R5" id="TCa-c1-g5j"/>
+                <outlet property="contentBgView" destination="Nq9-Zf-UIA" id="AhS-e0-cgd"/>
                 <outlet property="titleLabel" destination="H7a-Sg-H8R" id="Ij0-UT-sU7"/>
                 <outlet property="titleLogoImage" destination="VIK-i6-9wM" id="l9b-Ho-0Yk"/>
             </connections>
@@ -77,6 +63,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="detial_school" width="16" height="16"/>
+        <image name="detial_school" width="19" height="19"/>
     </resources>
 </document>

@@ -102,7 +102,7 @@
     HouseDetialViewController *vc = [HouseDetialViewController new];
     vc.hidesBottomBarWhenPushed = YES;
     HouseListModel *model = self.houses[indexPath.row];
-    vc.strBH = model.lpbh;
+    vc.strBH = model.saleid;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -170,7 +170,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/renchou") para: @{@"xmbh":[NSString stringWithFormat:@"%@",_tempModel.lpbh]} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/xf/user/renchou") para: @{@"lpbh":[NSString stringWithFormat:@"%@",_tempModel.lpbh],@"saleid":[NSString stringWithFormat:@"%@",_tempModel.saleid]} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         
         if (success) {
             
