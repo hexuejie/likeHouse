@@ -40,7 +40,7 @@
     self.segmentedPager.segmentedControl.selectionIndicatorHeight = 3;
     self.segmentedPager.segmentedControl.selectionIndicatorCornerRadius = 1.5;
     self.segmentedPager.segmentedControl.selectionIndicatorColor = MJThemeColor;
-    self.segmentedPager.segmentedControlEdgeInsets = UIEdgeInsetsMake(64, 0, 0, 0);
+    self.segmentedPager.segmentedControlEdgeInsets = UIEdgeInsetsMake([Utility segmentTopMinHeight], 0, 0, 0);
 
     UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
     line.translatesAutoresizingMaskIntoConstraints = false;

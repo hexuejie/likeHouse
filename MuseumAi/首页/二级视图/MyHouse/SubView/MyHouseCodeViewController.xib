@@ -18,6 +18,7 @@
                 <outlet property="codeLabel" destination="3Ew-nL-wQM" id="QQk-uq-x4r"/>
                 <outlet property="refeashButton" destination="mOB-h0-dM2" id="Ulm-Sb-oex"/>
                 <outlet property="tipReturnLabel" destination="mU9-yV-4kg" id="vJz-Ri-ZMj"/>
+                <outlet property="titleTop" destination="IeN-Or-5JB" id="yFX-Et-Ujr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

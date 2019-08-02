@@ -41,6 +41,9 @@
 @property (nonatomic , assign) NSInteger count;
 
 @property (strong, nonatomic) RealFinishTipView1 *tipView1;
+
+
+
 @end
 
 @implementation MyCenterViewController

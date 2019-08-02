@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) NSDictionary *rzbzStr;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *backTop;
+
 @end
 
 @implementation ResultQualityResultVC
@@ -34,6 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    _backTop.constant = [Utility segmentTopMinHeight]-44;
 }
 
 - (IBAction)lookOutClick:(id)sender {

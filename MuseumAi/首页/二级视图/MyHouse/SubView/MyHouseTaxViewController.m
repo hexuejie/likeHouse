@@ -196,16 +196,20 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     if (_dataDic[@"url"] != nil) {//hpdVo
+        UIView *footerView = [[UIView alloc]initWithFrame: CGRectMake(0, 0, SCREEN_WIDTH, 55)];
         MyHouseBottomPapaer *footer = [[NSBundle mainBundle] loadNibNamed:@"MyHouseBottomPapaer" owner:self options:nil].firstObject;
         footer.frame = CGRectMake(0, 0, SCREEN_WIDTH, 55);
         footer.url =  _dataDic[@"url"];
-        self.tableView.tableFooterView = footer;
+        [footerView addSubview:footer];
+        self.tableView.tableFooterView = footerView;
     }
     if ( [_dataDic[@"hpdVo"] count]>0) {//hpdVo
+        UIView *footerView = [[UIView alloc]initWithFrame: CGRectMake(0, 0, SCREEN_WIDTH, 55)];
         MyHouseBottomPapaer *footer = [[NSBundle mainBundle] loadNibNamed:@"MyHouseBottomPapaer" owner:self options:nil].firstObject;
         footer.frame = CGRectMake(0, 0, SCREEN_WIDTH, 55);
         footer.detialArray =  _dataDic[@"hpdVo"];
-        self.tableView.tableFooterView = footer;
+        [footerView addSubview:footer];
+        self.tableView.tableFooterView = footerView;
     }
 }
 - (IBAction)codeClick:(id)sender {

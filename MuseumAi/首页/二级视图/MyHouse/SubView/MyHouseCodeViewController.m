@@ -14,6 +14,7 @@
 @interface MyHouseCodeViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *codeImageViewTop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleTop;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *codeImageMid;
@@ -33,6 +34,8 @@
 //    [self.codeBackGround setCornerRadius:5 withShadow:YES withOpacity:5];
     [self.codeBackGround setCornerRadius:4 withShadow:YES withOpacity:10 withAlpha:0.1 withCGSize:CGSizeMake(1, 4)];
     self.view.backgroundColor = kListBgColor;
+    _titleTop.constant = [Utility segmentTopMinHeight]-30;
+    
     
     [self startTimer];
 }

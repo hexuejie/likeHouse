@@ -43,7 +43,7 @@
     
     [self.customPick mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.bottom.equalTo(self);
-        make.height.mas_equalTo(150);
+        make.height.mas_equalTo(150+[Utility safeAreaBottomPlus]);
     }];
 }
 

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultQualityResultVC">
             <connections>
+                <outlet property="backTop" destination="nbK-uQ-JCJ" id="1QZ-3w-P0V"/>
                 <outlet property="contentLabel" destination="gl0-XJ-InT" id="5cP-ur-6zB"/>
                 <outlet property="mainImageView" destination="Zxd-wm-bBw" id="WGe-LM-PZH"/>
                 <outlet property="tipLabel1" destination="4Rf-wF-1Dm" id="KlP-of-iIg"/>
