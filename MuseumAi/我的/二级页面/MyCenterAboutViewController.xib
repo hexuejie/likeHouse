@@ -40,11 +40,25 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpC-n5-3x9">
-                    <rect key="frame" x="14" y="251.5" width="347" height="97"/>
+                    <rect key="frame" x="14" y="251.5" width="347" height="102.5"/>
                     <attributedString key="attributedText">
-                        <fragment content="         悦居星城APP由长沙市住房和城乡建设委员会主导开发，旨在为购房者提供实名认证、购房资格审查、线上认筹及相关服务。悦居星城的资格审查结果只是根据用户录入的信息得出一个预审结果，不能代表最后的网签购房资格审查结果。">
+                        <fragment content="         悦居星城APP由长沙市">
                             <attributes>
-                                <color key="NSColor" red="0.26663362979888916" green="0.26668566465377808" blue="0.26663035154342651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="住房和城乡建设局">
+                            <attributes>
+                                <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <font key="NSFont" size="13" name="PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="主导开发，旨在为购房者提供实名认证、购房资格审查、线上认筹及相关服务。悦居星城的资格审查结果只是根据用户录入的信息得出一个预审结果，不能代表最后的网签购房资格审查结果。">
+                            <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
                             </attributes>
@@ -65,7 +79,7 @@
                         <constraint firstAttribute="height" constant="1" id="Lxc-8T-gjo"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长沙市住建委信息中心拥有软件最终解释权" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8L-tK-vhJ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长沙市住建局信息中心拥有软件最终解释权" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8L-tK-vhJ">
                     <rect key="frame" x="80.5" y="620" width="214" height="13.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" red="0.64306563139999995" green="0.64317852259999997" blue="0.6430584788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

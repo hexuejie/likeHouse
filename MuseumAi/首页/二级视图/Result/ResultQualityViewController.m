@@ -51,6 +51,9 @@
     self.view.backgroundColor = kListBgColor;
     [self.tableview registerClass:[ResultImageTableViewCell class] forCellReuseIdentifier:@"ResultImageTableViewCell"];
     [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([ResultContentTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"ResultContentTableViewCell"];
+    [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([ResultContentTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"ResultContentTableViewCell0"];
+    [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([ResultContentTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"ResultContentTableViewCell1"];
+
     [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([ResultTitleTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"ResultTitleTableViewCell"];
     [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([ResultQualityHeader class])  bundle:nil] forHeaderFooterViewReuseIdentifier:@"ResultQualityHeader"];
     
@@ -108,10 +111,14 @@
     NSString *headerStr = [NSString stringWithFormat:@"%@",tempDic[@"header"]];
     NSString *titleStr = [NSString stringWithFormat:@"%@",tempDic[@"title"]];
     if ([headerStr isEqual:@"申请人信息"]||[headerStr isEqual:@"配偶信息"]) {
-        count = 7;
+       PersonModel *person = [tempDic[@"array"] firstObject];
+        if (person.jtcy.xm.length == 0) {
+            count = 0;
+        }else{
+            count = 7;
+        }
     }else if ([headerStr isEqual:@"子女信息"]) {
         count = self.childrenArray.count;
-//        count = 6*[tempDic[@"array"] count];
     }else{
 //        if ([headerStr isEqual:@"附加信息"])
         if ([titleStr isEqual:@"特殊人才资料"]) {
@@ -219,6 +226,8 @@
                         cell.contentTextField.text = model.jtcy.gj;
                         if (model.jtcy.gj == nil) {
                             cell.contentTextField.text = model.jtcy.dq;
+                        }if ([model.jtcy.zjlx isEqualToString:@"港澳台来往大陆通行证"] && [headerStr isEqual:@"申请人信息"] && model.sfz[@"zz"]) {
+                            cell.contentTextField.text = model.sfz[@"zz"];
                         }
                         break;
                     case 2:
@@ -297,30 +306,13 @@
                 return cell;
             }
             
-            ResultContentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultContentTableViewCell" forIndexPath:indexPath];
+            ResultContentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultContentTableViewCell0" forIndexPath:indexPath];
             cell.titleLabel.text = keykey;
             cell.contentTextField.text = value;
             cell.contentTextField.textColor = kUIColorFromRGB(0x333333);
             if ([value isEqualToString:@"港澳台来往大陆通行证"]) {
                 cell.contentTextField.textColor = MJThemeColor;
             }
-//            cell.titleLabel.text = _nameArray[1][remainder][@"title"];
-//            switch (indexPath.row) {
-//                case 1:
-//                    cell.contentTextField.text = model.jtcy.xb;
-//                    break;
-//                case 2:
-//                    cell.contentTextField.text = model.jtcy.hjfl;
-//                    break;
-//                case 3:
-//                    cell.contentTextField.text = model.jtcy.hjszd;
-//                    break;
-//                case 4:
-//                    cell.contentTextField.text = model.jtcy.zjhm;
-//                    break;
-//                default:
-//                    break;
-//            }
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -351,10 +343,10 @@
                     return cell;
                 }
                 
-                ResultContentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultContentTableViewCell" forIndexPath:indexPath];
+                ResultContentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultContentTableViewCell1" forIndexPath:indexPath];
                 
                 cell.titleLabel.text = _nameArray[2][remainder][@"title"];
-                switch (indexPath.row) {
+                switch (remainder +1) {
                     case 1:
                         cell.contentTextField.text = model.tsrclx;
                         break;
@@ -431,7 +423,7 @@
                 
                 ResultContentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultContentTableViewCell" forIndexPath:indexPath];
                 
-                cell.titleLabel.text = _nameArray[3][remainder][@"title"];
+                cell.titleLabel.text = _nameArray[4][remainder][@"title"];
                 switch (indexPath.row) {
                     case 1:
                         cell.contentTextField.text = model.xm;
@@ -472,7 +464,6 @@
         NSString *headerStr = [NSString stringWithFormat:@"%@",tempDic[@"header"]];
         if ([headerStr isEqual:@"申请人信息"]||[headerStr isEqual:@"配偶信息"]) {
             PersonModel *model = tempModel;
-            
             if (indexPath.row == 6) {
                 NSDictionary *tempzzxx = [model.zzxx mj_keyValues];
                 NSMutableArray *tempArray = [NSMutableArray new];
@@ -577,6 +568,13 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 1) {
+        NSDictionary *tempDic = _dataArray[section];
+        PersonModel *tempModel = [tempDic[@"array"] firstObject];
+        if (tempModel.jtcy.xm.length == 0) {
+            return 0.01;
+        }
+    }
     if (section>3) {
         return 0.01;
     }
@@ -592,9 +590,17 @@
     }else{
         header.headerImageView.hidden = YES;
         if (section == 1) {
+            NSDictionary *tempDic = _dataArray[section];
+            PersonModel *tempModel = [tempDic[@"array"] firstObject];
+            if (tempModel.jtcy.xm.length == 0) {
+                return nil;
+            }
             header.headerLabel.text = @"配偶信息";
         }else if (section == 2) {
             header.headerLabel.text = @"子女信息";
+            if (self.childrenArray.count == 0) {
+                header.headerLabel.text = @"附加信息";
+            }
         }else if (section == 3) {
             header.headerLabel.text = @"附加信息";
         }else{
@@ -634,6 +640,13 @@
 
 #pragma mark - other
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (section == 1) {
+        NSDictionary *tempDic = _dataArray[section];
+        PersonModel *tempModel = [tempDic[@"array"] firstObject];
+        if (tempModel.jtcy.xm.length == 0) {
+            return 0.01;
+        }
+    }
     if (section>2) {
         return 0.01;
     }
@@ -801,10 +814,10 @@
         [allArray addObject:temp];
     }
     PersonModel *temppoxx = [PersonModel mj_objectWithKeyValues:allDic[@"poxx"]];
-    if (temppoxx) {
-        NSDictionary *temp = @{@"header":@"配偶信息",@"array":@[temppoxx]};
-        [allArray addObject:temp];
-    }
+    if (!temppoxx) { temppoxx = [PersonModel new];}
+    NSDictionary *temp = @{@"header":@"配偶信息",@"array":@[temppoxx]};
+    [allArray addObject:temp];
+    
     NSArray *znxxlist = [PersonModel mj_objectArrayWithKeyValuesArray:allDic[@"znxxlist"]];
     if (znxxlist.count>0) {
         NSDictionary *temp = @{@"header":@"子女信息",@"array":znxxlist};
@@ -884,15 +897,15 @@
                          @{@"title":@"身份证号码"},
                          @{@"title":@""}],//子女信息【1】
                        
-                       @[@{@"title":@"特殊人才资料"},
+                       @[
                          @{@"title":@"人才类型"},
                          @{@"title":@"姓名"},
                          @{@"title":@"工资流水月数"},@{@"title":@""}],//特殊人才【2】
                        
-                       @[@{@"title":@"征收家庭资料"},
+                       @[
                          @{@"title":@"征收备案时间"},@{@"title":@""}],//征收家庭资料【3】
                        
-                       @[@{@"title":@"省直机关社保"},
+                       @[
                          @{@"title":@"姓名"},
                          @{@"title":@"缴纳时长"},@{@"title":@""}],//省直机关社保【4】
                        ];

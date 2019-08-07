@@ -263,6 +263,7 @@
 		A1C0993022AF41A900AAE38E /* ResultQualityHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C0992F22AF41A900AAE38E /* ResultQualityHeader.xib */; };
 		A1C0993322AF44EC00AAE38E /* ResultImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C0993222AF44EC00AAE38E /* ResultImageTableViewCell.m */; };
 		A1C0BCA322AF824400AAE38E /* RecognitionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C0BCA222AF824400AAE38E /* RecognitionListViewController.m */; };
+		A1E4E5B422F3D41E009E4911 /* JYBDIDCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E4E5B222F3D41D009E4911 /* JYBDIDCardVC.m */; };
 		A1EFAC7222B22524007593EB /* MXSegmentedPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAC7022B22524007593EB /* MXSegmentedPagerController.m */; };
 		A1EFAC7322B22524007593EB /* MXSegmentedPager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAC7122B22524007593EB /* MXSegmentedPager.m */; };
 		A1EFAC7922B22553007593EB /* MXPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAC7722B22553007593EB /* MXPagerViewController.m */; };
@@ -309,7 +310,6 @@
 		A1EFAD2E22B3A8E0007593EB /* UIImage+IDCardExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACFD22B3A8E0007593EB /* UIImage+IDCardExtend.m */; };
 		A1EFAD2F22B3A8E0007593EB /* UIAlertController+IDCardExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACFE22B3A8E0007593EB /* UIAlertController+IDCardExtend.m */; };
 		A1EFAD3022B3A8E0007593EB /* JYBDScanCardBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD0222B3A8E0007593EB /* JYBDScanCardBaseVC.m */; };
-		A1EFAD3122B3A8E0007593EB /* JYBDIDCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD0322B3A8E0007593EB /* JYBDIDCardVC.m */; };
 		A1EFAD3222B3A8E0007593EB /* JYBDScanCardManage.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD0722B3A8E0007593EB /* JYBDScanCardManage.m */; };
 		A1EFAD3322B3A8E0007593EB /* JYBDBankCardSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD0822B3A8E0007593EB /* JYBDBankCardSearch.m */; };
 		A1EFAD3422B3A8E0007593EB /* JYBDScanCardManageBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD0922B3A8E0007593EB /* JYBDScanCardManageBase.m */; };
@@ -964,6 +964,8 @@
 		A1C0993222AF44EC00AAE38E /* ResultImageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultImageTableViewCell.m; sourceTree = "<group>"; };
 		A1C0BCA122AF824400AAE38E /* RecognitionListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecognitionListViewController.h; sourceTree = "<group>"; };
 		A1C0BCA222AF824400AAE38E /* RecognitionListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecognitionListViewController.m; sourceTree = "<group>"; };
+		A1E4E5B222F3D41D009E4911 /* JYBDIDCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JYBDIDCardVC.m; path = ../../../../../../.Trash/JYBDIDCardVC.m; sourceTree = "<group>"; };
+		A1E4E5B322F3D41E009E4911 /* JYBDIDCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JYBDIDCardVC.h; path = ../../../../../../.Trash/JYBDIDCardVC.h; sourceTree = "<group>"; };
 		A1EFAC6E22B22524007593EB /* MXSegmentedPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXSegmentedPagerController.h; sourceTree = "<group>"; };
 		A1EFAC6F22B22524007593EB /* MXSegmentedPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXSegmentedPager.h; sourceTree = "<group>"; };
 		A1EFAC7022B22524007593EB /* MXSegmentedPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXSegmentedPagerController.m; sourceTree = "<group>"; };
@@ -1043,9 +1045,7 @@
 		A1EFACFD22B3A8E0007593EB /* UIImage+IDCardExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IDCardExtend.m"; sourceTree = "<group>"; };
 		A1EFACFE22B3A8E0007593EB /* UIAlertController+IDCardExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+IDCardExtend.m"; sourceTree = "<group>"; };
 		A1EFACFF22B3A8E0007593EB /* UIImage+IDCardExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+IDCardExtend.h"; sourceTree = "<group>"; };
-		A1EFAD0122B3A8E0007593EB /* JYBDIDCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDIDCardVC.h; sourceTree = "<group>"; };
 		A1EFAD0222B3A8E0007593EB /* JYBDScanCardBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardBaseVC.m; sourceTree = "<group>"; };
-		A1EFAD0322B3A8E0007593EB /* JYBDIDCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDIDCardVC.m; sourceTree = "<group>"; };
 		A1EFAD0422B3A8E0007593EB /* JYBDScanCardBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardBaseVC.h; sourceTree = "<group>"; };
 		A1EFAD0622B3A8E0007593EB /* JYBDScanCardManageBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardManageBase.h; sourceTree = "<group>"; };
 		A1EFAD0722B3A8E0007593EB /* JYBDScanCardManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardManage.m; sourceTree = "<group>"; };
@@ -2295,9 +2295,9 @@
 		A1EFAD0022B3A8E0007593EB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A1EFAD0122B3A8E0007593EB /* JYBDIDCardVC.h */,
+				A1E4E5B322F3D41E009E4911 /* JYBDIDCardVC.h */,
+				A1E4E5B222F3D41D009E4911 /* JYBDIDCardVC.m */,
 				A1EFAD0222B3A8E0007593EB /* JYBDScanCardBaseVC.m */,
-				A1EFAD0322B3A8E0007593EB /* JYBDIDCardVC.m */,
 				A1EFAD0422B3A8E0007593EB /* JYBDScanCardBaseVC.h */,
 			);
 			path = Controller;
@@ -3697,6 +3697,7 @@
 				DCBD35FA21509D7000763961 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				DCBD364321509DAF00763961 /* UIView+Extension.m in Sources */,
 				DCB860BC215B388A001C58EF /* UITableViewCell+YMSConfig.m in Sources */,
+				A1E4E5B422F3D41E009E4911 /* JYBDIDCardVC.m in Sources */,
 				A1094DE3229BC56D00A278A1 /* AdModel.m in Sources */,
 				A15871AA22B8F3B0001567F8 /* MyHouseTaxViewController.m in Sources */,
 				DCBD365221509DAF00763961 /* YYTextRubyAnnotation.m in Sources */,
@@ -3725,7 +3726,6 @@
 				A106883F22D70D62005D7E84 /* MyHousePaperViewController.m in Sources */,
 				A16A977322A8F11300078BEE /* AddChildrenListViewController.m in Sources */,
 				A14B5DAD22DF1F3F00F98E74 /* ResultQualityResultVC.m in Sources */,
-				A1EFAD3122B3A8E0007593EB /* JYBDIDCardVC.m in Sources */,
 				A158718322B8D18F001567F8 /* MyHouseDetialOneCell.m in Sources */,
 				DCBD35F521509D7000763961 /* MASConstraintMaker.m in Sources */,
 				A16A984722AE322E00078BEE /* QuesttionListViewController.m in Sources */,

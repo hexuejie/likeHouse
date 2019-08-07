@@ -399,9 +399,9 @@
         if (respoes) {
             weakSelf.imageStrArray = [respoes componentsSeparatedByString:@";"];
             
-            if (!self.exchangeImageTwo.image) {
+            if (!weakSelf.exchangeImageTwo.image) {
                 weakSelf.imageStrArray = [respoes componentsSeparatedByString:@";"];
-                if (self.exchangeImageThree.image) {
+                if (weakSelf.exchangeImageThree.image) {
                     weakSelf.imageStrArray = @[[weakSelf.imageStrArray firstObject],@"",[weakSelf.imageStrArray lastObject]] ;
                 }else{
                     weakSelf.imageStrArray = @[[weakSelf.imageStrArray firstObject],@""] ;
@@ -431,6 +431,7 @@
                            ,@"zjhm":self.numberTextField.text//证件号码
                            ,@"yxq":[NSString stringWithFormat:@"%@-%@",self.beginTimeTextField.text,self.endTimeTextField.text]//有效期限
                            ,@"hzcs":self.changeTimes.text,//签发机关
+                           @"sfyfyq":@"是",
                            
                            @"txzzm":self.imageStrArray[0],
                            @"txzfm":self.imageStrArray[1]
