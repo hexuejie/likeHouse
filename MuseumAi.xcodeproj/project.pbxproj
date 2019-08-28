@@ -263,7 +263,7 @@
 		A1C0993022AF41A900AAE38E /* ResultQualityHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C0992F22AF41A900AAE38E /* ResultQualityHeader.xib */; };
 		A1C0993322AF44EC00AAE38E /* ResultImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C0993222AF44EC00AAE38E /* ResultImageTableViewCell.m */; };
 		A1C0BCA322AF824400AAE38E /* RecognitionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C0BCA222AF824400AAE38E /* RecognitionListViewController.m */; };
-		A1E4E5B422F3D41E009E4911 /* JYBDIDCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E4E5B222F3D41D009E4911 /* JYBDIDCardVC.m */; };
+		A1E4E5CE23015E33009E4911 /* JYBDIDCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E4E5CD23015E33009E4911 /* JYBDIDCardVC.m */; };
 		A1EFAC7222B22524007593EB /* MXSegmentedPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAC7022B22524007593EB /* MXSegmentedPagerController.m */; };
 		A1EFAC7322B22524007593EB /* MXSegmentedPager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAC7122B22524007593EB /* MXSegmentedPager.m */; };
 		A1EFAC7922B22553007593EB /* MXPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAC7722B22553007593EB /* MXPagerViewController.m */; };
@@ -964,8 +964,8 @@
 		A1C0993222AF44EC00AAE38E /* ResultImageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultImageTableViewCell.m; sourceTree = "<group>"; };
 		A1C0BCA122AF824400AAE38E /* RecognitionListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecognitionListViewController.h; sourceTree = "<group>"; };
 		A1C0BCA222AF824400AAE38E /* RecognitionListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecognitionListViewController.m; sourceTree = "<group>"; };
-		A1E4E5B222F3D41D009E4911 /* JYBDIDCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JYBDIDCardVC.m; path = ../../../../../../.Trash/JYBDIDCardVC.m; sourceTree = "<group>"; };
-		A1E4E5B322F3D41E009E4911 /* JYBDIDCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JYBDIDCardVC.h; path = ../../../../../../.Trash/JYBDIDCardVC.h; sourceTree = "<group>"; };
+		A1E4E5CC23015E32009E4911 /* JYBDIDCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDIDCardVC.h; sourceTree = "<group>"; };
+		A1E4E5CD23015E33009E4911 /* JYBDIDCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDIDCardVC.m; sourceTree = "<group>"; };
 		A1EFAC6E22B22524007593EB /* MXSegmentedPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXSegmentedPagerController.h; sourceTree = "<group>"; };
 		A1EFAC6F22B22524007593EB /* MXSegmentedPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXSegmentedPager.h; sourceTree = "<group>"; };
 		A1EFAC7022B22524007593EB /* MXSegmentedPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXSegmentedPagerController.m; sourceTree = "<group>"; };
@@ -2295,8 +2295,8 @@
 		A1EFAD0022B3A8E0007593EB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A1E4E5B322F3D41E009E4911 /* JYBDIDCardVC.h */,
-				A1E4E5B222F3D41D009E4911 /* JYBDIDCardVC.m */,
+				A1E4E5CC23015E32009E4911 /* JYBDIDCardVC.h */,
+				A1E4E5CD23015E33009E4911 /* JYBDIDCardVC.m */,
 				A1EFAD0222B3A8E0007593EB /* JYBDScanCardBaseVC.m */,
 				A1EFAD0422B3A8E0007593EB /* JYBDScanCardBaseVC.h */,
 			);
@@ -3697,7 +3697,6 @@
 				DCBD35FA21509D7000763961 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				DCBD364321509DAF00763961 /* UIView+Extension.m in Sources */,
 				DCB860BC215B388A001C58EF /* UITableViewCell+YMSConfig.m in Sources */,
-				A1E4E5B422F3D41E009E4911 /* JYBDIDCardVC.m in Sources */,
 				A1094DE3229BC56D00A278A1 /* AdModel.m in Sources */,
 				A15871AA22B8F3B0001567F8 /* MyHouseTaxViewController.m in Sources */,
 				DCBD365221509DAF00763961 /* YYTextRubyAnnotation.m in Sources */,
@@ -3815,6 +3814,7 @@
 				A1FF19E222B0EDC100C09386 /* DetialHouseTypeItem.m in Sources */,
 				A16A977D22A900B800078BEE /* AppendOneTipViewController.m in Sources */,
 				A16A976D22A8E5EC00078BEE /* ChooseAppendViewController.m in Sources */,
+				A1E4E5CE23015E33009E4911 /* JYBDIDCardVC.m in Sources */,
 				A15871AF22B8FDAD001567F8 /* MyHouseCodeViewController.m in Sources */,
 				A160946F229E54FE00FBC19B /* KYActionSheetContentView.swift in Sources */,
 				A1EFACCA22B34E5C007593EB /* ThirdTableView.m in Sources */,

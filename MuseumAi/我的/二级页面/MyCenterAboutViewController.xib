@@ -44,21 +44,21 @@
                     <attributedString key="attributedText">
                         <fragment content="         悦居星城APP由长沙市">
                             <attributes>
-                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="NSColor" red="0.28196383248730961" green="0.28196383248730961" blue="0.28196383248730961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                         <fragment content="住房和城乡建设局">
                             <attributes>
-                                <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="NSColor" red="0.28196383248730961" green="0.28196383248730961" blue="0.28196383248730961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <font key="NSFont" size="13" name="PingFangSC-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                         <fragment content="主导开发，旨在为购房者提供实名认证、购房资格审查、线上认筹及相关服务。悦居星城的资格审查结果只是根据用户录入的信息得出一个预审结果，不能代表最后的网签购房资格审查结果。">
                             <attributes>
-                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="NSColor" red="0.28196383248730961" green="0.28196383248730961" blue="0.28196383248730961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
                             </attributes>

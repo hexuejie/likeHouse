@@ -65,7 +65,14 @@
             [controller.navigationController popViewControllerAnimated:NO];
         }
     }
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
+- (void)viewDidDisappear:(BOOL)animated {
+    
+    [super viewDidDisappear:animated];
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

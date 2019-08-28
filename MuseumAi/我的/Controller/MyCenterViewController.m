@@ -101,9 +101,11 @@
 }
 
 - (void)dataRelaod{
-    self.phoneLabel.text = [LoginSession sharedInstance].sjhm;
-    if (!self.phoneLabel.text.length) {
-        self.phoneLabel.text = [LoginSession sharedInstance].phone;
+    
+    if (![LoginSession sharedInstance].sjhm) {
+        self.phoneLabel.text = [[LoginSession sharedInstance].phone stringByReplacingCharactersInRange:NSMakeRange(3, 4)  withString:@"****"];
+    }else{
+        self.phoneLabel.text = [[LoginSession sharedInstance].sjhm stringByReplacingCharactersInRange:NSMakeRange(3, 4)  withString:@"****"];
     }
     
     if (![Utility is_empty:[LoginSession sharedInstance].rzzt]) {

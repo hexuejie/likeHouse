@@ -69,6 +69,7 @@
     NewsModel *tempModel = _dataArray[indexPath.row];
     cell.contentLabel.text = [NSString stringWithFormat:@"%@",tempModel.bt];
     cell.timeLabel.text = [NSString stringWithFormat:@"%@",tempModel.fbsj];
+    cell.titleLabel.text = @"系统消息";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
