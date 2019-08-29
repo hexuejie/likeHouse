@@ -29,6 +29,17 @@
 
 @implementation HousesListViewController
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if ([self.title isEqualToString:@"我的关注"]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+}
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

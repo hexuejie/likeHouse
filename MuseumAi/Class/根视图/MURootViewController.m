@@ -90,26 +90,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
-    
-//    if ([self isEqual:self.navigationController.viewControllers[0]]) {
-//        // 切tab的时候需要还原tabbar状态为显示
-//        if (self.navigationController.viewControllers.count == 1) {
-//            // 不是present新页面
-//            if (!self.presentedViewController) {
-//                [self.tabBarController.tabBar setHidden:NO];
-//            }
-//        } else {
-//            // 上一次被hidden过了, 这次需要手动隐藏tabbar，否则tabbar不会隐藏，设置了hidesBottomWhenPush也没用
-//            if (1) {
-//                self.tabBarController.tabBar.hidden = YES;
-//                //                _hideTabbarBefore = NO;
-//            }
-//            if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]){
-//                self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-//            }
-//        }
-//    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -33,7 +33,7 @@
     _countTipLabel.text = [NSString stringWithFormat:@"共%ld张",_model.zstList.count];
     _titleLabel.text = _model.lp.xmmc;
     _tagLabel.text = [_model.lp.bq stringByReplacingOccurrencesOfString:@"," withString:@"/"];
-    _priceLabel.text = _model.lp.xmmc;
+    _priceLabel.text = _model.lp.xsqj;
     _timeLabel.text = _model.kprq;
     _statueLabel.text = _model.lpzt;
     _addressLabel.text = _model.lp.xmdz;
