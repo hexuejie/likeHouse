@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="NewsCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="377" height="94"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="377" height="94"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iOT-aF-eig">
+                        <rect key="frame" x="277" y="11" width="90" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="c8h-nR-KVZ"/>
+                            <constraint firstAttribute="width" constant="90" id="wLI-Ri-qb4"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="融信澜月  省府低密新盘  5月26日首开省 府低密新盘  " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcJ-73-WfH">
+                        <rect key="frame" x="10" y="12" width="251" height="33.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.25487014651298523" green="0.25492024421691895" blue="0.25486692786216736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:40:20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mp-OD-B0H">
+                        <rect key="frame" x="10" y="65.5" width="251" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.73717361688613892" green="0.73730176687240601" blue="0.73716557025909424" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBh-zM-pGU">
+                        <rect key="frame" x="11" y="93" width="256" height="1"/>
+                        <color key="backgroundColor" red="0.97244364023208618" green="0.97260981798171997" blue="0.97243314981460571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Ojc-7A-rc5"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="5Mp-OD-B0H" firstAttribute="leading" secondItem="fcJ-73-WfH" secondAttribute="leading" id="0ZA-2T-ezd"/>
+                <constraint firstItem="5Mp-OD-B0H" firstAttribute="leading" secondItem="fcJ-73-WfH" secondAttribute="leading" id="1wH-Pb-sfW"/>
+                <constraint firstItem="gBh-zM-pGU" firstAttribute="top" secondItem="5Mp-OD-B0H" secondAttribute="bottom" constant="14" id="56X-OU-D6i"/>
+                <constraint firstAttribute="trailing" secondItem="iOT-aF-eig" secondAttribute="trailing" constant="10" id="88R-4Y-aLY"/>
+                <constraint firstAttribute="bottom" secondItem="gBh-zM-pGU" secondAttribute="bottom" id="MC7-3X-5YN"/>
+                <constraint firstItem="fcJ-73-WfH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="NA8-5V-Xm2"/>
+                <constraint firstItem="fcJ-73-WfH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="W8T-Xf-cju"/>
+                <constraint firstItem="iOT-aF-eig" firstAttribute="leading" secondItem="fcJ-73-WfH" secondAttribute="trailing" constant="16" id="Wd2-Js-F7j"/>
+                <constraint firstItem="5Mp-OD-B0H" firstAttribute="trailing" secondItem="fcJ-73-WfH" secondAttribute="trailing" id="XIS-VG-ghX"/>
+                <constraint firstItem="iOT-aF-eig" firstAttribute="leading" secondItem="gBh-zM-pGU" secondAttribute="trailing" constant="10" id="gNQ-UX-TX7"/>
+                <constraint firstItem="gBh-zM-pGU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="hc8-SJ-1Tt"/>
+                <constraint firstItem="iOT-aF-eig" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="kiG-3g-yhy"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="377" height="94"/>
+            <connections>
+                <outlet property="logoImageView" destination="iOT-aF-eig" id="EDi-Px-MCf"/>
+                <outlet property="timeLabel" destination="5Mp-OD-B0H" id="lUj-f3-pJ1"/>
+                <outlet property="titleLabel" destination="fcJ-73-WfH" id="TaD-jH-i3k"/>
+            </connections>
+            <point key="canvasLocation" x="-81" y="82"/>
+        </collectionViewCell>
+    </objects>
+</document>

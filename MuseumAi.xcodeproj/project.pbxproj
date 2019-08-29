@@ -47,6 +47,15 @@
 		A1094DEB229BCF6500A278A1 /* HomePageNewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1094DE9229BCF6500A278A1 /* HomePageNewsCollectionViewCell.xib */; };
 		A1094DEF229BD48500A278A1 /* HomePageHousesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1094DED229BD48500A278A1 /* HomePageHousesCollectionViewCell.m */; };
 		A1094DF0229BD48500A278A1 /* HomePageHousesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1094DEE229BD48500A278A1 /* HomePageHousesCollectionViewCell.xib */; };
+		A10B082D23166D6C0079EEB0 /* InformationLookoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B082B23166D6C0079EEB0 /* InformationLookoutViewController.m */; };
+		A10B082E23166D6C0079EEB0 /* InformationLookoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10B082C23166D6C0079EEB0 /* InformationLookoutViewController.xib */; };
+		A10B083223166E320079EEB0 /* NewsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B083023166E320079EEB0 /* NewsCollectionViewCell.m */; };
+		A10B083323166E320079EEB0 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10B083123166E320079EEB0 /* NewsCollectionViewCell.xib */; };
+		A10B083623166E5F0079EEB0 /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B083523166E5F0079EEB0 /* NewsListViewController.m */; };
+		A10B083923166E6C0079EEB0 /* NewsSegmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B083823166E6C0079EEB0 /* NewsSegmentViewController.m */; };
+		A10B0842231769B70079EEB0 /* JYBDScanCardManage.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B083D231769B70079EEB0 /* JYBDScanCardManage.m */; };
+		A10B0843231769B70079EEB0 /* JYBDBankCardSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B083E231769B70079EEB0 /* JYBDBankCardSearch.m */; };
+		A10B0844231769B70079EEB0 /* JYBDScanCardManageBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B083F231769B70079EEB0 /* JYBDScanCardManageBase.m */; };
 		A1139D4422BB1E6100463FAD /* MJPropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = A1139D3222BB1E6100463FAD /* MJPropertyType.m */; };
 		A1139D4522BB1E6100463FAD /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = A1139D3522BB1E6100463FAD /* NSObject+MJKeyValue.m */; };
 		A1139D4622BB1E6100463FAD /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = A1139D3622BB1E6100463FAD /* MJProperty.m */; };
@@ -227,12 +236,6 @@
 		A19AD95322A4B053004713A2 /* TOCropToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A19AD94022A4B053004713A2 /* TOCropToolbar.m */; };
 		A19AD95422A4B053004713A2 /* LLSimpleCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = A19AD94222A4B053004713A2 /* LLSimpleCamera.m */; };
 		A19AD95522A4B053004713A2 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = A19AD94522A4B053004713A2 /* UIImage+FixOrientation.m */; };
-		A1A990A622C05B74000EB09A /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A9909D22C05B71000EB09A /* NewsCollectionViewCell.xib */; };
-		A1A990A722C05B74000EB09A /* NewsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A9909F22C05B72000EB09A /* NewsCollectionViewCell.m */; };
-		A1A990A822C05B74000EB09A /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990A022C05B72000EB09A /* NewsListViewController.m */; };
-		A1A990A922C05B74000EB09A /* InformationLookoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990A222C05B72000EB09A /* InformationLookoutViewController.m */; };
-		A1A990AA22C05B74000EB09A /* NewsSegmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990A422C05B73000EB09A /* NewsSegmentViewController.m */; };
-		A1A990AB22C05B74000EB09A /* InformationLookoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A990A522C05B73000EB09A /* InformationLookoutViewController.xib */; };
 		A1A990AF22C0AA92000EB09A /* AddChildrenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990AD22C0AA92000EB09A /* AddChildrenTableViewCell.m */; };
 		A1A990B022C0AA92000EB09A /* AddChildrenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A990AE22C0AA92000EB09A /* AddChildrenTableViewCell.xib */; };
 		A1A990B522C0D051000EB09A /* UIImageView+add.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A990B422C0D051000EB09A /* UIImageView+add.m */; };
@@ -310,9 +313,6 @@
 		A1EFAD2F22B3A8E0007593EB /* UIAlertController+IDCardExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFACFE22B3A8E0007593EB /* UIAlertController+IDCardExtend.m */; };
 		A1EFAD3022B3A8E0007593EB /* JYBDScanCardBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD0222B3A8E0007593EB /* JYBDScanCardBaseVC.m */; };
 		A1EFAD3122B3A8E0007593EB /* JYBDIDCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD0322B3A8E0007593EB /* JYBDIDCardVC.m */; };
-		A1EFAD3222B3A8E0007593EB /* JYBDScanCardManage.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD0722B3A8E0007593EB /* JYBDScanCardManage.m */; };
-		A1EFAD3322B3A8E0007593EB /* JYBDBankCardSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD0822B3A8E0007593EB /* JYBDBankCardSearch.m */; };
-		A1EFAD3422B3A8E0007593EB /* JYBDScanCardManageBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD0922B3A8E0007593EB /* JYBDScanCardManageBase.m */; };
 		A1EFAD3522B3A8E0007593EB /* JYBDBankCardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD1322B3A8E0007593EB /* JYBDBankCardInfo.m */; };
 		A1EFAD3622B3A8E0007593EB /* JYBDCardIDInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD1422B3A8E0007593EB /* JYBDCardIDInfo.m */; };
 		A1EFAD3722B3A8E0007593EB /* JYBDNewFormeScaningV.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFAD1822B3A8E0007593EB /* JYBDNewFormeScaningV.m */; };
@@ -615,6 +615,22 @@
 		A1094DEC229BD48500A278A1 /* HomePageHousesCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageHousesCollectionViewCell.h; sourceTree = "<group>"; };
 		A1094DED229BD48500A278A1 /* HomePageHousesCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePageHousesCollectionViewCell.m; sourceTree = "<group>"; };
 		A1094DEE229BD48500A278A1 /* HomePageHousesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomePageHousesCollectionViewCell.xib; sourceTree = "<group>"; };
+		A10B082A23166D6C0079EEB0 /* InformationLookoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InformationLookoutViewController.h; sourceTree = "<group>"; };
+		A10B082B23166D6C0079EEB0 /* InformationLookoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InformationLookoutViewController.m; sourceTree = "<group>"; };
+		A10B082C23166D6C0079EEB0 /* InformationLookoutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationLookoutViewController.xib; sourceTree = "<group>"; };
+		A10B082F23166E320079EEB0 /* NewsCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsCollectionViewCell.h; sourceTree = "<group>"; };
+		A10B083023166E320079EEB0 /* NewsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsCollectionViewCell.m; sourceTree = "<group>"; };
+		A10B083123166E320079EEB0 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
+		A10B083423166E5F0079EEB0 /* NewsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsListViewController.h; sourceTree = "<group>"; };
+		A10B083523166E5F0079EEB0 /* NewsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListViewController.m; sourceTree = "<group>"; };
+		A10B083723166E6C0079EEB0 /* NewsSegmentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsSegmentViewController.h; sourceTree = "<group>"; };
+		A10B083823166E6C0079EEB0 /* NewsSegmentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSegmentViewController.m; sourceTree = "<group>"; };
+		A10B083C231769B70079EEB0 /* JYBDScanCardManageBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardManageBase.h; sourceTree = "<group>"; };
+		A10B083D231769B70079EEB0 /* JYBDScanCardManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardManage.m; sourceTree = "<group>"; };
+		A10B083E231769B70079EEB0 /* JYBDBankCardSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDBankCardSearch.m; sourceTree = "<group>"; };
+		A10B083F231769B70079EEB0 /* JYBDScanCardManageBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardManageBase.m; sourceTree = "<group>"; };
+		A10B0840231769B70079EEB0 /* JYBDBankCardSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDBankCardSearch.h; sourceTree = "<group>"; };
+		A10B0841231769B70079EEB0 /* JYBDScanCardManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardManage.h; sourceTree = "<group>"; };
 		A1139D2F22BB1E6100463FAD /* MJPropertyKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPropertyKey.h; sourceTree = "<group>"; };
 		A1139D3022BB1E6100463FAD /* NSObject+MJClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJClass.h"; sourceTree = "<group>"; };
 		A1139D3122BB1E6100463FAD /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
@@ -905,16 +921,6 @@
 		A19AD94322A4B053004713A2 /* TOCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCropViewController.h; sourceTree = "<group>"; };
 		A19AD94422A4B053004713A2 /* TOCropScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCropScrollView.h; sourceTree = "<group>"; };
 		A19AD94522A4B053004713A2 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
-		A1A9909C22C05B71000EB09A /* InformationLookoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationLookoutViewController.h; sourceTree = "<group>"; };
-		A1A9909D22C05B71000EB09A /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
-		A1A9909E22C05B71000EB09A /* NewsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCollectionViewCell.h; sourceTree = "<group>"; };
-		A1A9909F22C05B72000EB09A /* NewsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCollectionViewCell.m; sourceTree = "<group>"; };
-		A1A990A022C05B72000EB09A /* NewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListViewController.m; sourceTree = "<group>"; };
-		A1A990A122C05B72000EB09A /* NewsSegmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsSegmentViewController.h; sourceTree = "<group>"; };
-		A1A990A222C05B72000EB09A /* InformationLookoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationLookoutViewController.m; sourceTree = "<group>"; };
-		A1A990A322C05B73000EB09A /* NewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListViewController.h; sourceTree = "<group>"; };
-		A1A990A422C05B73000EB09A /* NewsSegmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsSegmentViewController.m; sourceTree = "<group>"; };
-		A1A990A522C05B73000EB09A /* InformationLookoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationLookoutViewController.xib; sourceTree = "<group>"; };
 		A1A990AC22C0AA92000EB09A /* AddChildrenTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddChildrenTableViewCell.h; sourceTree = "<group>"; };
 		A1A990AD22C0AA92000EB09A /* AddChildrenTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddChildrenTableViewCell.m; sourceTree = "<group>"; };
 		A1A990AE22C0AA92000EB09A /* AddChildrenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChildrenTableViewCell.xib; sourceTree = "<group>"; };
@@ -1047,12 +1053,6 @@
 		A1EFAD0222B3A8E0007593EB /* JYBDScanCardBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardBaseVC.m; sourceTree = "<group>"; };
 		A1EFAD0322B3A8E0007593EB /* JYBDIDCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDIDCardVC.m; sourceTree = "<group>"; };
 		A1EFAD0422B3A8E0007593EB /* JYBDScanCardBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardBaseVC.h; sourceTree = "<group>"; };
-		A1EFAD0622B3A8E0007593EB /* JYBDScanCardManageBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardManageBase.h; sourceTree = "<group>"; };
-		A1EFAD0722B3A8E0007593EB /* JYBDScanCardManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardManage.m; sourceTree = "<group>"; };
-		A1EFAD0822B3A8E0007593EB /* JYBDBankCardSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDBankCardSearch.m; sourceTree = "<group>"; };
-		A1EFAD0922B3A8E0007593EB /* JYBDScanCardManageBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardManageBase.m; sourceTree = "<group>"; };
-		A1EFAD0A22B3A8E0007593EB /* JYBDBankCardSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDBankCardSearch.h; sourceTree = "<group>"; };
-		A1EFAD0B22B3A8E0007593EB /* JYBDScanCardManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardManage.h; sourceTree = "<group>"; };
 		A1EFAD0D22B3A8E0007593EB /* exbankcardcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcardcore.h; sourceTree = "<group>"; };
 		A1EFAD0E22B3A8E0007593EB /* commondef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commondef.h; sourceTree = "<group>"; };
 		A1EFAD0F22B3A8E0007593EB /* exbankcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcard.h; sourceTree = "<group>"; };
@@ -1596,6 +1596,36 @@
 				A1A990B422C0D051000EB09A /* UIImageView+add.m */,
 			);
 			path = commen;
+			sourceTree = "<group>";
+		};
+		A10B083A23166EBA0079EEB0 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A10B082A23166D6C0079EEB0 /* InformationLookoutViewController.h */,
+				A10B082B23166D6C0079EEB0 /* InformationLookoutViewController.m */,
+				A10B082C23166D6C0079EEB0 /* InformationLookoutViewController.xib */,
+				A10B082F23166E320079EEB0 /* NewsCollectionViewCell.h */,
+				A10B083023166E320079EEB0 /* NewsCollectionViewCell.m */,
+				A10B083123166E320079EEB0 /* NewsCollectionViewCell.xib */,
+				A10B083423166E5F0079EEB0 /* NewsListViewController.h */,
+				A10B083523166E5F0079EEB0 /* NewsListViewController.m */,
+				A10B083723166E6C0079EEB0 /* NewsSegmentViewController.h */,
+				A10B083823166E6C0079EEB0 /* NewsSegmentViewController.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		A10B083B231769B70079EEB0 /* JYBD_OCR_Bank */ = {
+			isa = PBXGroup;
+			children = (
+				A10B083C231769B70079EEB0 /* JYBDScanCardManageBase.h */,
+				A10B083D231769B70079EEB0 /* JYBDScanCardManage.m */,
+				A10B083E231769B70079EEB0 /* JYBDBankCardSearch.m */,
+				A10B083F231769B70079EEB0 /* JYBDScanCardManageBase.m */,
+				A10B0840231769B70079EEB0 /* JYBDBankCardSearch.h */,
+				A10B0841231769B70079EEB0 /* JYBDScanCardManage.h */,
+			);
+			path = JYBD_OCR_Bank;
 			sourceTree = "<group>";
 		};
 		A1139D2E22BB1E6100463FAD /* MJExtension */ = {
@@ -2238,24 +2268,6 @@
 			path = ../../../Desktop/Model;
 			sourceTree = "<group>";
 		};
-		A1EFACF322B3A266007593EB /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				A1A9909C22C05B71000EB09A /* InformationLookoutViewController.h */,
-				A1A990A222C05B72000EB09A /* InformationLookoutViewController.m */,
-				A1A990A522C05B73000EB09A /* InformationLookoutViewController.xib */,
-				A1A9909E22C05B71000EB09A /* NewsCollectionViewCell.h */,
-				A1A9909F22C05B72000EB09A /* NewsCollectionViewCell.m */,
-				A1A9909D22C05B71000EB09A /* NewsCollectionViewCell.xib */,
-				A1A990A322C05B73000EB09A /* NewsListViewController.h */,
-				A1A990A022C05B72000EB09A /* NewsListViewController.m */,
-				A1A990A122C05B72000EB09A /* NewsSegmentViewController.h */,
-				A1A990A422C05B73000EB09A /* NewsSegmentViewController.m */,
-			);
-			name = Other;
-			path = ../../../../Desktop/Other;
-			sourceTree = "<group>";
-		};
 		A1EFACF922B3A8E0007593EB /* JYBD_IDCardRecognition */ = {
 			isa = PBXGroup;
 			children = (
@@ -2269,9 +2281,9 @@
 		A1EFACFA22B3A8E0007593EB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A10B083B231769B70079EEB0 /* JYBD_OCR_Bank */,
 				A1EFACFB22B3A8E0007593EB /* Category */,
 				A1EFAD0022B3A8E0007593EB /* Controller */,
-				A1EFAD0522B3A8E0007593EB /* JYBD_OCR_Bank */,
 				A1EFAD0C22B3A8E0007593EB /* libexidcard */,
 				A1EFAD1222B3A8E0007593EB /* Model */,
 				A1EFAD1722B3A8E0007593EB /* View */,
@@ -2301,19 +2313,6 @@
 				A1EFAD0422B3A8E0007593EB /* JYBDScanCardBaseVC.h */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		A1EFAD0522B3A8E0007593EB /* JYBD_OCR_Bank */ = {
-			isa = PBXGroup;
-			children = (
-				A1EFAD0622B3A8E0007593EB /* JYBDScanCardManageBase.h */,
-				A1EFAD0722B3A8E0007593EB /* JYBDScanCardManage.m */,
-				A1EFAD0822B3A8E0007593EB /* JYBDBankCardSearch.m */,
-				A1EFAD0922B3A8E0007593EB /* JYBDScanCardManageBase.m */,
-				A1EFAD0A22B3A8E0007593EB /* JYBDBankCardSearch.h */,
-				A1EFAD0B22B3A8E0007593EB /* JYBDScanCardManage.h */,
-			);
-			path = JYBD_OCR_Bank;
 			sourceTree = "<group>";
 		};
 		A1EFAD0C22B3A8E0007593EB /* libexidcard */ = {
@@ -3364,8 +3363,8 @@
 		DCE84C572153B21F006CB1B3 /* 二级视图 */ = {
 			isa = PBXGroup;
 			children = (
+				A10B083A23166EBA0079EEB0 /* Other */,
 				A16BB41922B7711800C2E7F5 /* MyHouse */,
-				A1EFACF322B3A266007593EB /* Other */,
 				A1C0BCA022AF81D000AAE38E /* DetialAndList */,
 				A19AD8F222A10F3D004713A2 /* View */,
 				A1817F5F229E7D72003B2FBF /* Real */,
@@ -3484,6 +3483,7 @@
 				A1BFB50522A8DFE8008B629B /* AddChildrenViewController.xib in Resources */,
 				A16A985122AE3C8B00078BEE /* ResultQualityViewController.xib in Resources */,
 				A19AD8F622A10F51004713A2 /* ReleaseHomeworkTimeViewMask.xib in Resources */,
+				A10B082E23166D6C0079EEB0 /* InformationLookoutViewController.xib in Resources */,
 				A15B3ECD22C46205004BF242 /* ResultContentTableViewCell.xib in Resources */,
 				DCB860CB215B388A001C58EF /* YMSPhotoPickerAssets.xcassets in Resources */,
 				A19AD8F122A0D10F004713A2 /* RealChooseForeignViewController.xib in Resources */,
@@ -3496,11 +3496,9 @@
 				A16093FA229E250700FBC19B /* RealFirstChooseViewController.xib in Resources */,
 				A158719122B8D9D7001567F8 /* MuHouseDetialHeader.xib in Resources */,
 				A1EFACD922B34E5C007593EB /* select_square_right@3x.png in Resources */,
-				A1A990AB22C05B74000EB09A /* InformationLookoutViewController.xib in Resources */,
 				A1094DF0229BD48500A278A1 /* HomePageHousesCollectionViewCell.xib in Resources */,
 				A16A983C22ADF9EA00078BEE /* MyCenterTableViewCell.xib in Resources */,
 				A15BD93822E1A26600D899F1 /* NewRegisterViewController.xib in Resources */,
-				A1A990A622C05B74000EB09A /* NewsCollectionViewCell.xib in Resources */,
 				A1EFACE622B3898B007593EB /* SysMesssageTableViewCell.xib in Resources */,
 				A1BFB4E522A76C24008B629B /* ChooseQualificationTableViewCell.xib in Resources */,
 				A16A982D22AA6E0F00078BEE /* AppendTwoViewController.xib in Resources */,
@@ -3529,6 +3527,7 @@
 				A158719C22B8F081001567F8 /* MyHouseTaxHeaderCell.xib in Resources */,
 				A1EFACD822B34E5C007593EB /* select_square_right@2x.png in Resources */,
 				A16A985B22AE4F3700078BEE /* MyCenterSettingViewController.xib in Resources */,
+				A10B083323166E320079EEB0 /* NewsCollectionViewCell.xib in Resources */,
 				A1EFAD3F22B3A8E0007593EB /* idcard_back.png in Resources */,
 				A1EFAD4522B3A8E0007593EB /* scaningbgimage@2x.png in Resources */,
 				A1FF19F622B100A000C09386 /* DetialMoreHeader.xib in Resources */,
@@ -3600,7 +3599,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC55BE04215A012D009654EC /* MULoginViewController.m in Sources */,
-				A1EFAD3422B3A8E0007593EB /* JYBDScanCardManageBase.m in Sources */,
 				DC7991B82151E5DC00368A56 /* KGOCarouselView.m in Sources */,
 				DC0AF5462152198E00B41476 /* UIView+WebCache.m in Sources */,
 				DCBD35F921509D7000763961 /* NSArray+MASAdditions.m in Sources */,
@@ -3665,8 +3663,6 @@
 				A1094DC02297D34000A278A1 /* ProUtils.m in Sources */,
 				A1EFAC7922B22553007593EB /* MXPagerViewController.m in Sources */,
 				A1A990B822C1CE64000EB09A /* PersonModel.m in Sources */,
-				A1EFAD3222B3A8E0007593EB /* JYBDScanCardManage.m in Sources */,
-				A1A990A722C05B74000EB09A /* NewsCollectionViewCell.m in Sources */,
 				A1609424229E378B00FBC19B /* SVIndefiniteAnimatedView.m in Sources */,
 				DC0AF5472152198E00B41476 /* UIView+WebCacheOperation.m in Sources */,
 				A1139D6022BC7D7C00463FAD /* MOFSDatePicker.m in Sources */,
@@ -3680,6 +3676,7 @@
 				A15BD95022E6C3DE00D899F1 /* MyCenterPhoneViewController.m in Sources */,
 				DC7991F42151ED5F00368A56 /* MJRefreshNormalHeader.m in Sources */,
 				DC7991F82151ED5F00368A56 /* NSBundle+MJRefresh.m in Sources */,
+				A10B083923166E6C0079EEB0 /* NewsSegmentViewController.m in Sources */,
 				A1FF1A0C22B1E44D00C09386 /* BuildingListHeader.m in Sources */,
 				A1609466229E54FE00FBC19B /* KYCustomPopViewController.swift in Sources */,
 				DC0AF5352152198E00B41476 /* SDWebImageCoderHelper.m in Sources */,
@@ -3731,18 +3728,19 @@
 				A16A984722AE322E00078BEE /* QuesttionListViewController.m in Sources */,
 				DC0AF5312152198E00B41476 /* SDAnimatedImageRep.m in Sources */,
 				A16A983622ADF15000078BEE /* MyCenterViewController.m in Sources */,
+				A10B0842231769B70079EEB0 /* JYBDScanCardManage.m in Sources */,
 				A16D94B322C5F7C6001F8483 /* DetialHouseBanner.m in Sources */,
 				DCBD35742150839200763961 /* MURootViewController.m in Sources */,
 				DCB860C9215B388A001C58EF /* YMSPhotoPickerViewController.m in Sources */,
 				DC0AF5372152198E00B41476 /* SDWebImageCompat.m in Sources */,
 				A1FF19DB22B09F4900C09386 /* DetialHouseTypeCollectionViewCell.m in Sources */,
 				A1139D4422BB1E6100463FAD /* MJPropertyType.m in Sources */,
+				A10B083623166E5F0079EEB0 /* NewsListViewController.m in Sources */,
 				A15871A522B8F36B001567F8 /* MyHouseTaxContentBottomCell.m in Sources */,
 				DC0AF5362152198E00B41476 /* SDWebImageCodersManager.m in Sources */,
 				DC04E368217080D700A16938 /* MUOSSFileAccess.m in Sources */,
 				DCBD364421509DAF00763961 /* WSDatePickerView.m in Sources */,
 				DC7991F02151ED5F00368A56 /* MJRefreshBackGifFooter.m in Sources */,
-				A1A990A922C05B74000EB09A /* InformationLookoutViewController.m in Sources */,
 				DC7991B22151E35C00368A56 /* NSArray+HYBUnicodeReadable.m in Sources */,
 				DC7991F32151ED5F00368A56 /* MJRefreshGifHeader.m in Sources */,
 				A1817F71229FCD54003B2FBF /* RealChooseHKViewController.m in Sources */,
@@ -3807,6 +3805,7 @@
 				A1817F68229FA715003B2FBF /* RealFinishTipView1.m in Sources */,
 				A15BD94522E5621E00D899F1 /* ZTDetialBottomView.m in Sources */,
 				DC7991F92151ED5F00368A56 /* UIScrollView+MJExtension.m in Sources */,
+				A10B0844231769B70079EEB0 /* JYBDScanCardManageBase.m in Sources */,
 				A160945F229E54FE00FBC19B /* UIView+KYPopup.swift in Sources */,
 				A1817F6D229FC33A003B2FBF /* UIView+add.m in Sources */,
 				A19AD95022A4B053004713A2 /* TOCropView.m in Sources */,
@@ -3820,7 +3819,6 @@
 				A1EFACCA22B34E5C007593EB /* ThirdTableView.m in Sources */,
 				A15BD93322E172A900D899F1 /* DetialCustomMapView.m in Sources */,
 				DC0AF5412152198E00B41476 /* UIImage+ForceDecode.m in Sources */,
-				A1A990AA22C05B74000EB09A /* NewsSegmentViewController.m in Sources */,
 				A1EFAD2F22B3A8E0007593EB /* UIAlertController+IDCardExtend.m in Sources */,
 				A16093F4229E1BC100FBC19B /* RealFirstTipViewController.m in Sources */,
 				A160945E229E54FE00FBC19B /* KYPopupViewController.swift in Sources */,
@@ -3838,7 +3836,6 @@
 				A16A978222A9020600078BEE /* AppendOneListViewController.m in Sources */,
 				A19AD8F722A10F51004713A2 /* ReleaseHomeworkTimeViewMask.m in Sources */,
 				A1FF1A2422B1F7AB00C09386 /* HouseDetialFeedbackViewController.m in Sources */,
-				A1EFAD3322B3A8E0007593EB /* JYBDBankCardSearch.m in Sources */,
 				A1094DEA229BCF6500A278A1 /* HomePageNewsCollectionViewCell.m in Sources */,
 				A15BD93722E1A26600D899F1 /* NewRegisterViewController.m in Sources */,
 				DCBD35F821509D7000763961 /* MASViewConstraint.m in Sources */,
@@ -3896,6 +3893,7 @@
 				DC7991EA2151ED5F00368A56 /* MJRefreshComponent.m in Sources */,
 				A1EFACCB22B34E5C007593EB /* ThirdConditionModel.m in Sources */,
 				A1EFAD3722B3A8E0007593EB /* JYBDNewFormeScaningV.m in Sources */,
+				A10B083223166E320079EEB0 /* NewsCollectionViewCell.m in Sources */,
 				DC7991B32151E35C00368A56 /* NSDictionary+HYBUnicodeReadable.m in Sources */,
 				DCBD35C421509D4600763961 /* AFSecurityPolicy.m in Sources */,
 				DC0AF5452152198E00B41476 /* UIImageView+WebCache.m in Sources */,
@@ -3914,6 +3912,7 @@
 				A14B5DB122E1567E00F98E74 /* HouseDetialMapViewController.m in Sources */,
 				A1139D6122BC7D7C00463FAD /* MOFSToolView.m in Sources */,
 				DCBD365C21509DAF00763961 /* YYLabel.m in Sources */,
+				A10B0843231769B70079EEB0 /* JYBDBankCardSearch.m in Sources */,
 				A1A990BC22C1CEBD000EB09A /* jtcyPersonModel.m in Sources */,
 				DC7991ED2151ED5F00368A56 /* MJRefreshAutoGifFooter.m in Sources */,
 				A1A990BF22C1CEEA000EB09A /* zzxxPersonModel.m in Sources */,
@@ -3957,6 +3956,7 @@
 				DCBD365A21509DAF00763961 /* YYTextUtilities.m in Sources */,
 				DCBD35D721509D5700763961 /* FMDatabaseQueue.m in Sources */,
 				A1094DD5229BB90F00A278A1 /* HomePageIconCollectionViewCell.m in Sources */,
+				A10B082D23166D6C0079EEB0 /* InformationLookoutViewController.m in Sources */,
 				A160946A229E54FE00FBC19B /* KYPopupInteractiveTransition.swift in Sources */,
 				DCB860C8215B388A001C58EF /* YMSPhotoPickerTheme.m in Sources */,
 				DC0AF5382152198E00B41476 /* SDWebImageDownloader.m in Sources */,
@@ -3966,7 +3966,6 @@
 				A1EFAC7A22B22553007593EB /* MXPagerView.m in Sources */,
 				A1609423229E378B00FBC19B /* SVProgressHUD.m in Sources */,
 				A1EFACD222B34E5C007593EB /* FirstAndSecondTableView.m in Sources */,
-				A1A990A822C05B74000EB09A /* NewsListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
