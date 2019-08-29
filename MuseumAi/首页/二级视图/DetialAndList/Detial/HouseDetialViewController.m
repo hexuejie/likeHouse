@@ -28,6 +28,7 @@
 #import "SDPhotoBrowser.h"
 #import "HouseDetialMapViewController.h"
 #import "DetialCustomMapView.h"
+#import "HouseDetialContactView.h"
 
 @interface HouseDetialViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,SDPhotoBrowserDelegate>
 @property (strong, nonatomic) HouseDetialHeaderView *headerView;
@@ -445,10 +446,15 @@
     
 - (IBAction)contactMeClick:(id)sender {
     
-    HouseDetialFeedbackViewController *vc = [HouseDetialFeedbackViewController new] ;
-    vc.title = @"联系商家";
-    vc.strBH = self.strBH;
-    [self.navigationController pushViewController:vc animated:YES];
+//    HouseDetialFeedbackViewController *vc = [HouseDetialFeedbackViewController new] ;
+//    vc.title = @"联系商家";
+//    vc.strBH = self.strBH;
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    HouseDetialContactView * _tipView1 = [[NSBundle mainBundle] loadNibNamed:@"HouseDetialContactView" owner:self options:nil].firstObject;
+    _tipView1.strBH = self.strBH;
+    _tipView1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    [[UIApplication sharedApplication].keyWindow addSubview:_tipView1];
 }
 
 - (void)customNavInit{
