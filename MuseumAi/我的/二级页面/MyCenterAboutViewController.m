@@ -19,11 +19,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"关于悦居星城";
+    self.title = @"关于长沙购房APP";
     
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    self.TitleAndVersion.text = [NSString stringWithFormat:@"悦居星城：V%@",app_Version];
+    self.TitleAndVersion.text = [NSString stringWithFormat:@"长沙购房：V%@",app_Version];
 }
 
 

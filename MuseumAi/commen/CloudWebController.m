@@ -90,7 +90,7 @@
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
 }
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    if (![ProUtils isNilOrNull:self.webView.title]) {
+    if (![ProUtils isNilOrNull:self.webView.title]&&[ProUtils isNilOrNull:self.title]) {
         self.title = self.webView.title;
     }
     
@@ -212,7 +212,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:@"title"]) {
         NSString *title = change[NSKeyValueChangeNewKey];
-        if (![ProUtils isNilOrNull:title]) {
+        if (![ProUtils isNilOrNull:title]&&[ProUtils isNilOrNull:self.title]) {
             self.title = title;
         }
         return;

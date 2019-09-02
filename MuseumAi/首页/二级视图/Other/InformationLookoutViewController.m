@@ -43,28 +43,32 @@
         case 0:
             {
                  controller.requestURL = @"http://www.cszjw.net/preselllicence_mobile";
+                controller.title = @"预售证查询";
             }
             break;
         case 1:
         {
             controller.requestURL = @"http://www.cszjw.net/signedcontract_mobile";
+            controller.title = @"合同签订查询";
         }
             break;
         case 2:
         {
             controller.requestURL = @"http://www.cszjw.net/registration_mobile";
+            controller.title = @"合同备案查询";
         }
             break;
         case 3:
         {
             controller.requestURL =[NSString stringWithFormat:@"http://www.gov.cn/pushinfo/v150203/pushinfo.jsonp?pushInfoJsonpCallBack=pushInfoJsonpCallBack&_=%@",[LoginSession sharedInstance].phone] ;
+            controller.title = @"公积金查询";
         }
             break;
             
         default:
             break;
     }
-    
+//    controller.webView.title = controller.title;
     [[ProUtils getCurrentVC].navigationController pushViewController:controller animated:YES];
 }
 

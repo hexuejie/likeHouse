@@ -393,7 +393,7 @@
     __weak typeof(self) weakSelf = self;
     
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/savehost") para:pramDic isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
-        //banner
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         if (success) {
             [LoginSession sharedInstance].rzzt = @"1";
             [SVProgressHelper dismissWithMsg:response[@"msg"]];

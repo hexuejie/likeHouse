@@ -70,7 +70,7 @@
                    @{@"title":@"购房资格审查资料修改",@"content":@"myCenter_change"},
                    @{@"title":@"常见问题",@"content":@"myCenter_question"},
                    @{@"title":@"用户设置",@"content":@"myCenter_setting"},
-                   @{@"title":@"关于悦居星城",@"content":@"myCenter_about"}
+                   @{@"title":@"关于长沙购房APP",@"content":@"myCenter_about"}
                    ];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyCenterTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"MyCenterTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyCenterLoginOutTableViewCell class])  bundle:nil] forCellReuseIdentifier:@"MyCenterLoginOutTableViewCell"];

@@ -56,6 +56,8 @@
     self.tabBarController.tabBar.hidden = NO;
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [LoginSession sharedInstance].pageType = 0;
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -85,6 +87,8 @@
     
     self.allView = self.contentCollectionView;
     [[UINavigationBar appearance] setShadowImage: [self viewImageFromColor:kUIColorFromRGB(0xf7f7f7) rect:CGRectMake(0, 0, SCREEN_WIDTH, 1)]];
+    
+    [self lookoutUpdate];
 }
 
 
@@ -446,6 +450,46 @@
 - (void)dealloc
 {
 //    [self.pageFlowView stopTimer];
+}
+
+- (void)lookoutUpdate{
+    
+    __weak typeof(self) weakSelf = self;
+    [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/login/zjw/user/getversions") para: @{@"model":@"iphone"} isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
+        if (success) {
+            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+            NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+            
+            NSDictionary *dataDic = [response objectForKey:@"data"];
+            if (![app_Version isEqualToString:[NSString stringWithFormat:@"%@",dataDic[@"versionUid"]]]) {
+                
+//                [weakSelf updateEventVersionExplain:dataDic[@"versionExplain"] versionIsCompulsory: [[NSString stringWithFormat:@"%@",dataDic[@"versionIsCompulsory"]] integerValue]];
+                [weakSelf updateEventVersionExplain:dataDic[@"versionExplain"] versionIsCompulsory:0];
+            }
+        }else{
+        }
+    }];
+}
+
+
+- (void)updateEventVersionExplain:(NSString *)versionExplain versionIsCompulsory:(NSInteger)versionIsCompulsory{
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"检查到新版本" message:versionExplain preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull   action) {
+   
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/%E6%82%A6%E5%B1%85%E6%98%9F%E5%9F%8E/id1417052839?mt=8"]];
+    }];
+//    [sureBtn setValue:[UIColor redColor] forKey:@"titleTextColor"];
+    [alertVc addAction :sureBtn];
+    
+    if (versionIsCompulsory != 0) {
+        UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            NSLog(@"取消");
+        }];
+        [alertVc addAction:cancelBtn];
+    }
+    //展示
+    [self presentViewController:alertVc animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

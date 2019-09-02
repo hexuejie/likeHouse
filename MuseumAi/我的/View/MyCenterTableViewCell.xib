@@ -56,7 +56,7 @@
                 <outlet property="logoImageView" destination="JJL-Nn-ctJ" id="WO6-gS-aG6"/>
                 <outlet property="titleLabel" destination="dGk-Uv-gCR" id="B6D-rc-ppl"/>
             </connections>
-            <point key="canvasLocation" x="196.80000000000001" y="134.03298350824588"/>
+            <point key="canvasLocation" x="-158" y="88"/>
         </tableViewCell>
     </objects>
     <resources>

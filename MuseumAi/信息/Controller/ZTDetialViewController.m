@@ -136,6 +136,9 @@
                 strTime = weakSelf.formatDic[@"fbsj"];
             }
             if (strTime == nil) {
+                strTime = weakSelf.formatDic[@"tjsj"];
+            }
+            if (strTime == nil) {
                 strTime = weakSelf.formatDic[@"sj"];
             }
             weakSelf.gllpModel = [HouseListModel mj_objectWithKeyValues: [tempData[@"gllp"] firstObject]];

@@ -53,19 +53,6 @@
 		A10B083323166E320079EEB0 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10B083123166E320079EEB0 /* NewsCollectionViewCell.xib */; };
 		A10B083623166E5F0079EEB0 /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B083523166E5F0079EEB0 /* NewsListViewController.m */; };
 		A10B083923166E6C0079EEB0 /* NewsSegmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B083823166E6C0079EEB0 /* NewsSegmentViewController.m */; };
-		A10B08AF2317707C0079EEB0 /* UIImage+IDCardExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B087E2317707C0079EEB0 /* UIImage+IDCardExtend.m */; };
-		A10B08B02317707C0079EEB0 /* UIAlertController+IDCardExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B087F2317707C0079EEB0 /* UIAlertController+IDCardExtend.m */; };
-		A10B08B12317707C0079EEB0 /* JYBDScanCardBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08832317707C0079EEB0 /* JYBDScanCardBaseVC.m */; };
-		A10B08B22317707C0079EEB0 /* JYBDIDCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08842317707C0079EEB0 /* JYBDIDCardVC.m */; };
-		A10B08B32317707C0079EEB0 /* JYBDScanCardManage.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08882317707C0079EEB0 /* JYBDScanCardManage.m */; };
-		A10B08B42317707C0079EEB0 /* JYBDBankCardSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08892317707C0079EEB0 /* JYBDBankCardSearch.m */; };
-		A10B08B52317707C0079EEB0 /* JYBDScanCardManageBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B088A2317707C0079EEB0 /* JYBDScanCardManageBase.m */; };
-		A10B08B62317707C0079EEB0 /* JYBDBankCardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08942317707C0079EEB0 /* JYBDBankCardInfo.m */; };
-		A10B08B72317707C0079EEB0 /* JYBDCardIDInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08952317707C0079EEB0 /* JYBDCardIDInfo.m */; };
-		A10B08B82317707C0079EEB0 /* JYBDNewFormeScaningV.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08992317707C0079EEB0 /* JYBDNewFormeScaningV.m */; };
-		A10B08BA2317707C0079EEB0 /* libexbankcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A10B089D2317707C0079EEB0 /* libexbankcardios.a */; };
-		A10B08BB2317707C0079EEB0 /* libbexbankcard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A10B089E2317707C0079EEB0 /* libbexbankcard.a */; };
-		A10B08BC2317707C0079EEB0 /* IDCardRectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08A02317707C0079EEB0 /* IDCardRectManager.m */; };
 		A10B08BD2317707C0079EEB0 /* zocr0.lib in Resources */ = {isa = PBXBuildFile; fileRef = A10B08A32317707C0079EEB0 /* zocr0.lib */; };
 		A10B08BE2317707C0079EEB0 /* scaningline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10B08A52317707C0079EEB0 /* scaningline@2x.png */; };
 		A10B08BF2317707C0079EEB0 /* scaningline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10B08A62317707C0079EEB0 /* scaningline@3x.png */; };
@@ -79,6 +66,19 @@
 		A10B08C72317707C0079EEB0 /* scaningbgimage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10B08AE2317707C0079EEB0 /* scaningbgimage@3x.png */; };
 		A10B08CA23177F220079EEB0 /* HouseDetialContactView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08C923177F220079EEB0 /* HouseDetialContactView.m */; };
 		A10B08CC23177F570079EEB0 /* HouseDetialContactView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10B08CB23177F570079EEB0 /* HouseDetialContactView.xib */; };
+		A10B08F32317D2C10079EEB0 /* UIImage+IDCardExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08D02317D2BE0079EEB0 /* UIImage+IDCardExtend.m */; };
+		A10B08F42317D2C10079EEB0 /* UIAlertController+IDCardExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08D12317D2BE0079EEB0 /* UIAlertController+IDCardExtend.m */; };
+		A10B08F52317D2C10079EEB0 /* JYBDScanCardBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08D52317D2BE0079EEB0 /* JYBDScanCardBaseVC.m */; };
+		A10B08F62317D2C10079EEB0 /* JYBDIDCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08D62317D2BE0079EEB0 /* JYBDIDCardVC.m */; };
+		A10B08F72317D2C10079EEB0 /* JYBDScanCardManage.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08DA2317D2BE0079EEB0 /* JYBDScanCardManage.m */; };
+		A10B08F82317D2C10079EEB0 /* JYBDBankCardSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08DB2317D2BE0079EEB0 /* JYBDBankCardSearch.m */; };
+		A10B08F92317D2C10079EEB0 /* JYBDScanCardManageBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08DC2317D2BE0079EEB0 /* JYBDScanCardManageBase.m */; };
+		A10B08FA2317D2C10079EEB0 /* JYBDBankCardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08E62317D2BE0079EEB0 /* JYBDBankCardInfo.m */; };
+		A10B08FB2317D2C10079EEB0 /* JYBDCardIDInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08E72317D2BE0079EEB0 /* JYBDCardIDInfo.m */; };
+		A10B08FC2317D2C10079EEB0 /* JYBDNewFormeScaningV.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08EB2317D2BF0079EEB0 /* JYBDNewFormeScaningV.m */; };
+		A10B08FD2317D2C10079EEB0 /* libexbankcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A10B08EE2317D2BF0079EEB0 /* libexbankcardios.a */; };
+		A10B08FE2317D2C10079EEB0 /* libbexbankcard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A10B08EF2317D2BF0079EEB0 /* libbexbankcard.a */; };
+		A10B08FF2317D2C10079EEB0 /* IDCardRectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A10B08F12317D2BF0079EEB0 /* IDCardRectManager.m */; };
 		A1139D4422BB1E6100463FAD /* MJPropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = A1139D3222BB1E6100463FAD /* MJPropertyType.m */; };
 		A1139D4522BB1E6100463FAD /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = A1139D3522BB1E6100463FAD /* NSObject+MJKeyValue.m */; };
 		A1139D4622BB1E6100463FAD /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = A1139D3622BB1E6100463FAD /* MJProperty.m */; };
@@ -627,35 +627,6 @@
 		A10B083523166E5F0079EEB0 /* NewsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListViewController.m; sourceTree = "<group>"; };
 		A10B083723166E6C0079EEB0 /* NewsSegmentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsSegmentViewController.h; sourceTree = "<group>"; };
 		A10B083823166E6C0079EEB0 /* NewsSegmentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSegmentViewController.m; sourceTree = "<group>"; };
-		A10B087D2317707C0079EEB0 /* UIAlertController+IDCardExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+IDCardExtend.h"; sourceTree = "<group>"; };
-		A10B087E2317707C0079EEB0 /* UIImage+IDCardExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IDCardExtend.m"; sourceTree = "<group>"; };
-		A10B087F2317707C0079EEB0 /* UIAlertController+IDCardExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+IDCardExtend.m"; sourceTree = "<group>"; };
-		A10B08802317707C0079EEB0 /* UIImage+IDCardExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+IDCardExtend.h"; sourceTree = "<group>"; };
-		A10B08822317707C0079EEB0 /* JYBDIDCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDIDCardVC.h; sourceTree = "<group>"; };
-		A10B08832317707C0079EEB0 /* JYBDScanCardBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardBaseVC.m; sourceTree = "<group>"; };
-		A10B08842317707C0079EEB0 /* JYBDIDCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDIDCardVC.m; sourceTree = "<group>"; };
-		A10B08852317707C0079EEB0 /* JYBDScanCardBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardBaseVC.h; sourceTree = "<group>"; };
-		A10B08872317707C0079EEB0 /* JYBDScanCardManageBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardManageBase.h; sourceTree = "<group>"; };
-		A10B08882317707C0079EEB0 /* JYBDScanCardManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardManage.m; sourceTree = "<group>"; };
-		A10B08892317707C0079EEB0 /* JYBDBankCardSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDBankCardSearch.m; sourceTree = "<group>"; };
-		A10B088A2317707C0079EEB0 /* JYBDScanCardManageBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardManageBase.m; sourceTree = "<group>"; };
-		A10B088B2317707C0079EEB0 /* JYBDBankCardSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDBankCardSearch.h; sourceTree = "<group>"; };
-		A10B088C2317707C0079EEB0 /* JYBDScanCardManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardManage.h; sourceTree = "<group>"; };
-		A10B088E2317707C0079EEB0 /* exbankcardcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcardcore.h; sourceTree = "<group>"; };
-		A10B088F2317707C0079EEB0 /* commondef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commondef.h; sourceTree = "<group>"; };
-		A10B08902317707C0079EEB0 /* exbankcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcard.h; sourceTree = "<group>"; };
-		A10B08912317707C0079EEB0 /* excards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = excards.h; sourceTree = "<group>"; };
-		A10B08922317707C0079EEB0 /* BankCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCard.h; sourceTree = "<group>"; };
-		A10B08942317707C0079EEB0 /* JYBDBankCardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDBankCardInfo.m; sourceTree = "<group>"; };
-		A10B08952317707C0079EEB0 /* JYBDCardIDInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDCardIDInfo.m; sourceTree = "<group>"; };
-		A10B08962317707C0079EEB0 /* JYBDBankCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDBankCardInfo.h; sourceTree = "<group>"; };
-		A10B08972317707C0079EEB0 /* JYBDCardIDInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDCardIDInfo.h; sourceTree = "<group>"; };
-		A10B08992317707C0079EEB0 /* JYBDNewFormeScaningV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDNewFormeScaningV.m; sourceTree = "<group>"; };
-		A10B089A2317707C0079EEB0 /* JYBDNewFormeScaningV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDNewFormeScaningV.h; sourceTree = "<group>"; };
-		A10B089D2317707C0079EEB0 /* libexbankcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexbankcardios.a; sourceTree = "<group>"; };
-		A10B089E2317707C0079EEB0 /* libbexbankcard.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbexbankcard.a; sourceTree = "<group>"; };
-		A10B08A02317707C0079EEB0 /* IDCardRectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCardRectManager.m; sourceTree = "<group>"; };
-		A10B08A12317707C0079EEB0 /* IDCardRectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardRectManager.h; sourceTree = "<group>"; };
 		A10B08A32317707C0079EEB0 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
 		A10B08A52317707C0079EEB0 /* scaningline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scaningline@2x.png"; sourceTree = "<group>"; };
 		A10B08A62317707C0079EEB0 /* scaningline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scaningline@3x.png"; sourceTree = "<group>"; };
@@ -670,6 +641,35 @@
 		A10B08C823177F220079EEB0 /* HouseDetialContactView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseDetialContactView.h; sourceTree = "<group>"; };
 		A10B08C923177F220079EEB0 /* HouseDetialContactView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseDetialContactView.m; sourceTree = "<group>"; };
 		A10B08CB23177F570079EEB0 /* HouseDetialContactView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseDetialContactView.xib; sourceTree = "<group>"; };
+		A10B08CF2317D2BE0079EEB0 /* UIAlertController+IDCardExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+IDCardExtend.h"; sourceTree = "<group>"; };
+		A10B08D02317D2BE0079EEB0 /* UIImage+IDCardExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IDCardExtend.m"; sourceTree = "<group>"; };
+		A10B08D12317D2BE0079EEB0 /* UIAlertController+IDCardExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+IDCardExtend.m"; sourceTree = "<group>"; };
+		A10B08D22317D2BE0079EEB0 /* UIImage+IDCardExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+IDCardExtend.h"; sourceTree = "<group>"; };
+		A10B08D42317D2BE0079EEB0 /* JYBDIDCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDIDCardVC.h; sourceTree = "<group>"; };
+		A10B08D52317D2BE0079EEB0 /* JYBDScanCardBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardBaseVC.m; sourceTree = "<group>"; };
+		A10B08D62317D2BE0079EEB0 /* JYBDIDCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDIDCardVC.m; sourceTree = "<group>"; };
+		A10B08D72317D2BE0079EEB0 /* JYBDScanCardBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardBaseVC.h; sourceTree = "<group>"; };
+		A10B08D92317D2BE0079EEB0 /* JYBDScanCardManageBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardManageBase.h; sourceTree = "<group>"; };
+		A10B08DA2317D2BE0079EEB0 /* JYBDScanCardManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardManage.m; sourceTree = "<group>"; };
+		A10B08DB2317D2BE0079EEB0 /* JYBDBankCardSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDBankCardSearch.m; sourceTree = "<group>"; };
+		A10B08DC2317D2BE0079EEB0 /* JYBDScanCardManageBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDScanCardManageBase.m; sourceTree = "<group>"; };
+		A10B08DD2317D2BE0079EEB0 /* JYBDBankCardSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDBankCardSearch.h; sourceTree = "<group>"; };
+		A10B08DE2317D2BE0079EEB0 /* JYBDScanCardManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDScanCardManage.h; sourceTree = "<group>"; };
+		A10B08E02317D2BE0079EEB0 /* exbankcardcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcardcore.h; sourceTree = "<group>"; };
+		A10B08E12317D2BE0079EEB0 /* commondef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commondef.h; sourceTree = "<group>"; };
+		A10B08E22317D2BE0079EEB0 /* exbankcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcard.h; sourceTree = "<group>"; };
+		A10B08E32317D2BE0079EEB0 /* excards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = excards.h; sourceTree = "<group>"; };
+		A10B08E42317D2BE0079EEB0 /* BankCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCard.h; sourceTree = "<group>"; };
+		A10B08E62317D2BE0079EEB0 /* JYBDBankCardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDBankCardInfo.m; sourceTree = "<group>"; };
+		A10B08E72317D2BE0079EEB0 /* JYBDCardIDInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDCardIDInfo.m; sourceTree = "<group>"; };
+		A10B08E82317D2BE0079EEB0 /* JYBDBankCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDBankCardInfo.h; sourceTree = "<group>"; };
+		A10B08E92317D2BE0079EEB0 /* JYBDCardIDInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDCardIDInfo.h; sourceTree = "<group>"; };
+		A10B08EB2317D2BF0079EEB0 /* JYBDNewFormeScaningV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBDNewFormeScaningV.m; sourceTree = "<group>"; };
+		A10B08EC2317D2BF0079EEB0 /* JYBDNewFormeScaningV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBDNewFormeScaningV.h; sourceTree = "<group>"; };
+		A10B08EE2317D2BF0079EEB0 /* libexbankcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexbankcardios.a; sourceTree = "<group>"; };
+		A10B08EF2317D2BF0079EEB0 /* libbexbankcard.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbexbankcard.a; sourceTree = "<group>"; };
+		A10B08F12317D2BF0079EEB0 /* IDCardRectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCardRectManager.m; sourceTree = "<group>"; };
+		A10B08F22317D2BF0079EEB0 /* IDCardRectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardRectManager.h; sourceTree = "<group>"; };
 		A1139D2F22BB1E6100463FAD /* MJPropertyKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPropertyKey.h; sourceTree = "<group>"; };
 		A1139D3022BB1E6100463FAD /* NSObject+MJClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJClass.h"; sourceTree = "<group>"; };
 		A1139D3122BB1E6100463FAD /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
@@ -1458,9 +1458,7 @@
 			files = (
 				7EB3063F217373A000A7F7B6 /* AudioToolbox.framework in Frameworks */,
 				DCBD367E2150C67400763961 /* CoreTelephony.framework in Frameworks */,
-				A10B08BA2317707C0079EEB0 /* libexbankcardios.a in Frameworks */,
 				DC04E3652170732D00A16938 /* libresolv.tbd in Frameworks */,
-				A10B08BB2317707C0079EEB0 /* libbexbankcard.a in Frameworks */,
 				DC79377E216B5055009FF7DE /* CoreBluetooth.framework in Frameworks */,
 				DCF6376B215E38CA00635317 /* CFNetwork.framework in Frameworks */,
 				DCF63769215E38A600635317 /* libz.tbd in Frameworks */,
@@ -1482,8 +1480,10 @@
 				DC5950952154E09A00F9C99A /* AVFoundation.framework in Frameworks */,
 				DCBD36782150C65500763961 /* CoreGraphics.framework in Frameworks */,
 				DCBD36742150C64300763961 /* OpenGLES.framework in Frameworks */,
+				A10B08FD2317D2C10079EEB0 /* libexbankcardios.a in Frameworks */,
 				7EF3CE8B2155EB1900CB49A2 /* GLKit.framework in Frameworks */,
 				7EF3CE8D2155EB1900CB49A2 /* CoreMotion.framework in Frameworks */,
+				A10B08FE2317D2C10079EEB0 /* libbexbankcard.a in Frameworks */,
 				7EF3CE8E2155EB1900CB49A2 /* CoreMedia.framework in Frameworks */,
 				7EF3CE8F2155EB1900CB49A2 /* CoreVideo.framework in Frameworks */,
 				7EF3CE902155EB1900CB49A2 /* UIKit.framework in Frameworks */,
@@ -1622,111 +1622,11 @@
 		A10B087A2317707C0079EEB0 /* JYBD_IDCardRecognition */ = {
 			isa = PBXGroup;
 			children = (
-				A10B087B2317707C0079EEB0 /* Classes */,
+				A10B08CD2317D2BE0079EEB0 /* Classes */,
 				A10B08A22317707C0079EEB0 /* dicts */,
 				A10B08A42317707C0079EEB0 /* Resources */,
 			);
 			path = JYBD_IDCardRecognition;
-			sourceTree = "<group>";
-		};
-		A10B087B2317707C0079EEB0 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				A10B087C2317707C0079EEB0 /* Category */,
-				A10B08812317707C0079EEB0 /* Controller */,
-				A10B08862317707C0079EEB0 /* JYBD_OCR_Bank */,
-				A10B088D2317707C0079EEB0 /* libexidcard */,
-				A10B08932317707C0079EEB0 /* Model */,
-				A10B08982317707C0079EEB0 /* View */,
-				A10B089B2317707C0079EEB0 /* exbankcardcore */,
-				A10B089F2317707C0079EEB0 /* Tool */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		A10B087C2317707C0079EEB0 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				A10B087D2317707C0079EEB0 /* UIAlertController+IDCardExtend.h */,
-				A10B087E2317707C0079EEB0 /* UIImage+IDCardExtend.m */,
-				A10B087F2317707C0079EEB0 /* UIAlertController+IDCardExtend.m */,
-				A10B08802317707C0079EEB0 /* UIImage+IDCardExtend.h */,
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
-		A10B08812317707C0079EEB0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				A10B08822317707C0079EEB0 /* JYBDIDCardVC.h */,
-				A10B08832317707C0079EEB0 /* JYBDScanCardBaseVC.m */,
-				A10B08842317707C0079EEB0 /* JYBDIDCardVC.m */,
-				A10B08852317707C0079EEB0 /* JYBDScanCardBaseVC.h */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		A10B08862317707C0079EEB0 /* JYBD_OCR_Bank */ = {
-			isa = PBXGroup;
-			children = (
-				A10B08872317707C0079EEB0 /* JYBDScanCardManageBase.h */,
-				A10B08882317707C0079EEB0 /* JYBDScanCardManage.m */,
-				A10B08892317707C0079EEB0 /* JYBDBankCardSearch.m */,
-				A10B088A2317707C0079EEB0 /* JYBDScanCardManageBase.m */,
-				A10B088B2317707C0079EEB0 /* JYBDBankCardSearch.h */,
-				A10B088C2317707C0079EEB0 /* JYBDScanCardManage.h */,
-			);
-			path = JYBD_OCR_Bank;
-			sourceTree = "<group>";
-		};
-		A10B088D2317707C0079EEB0 /* libexidcard */ = {
-			isa = PBXGroup;
-			children = (
-				A10B088E2317707C0079EEB0 /* exbankcardcore.h */,
-				A10B088F2317707C0079EEB0 /* commondef.h */,
-				A10B08902317707C0079EEB0 /* exbankcard.h */,
-				A10B08912317707C0079EEB0 /* excards.h */,
-				A10B08922317707C0079EEB0 /* BankCard.h */,
-			);
-			path = libexidcard;
-			sourceTree = "<group>";
-		};
-		A10B08932317707C0079EEB0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A10B08942317707C0079EEB0 /* JYBDBankCardInfo.m */,
-				A10B08952317707C0079EEB0 /* JYBDCardIDInfo.m */,
-				A10B08962317707C0079EEB0 /* JYBDBankCardInfo.h */,
-				A10B08972317707C0079EEB0 /* JYBDCardIDInfo.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A10B08982317707C0079EEB0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A10B08992317707C0079EEB0 /* JYBDNewFormeScaningV.m */,
-				A10B089A2317707C0079EEB0 /* JYBDNewFormeScaningV.h */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		A10B089B2317707C0079EEB0 /* exbankcardcore */ = {
-			isa = PBXGroup;
-			children = (
-				A10B089D2317707C0079EEB0 /* libexbankcardios.a */,
-				A10B089E2317707C0079EEB0 /* libbexbankcard.a */,
-			);
-			path = exbankcardcore;
-			sourceTree = "<group>";
-		};
-		A10B089F2317707C0079EEB0 /* Tool */ = {
-			isa = PBXGroup;
-			children = (
-				A10B08A02317707C0079EEB0 /* IDCardRectManager.m */,
-				A10B08A12317707C0079EEB0 /* IDCardRectManager.h */,
-			);
-			path = Tool;
 			sourceTree = "<group>";
 		};
 		A10B08A22317707C0079EEB0 /* dicts */ = {
@@ -1752,6 +1652,106 @@
 				A10B08AE2317707C0079EEB0 /* scaningbgimage@3x.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A10B08CD2317D2BE0079EEB0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A10B08CE2317D2BE0079EEB0 /* Category */,
+				A10B08D32317D2BE0079EEB0 /* Controller */,
+				A10B08D82317D2BE0079EEB0 /* JYBD_OCR_Bank */,
+				A10B08DF2317D2BE0079EEB0 /* libexidcard */,
+				A10B08E52317D2BE0079EEB0 /* Model */,
+				A10B08EA2317D2BF0079EEB0 /* View */,
+				A10B08ED2317D2BF0079EEB0 /* exbankcardcore */,
+				A10B08F02317D2BF0079EEB0 /* Tool */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A10B08CE2317D2BE0079EEB0 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				A10B08CF2317D2BE0079EEB0 /* UIAlertController+IDCardExtend.h */,
+				A10B08D02317D2BE0079EEB0 /* UIImage+IDCardExtend.m */,
+				A10B08D12317D2BE0079EEB0 /* UIAlertController+IDCardExtend.m */,
+				A10B08D22317D2BE0079EEB0 /* UIImage+IDCardExtend.h */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		A10B08D32317D2BE0079EEB0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A10B08D42317D2BE0079EEB0 /* JYBDIDCardVC.h */,
+				A10B08D52317D2BE0079EEB0 /* JYBDScanCardBaseVC.m */,
+				A10B08D62317D2BE0079EEB0 /* JYBDIDCardVC.m */,
+				A10B08D72317D2BE0079EEB0 /* JYBDScanCardBaseVC.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A10B08D82317D2BE0079EEB0 /* JYBD_OCR_Bank */ = {
+			isa = PBXGroup;
+			children = (
+				A10B08D92317D2BE0079EEB0 /* JYBDScanCardManageBase.h */,
+				A10B08DA2317D2BE0079EEB0 /* JYBDScanCardManage.m */,
+				A10B08DB2317D2BE0079EEB0 /* JYBDBankCardSearch.m */,
+				A10B08DC2317D2BE0079EEB0 /* JYBDScanCardManageBase.m */,
+				A10B08DD2317D2BE0079EEB0 /* JYBDBankCardSearch.h */,
+				A10B08DE2317D2BE0079EEB0 /* JYBDScanCardManage.h */,
+			);
+			path = JYBD_OCR_Bank;
+			sourceTree = "<group>";
+		};
+		A10B08DF2317D2BE0079EEB0 /* libexidcard */ = {
+			isa = PBXGroup;
+			children = (
+				A10B08E02317D2BE0079EEB0 /* exbankcardcore.h */,
+				A10B08E12317D2BE0079EEB0 /* commondef.h */,
+				A10B08E22317D2BE0079EEB0 /* exbankcard.h */,
+				A10B08E32317D2BE0079EEB0 /* excards.h */,
+				A10B08E42317D2BE0079EEB0 /* BankCard.h */,
+			);
+			path = libexidcard;
+			sourceTree = "<group>";
+		};
+		A10B08E52317D2BE0079EEB0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A10B08E62317D2BE0079EEB0 /* JYBDBankCardInfo.m */,
+				A10B08E72317D2BE0079EEB0 /* JYBDCardIDInfo.m */,
+				A10B08E82317D2BE0079EEB0 /* JYBDBankCardInfo.h */,
+				A10B08E92317D2BE0079EEB0 /* JYBDCardIDInfo.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A10B08EA2317D2BF0079EEB0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A10B08EB2317D2BF0079EEB0 /* JYBDNewFormeScaningV.m */,
+				A10B08EC2317D2BF0079EEB0 /* JYBDNewFormeScaningV.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A10B08ED2317D2BF0079EEB0 /* exbankcardcore */ = {
+			isa = PBXGroup;
+			children = (
+				A10B08EE2317D2BF0079EEB0 /* libexbankcardios.a */,
+				A10B08EF2317D2BF0079EEB0 /* libbexbankcard.a */,
+			);
+			path = exbankcardcore;
+			sourceTree = "<group>";
+		};
+		A10B08F02317D2BF0079EEB0 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				A10B08F12317D2BF0079EEB0 /* IDCardRectManager.m */,
+				A10B08F22317D2BF0079EEB0 /* IDCardRectManager.h */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		A1139D2E22BB1E6100463FAD /* MJExtension */ = {
@@ -3611,11 +3611,11 @@
 				DCBD35F921509D7000763961 /* NSArray+MASAdditions.m in Sources */,
 				A16D949922C5BB52001F8483 /* MyCenterChangePhoneViewController.m in Sources */,
 				A160946B229E54FE00FBC19B /* KYPopupPresentationManager.swift in Sources */,
+				A10B08FC2317D2C10079EEB0 /* JYBDNewFormeScaningV.m in Sources */,
 				DCBD35C321509D4600763961 /* AFNetworkReachabilityManager.m in Sources */,
 				DCBD35D421509D5700763961 /* FMDatabase.m in Sources */,
 				A1FF19FB22B1214A00C09386 /* HouseStyleViewController.m in Sources */,
 				A16BB41C22B7715900C2E7F5 /* MyHouseListViewController.m in Sources */,
-				A10B08AF2317707C0079EEB0 /* UIImage+IDCardExtend.m in Sources */,
 				DCBD365621509DAF00763961 /* UIPasteboard+YYText.m in Sources */,
 				A1FF19EB22B0FE0500C09386 /* DetialMoreTableViewCell.m in Sources */,
 				A1EFACCD22B34E5C007593EB /* FilterSelectIndexModel.m in Sources */,
@@ -3632,7 +3632,6 @@
 				A1EFACEC22B39455007593EB /* BannerModel.m in Sources */,
 				A1EFAC9422B228AD007593EB /* LXDeviceVersion.m in Sources */,
 				A1139D6322BC7D7C00463FAD /* MOFSPickerView.m in Sources */,
-				A10B08B12317707C0079EEB0 /* JYBDScanCardBaseVC.m in Sources */,
 				A1609419229E378B00FBC19B /* IndexBannerView.m in Sources */,
 				DCBD35F321509D7000763961 /* MASCompositeConstraint.m in Sources */,
 				A1FF19DE22B09F8600C09386 /* DetialHouseImageCollectionViewCell.m in Sources */,
@@ -3659,15 +3658,14 @@
 				A1817F64229E8704003B2FBF /* ChooseOtherRealViewController.m in Sources */,
 				DC0AF53D2152198E00B41476 /* SDWebImageManager.m in Sources */,
 				DCBD360321509D8500763961 /* MBProgressHUD.m in Sources */,
+				A10B08F32317D2C10079EEB0 /* UIImage+IDCardExtend.m in Sources */,
 				DCBD364F21509DAF00763961 /* YYTextArchiver.m in Sources */,
 				A1EFAC9A22B229AD007593EB /* DetialPicCollectionViewController.m in Sources */,
-				A10B08B02317707C0079EEB0 /* UIAlertController+IDCardExtend.m in Sources */,
 				A1FF19F422B1009500C09386 /* DetialMoreHeader.m in Sources */,
 				DCBD365121509DAF00763961 /* YYTextParser.m in Sources */,
 				DC0AF53C2152198E00B41476 /* SDWebImageImageIOCoder.m in Sources */,
 				A160945C229E54FE00FBC19B /* KYPopupTwoLineButton.swift in Sources */,
 				A1FF19FF22B121FD00C09386 /* DetialStyleCollectionViewCell.m in Sources */,
-				A10B08B62317707C0079EEB0 /* JYBDBankCardInfo.m in Sources */,
 				A19AD94622A4B053004713A2 /* TOActivityCroppedImageProvider.m in Sources */,
 				DCBD35F421509D7000763961 /* MASConstraint.m in Sources */,
 				DCBD35C721509D4600763961 /* AFURLSessionManager.m in Sources */,
@@ -3682,13 +3680,12 @@
 				A19AD94B22A4B053004713A2 /* TOCroppedImageAttributes.m in Sources */,
 				A1EFACE522B3898B007593EB /* SysMesssageTableViewCell.m in Sources */,
 				DC55BE09215A014D009654EC /* MURegisterViewController.m in Sources */,
-				A10B08B32317707C0079EEB0 /* JYBDScanCardManage.m in Sources */,
 				A1A990AF22C0AA92000EB09A /* AddChildrenTableViewCell.m in Sources */,
 				A1094DCB229B924C00A278A1 /* MUSpecialViewController.m in Sources */,
-				A10B08B42317707C0079EEB0 /* JYBDBankCardSearch.m in Sources */,
 				A15BD95022E6C3DE00D899F1 /* MyCenterPhoneViewController.m in Sources */,
 				DC7991F42151ED5F00368A56 /* MJRefreshNormalHeader.m in Sources */,
 				DC7991F82151ED5F00368A56 /* NSBundle+MJRefresh.m in Sources */,
+				A10B08F72317D2C10079EEB0 /* JYBDScanCardManage.m in Sources */,
 				A10B083923166E6C0079EEB0 /* NewsSegmentViewController.m in Sources */,
 				A1FF1A0C22B1E44D00C09386 /* BuildingListHeader.m in Sources */,
 				A1609466229E54FE00FBC19B /* KYCustomPopViewController.swift in Sources */,
@@ -3697,6 +3694,7 @@
 				A16A984022AE078600078BEE /* MyCenterLoginOutTableViewCell.m in Sources */,
 				A1BFB4EA22A7917A008B629B /* ChooseAddMyselfVC.m in Sources */,
 				DCBD364821509DAF00763961 /* YYTextEffectWindow.m in Sources */,
+				A10B08FF2317D2C10079EEB0 /* IDCardRectManager.m in Sources */,
 				A1609461229E54FE00FBC19B /* KYActionSheetViewController.swift in Sources */,
 				A19AD94D22A4B053004713A2 /* TOCropScrollView.m in Sources */,
 				A1EFAC8D22B2271E007593EB /* Utility.m in Sources */,
@@ -3709,10 +3707,12 @@
 				A1094DE3229BC56D00A278A1 /* AdModel.m in Sources */,
 				A15871AA22B8F3B0001567F8 /* MyHouseTaxViewController.m in Sources */,
 				DCBD365221509DAF00763961 /* YYTextRubyAnnotation.m in Sources */,
+				A10B08FA2317D2C10079EEB0 /* JYBDBankCardInfo.m in Sources */,
 				DCB860C7215B388A001C58EF /* UIViewController+YMSPhotoHelper.m in Sources */,
 				DC5950892154D18C00F9C99A /* UIView+KGOUtil.m in Sources */,
 				A1139D4A22BB1E6100463FAD /* NSObject+MJClass.m in Sources */,
 				DC7991F72151ED5F00368A56 /* MJRefreshConst.m in Sources */,
+				A10B08F82317D2C10079EEB0 /* JYBDBankCardSearch.m in Sources */,
 				A19AD95222A4B053004713A2 /* PureCamera.m in Sources */,
 				A1EFACA322B23F1C007593EB /* SearchHouseListViewController.m in Sources */,
 				A16A982C22AA6E0F00078BEE /* AppendTwoViewController.m in Sources */,
@@ -3740,7 +3740,6 @@
 				A16A983622ADF15000078BEE /* MyCenterViewController.m in Sources */,
 				A16D94B322C5F7C6001F8483 /* DetialHouseBanner.m in Sources */,
 				DCBD35742150839200763961 /* MURootViewController.m in Sources */,
-				A10B08B82317707C0079EEB0 /* JYBDNewFormeScaningV.m in Sources */,
 				DCB860C9215B388A001C58EF /* YMSPhotoPickerViewController.m in Sources */,
 				DC0AF5372152198E00B41476 /* SDWebImageCompat.m in Sources */,
 				A1FF19DB22B09F4900C09386 /* DetialHouseTypeCollectionViewCell.m in Sources */,
@@ -3790,7 +3789,6 @@
 				DC0AF53F2152198E00B41476 /* SDWebImageTransition.m in Sources */,
 				DC0AF5302152198E00B41476 /* NSImage+WebCache.m in Sources */,
 				A19AD94722A4B053004713A2 /* UIImage+CropRotate.m in Sources */,
-				A10B08B52317707C0079EEB0 /* JYBDScanCardManageBase.m in Sources */,
 				A160946E229E54FE00FBC19B /* KYPopupPresentationController.swift in Sources */,
 				DC0AF5422152198E00B41476 /* UIImage+GIF.m in Sources */,
 				DCB860BF215B388A001C58EF /* YMSAlbumPickerViewController.m in Sources */,
@@ -3839,13 +3837,13 @@
 				A1FF1A1A22B1F0C400C09386 /* HouseAroundViewController.m in Sources */,
 				A1139D5022BB879200463FAD /* MyHouseMode.m in Sources */,
 				A160942C229E52C700FBC19B /* NoticeHelp.m in Sources */,
-				A10B08B22317707C0079EEB0 /* JYBDIDCardVC.m in Sources */,
 				DCBD35C621509D4600763961 /* AFURLResponseSerialization.m in Sources */,
 				A1EFAC7322B22524007593EB /* MXSegmentedPager.m in Sources */,
 				DC7991F52151ED5F00368A56 /* MJRefreshStateHeader.m in Sources */,
 				A16A978222A9020600078BEE /* AppendOneListViewController.m in Sources */,
 				A19AD8F722A10F51004713A2 /* ReleaseHomeworkTimeViewMask.m in Sources */,
 				A1FF1A2422B1F7AB00C09386 /* HouseDetialFeedbackViewController.m in Sources */,
+				A10B08F92317D2C10079EEB0 /* JYBDScanCardManageBase.m in Sources */,
 				A1094DEA229BCF6500A278A1 /* HomePageNewsCollectionViewCell.m in Sources */,
 				A15BD93722E1A26600D899F1 /* NewRegisterViewController.m in Sources */,
 				DCBD35F821509D7000763961 /* MASViewConstraint.m in Sources */,
@@ -3874,7 +3872,9 @@
 				A15BD93C22E1B3F600D899F1 /* HouseListRenchouCollectionViewCell.m in Sources */,
 				A1094DC52297D64E00A278A1 /* NSObject+null.m in Sources */,
 				A1609462229E54FE00FBC19B /* KYPopupDefaultButton.swift in Sources */,
+				A10B08F52317D2C10079EEB0 /* JYBDScanCardBaseVC.m in Sources */,
 				A1094DBF2297D34000A278A1 /* GTMBase64.m in Sources */,
+				A10B08F42317D2C10079EEB0 /* UIAlertController+IDCardExtend.m in Sources */,
 				A1609463229E54FE00FBC19B /* UIWindow+KYPopup.swift in Sources */,
 				A16D94A122C5C356001F8483 /* xmbcHouseDetial.m in Sources */,
 				A160941C229E378B00FBC19B /* LXMessageHUDView.swift in Sources */,
@@ -3883,6 +3883,7 @@
 				7EE68875215875CF00DE4A60 /* SDWaitingView.m in Sources */,
 				DCBD3565215082A300763961 /* main.m in Sources */,
 				A160941E229E378B00FBC19B /* SVProgressHelper.m in Sources */,
+				A10B08F62317D2C10079EEB0 /* JYBDIDCardVC.m in Sources */,
 				DCBD365721509DAF00763961 /* UIView+YYText.m in Sources */,
 				A1139D4B22BB1E6100463FAD /* NSString+MJExtension.m in Sources */,
 				A15B3ED122C46214004BF242 /* ResultTitleTableViewCell.m in Sources */,
@@ -3891,7 +3892,6 @@
 				A160946C229E54FE00FBC19B /* KYPopupOverlayView.swift in Sources */,
 				DC0AF5432152198E00B41476 /* UIImage+MultiFormat.m in Sources */,
 				A1BFB4E422A76C24008B629B /* ChooseQualificationTableViewCell.m in Sources */,
-				A10B08BC2317707C0079EEB0 /* IDCardRectManager.m in Sources */,
 				DCBD365521509DAF00763961 /* NSParagraphStyle+YYText.m in Sources */,
 				DC2DCEF02154A445008A6BB6 /* MULayoutHandler.m in Sources */,
 				A106884822D72E20005D7E84 /* ChooseMySelfAndRealViewController.m in Sources */,
@@ -3906,6 +3906,7 @@
 				DCBD35C421509D4600763961 /* AFSecurityPolicy.m in Sources */,
 				DC0AF5452152198E00B41476 /* UIImageView+WebCache.m in Sources */,
 				A16A984422AE29A300078BEE /* HousesListViewController.m in Sources */,
+				A10B08FB2317D2C10079EEB0 /* JYBDCardIDInfo.m in Sources */,
 				7EE6886A215875C400DE4A60 /* NotesPhotoContainerView.m in Sources */,
 				A1BFB4DF22A7656E008B629B /* ChooseQualificationTypeViewController.m in Sources */,
 				DC0AF5322152198E00B41476 /* SDImageCache.m in Sources */,
@@ -3914,7 +3915,6 @@
 				DC0AF53E2152198E00B41476 /* SDWebImagePrefetcher.m in Sources */,
 				A1BFB4F922A7C140008B629B /* AddMateShipTableViewCell.m in Sources */,
 				DCBD365921509DAF00763961 /* YYTextTransaction.m in Sources */,
-				A10B08B72317707C0079EEB0 /* JYBDCardIDInfo.m in Sources */,
 				A16A985022AE3C8B00078BEE /* ResultQualityViewController.m in Sources */,
 				DC7991E92151ED5F00368A56 /* MJRefreshBackFooter.m in Sources */,
 				A19AD95322A4B053004713A2 /* TOCropToolbar.m in Sources */,

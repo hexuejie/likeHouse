@@ -492,7 +492,7 @@
     [[NetWork shareManager] postWithUrl:DetailUrlString(@"/api/family/zjw/user/newverify") para:pram isShowHUD:YES  callBack:^(id  _Nonnull response, BOOL success) {
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         if (success) {
-            
+            [LoginSession sharedInstance].rzzt = @"0";
             [weakSelf sureButtonClick];
         }else{
             [weakSelf alertWithMsg:kFailedTips handler:nil];

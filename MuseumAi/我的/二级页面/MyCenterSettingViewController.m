@@ -102,7 +102,7 @@
 
 
 - (IBAction)updateClick:(id)sender {
-    NSString *str = [NSString stringWithFormat:@"http://itunes.apple.com/us/app/id%@",@"56ce54a5"];
+//    NSString *str = [NSString stringWithFormat:@"http://itunes.apple.com/us/app/id%@",@"56ce54a5"];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/%E6%82%A6%E5%B1%85%E6%98%9F%E5%9F%8E/id1417052839?mt=8"]];
 }
 @end
