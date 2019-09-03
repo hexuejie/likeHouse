@@ -167,7 +167,7 @@
         }
     }
     if ([pram.allKeys containsObject:@"qu"]||[pram.allKeys containsObject:@"ejgqj"]||[pram.allKeys containsObject:@"hx"]) {
-        [pram setObject:@"2" forKey:@"sslx"];
+//        [pram setObject:@"2" forKey:@"sslx"];
     }
     if (_keyString.length>0) {
         [pram setObject:_keyString forKey:@"xmmc"];
