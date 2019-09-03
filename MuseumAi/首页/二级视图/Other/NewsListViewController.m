@@ -53,6 +53,8 @@
     [self.view addSubview:self.contentCollectionView];
     if ([self.title isEqualToString:@"楼盘动态"]||[self.title isEqualToString:@"悦居资讯"]) {
         self.contentCollectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT -[Utility segmentTopMinHeight]-42);
+    }else{
+        self.contentCollectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT -[Utility segmentTopMinHeight]-120-42);
     }
    
     [self.contentCollectionView registerNib:[UINib nibWithNibName:@"NewsCollectionViewCell" bundle:[NSBundle bundleForClass:[NewsCollectionViewCell class]]] forCellWithReuseIdentifier:@"NewsCollectionViewCell"];
